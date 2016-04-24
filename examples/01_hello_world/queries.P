@@ -1,0 +1,25 @@
+
+
+:- table yw_q1_desc/2.
+yw_q1_desc(Q) :- Q='(WorkflowName,Description) % What is the name and description of the workflow implemented by the script?'.
+yw_q1(WorkflowName,Description) :-
+    top_workflow(W, WorkflowName),
+    program_description(W, Description).
+
+:- table yw_q2_desc/3.
+yw_q2_desc(Q) :- Q='(StepName,Description) % What workflow steps comprise the top-level workflow?'.
+yw_q2(StepName,Description) :-
+    top_workflow(W, _),
+    has_subprogram(W, P),
+    program(P, _, StepName, _, _),
+    program_description(P, Description).
+
+:- table yw_q3_desc/3.
+yw_q3_desc(Q) :-Q='(SourceFile, StartLine, EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?'.
+yw_q3(SourceFile, StartLine, EndLine) :-
+    program_source('HelloWorld.print_greeting', SourceFile, StartLine, EndLine).
+
+%:- table nw_q1/2.
+%nw_q1_desc(Q) :- Q='(FunctionName, CallLine) % What functions are called from the top level of the script?'.
+%nw_q1(FunctionName, CallLine) :-
+%    program_source('HelloWorld.print_greeting', SourceFile, StartLine, EndLine).
