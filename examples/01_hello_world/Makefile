@@ -1,15 +1,31 @@
+WORKFLOW_SCRIPT = hello_world_1.py
+RUN_OUTPUTS = run_outputs.txt
+YW_FACTS = yw_extract_facts.P yw_model_facts.P
+WORKFLOW_GRAPH = workflow_graph.gv
+NW_FACTS = nw_facts.P
+QUERY_OUTPUTS = query_outputs.txt
 
+FACTS = ${YW_FACTS} ${NW_FACTS}
+ALL_OUTPUTS = ${RUN_OUTPUTS} ${QUERY_OUTPUTS} ${WORKFLOW_GRAPH} ${FACTS}
 
-FACTS = yw_extract_facts.P yw_model_facts.P nw_facts.P
+all: ${QUERY_OUTPUTS}
+run: ${RUN_OUTPUTS}
+yw: ${YW_FACTS}
+nw: {NW_FACTS}
+query: ${QUERY_OUTPUTS}
 
-all: query.txt
+${YW_FACTS}: ${WORKFLOW_SCRIPT}
+	bash -lc "yw graph ${WORKFLOW_SCRIPT} > ${WORKFLOW_GRAPH}"
 
-yw_extract_facts.P yw_model_facts.P nw.P run.txt: *.py
-	./run.sh &> run.txt
+${RUN_OUTPUTS}: *.py
+	now run -e Tracer ${WORKFLOW_SCRIPT} &> ${RUN_OUTPUTS}
 
-query.txt: ${FACTS}
-	./query.sh &> query.txt
+${NW_FACTS}:
+	now export -m dependency | grep -v 'environment(' > ${NW_FACTS}
+
+${QUERY_OUTPUTS}: ${RUN_OUTPUTS} ${NW_FACTS} ${YW_FACTS}
+	./run_queries.sh &> ${QUERY_OUTPUTS}
 
 clean:
-	rm -f *.xwam *.txt *.gv ${FACTS}
+	rm -f *.xwam ${ALL_OUTPUTS}
 	rm -rf .noworkflow
