@@ -2,13 +2,13 @@
 #
 # ./run_queries.sh &> run_queries.txt
 
-xsb << END_XSB_STDIN
+xsb --noprompt << END_XSB_STDIN
 
 [yw_extract].
 [yw_model].
 [nw].
-[yw_rules].
-[yw_nw_rules].
+['../rules/yw_rules'].
+['../rules/yw_nw_rules'].
 [queries].
 
 printall(yw_q1_desc(_), yw_q1(_,_)).
