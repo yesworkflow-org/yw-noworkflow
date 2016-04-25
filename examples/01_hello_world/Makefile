@@ -17,7 +17,7 @@ query: ${QUERY_OUTPUTS}
 ${YW_FACTS}: ${WORKFLOW_SCRIPT}
 	bash -lc "yw graph ${WORKFLOW_SCRIPT} > ${WORKFLOW_GRAPH}"
 
-${RUN_OUTPUTS}: *.py
+${RUN_OUTPUTS}: ${WORKFLOW_SCRIPT}
 	now run -e Tracer ${WORKFLOW_SCRIPT} &> ${RUN_OUTPUTS}
 
 ${NW_FACTS}: ${RUN_OUTPUTS}
