@@ -4,6 +4,7 @@ YW_FACTS = yw_extract_facts.P yw_model_facts.P
 WORKFLOW_GRAPH = workflow_graph.gv
 NW_FACTS = nw_facts.P
 QUERY_OUTPUTS = query_outputs.txt
+YW_PROPERTIES = yw.properties
 
 FACTS = ${YW_FACTS} ${NW_FACTS}
 ALL_OUTPUTS = ${RUN_OUTPUTS} ${QUERY_OUTPUTS} ${WORKFLOW_GRAPH} ${FACTS}
@@ -14,7 +15,7 @@ yw: ${YW_FACTS}
 nw: ${NW_FACTS}
 query: ${QUERY_OUTPUTS}
 
-${YW_FACTS}: ${WORKFLOW_SCRIPT}
+${YW_FACTS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
 	bash -lc "yw graph ${WORKFLOW_SCRIPT} > ${WORKFLOW_GRAPH}"
 
 ${RUN_OUTPUTS}: ${WORKFLOW_SCRIPT}

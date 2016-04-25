@@ -1,12 +1,20 @@
 digraph Workflow {
-rankdir=LR
+rankdir=TB
 fontname=Courier; fontsize=18; labelloc=t
 label=HelloWorld
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; color=white
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
-print_greeting [shape=record rankdir=LR label="{{<f0> print_greeting |<f1> Greet the program user.}}"];
+print_greeting
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+greeting [shape=record rankdir=LR label="{<f0> greeting |<f1> stream\:stdout}"];
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+print_greeting -> greeting
 }}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+greeting_output_port [label=""]
+}}
+greeting -> greeting_output_port
 }

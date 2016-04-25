@@ -7,12 +7,12 @@ XSB Version 3.6. (Gazpatcho) of April 22, 2015
 [Build date: 2016-04-24]
 
 [Compiling ./yw_extract_facts]
-[yw_extract_facts compiled, cpu time used: 0.0070 seconds]
+[yw_extract_facts compiled, cpu time used: 0.0060 seconds]
 [yw_extract_facts loaded]
 
 yes
 [Compiling ./yw_model_facts]
-[yw_model_facts compiled, cpu time used: 0.0010 seconds]
+[yw_model_facts compiled, cpu time used: 0.0020 seconds]
 [yw_model_facts loaded]
 
 yes
@@ -27,8 +27,6 @@ yes
 [yw_nw_rules loaded]
 
 yes
-[Compiling ./queries]
-[queries compiled, cpu time used: 0.0020 seconds]
 [queries loaded]
 
 yes
@@ -50,7 +48,7 @@ yes
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q3_desc((SourceFile, StartLine, EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?)
 ---------------------------------------------------------------------------------------------------------------------------
-yw_q3(hello_world_1.py,3,5)
+yw_q3(hello_world_1.py,4,7)
 
 yes
 

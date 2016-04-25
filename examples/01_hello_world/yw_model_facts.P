@@ -1,9 +1,10 @@
 
 % FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
-program(1, 'HelloWorld', 'HelloWorld', 1, 6).
-program(2, 'print_greeting', 'HelloWorld.print_greeting', 3, 5).
+program(1, 'HelloWorld', 'HelloWorld', 1, 9).
+program(2, 'print_greeting', 'HelloWorld.print_greeting', 4, 8).
 
 % FACT: workflow(program_id).
+workflow(1).
 
 % FACT: function(program_id).
 
@@ -11,23 +12,36 @@ program(2, 'print_greeting', 'HelloWorld.print_greeting', 3, 5).
 has_subprogram(1, 2).
 
 % FACT: port(port_id, port_type, port_name, qualified_port_name, port_annotation_id, data_id).
+port(1, 'out', 'greeting', 'HelloWorld->greeting', 3, 1).
+port(2, 'out', 'greeting', 'HelloWorld.print_greeting->greeting', 6, 2).
 
 % FACT: port_alias(port_id, alias).
 
 % FACT: port_uri_template(port_id, uri).
+port_uri_template(2, 'stream:stdout').
 
 % FACT: has_in_port(block_id, port_id).
 
 % FACT: has_out_port(block_id, port_id).
+has_out_port(1, 1).
+has_out_port(2, 2).
 
 % FACT: data(data_id, data_name, qualified_data_name).
+data(1, 'greeting', '[greeting]').
+data(2, 'greeting', 'HelloWorld[greeting]').
 
 % FACT: channel(channel_id, data_id).
+channel(1, 1).
+channel(2, 2).
 
 % FACT: port_connects_to_channel(port_id, channel_id).
+port_connects_to_channel(2, 1).
+port_connects_to_channel(2, 2).
 
 % FACT: inflow_connects_to_channel(port_id, channel_id).
 
 % FACT: outflow_connects_to_channel(port_id, channel_id).
+outflow_connects_to_channel(1, 1).
+outflow_connects_to_channel(1, 2).
 
 % FACT: uri_variable(uri_variable_id, variable_name, port_id).
