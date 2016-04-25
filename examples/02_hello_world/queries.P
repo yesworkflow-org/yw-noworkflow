@@ -1,0 +1,38 @@
+
+
+yw_q1_desc(Q) :- Q='(WorkflowName,Description) % What is the name and description of the workflow implemented by the script?'.
+:- table yw_q1/2.
+yw_q1(WorkflowName,Description) :-
+    top_workflow(W, WorkflowName),
+    program_description(W, Description).
+
+yw_q2_desc(Q) :- Q='(StepName,Description) % What workflow steps comprise the top-level workflow?'.
+:- table yw_q2/2.
+yw_q2(StepName,Description) :-
+    top_workflow(W, _),
+    has_subprogram(W, P),
+    program(P, _, StepName, _, _),
+    program_description(P, Description).
+
+yw_q3_desc(Q) :-Q='(SourceFile, StartLine, EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?'.
+:- table yw_q3/3.
+yw_q3(SourceFile, StartLine, EndLine) :-
+    program_source('HelloWorld.print_greeting', SourceFile, StartLine, EndLine).
+
+yw_q4_desc(Q) :-Q='(OutputName, Description) % What are the names and descriptions of any outputs of the script?'.
+:- table yw_q4/2.
+yw_q4(OutputName, Description) :-
+    top_workflow(W,_),
+    has_out_port(W, P),
+    port(P, _, OutputName, _, _, _),
+    port_description(P, Description).
+
+nw_q1_desc(Q) :- Q='(FunctionName, CallLine) % What functions are called from the top level of the script?'.
+:- table nw_q1/1.
+nw_q1(FunctionName) :-
+    call_from_top_function(_, FunctionName, _).
+
+nw_q2_desc(Q) :- Q='(VariableName, VariableValue) % What is the argument to print_greeting() at the top of the script?'.
+:- table nw_q2/2.
+nw_q2(ArgVarName, ArgValue) :-
+    activation_argument('print_greeting', ArgVarName, ArgValue).

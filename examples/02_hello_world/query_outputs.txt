@@ -1,0 +1,72 @@
+[xsb_configuration loaded, cpu time used: 0.0010 seconds]
+[sysinitrc loaded]
+[xsbbrat loaded]
+
+XSB Version 3.6. (Gazpatcho) of April 22, 2015
+[i386-apple-darwin15.4.0 64 bits; mode: optimal; engine: slg-wam; scheduling: local]
+[Build date: 2016-04-24]
+
+[yw_extract_facts loaded]
+
+yes
+[yw_model_facts loaded]
+
+yes
+[nw_facts loaded]
+
+yes
+[yw_rules loaded]
+
+yes
+[yw_nw_rules loaded]
+
+yes
+[Compiling ./queries]
+[queries compiled, cpu time used: 0.0070 seconds]
+[queries loaded]
+
+yes
+
+---------------------------------------------------------------------------------------------------------------------------
+yw_q1_desc((WorkflowName,Description) % What is the name and description of the workflow implemented by the script?)
+---------------------------------------------------------------------------------------------------------------------------
+yw_q1(HelloWorld,Exercise YW and NW with a classic program.)
+
+yes
+
+---------------------------------------------------------------------------------------------------------------------------
+yw_q2_desc((StepName,Description) % What workflow steps comprise the top-level workflow?)
+---------------------------------------------------------------------------------------------------------------------------
+yw_q2(HelloWorld.print_greeting,Greet the program user.)
+
+yes
+
+---------------------------------------------------------------------------------------------------------------------------
+yw_q3_desc((SourceFile, StartLine, EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?)
+---------------------------------------------------------------------------------------------------------------------------
+yw_q3(hello_world_2.py,5,10)
+
+yes
+
+---------------------------------------------------------------------------------------------------------------------------
+yw_q4_desc((OutputName, Description) % What are the names and descriptions of any outputs of the script?)
+---------------------------------------------------------------------------------------------------------------------------
+yw_q4(displayed_greeting,Greeting displayed to user.)
+
+yes
+
+---------------------------------------------------------------------------------------------------------------------------
+nw_q1_desc((FunctionName, CallLine) % What functions are called from the top level of the script?)
+---------------------------------------------------------------------------------------------------------------------------
+nw_q1(print_greeting)
+
+yes
+
+---------------------------------------------------------------------------------------------------------------------------
+nw_q2_desc((VariableName, VariableValue) % What is the argument to print_greeting() at the top of the script?)
+---------------------------------------------------------------------------------------------------------------------------
+nw_q2(greeting,'Hello World!')
+
+yes
+
+End XSB (cputime 0.03 secs, elapsetime 0.06 secs)

@@ -1,10 +1,15 @@
 
 
 :- table script_activation/1.
-script_activation(A) :-
-    activation(_, A, _, _, _, nil).
+script_activation(ScriptActivation) :-
+    activation(_, ScriptActivation, _, _, _, nil).
 
 :- table call_from_top_function/2.
-call_from_top_function(F, L) :-
-    activation(_, _, F, _, _, SA),
-    script_activation(SA).
+call_from_top_function(ActivationId, FuncName, Line) :-
+    activation(_, ActivationId, FuncName, _, _, ScriptActivation),
+    script_activation(ScriptActivation).
+
+:-table argument_variable/2.
+activation_argument(FuncName, ArgVarName, ArgValue) :-
+    call_from_top_function(ActivationId, FuncName, _),
+    object_value(_, ActivationId, _, ArgVarName, ArgValue, _).
