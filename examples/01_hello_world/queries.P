@@ -19,7 +19,7 @@ yw_q3_desc(Q) :-Q='(SourceFile, StartLine, EndLine) % Where is the definition of
 yw_q3(SourceFile, StartLine, EndLine) :-
     program_source('HelloWorld.print_greeting', SourceFile, StartLine, EndLine).
 
-%:- table nw_q1/2.
-%nw_q1_desc(Q) :- Q='(FunctionName, CallLine) % What functions are called from the top level of the script?'.
-%nw_q1(FunctionName, CallLine) :-
-%    program_source('HelloWorld.print_greeting', SourceFile, StartLine, EndLine).
+:- table nw_q1/2.
+nw_q1_desc(Q) :- Q='(FunctionName, CallLine) % What functions are called from the top level of the script?'.
+nw_q1(FunctionName, CallLine) :-
+    call_from_top_function(FunctionName, CallLine).

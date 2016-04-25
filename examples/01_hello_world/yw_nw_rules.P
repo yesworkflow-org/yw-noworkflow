@@ -1,0 +1,10 @@
+
+
+:- table script_activation/1.
+script_activation(A) :-
+    activation(_, _, _, _, _, nil).
+
+:- table call_from_top_function/2.
+call_from_top_function(F, L) :-
+    activation(_, _, F, _, _, SA),
+    script_activation(SA).

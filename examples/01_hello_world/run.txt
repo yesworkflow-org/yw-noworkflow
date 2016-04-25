@@ -1,2 +1,1 @@
-./run.sh: line 2: yw: command not found
-./run.sh: line 3: yw: command not found
+Hello world!

@@ -12,7 +12,7 @@
 %
 
 :- dynamic(trial/10).
-trial(36, 1461514894.381012, 1461514894.618523, 'hello_world_1.py', 'a7d3034228c4bbc5ed8241613a1f79f5286feb03', 'run -e Tracer hello_world_1.py', nil, 35, 1, nil).
+trial(39, 1461538784.69896, 1461538784.942842, 'hello_world_1.py', 'a7d3034228c4bbc5ed8241613a1f79f5286feb03', 'run -e Tracer hello_world_1.py', nil, 38, 1, nil).
 
 %
 % FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
@@ -23,7 +23,7 @@ trial(36, 1461514894.381012, 1461514894.618523, 'hello_world_1.py', 'a7d3034228c
 %
 
 :- dynamic(tag/4).
-tag(36, 'AUTO', '11.1.1', 1461514894.472642).
+tag(39, 'AUTO', '11.1.4', 1461538784.789837).
 
 %
 % FACT DEFINITION: module(TrialId, Id, Name, Version, Path, CodeHash).
@@ -35,162 +35,12 @@ tag(36, 'AUTO', '11.1.1', 1461514894.472642).
 :- dynamic(module/6).
 
 %
-% FACT DEFINITION: environment(TrialId, Name, Value).
 % DESCRIPTION: informs that a environment attribute (*name*)
 %              was defined with *value*
 %              in a given trial (*trial_id*).
 %
 
 :- dynamic(environment/3).
-environment(36, 'OS_NAME', 'Darwin').
-environment(36, 'SC_GETGR_R_SIZE_MAX', '4096').
-environment(36, 'SC_MAPPED_FILES', '200112').
-environment(36, 'SC_XBS5_ILP32_OFFBIG', '1').
-environment(36, 'SC_OPEN_MAX', '256').
-environment(36, 'SC_SAVED_IDS', '1').
-environment(36, 'SC_RE_DUP_MAX', '255').
-environment(36, 'SC_XOPEN_ENH_I18N', '1').
-environment(36, 'SC_DELAYTIMER_MAX', '-1').
-environment(36, 'SC_2_UPE', '200112').
-environment(36, 'SC_THREAD_KEYS_MAX', '512').
-environment(36, 'SC_SIGQUEUE_MAX', '-1').
-environment(36, 'SC_BC_STRING_MAX', '1000').
-environment(36, 'SC_MEMLOCK_RANGE', '-1').
-environment(36, 'SC_THREAD_ATTR_STACKSIZE', '200112').
-environment(36, 'SC_PAGESIZE', '4096').
-environment(36, 'SC_2_LOCALEDEF', '200112').
-environment(36, 'SC_2_CHAR_TERM', '200112').
-environment(36, 'SC_AIO_PRIO_DELTA_MAX', '-1').
-environment(36, 'SC_THREAD_PRIO_PROTECT', '-1').
-environment(36, 'SC_LINE_MAX', '2048').
-environment(36, 'SC_MEMLOCK', '-1').
-environment(36, 'SC_THREADS', '200112').
-environment(36, 'SC_XOPEN_XCU_VERSION', '4').
-environment(36, 'SC_BC_BASE_MAX', '99').
-environment(36, 'SC_COLL_WEIGHTS_MAX', '2').
-environment(36, 'SC_XBS5_ILP32_OFF32', '-1').
-environment(36, 'SC_NPROCESSORS_CONF', '8').
-environment(36, 'SC_XBS5_LPBIG_OFFBIG', '1').
-environment(36, 'SC_TIMERS', '-1').
-environment(36, 'SC_GETPW_R_SIZE_MAX', '4096').
-environment(36, 'SC_TZNAME_MAX', '255').
-environment(36, 'SC_IOV_MAX', '1024').
-environment(36, 'SC_2_VERSION', '200112').
-environment(36, 'SC_TTY_NAME_MAX', '255').
-environment(36, 'SC_NGROUPS_MAX', '16').
-environment(36, 'SC_XOPEN_LEGACY', '-1').
-environment(36, 'SC_THREAD_PRIORITY_SCHEDULING', '-1').
-environment(36, 'SC_TIMER_MAX', '-1').
-environment(36, 'SC_SEM_NSEMS_MAX', '87381').
-environment(36, 'SC_JOB_CONTROL', '200112').
-environment(36, 'SC_XOPEN_SHM', '1').
-environment(36, 'SC_MESSAGE_PASSING', '-1').
-environment(36, 'SC_CLK_TCK', '100').
-environment(36, 'SC_ATEXIT_MAX', '2147483647').
-environment(36, 'SC_2_FORT_RUN', '200112').
-environment(36, 'SC_THREAD_SAFE_FUNCTIONS', '200112').
-environment(36, 'SC_REALTIME_SIGNALS', '-1').
-environment(36, 'SC_MQ_OPEN_MAX', '-1').
-environment(36, 'SC_PASS_MAX', '128').
-environment(36, 'SC_RTSIG_MAX', '-1').
-environment(36, 'SC_XOPEN_VERSION', '600').
-environment(36, 'SC_THREAD_PRIO_INHERIT', '-1').
-environment(36, 'SC_BC_DIM_MAX', '2048').
-environment(36, 'SC_2_C_BIND', '200112').
-environment(36, 'SC_BC_SCALE_MAX', '99').
-environment(36, 'SC_THREAD_DESTRUCTOR_ITERATIONS', '4').
-environment(36, 'SC_XOPEN_CRYPT', '1').
-environment(36, 'SC_PRIORITY_SCHEDULING', '-1').
-environment(36, 'SC_PRIORITIZED_IO', '-1').
-environment(36, 'SC_2_C_DEV', '200112').
-environment(36, 'SC_ARG_MAX', '262144').
-environment(36, 'SC_XOPEN_REALTIME', '-1').
-environment(36, 'SC_XOPEN_UNIX', '1').
-environment(36, 'SC_2_FORT_DEV', '-1').
-environment(36, 'SC_SYNCHRONIZED_IO', '-1').
-environment(36, 'SC_MEMORY_PROTECTION', '200112').
-environment(36, 'SC_AIO_LISTIO_MAX', '90').
-environment(36, 'SC_NPROCESSORS_ONLN', '8').
-environment(36, 'SC_CHILD_MAX', '709').
-environment(36, 'SC_THREAD_STACK_MIN', '8192').
-environment(36, 'SC_MQ_PRIO_MAX', '-1').
-environment(36, 'SC_THREAD_PROCESS_SHARED', '200112').
-environment(36, 'SC_SEM_VALUE_MAX', '32767').
-environment(36, 'SC_SEMAPHORES', '-1').
-environment(36, 'SC_PAGE_SIZE', '4096').
-environment(36, 'SC_ASYNCHRONOUS_IO', '-1').
-environment(36, 'SC_XOPEN_REALTIME_THREADS', '-1').
-environment(36, 'SC_THREAD_ATTR_STACKADDR', '200112').
-environment(36, 'SC_AIO_MAX', '90').
-environment(36, 'SC_STREAM_MAX', '256').
-environment(36, 'SC_SHARED_MEMORY_OBJECTS', '-1').
-environment(36, 'SC_VERSION', '200112').
-environment(36, 'SC_LOGIN_NAME_MAX', '255').
-environment(36, 'SC_2_SW_DEV', '200112').
-environment(36, 'SC_EXPR_NEST_MAX', '32').
-environment(36, 'SC_XBS5_LP64_OFF64', '1').
-environment(36, 'SC_FSYNC', '200112').
-environment(36, 'SC_THREAD_THREADS_MAX', '-1').
-environment(36, 'CS_XBS5_LPBIG_OFFBIG_LDFLAGS', '-W 64').
-environment(36, 'CS_XBS5_ILP32_OFF32_CFLAGS', '').
-environment(36, 'CS_XBS5_LP64_OFF64_CFLAGS', '-W 64').
-environment(36, 'CS_XBS5_LPBIG_OFFBIG_LIBS', '').
-environment(36, 'CS_XBS5_ILP32_OFFBIG_LDFLAGS', '-W 32').
-environment(36, 'CS_XBS5_ILP32_OFFBIG_LINTFLAGS', '').
-environment(36, 'CS_XBS5_LPBIG_OFFBIG_LINTFLAGS', '').
-environment(36, 'CS_XBS5_ILP32_OFF32_LDFLAGS', '').
-environment(36, 'CS_XBS5_LP64_OFF64_LDFLAGS', '-W 64').
-environment(36, 'CS_XBS5_ILP32_OFF32_LIBS', '').
-environment(36, 'CS_XBS5_LP64_OFF64_LIBS', '').
-environment(36, 'CS_XBS5_ILP32_OFFBIG_LIBS', '').
-environment(36, 'CS_XBS5_LP64_OFF64_LINTFLAGS', '').
-environment(36, 'CS_XBS5_LPBIG_OFFBIG_CFLAGS', '-W 64').
-environment(36, 'CS_XBS5_ILP32_OFF32_LINTFLAGS', '').
-environment(36, 'CS_XBS5_ILP32_OFFBIG_CFLAGS', '-W 32').
-environment(36, 'CS_PATH', '/usr/bin:/bin:/usr/sbin:/sbin').
-environment(36, 'OS_NAME', 'Darwin').
-environment(36, 'OS_RELEASE', '15.4.0').
-environment(36, 'OS_VERSION', 'Darwin Kernel Version 15.4.0: Fri Feb 26 22:08:05 PST 2016; root:xnu-3248.40.184~3/RELEASE_X86_64').
-environment(36, 'SSH_AUTH_SOCK', '/private/tmp/com.apple.launchd.sQsfoTHAFr/Listeners').
-environment(36, 'HOME', '/Users/tmcphill').
-environment(36, 'TERM_PROGRAM_VERSION', '361.1').
-environment(36, 'JENA_HOME', '/Users/tmcphill/Dropbox/Library/Java/apache-jena-3.0.1').
-environment(36, 'CLASSPATH', ':/Users/tmcphill/Dropbox/Library/Java/antlr-4.5.1-complete.jar:/Users/tmcphill/Dropbox/Library/Java/antlr-4.5.1-complete.jar').
-environment(36, '__PYVENV_LAUNCHER__', '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4').
-environment(36, 'ANTLR4JAR', '/Users/tmcphill/Dropbox/Library/Java/antlr-4.5.1-complete.jar').
-environment(36, 'XPC_SERVICE_NAME', '0').
-environment(36, '_', '/Library/Frameworks/Python.framework/Versions/3.4/bin/now').
-environment(36, 'LANG', 'en_US.UTF-8').
-environment(36, 'PWD', '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world').
-environment(36, 'XPC_FLAGS', '0x0').
-environment(36, 'USER', 'tmcphill').
-environment(36, '__CF_USER_TEXT_ENCODING', '0x1F9:0x0:0x0').
-environment(36, 'SCRIPTS', '/Users/tmcphill/Dropbox/Scripts').
-environment(36, 'TERM_SESSION_ID', 'B6A70DA6-E5F2-4D76-8899-49301B4317D4').
-environment(36, 'MAVEN_OPTS', '-Xms256m -Xmx256m').
-environment(36, 'TMPDIR', '/var/folders/7g/w153x0qs1g50v55613wlrcp80000gs/T/').
-environment(36, 'JAVA_LIBS', '/Users/tmcphill/DropBox/Library/Java').
-environment(36, 'GIT_REPOS', '/Users/tmcphill/GitRepos').
-environment(36, 'Apple_PubSub_Socket_Render', '/private/tmp/com.apple.launchd.T4UyLnGHaE/Render').
-environment(36, 'TERM_PROGRAM', 'Apple_Terminal').
-environment(36, 'MAVEN_HOME', '/Users/tmcphill/DropBox/Library/Java/apache-maven-3.3.3').
-environment(36, 'PATH', '/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Users/tmcphill/DropBox/Library/Java/apache-maven-3.3.3/bin:/Users/tmcphill/Dropbox/Library/Java/apache-jena-3.0.1/bin:/Users/tmcphill/DropBox/Library/Java/apache-maven-3.3.3/bin:/Users/tmcphill/Dropbox/Library/Java/apache-jena-3.0.1/bin').
-environment(36, 'TERM', 'xterm-256color').
-environment(36, 'SHELL', '/usr/local/bin/bash').
-environment(36, 'DISPLAY', '/private/tmp/com.apple.launchd.0B2GFtpqHa/org.macosforge.xquartz:0').
-environment(36, 'JYTHONHOME', '/Users/tmcphill/jython2.7.0/').
-environment(36, 'SHLVL', '2').
-environment(36, 'CDPATH', '/Users/tmcphill/GitRepos/:/Users/tmcphill/SvnRepos/:/Users/tmcphill/GitRepos/:/Users/tmcphill/SvnRepos/:').
-environment(36, 'LOGNAME', 'tmcphill').
-environment(36, 'USER', 'tmcphill').
-environment(36, 'PWD', '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world').
-environment(36, 'PID', '53752').
-environment(36, 'HOSTNAME', 'calypso.local').
-environment(36, 'ARCH', '64bit').
-environment(36, 'PROCESSOR', 'i386').
-environment(36, 'PYTHON_IMPLEMENTATION', 'CPython').
-environment(36, 'PYTHON_VERSION', '3.4.2').
-environment(36, 'NOWORKFLOW_VERSION', '1.7.7').
 
 %
 % FACT DEFINITION: function_def(TrialId, Id, Name, CodeHash, FirstLine, LastLine, Docstring).
@@ -213,7 +63,7 @@ environment(36, 'NOWORKFLOW_VERSION', '1.7.7').
 %
 
 :- dynamic(object/5).
-object(36, -1, 1, 'print', 'FUNCTION_CALL').
+object(39, -1, 1, 'print', 'FUNCTION_CALL').
 
 %
 % FACT DEFINITION: activation(TrialId, Id, Name, Start, Finish, CallerActivationId).
@@ -225,8 +75,8 @@ object(36, -1, 1, 'print', 'FUNCTION_CALL').
 %
 
 :- dynamic(activation/6).
-activation(36, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world_1.py', 1461514894.618289, 1461514894.618466, nil).
-activation(36, 2, 'module.print', 1461514894.618319, 1461514894.618355, 1).
+activation(39, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world_1.py', 1461538784.942629, 1461538784.942784, nil).
+activation(39, 2, 'module.print', 1461538784.942658, 1461538784.942673, 1).
 
 %
 % FACT DEFINITION: object_value(TrialId, ActivationId, Id, Name, Value, Type).
@@ -252,7 +102,7 @@ activation(36, 2, 'module.print', 1461514894.618319, 1461514894.618355, 1).
 %
 
 :- dynamic(access/8).
-access(36, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil, 1461514894.521067, nil).
+access(39, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil, 1461538784.843331, nil).
 
 %
 % FACT DEFINITION: variable(TrialId, ActivationId, Id, Name, Line, Value, Timestamp).
@@ -265,10 +115,10 @@ access(36, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil
 %
 
 :- dynamic(variable/7).
-variable(36, 2, 1, 'return', 4, nil, 1461514894.618364).
-variable(36, 0, 2, '--graybox--', 0, 'now(n/a)', 1461514894.618373).
-variable(36, 1, 3, 'module.print', 4, 'now(n/a)', 1461514894.618412).
-variable(36, 1, 4, 'print', 0, '<built-in function print>', 1461514894.618454).
+variable(39, 2, 1, 'return', 4, nil, 1461538784.942681).
+variable(39, 0, 2, '--graybox--', 0, 'now(n/a)', 1461538784.942691).
+variable(39, 1, 3, 'module.print', 4, 'now(n/a)', 1461538784.942727).
+variable(39, 1, 4, 'print', 0, '<built-in function print>', 1461538784.942773).
 
 %
 % FACT DEFINITION: usage(TrialId, ActivationId, VariableId, Id, Name, Line).
@@ -294,6 +144,6 @@ variable(36, 1, 4, 'print', 0, '<built-in function print>', 1461514894.618454).
 %
 
 :- dynamic(dependency/6).
-dependency(36, 1, 1, 3, 2, 1).
-dependency(36, 2, 2, 1, 0, 2).
-dependency(36, 3, 1, 3, 1, 4).
+dependency(39, 1, 1, 3, 2, 1).
+dependency(39, 2, 1, 3, 1, 4).
+dependency(39, 3, 2, 1, 0, 2).
