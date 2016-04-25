@@ -1,5 +1,5 @@
 [xsb_configuration loaded]
-[sysinitrc loaded, cpu time used: 0.0010 seconds]
+[sysinitrc loaded]
 [xsbbrat loaded]
 
 XSB Version 3.6. (Gazpatcho) of April 22, 2015
@@ -15,12 +15,15 @@ yes
 [nw_facts loaded]
 
 yes
-[yw_rules loaded]
+[yw_rules loaded, cpu time used: 0.0010 seconds]
 
 yes
 [yw_nw_rules loaded]
 
 yes
+[Compiling ./queries]
+++Warning[XSB]: [Compiler] ./queries : Singleton variable CallLine in a clause of nw_q1/1
+[queries compiled, cpu time used: 0.0070 seconds]
 [queries loaded]
 
 yes
@@ -60,4 +63,4 @@ nw_q1(module.print)
 
 yes
 
-End XSB (cputime 0.02 secs, elapsetime 0.04 secs)
+End XSB (cputime 0.03 secs, elapsetime 0.05 secs)

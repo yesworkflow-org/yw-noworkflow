@@ -28,6 +28,6 @@ yw_q4(OutputName, Description) :-
     port_description(P, Description).
 
 nw_q1_desc(Q) :- Q='(FunctionName, CallLine) % What functions are called from the top level of the script?'.
-:- table nw_q1/2.
+:- table nw_q1/1.
 nw_q1(FunctionName) :-
-    call_from_top_function(FunctionName, CallLine).
+    call_from_top_function(_, FunctionName, CallLine).
