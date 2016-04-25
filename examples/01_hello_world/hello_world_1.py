@@ -1,5 +1,5 @@
 # @begin HelloWorld @desc Exercise YW and NW with a classic program.
-# @out greeting
+# @out greeting @desc Greeting displayed to user.
 
 # @begin print_greeting @desc Greet the program user.
 # @out greeting @file stream:stdout

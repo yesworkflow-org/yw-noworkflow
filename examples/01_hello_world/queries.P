@@ -19,6 +19,14 @@ yw_q3_desc(Q) :-Q='(SourceFile, StartLine, EndLine) % Where is the definition of
 yw_q3(SourceFile, StartLine, EndLine) :-
     program_source('HelloWorld.print_greeting', SourceFile, StartLine, EndLine).
 
+yw_q4_desc(Q) :-Q='(OutputName, Description) % What are the names and descriptions of any outputs of the script?'.
+:- table yw_q4/2.
+yw_q4(OutputName, Description) :-
+    top_workflow(W,_),
+    has_out_port(W, P),
+    port(P, _, OutputName, _, _, _),
+    port_description(P, Description).
+
 nw_q1_desc(Q) :- Q='(FunctionName, CallLine) % What functions are called from the top level of the script?'.
 :- table nw_q1/2.
 nw_q1(FunctionName, CallLine) :-

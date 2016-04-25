@@ -5,6 +5,7 @@ WORKFLOW_GRAPH = workflow_graph.gv
 NW_FACTS = nw_facts.P
 QUERY_OUTPUTS = query_outputs.txt
 YW_PROPERTIES = yw.properties
+QUERIES = queries.P run_queries.sh
 
 FACTS = ${YW_FACTS} ${NW_FACTS}
 ALL_OUTPUTS = ${RUN_OUTPUTS} ${QUERY_OUTPUTS} ${WORKFLOW_GRAPH} ${FACTS}
@@ -24,7 +25,7 @@ ${RUN_OUTPUTS}: ${WORKFLOW_SCRIPT}
 ${NW_FACTS}: ${RUN_OUTPUTS}
 	now export -m dependency | grep -v 'environment(' > ${NW_FACTS}
 
-${QUERY_OUTPUTS}: ${YW_FACTS} ${NW_FACTS}
+${QUERY_OUTPUTS}: ${QUERIES} ${YW_FACTS} ${NW_FACTS}
 	./run_queries.sh &> ${QUERY_OUTPUTS}
 
 clean:

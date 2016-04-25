@@ -1,4 +1,4 @@
-[xsb_configuration loaded]
+[xsb_configuration loaded, cpu time used: 0.0010 seconds]
 [sysinitrc loaded]
 [xsbbrat loaded]
 
@@ -21,12 +21,14 @@ yes
 [nw_facts loaded]
 
 yes
-[yw_rules loaded, cpu time used: 0.0010 seconds]
+[yw_rules loaded]
 
 yes
 [yw_nw_rules loaded]
 
 yes
+[Compiling ./queries]
+[queries compiled, cpu time used: 0.0020 seconds]
 [queries loaded]
 
 yes
@@ -53,6 +55,13 @@ yw_q3(hello_world_1.py,4,7)
 yes
 
 ---------------------------------------------------------------------------------------------------------------------------
+yw_q4_desc((OutputName, Description) % What are the names and descriptions of any outputs of the script?)
+---------------------------------------------------------------------------------------------------------------------------
+yw_q4(greeting,Greeting displayed to user.)
+
+yes
+
+---------------------------------------------------------------------------------------------------------------------------
 nw_q1_desc((FunctionName, CallLine) % What functions are called from the top level of the script?)
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q1(/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world_1.py,_h240)
@@ -60,4 +69,4 @@ nw_q1(module.print,_h240)
 
 yes
 
-End XSB (cputime 0.03 secs, elapsetime 0.03 secs)
+End XSB (cputime 0.03 secs, elapsetime 0.04 secs)
