@@ -11,7 +11,7 @@ ALL_OUTPUTS = ${RUN_OUTPUTS} ${QUERY_OUTPUTS} ${WORKFLOW_GRAPH} ${FACTS}
 all: ${QUERY_OUTPUTS}
 run: ${RUN_OUTPUTS}
 yw: ${YW_FACTS}
-nw: {NW_FACTS}
+nw: ${NW_FACTS}
 query: ${QUERY_OUTPUTS}
 
 ${YW_FACTS}: ${WORKFLOW_SCRIPT}
@@ -20,10 +20,10 @@ ${YW_FACTS}: ${WORKFLOW_SCRIPT}
 ${RUN_OUTPUTS}: *.py
 	now run -e Tracer ${WORKFLOW_SCRIPT} &> ${RUN_OUTPUTS}
 
-${NW_FACTS}:
+${NW_FACTS}: ${RUN_OUTPUTS}
 	now export -m dependency | grep -v 'environment(' > ${NW_FACTS}
 
-${QUERY_OUTPUTS}: ${RUN_OUTPUTS} ${NW_FACTS} ${YW_FACTS}
+${QUERY_OUTPUTS}: ${YW_FACTS} ${NW_FACTS}
 	./run_queries.sh &> ${QUERY_OUTPUTS}
 
 clean:
