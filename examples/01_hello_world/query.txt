@@ -6,13 +6,19 @@ XSB Version 3.6. (Gazpatcho) of April 22, 2015
 [i386-apple-darwin15.4.0 64 bits; mode: optimal; engine: slg-wam; scheduling: local]
 [Build date: 2016-04-24]
 
-[yw_extract loaded, cpu time used: 0.0010 seconds]
+[Compiling ./yw_extract_facts]
+[yw_extract_facts compiled, cpu time used: 0.0060 seconds]
+[yw_extract_facts loaded]
 
 yes
-[yw_model loaded]
+[Compiling ./yw_model_facts]
+[yw_model_facts compiled, cpu time used: 0.0010 seconds]
+[yw_model_facts loaded]
 
 yes
-[nw loaded]
+[Compiling ./nw_facts]
+[nw_facts compiled, cpu time used: 0.0040 seconds]
+[nw_facts loaded]
 
 yes
 [yw_rules loaded]
@@ -21,6 +27,8 @@ yes
 [yw_nw_rules loaded]
 
 yes
+[Compiling ./queries]
+[queries compiled, cpu time used: 0.0020 seconds]
 [queries loaded]
 
 yes
@@ -54,4 +62,4 @@ nw_q1(module.print,_h240)
 
 yes
 
-End XSB (cputime 0.02 secs, elapsetime 0.02 secs)
+End XSB (cputime 0.03 secs, elapsetime 0.03 secs)

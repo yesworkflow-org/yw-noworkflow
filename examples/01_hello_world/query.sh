@@ -4,9 +4,9 @@
 
 xsb --noprompt << END_XSB_STDIN
 
-[yw_extract].
-[yw_model].
-[nw].
+[yw_extract_facts].
+[yw_model_facts].
+[nw_facts].
 ['../rules/yw_rules'].
 ['../rules/yw_nw_rules'].
 [queries].
