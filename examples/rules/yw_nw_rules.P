@@ -2,22 +2,29 @@
 
 :- table script_activation/1.
 script_activation(ScriptActivation) :-
-    activation(_, ScriptActivation, _, _, _, nil).
+    activation(_, ScriptActivation, _, _, _, _, nil).
 
 :- table call_from_top_function/2.
 call_from_top_function(ActivationId, FuncName, Line) :-
-    activation(_, ActivationId, FuncName, _, _, ScriptActivation),
+    activation(_, ActivationId, FuncName, _, _, _, ScriptActivation),
     script_activation(ScriptActivation).
 
-:-table activation_argument/5.
+:- table activation_argument/5.
 activation_argument_variable(ActivationId, FuncName, FormalParamName, ActualParamName, Value) :-
     call_from_top_function(ActivationId, FuncName, _),
     object_value(_, ActivationId, _, FormalParamName, Value, _),
     dependency(_, _, ActivationId, FormalParamId, CallerActivationId, ActualParamId),
     usage(_, CallerActivationId, ActualParamId, _, ActualParamName, _).
 
-:-table activation_argument/4.
+:- table activation_argument/4.
 activation_argument_literal(ActivationId, FuncName, FormalParamName, Value) :-
     call_from_top_function(ActivationId, FuncName, _),
     object_value(_, ActivationId, _, FormalParamName, Value, _),
     not activation_argument_variable(ActivationId, FuncName, FormalParamName, _, Value).
+
+:- table call_from_workflow_step/3.
+call_from_workflow_step(StepName, FunctionName, CallLine, ActivationId) :-
+    activation(_, ActivationId, FunctionName, CallLine, _, _, _),
+    program(StepId, _, StepName, StepBeginLine, StepEndLine),
+    CallLine >= StepBeginLine,
+    CallLine =< StepEndLine.

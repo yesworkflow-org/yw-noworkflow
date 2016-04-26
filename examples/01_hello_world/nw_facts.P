@@ -12,7 +12,7 @@
 %
 
 :- dynamic(trial/10).
-trial(1, 1461632529.66276, 1461632529.89919, 'hello_world_1.py', 'cce1464a84e47f3728e0fc39a807ece654911300', 'run -e Tracer hello_world_1.py', nil, nil, 1, nil).
+trial(1, 1461670107.396849, 1461670107.520252, 'hello_world_1.py', 'cce1464a84e47f3728e0fc39a807ece654911300', 'run -e Tracer hello_world_1.py', nil, nil, 1, nil).
 
 %
 % FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
@@ -23,7 +23,7 @@ trial(1, 1461632529.66276, 1461632529.89919, 'hello_world_1.py', 'cce1464a84e47f
 %
 
 :- dynamic(tag/4).
-tag(1, 'AUTO', '1.1.1', 1461632529.750037).
+tag(1, 'AUTO', '1.1.1', 1461670107.480055).
 
 %
 % FACT DEFINITION: module(TrialId, Id, Name, Version, Path, CodeHash).
@@ -66,7 +66,7 @@ tag(1, 'AUTO', '1.1.1', 1461632529.750037).
 object(1, -1, 1, 'print', 'FUNCTION_CALL').
 
 %
-% FACT DEFINITION: activation(TrialId, Id, Name, Start, Finish, CallerActivationId).
+% FACT DEFINITION: activation(TrialId, Id, Name, Line, Start, Finish, CallerActivationId).
 % DESCRIPTION: informs that in a given trial (*trial_id*),
 %              a function *name* was activated
 %              by another function (*caller_activation_id*)
@@ -74,9 +74,9 @@ object(1, -1, 1, 'print', 'FUNCTION_CALL').
 %              to *finish*.
 %
 
-:- dynamic(activation/6).
-activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world_1.py', 1461632529.898971, 1461632529.899132, nil).
-activation(1, 2, 'module.print', 1461632529.898999, 1461632529.899016, 1).
+:- dynamic(activation/7).
+activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world_1.py', 61, 1461670107.519951, 1461670107.520176, nil).
+activation(1, 2, 'module.print', 6, 1461670107.519993, 1461670107.520016, 1).
 
 %
 % FACT DEFINITION: object_value(TrialId, ActivationId, Id, Name, Value, Type).
@@ -102,7 +102,6 @@ activation(1, 2, 'module.print', 1461632529.898999, 1461632529.899016, 1).
 %
 
 :- dynamic(access/8).
-access(1, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil, 1461632529.796679, nil).
 
 %
 % FACT DEFINITION: variable(TrialId, ActivationId, Id, Name, Line, Value, Timestamp).
@@ -115,10 +114,10 @@ access(1, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil,
 %
 
 :- dynamic(variable/7).
-variable(1, 2, 1, 'return', 6, nil, 1461632529.899025).
-variable(1, 0, 2, '--graybox--', 0, 'now(n/a)', 1461632529.899038).
-variable(1, 1, 3, 'module.print', 6, 'now(n/a)', 1461632529.899073).
-variable(1, 1, 4, 'print', 0, '<built-in function print>', 1461632529.899121).
+variable(1, 2, 1, 'return', 6, nil, 1461670107.52003).
+variable(1, 0, 2, '--graybox--', 0, 'now(n/a)', 1461670107.520045).
+variable(1, 1, 3, 'module.print', 6, 'now(n/a)', 1461670107.520097).
+variable(1, 1, 4, 'print', 0, '<built-in function print>', 1461670107.520159).
 
 %
 % FACT DEFINITION: usage(TrialId, ActivationId, VariableId, Id, Name, Line).
@@ -144,6 +143,6 @@ variable(1, 1, 4, 'print', 0, '<built-in function print>', 1461632529.899121).
 %
 
 :- dynamic(dependency/6).
-dependency(1, 1, 2, 1, 0, 2).
+dependency(1, 1, 1, 3, 1, 4).
 dependency(1, 2, 1, 3, 2, 1).
-dependency(1, 3, 1, 3, 1, 4).
+dependency(1, 3, 2, 1, 0, 2).
