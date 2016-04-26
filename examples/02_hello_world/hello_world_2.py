@@ -12,5 +12,7 @@ def print_greeting(greeting):
 # @end HelloWorld
 
 if __name__ == '__main__':
-    greeting = 'Hello World!'
-    print_greeting(greeting)
+    first_greeting = 'Hello World!'
+    print_greeting(first_greeting)
+    second_greeting = 'Goodbye World!'
+    print_greeting(second_greeting)

@@ -9,7 +9,9 @@ call_from_top_function(ActivationId, FuncName, Line) :-
     activation(_, ActivationId, FuncName, _, _, ScriptActivation),
     script_activation(ScriptActivation).
 
-:-table argument_variable/2.
-activation_argument(FuncName, ArgVarName, ArgValue) :-
+:-table activation_argument/4.
+activation_argument(ActivationId, FuncName, FormalParamName, ActualParamName, Value) :-
     call_from_top_function(ActivationId, FuncName, _),
-    object_value(_, ActivationId, _, ArgVarName, ArgValue, _).
+    object_value(_, ActivationId, _, FormalParamName, Value, _),
+    dependency(_, _, ActivationId, FormalParamId, CallerActivationId, ActualParamId),
+    usage(_, CallerActivationId, ActualParamId, _, ActualParamName, _).
