@@ -12,7 +12,7 @@
 %
 
 :- dynamic(trial/10).
-trial(1, 1461617922.602489, 1461617922.933181, 'hello_world_2.py', 'ec6d7740331bc3cf6e45bbc4a4abf7563e4881d8', 'run -e Tracer hello_world_2.py', nil, nil, 1, nil).
+trial(1, 1461618985.747283, 1461618985.994664, 'hello_world_2.py', 'fb455163b0192968c9911c9e7b3eef718aa0fe25', 'run -e Tracer hello_world_2.py', nil, nil, 1, nil).
 
 %
 % FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
@@ -23,7 +23,7 @@ trial(1, 1461617922.602489, 1461617922.933181, 'hello_world_2.py', 'ec6d7740331b
 %
 
 :- dynamic(tag/4).
-tag(1, 'AUTO', '1.1.1', 1461617922.692844).
+tag(1, 'AUTO', '1.1.1', 1461618985.837393).
 
 %
 % FACT DEFINITION: module(TrialId, Id, Name, Version, Path, CodeHash).
@@ -67,6 +67,7 @@ function_def(1, 1, 'print_greeting', '504da54e28f7d80c62eb55756321140e62e621ae',
 object(1, 1, 1, 'print', 'FUNCTION_CALL').
 object(1, -1, 2, 'print_greeting', 'FUNCTION_CALL').
 object(1, -1, 3, 'print_greeting', 'FUNCTION_CALL').
+object(1, -1, 4, 'print_greeting', 'FUNCTION_CALL').
 
 %
 % FACT DEFINITION: activation(TrialId, Id, Name, Start, Finish, CallerActivationId).
@@ -78,11 +79,13 @@ object(1, -1, 3, 'print_greeting', 'FUNCTION_CALL').
 %
 
 :- dynamic(activation/6).
-activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/02_hello_world/hello_world_2.py', 1461617922.932278, 1461617922.933115, nil).
-activation(1, 2, 'print_greeting', 1461617922.932667, 1461617922.932818, 1).
-activation(1, 3, 'module.print', 1461617922.932691, 1461617922.932708, 2).
-activation(1, 4, 'print_greeting', 1461617922.932969, 1461617922.933071, 1).
-activation(1, 5, 'module.print', 1461617922.932989, 1461617922.933001, 4).
+activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/02_hello_world/hello_world_2.py', 1461618985.99372, 1461618985.994607, nil).
+activation(1, 2, 'print_greeting', 1461618985.994052, 1461618985.994178, 1).
+activation(1, 3, 'module.print', 1461618985.994072, 1461618985.994087, 2).
+activation(1, 4, 'print_greeting', 1461618985.994308, 1461618985.994396, 1).
+activation(1, 5, 'module.print', 1461618985.994323, 1461618985.994333, 4).
+activation(1, 6, 'print_greeting', 1461618985.994482, 1461618985.994571, 1).
+activation(1, 7, 'module.print', 1461618985.994497, 1461618985.99451, 6).
 
 %
 % FACT DEFINITION: object_value(TrialId, ActivationId, Id, Name, Value, Type).
@@ -96,6 +99,7 @@ activation(1, 5, 'module.print', 1461617922.932989, 1461617922.933001, 4).
 :- dynamic(object_value/6).
 object_value(1, 2, 1, 'greeting', '''Hello World!''', 'ARGUMENT').
 object_value(1, 4, 2, 'greeting', '''Goodbye World!''', 'ARGUMENT').
+object_value(1, 6, 3, 'greeting', '''Back again!''', 'ARGUMENT').
 
 %
 % FACT DEFINITION: access(TrialId, Id, Name, Mode, ContentHashBefore, ContentHashAfter, Timestamp, ActivationId).
@@ -110,7 +114,7 @@ object_value(1, 4, 2, 'greeting', '''Goodbye World!''', 'ARGUMENT').
 %
 
 :- dynamic(access/8).
-access(1, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil, 1461617922.764638, nil).
+access(1, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil, 1461618985.890418, nil).
 
 %
 % FACT DEFINITION: variable(TrialId, ActivationId, Id, Name, Line, Value, Timestamp).
@@ -123,24 +127,30 @@ access(1, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil,
 %
 
 :- dynamic(variable/7).
-variable(1, 1, 1, 'print_greeting', 8, '<function print_greeting at 0x1063d1598>', 1461617922.93235).
-variable(1, 1, 3, 'first_greeting', 15, '''Hello World!''', 1461617922.932432).
-variable(1, 2, 4, 'greeting', 8, '''Hello World!''', 1461617922.932509).
-variable(1, 0, 5, '--graybox--', 0, 'now(n/a)', 1461617922.932547).
-variable(1, 3, 6, 'return', 9, nil, 1461617922.932715).
-variable(1, 0, 7, '--graybox--', 0, 'now(n/a)', 1461617922.932725).
-variable(1, 2, 8, 'module.print', 9, 'now(n/a)', 1461617922.932763).
-variable(1, 1, 9, 'print', 0, '<built-in function print>', 1461617922.932804).
-variable(1, 2, 10, 'return', 9, 'None', 1461617922.932822).
-variable(1, 1, 11, 'print_greeting', 16, 'now(n/a)', 1461617922.932828).
-variable(1, 1, 12, 'second_greeting', 17, '''Goodbye World!''', 1461617922.932884).
-variable(1, 4, 13, 'greeting', 8, '''Goodbye World!''', 1461617922.932928).
-variable(1, 0, 14, '--graybox--', 0, 'now(n/a)', 1461617922.932953).
-variable(1, 5, 15, 'return', 9, nil, 1461617922.933005).
-variable(1, 0, 16, '--graybox--', 0, 'now(n/a)', 1461617922.93301).
-variable(1, 4, 17, 'module.print', 9, 'now(n/a)', 1461617922.933038).
-variable(1, 4, 18, 'return', 9, 'None', 1461617922.933075).
-variable(1, 1, 19, 'print_greeting', 18, 'now(n/a)', 1461617922.933081).
+variable(1, 1, 1, 'print_greeting', 8, '<function print_greeting at 0x10539c7b8>', 1461618985.993783).
+variable(1, 1, 3, 'first_greeting', 15, '''Hello World!''', 1461618985.993859).
+variable(1, 2, 4, 'greeting', 8, '''Hello World!''', 1461618985.993916).
+variable(1, 0, 5, '--graybox--', 0, 'now(n/a)', 1461618985.993949).
+variable(1, 3, 6, 'return', 9, nil, 1461618985.994094).
+variable(1, 0, 7, '--graybox--', 0, 'now(n/a)', 1461618985.994102).
+variable(1, 2, 8, 'module.print', 9, 'now(n/a)', 1461618985.994133).
+variable(1, 1, 9, 'print', 0, '<built-in function print>', 1461618985.994166).
+variable(1, 2, 10, 'return', 9, 'None', 1461618985.994182).
+variable(1, 1, 11, 'print_greeting', 16, 'now(n/a)', 1461618985.994187).
+variable(1, 1, 12, 'second_greeting', 17, '''Goodbye World!''', 1461618985.994233).
+variable(1, 4, 13, 'greeting', 8, '''Goodbye World!''', 1461618985.994272).
+variable(1, 0, 14, '--graybox--', 0, 'now(n/a)', 1461618985.994294).
+variable(1, 5, 15, 'return', 9, nil, 1461618985.994337).
+variable(1, 0, 16, '--graybox--', 0, 'now(n/a)', 1461618985.994341).
+variable(1, 4, 17, 'module.print', 9, 'now(n/a)', 1461618985.994365).
+variable(1, 4, 18, 'return', 9, 'None', 1461618985.9944).
+variable(1, 1, 19, 'print_greeting', 18, 'now(n/a)', 1461618985.994405).
+variable(1, 6, 20, 'greeting', 8, '''Back again!''', 1461618985.994472).
+variable(1, 7, 21, 'return', 9, nil, 1461618985.994514).
+variable(1, 0, 22, '--graybox--', 0, 'now(n/a)', 1461618985.994518).
+variable(1, 6, 23, 'module.print', 9, 'now(n/a)', 1461618985.994543).
+variable(1, 6, 24, 'return', 9, 'None', 1461618985.994575).
+variable(1, 1, 25, 'print_greeting', 19, 'now(n/a)', 1461618985.994579).
 
 %
 % FACT DEFINITION: usage(TrialId, ActivationId, VariableId, Id, Name, Line).
@@ -157,6 +167,8 @@ usage(1, 1, 3, 3, 'first_greeting', 16).
 usage(1, 4, 13, 4, 'greeting', 9).
 usage(1, 1, 1, 5, 'print_greeting', 18).
 usage(1, 1, 12, 6, 'second_greeting', 18).
+usage(1, 6, 20, 7, 'greeting', 9).
+usage(1, 1, 1, 8, 'print_greeting', 19).
 
 %
 % FACT DEFINITION: dependency(TrialId, Id, SourceActivationId, SourceId, TargetActivationId, TargetId).
@@ -172,19 +184,25 @@ usage(1, 1, 12, 6, 'second_greeting', 18).
 %
 
 :- dynamic(dependency/6).
-dependency(1, 1, 4, 17, 5, 15).
-dependency(1, 2, 3, 6, 0, 7).
-dependency(1, 3, 4, 17, 1, 9).
-dependency(1, 4, 2, 8, 1, 9).
-dependency(1, 5, 0, 14, 1, 12).
-dependency(1, 6, 2, 4, 1, 3).
-dependency(1, 7, 1, 19, 1, 1).
-dependency(1, 8, 5, 15, 0, 16).
-dependency(1, 9, 0, 5, 1, 3).
-dependency(1, 10, 1, 11, 1, 1).
-dependency(1, 11, 4, 13, 1, 12).
-dependency(1, 12, 1, 19, 4, 18).
-dependency(1, 13, 0, 7, 2, 4).
-dependency(1, 14, 1, 11, 2, 10).
-dependency(1, 15, 2, 8, 3, 6).
-dependency(1, 16, 0, 16, 4, 13).
+dependency(1, 1, 2, 4, 1, 3).
+dependency(1, 2, 6, 23, 1, 9).
+dependency(1, 3, 1, 19, 4, 18).
+dependency(1, 4, 0, 7, 2, 4).
+dependency(1, 5, 5, 15, 0, 16).
+dependency(1, 6, 0, 14, 1, 12).
+dependency(1, 7, 4, 13, 1, 12).
+dependency(1, 8, 0, 5, 1, 3).
+dependency(1, 9, 1, 25, 1, 1).
+dependency(1, 10, 7, 21, 0, 22).
+dependency(1, 11, 2, 8, 3, 6).
+dependency(1, 12, 3, 6, 0, 7).
+dependency(1, 13, 1, 25, 6, 24).
+dependency(1, 14, 1, 11, 1, 1).
+dependency(1, 15, 1, 19, 1, 1).
+dependency(1, 16, 1, 11, 2, 10).
+dependency(1, 17, 2, 8, 1, 9).
+dependency(1, 18, 0, 16, 4, 13).
+dependency(1, 19, 4, 17, 5, 15).
+dependency(1, 20, 0, 22, 6, 20).
+dependency(1, 21, 4, 17, 1, 9).
+dependency(1, 22, 6, 23, 7, 21).

@@ -17,7 +17,8 @@ printall(yw_q3_desc(_), yw_q3(_,_,_)).
 printall(yw_q4_desc(_), yw_q4(_,_)).
 
 printall(nw_q1_desc(_), nw_q1(_)).
-printall(nw_q2_desc(_), nw_q2(_,_)).
+printall(nw_q2_desc(_), nw_q2(_,_,_,_)).
+printall(nw_q3_desc(_), nw_q3(_,_,_)).
 
 
 END_XSB_STDIN

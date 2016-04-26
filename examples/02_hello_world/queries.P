@@ -32,7 +32,12 @@ nw_q1_desc(Q) :- Q='(FunctionName, CallLine) % What functions are called from th
 nw_q1(FunctionName) :-
     call_from_top_function(_, FunctionName, _).
 
-nw_q2_desc(Q) :- Q='(VariableName, VariableValue) % What variables, and their values, are passed to print_greeting() from the top of the script?'.
-:- table nw_q2/3.
-nw_q2(ActualParamName, ArgValue) :-
-    activation_argument(_, 'print_greeting', _, ActualParamName, ArgValue).
+nw_q2_desc(Q) :- Q='(ActivationId, ParameterName, VariableName, Value) % What variable values are passed to print_greeting() from the top of the script?'.
+:- table nw_q2/4.
+nw_q2(ActivationId, ParameterName, VariableName, Value) :-
+    activation_argument_variable(ActivationId, 'print_greeting', ParameterName, VariableName, Value).
+
+nw_q3_desc(Q) :- Q='(ActivationId, Parameter, Value) % What literal values are passed to print_greeting() from the top of the script?'.
+:- table nw_q3/3.
+nw_q3(ActivationId, Parameter, Value) :-
+    activation_argument_literal(ActivationId, 'print_greeting', Parameter, Value).
