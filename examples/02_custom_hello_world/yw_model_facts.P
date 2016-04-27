@@ -1,8 +1,8 @@
 
 % FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
-program(1, 'CustomHelloWorld', 'CustomHelloWorld', 1, 20).
+program(1, 'CustomHelloWorld', 'CustomHelloWorld', 1, 21).
 program(2, 'accept_greeting', 'CustomHelloWorld.accept_greeting', 6, 12).
-program(3, 'greet_user', 'CustomHelloWorld.greet_user', 13, 19).
+program(3, 'greet_user', 'CustomHelloWorld.greet_user', 13, 20).
 
 % FACT: workflow(program_id).
 workflow(1).
@@ -19,12 +19,13 @@ port(2, 'out', 'displayed_greeting', 'CustomHelloWorld->displayed_greeting', 4, 
 port(3, 'in', 'greeting', 'CustomHelloWorld.accept_greeting<-greeting', 8, 3).
 port(4, 'out', 'greeting', 'CustomHelloWorld.accept_greeting->greeting', 10, 4).
 port(5, 'in', 'greeting', 'CustomHelloWorld.greet_user<-greeting', 15, 4).
-port(6, 'out', 'displayed_greeting', 'CustomHelloWorld.greet_user->displayed_greeting', 17, 5).
+port(6, 'out', 'greeting', 'CustomHelloWorld.greet_user->greeting', 17, 5).
 
 % FACT: port_alias(port_id, alias).
 port_alias(3, 'provided_greeting').
 port_alias(4, 'custom_greeting').
 port_alias(5, 'custom_greeting').
+port_alias(6, 'displayed_greeting').
 
 % FACT: port_uri_template(port_id, uri).
 port_uri_template(6, 'stream:stdout').

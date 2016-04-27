@@ -13,7 +13,7 @@ yw_q2(accept_greeting,Receive message to be displayed to the user as a greeting.
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q3(SourceFile,StartLine,EndLine) % Where is the definition of workflow step CustomHelloWorld.greet_user?
 ---------------------------------------------------------------------------------------------------------------------------
-yw_q3(custom_hello_world.py,13,17)
+yw_q3(custom_hello_world.py,11,15)
 
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q4(OutputName,Description) % What are the names and descriptions of any outputs of the script?
