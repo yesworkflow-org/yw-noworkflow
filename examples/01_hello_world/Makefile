@@ -1,4 +1,4 @@
-WORKFLOW_SCRIPT = hello_world_1.py
+WORKFLOW_SCRIPT = hello_world.py
 RUN_OUTPUTS = run_outputs.txt
 YW_FACTS = yw_extract_facts.P yw_model_facts.P
 WORKFLOW_GRAPH = workflow_graph.gv
