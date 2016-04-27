@@ -1,86 +1,36 @@
-[xsb_configuration loaded, cpu time used: 0.0010 seconds]
-[sysinitrc loaded]
-[xsbbrat loaded]
-
-XSB Version 3.6. (Gazpatcho) of April 22, 2015
-[i386-apple-darwin15.4.0 64 bits; mode: optimal; engine: slg-wam; scheduling: local]
-[Build date: 2016-04-24]
-
-[Compiling ./yw_extract_facts]
-[yw_extract_facts compiled, cpu time used: 0.0060 seconds]
-[yw_extract_facts loaded]
-
-yes
-[Compiling ./yw_model_facts]
-[yw_model_facts compiled, cpu time used: 0.0030 seconds]
-[yw_model_facts loaded]
-
-yes
-[Compiling ./nw_facts]
-[nw_facts compiled, cpu time used: 0.0110 seconds]
-[nw_facts loaded]
-
-yes
-[yw_rules loaded]
-
-yes
-[yw_nw_rules loaded]
-
-yes
-[Compiling ./queries]
-[queries compiled, cpu time used: 0.0020 seconds]
-[queries loaded]
-
-yes
 
 ---------------------------------------------------------------------------------------------------------------------------
-yw_q1_desc((WorkflowName,Description) % What is the name and description of the workflow implemented by the script?)
+yw_q1(WorkflowName, Description) % What is the name and description of the workflow implemented by the script?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q1(HelloWorld,Exercise YW and NW with a classic program.)
 
-yes
-
 ---------------------------------------------------------------------------------------------------------------------------
-yw_q2_desc((StepName,Description) % What workflow steps comprise the top-level workflow?)
+(StepName,Description) % What workflow steps comprise the top-level workflow?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q2(HelloWorld.print_greeting,Greet the program user.)
 
-yes
-
 ---------------------------------------------------------------------------------------------------------------------------
-yw_q3_desc((SourceFile, StartLine, EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?)
+(SourceFile, StartLine, EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q3(hello_world_2.py,5,10)
 
-yes
-
 ---------------------------------------------------------------------------------------------------------------------------
-yw_q4_desc((OutputName, Description) % What are the names and descriptions of any outputs of the script?)
+(OutputName, Description) % What are the names and descriptions of any outputs of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q4(displayed_greeting,Greeting displayed to user.)
 
-yes
-
 ---------------------------------------------------------------------------------------------------------------------------
-nw_q1_desc((FunctionName, CallLine) % What functions are called from the top level of the script?)
+(FunctionName, CallLine) % What functions are called from the top level of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q1(print_greeting)
 
-yes
-
 ---------------------------------------------------------------------------------------------------------------------------
-nw_q2_desc((ActivationId, ParameterName, VariableName, Value) % What variable values are passed to print_greeting() from the top of the script?)
+(ActivationId, ParameterName, VariableName, Value) % What variable values are passed to print_greeting() from the top of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q2(4,greeting,second_greeting,'Goodbye World!')
 nw_q2(2,greeting,first_greeting,'Hello World!')
 
-yes
-
 ---------------------------------------------------------------------------------------------------------------------------
-nw_q3_desc((ActivationId, Parameter, Value) % What literal values are passed to print_greeting() from the top of the script?)
+(ActivationId, Parameter, Value) % What literal values are passed to print_greeting() from the top of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q3(6,greeting,'Back again!')
-
-yes
-
-End XSB (cputime 0.04 secs, elapsetime 0.04 secs)

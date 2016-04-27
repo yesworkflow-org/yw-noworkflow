@@ -5,7 +5,7 @@ WORKFLOW_GRAPH = workflow_graph.gv
 NW_FACTS = nw_facts.P
 QUERY_OUTPUTS = query_outputs.txt
 YW_PROPERTIES = yw.properties
-QUERIES = queries.P run_queries.sh
+QUERIES = run_queries.sh
 RULES = ../rules/yw_rules.P ../rules/yw_nw_rules.P
 
 FACTS = ${YW_FACTS} ${NW_FACTS}
