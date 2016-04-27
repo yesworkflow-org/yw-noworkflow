@@ -1,15 +1,22 @@
-# @begin HelloWorld @desc Exercise YW and NW with a classic program.
+# @begin CustomHelloWorld @desc Display one or more greetings to the user.
 # @in provided_greeting
 # @out displayed_greeting @desc Greeting displayed to user.
 
-# @begin print_greeting @desc Greet the program user.
+# @begin accept_greeting @desc Receive message to be displayed to the user as a greeting.
 # @in greeting @as provided_greeting
-# @out displayed_greeting @file stream:stdout
-def print_greeting(greeting):
-    print(greeting)
-# @end print_greeting
+# @out greeting @as custom_greeting
 
-# @end HelloWorld
+def print_greeting(greeting):
+
+# @end accept_greeting
+
+# @begin greet_user @desc Greet the program user with the given message.
+# @in greeting @as custom_greeting
+# @out displayed_greeting @file stream:stdout
+    print(greeting)
+# @end greet_user
+
+# @end CustomHelloWorld
 
 if __name__ == '__main__':
     first_greeting = 'Hello World!'

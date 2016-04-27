@@ -25,16 +25,16 @@ banner('yw_q2(StepName,Description) % What workflow steps comprise the top-level
 yw_q2(StepName,Description) :-
     top_workflow(W, _),
     has_subprogram(W, P),
-    program(P, _, StepName, _, _),
+    program(P, StepName, _, _, _),
     program_description(P, Description).
 end_of_file.
 printall(yw_q2(_,_)).
 
-banner('yw_q3(SourceFile,StartLine,EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?').
+banner('yw_q3(SourceFile,StartLine,EndLine) % Where is the definition of workflow step CustomHelloWorld.greet_user?').
 [user].
 :- table yw_q3/3.
 yw_q3(SourceFile, StartLine, EndLine) :-
-    program_source('HelloWorld.print_greeting', SourceFile, StartLine, EndLine).
+    program_source('CustomHelloWorld.greet_user', SourceFile, StartLine, EndLine).
 end_of_file.
 printall(yw_q3(_,_,_)).
 
