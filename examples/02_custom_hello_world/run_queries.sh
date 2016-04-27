@@ -49,6 +49,21 @@ yw_q4(OutputName, Description) :-
 end_of_file.
 printall(yw_q4(_,_)).
 
+banner('yw_q5(ChannelName) % What data connects the accept_greeting and greet_user workflow steps?').
+[user].
+:- table yw_q5/1.
+yw_q5(DataName) :-
+    program(AcceptGreetingStep, 'accept_greeting', _, _, _),
+    program(GreetUserStep, 'greet_user', _, _, _),
+    has_out_port(AcceptGreetingStep, OutPort),
+    port_connects_to_channel(OutPort, Channel),
+    channel(Channel, Data),
+    port_connects_to_channel(InPort, Channel),
+    has_in_port(GreetUserStep, InPort),
+    data(Data,DataName,_).
+end_of_file.
+printall(yw_q5(_)).
+
 banner('nw_q1(FunctionName,CallLine) % What functions are called from the top level of the script?').
 [user].
 :- table nw_q1/1.
@@ -72,6 +87,5 @@ nw_q3(ActivationId, Parameter, Value) :-
     activation_argument_literal(ActivationId, 'print_greeting', Parameter, Value).
 end_of_file.
 printall(nw_q3(_,_,_)).
-
 
 END_XSB_STDIN

@@ -21,6 +21,11 @@ yw_q4(OutputName,Description) % What are the names and descriptions of any outpu
 yw_q4(displayed_greeting,Greeting displayed to user.)
 
 ---------------------------------------------------------------------------------------------------------------------------
+yw_q5(ChannelName) % What data connects the accept_greeting and greet_user workflow steps?
+---------------------------------------------------------------------------------------------------------------------------
+yw_q5(custom_greeting)
+
+---------------------------------------------------------------------------------------------------------------------------
 nw_q1(FunctionName,CallLine) % What functions are called from the top level of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q1(print_greeting)
