@@ -1,36 +1,36 @@
 
 ---------------------------------------------------------------------------------------------------------------------------
-yw_q1(WorkflowName, Description) % What is the name and description of the workflow implemented by the script?
+yw_q1(WorkflowName,Description) % What is the name and description of the workflow implemented by the script?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q1(HelloWorld,Exercise YW and NW with a classic program.)
 
 ---------------------------------------------------------------------------------------------------------------------------
-(StepName,Description) % What workflow steps comprise the top-level workflow?
+yw_q2(StepName,Description) % What workflow steps comprise the top-level workflow?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q2(HelloWorld.print_greeting,Greet the program user.)
 
 ---------------------------------------------------------------------------------------------------------------------------
-(SourceFile, StartLine, EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?
+yw_q3(SourceFile,StartLine,EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q3(hello_world_2.py,5,10)
 
 ---------------------------------------------------------------------------------------------------------------------------
-(OutputName, Description) % What are the names and descriptions of any outputs of the script?
+yw_q4(OutputName,Description) % What are the names and descriptions of any outputs of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q4(displayed_greeting,Greeting displayed to user.)
 
 ---------------------------------------------------------------------------------------------------------------------------
-(FunctionName, CallLine) % What functions are called from the top level of the script?
+nw_q1(FunctionName,CallLine) % What functions are called from the top level of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q1(print_greeting)
 
 ---------------------------------------------------------------------------------------------------------------------------
-(ActivationId, ParameterName, VariableName, Value) % What variable values are passed to print_greeting() from the top of the script?
+nw_q2(ActivationId,ParameterName,VariableName,Value) % What variable values are passed to print_greeting() from the top of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q2(4,greeting,second_greeting,'Goodbye World!')
 nw_q2(2,greeting,first_greeting,'Hello World!')
 
 ---------------------------------------------------------------------------------------------------------------------------
-(ActivationId, Parameter, Value) % What literal values are passed to print_greeting() from the top of the script?
+nw_q3(ActivationId,Parameter,Value) % What literal values are passed to print_greeting() from the top of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q3(6,greeting,'Back again!')
