@@ -4,37 +4,37 @@
 script_activation(ScriptActivation) :-
     activation(_, ScriptActivation, _, _, _, _, nil).
 
-:- table call_from_top_function/2.
+:- table call_from_top_function/3.
 call_from_top_function(ActivationId, FuncName, Line) :-
-    activation(_, ActivationId, FuncName, _, _, _, ScriptActivation),
+    activation(_, ActivationId, FuncName, Line, _, _, ScriptActivation),
     script_activation(ScriptActivation).
 
-:- table activation_argument/5.
+:- table activation_argument_variable/5.
 activation_argument_variable(ActivationId, FuncName, FormalParamName, ActualParamName, Value) :-
     call_from_top_function(ActivationId, FuncName, _),
     object_value(_, ActivationId, _, FormalParamName, Value, _),
-    dependency(_, _, ActivationId, FormalParamId, CallerActivationId, ActualParamId),
+    dependency(_, _, ActivationId, _, CallerActivationId, ActualParamId),
     usage(_, CallerActivationId, ActualParamId, _, ActualParamName, _).
 
-:- table activation_argument/4.
+:- table activation_argument_literal/4.
 activation_argument_literal(ActivationId, FuncName, FormalParamName, Value) :-
     call_from_top_function(ActivationId, FuncName, _),
     object_value(_, ActivationId, _, FormalParamName, Value, _),
     not activation_argument_variable(ActivationId, FuncName, FormalParamName, _, Value).
 
-:- table call_from_workflow_step/3.
+:- table call_from_workflow_step/4.
 call_from_workflow_step(StepName, FunctionName, CallLine, ActivationId) :-
     activation(_, ActivationId, FunctionName, CallLine, _, _, _),
-    program(StepId, _, StepName, StepBeginLine, StepEndLine),
+    program(_, _, StepName, StepBeginLine, StepEndLine),
     CallLine >= StepBeginLine,
     CallLine =< StepEndLine.
 
 :- table nw_variable_for_yw_in_port/4.
 nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, InPort) :-
     port(InPort, _, VariableName, _, _, _),
-    usage(_, _, VariableId, _, _, Line),
+    usage(_, _, VariableId, _, _, UsageLine),
     variable(_, _, VariableId, VariableName, _, VariableValue, _),
     has_in_port(WorkflowStep, InPort),
     program(WorkflowStep, _, _, StepBeginLine, StepEndLine),
-    Line >= StepBeginLine,
-    Line =< StepEndLine.
+    UsageLine >= StepBeginLine,
+    UsageLine =< StepEndLine.

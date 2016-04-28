@@ -41,5 +41,5 @@ ${PDFS}: ${QUERY_OUTPUTS}
 		dot -Tpdf ${WORKFLOW_GRAPH}.gv -o ${WORKFLOW_GRAPH}.pdf
 
 clean:
-	rm -f *.xwam ${ALL_OUTPUTS}
+	rm -f *.xwam ${ALL_OUTPUTS} ../rules/*.xwam
 	rm -rf .noworkflow
