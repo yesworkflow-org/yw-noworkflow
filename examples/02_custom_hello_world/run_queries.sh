@@ -127,7 +127,7 @@ end_query('').
 %-------------------------------------------------------------------------------
 banner( 'NW_Q3',
         'What literal values are passed to print_greeting() from the top of the script?',
-        'nw_q3(ActivationId,Parameter,Value)').
+        'nw_q3(ActivationId, Parameter, Value)').
 [user].
 :- table nw_q3/3.
 nw_q3(ActivationId, Parameter, Value) :-
@@ -141,7 +141,7 @@ end_query('').
 %-------------------------------------------------------------------------------
 banner( 'YW_NW_Q1',
         'What Python variables carries what values of custom_greeting into the greet_user workflow step?',
-        'yw_nw_q1(VariableName, VariableId, VariableValue)').
+        'yw_nw_q1(VariableId, VariableName, VariableValue)').
 [user].
 :- table yw_nw_q1/3.
 yw_nw_q1(VariableId,VariableName,VariableValue) :-

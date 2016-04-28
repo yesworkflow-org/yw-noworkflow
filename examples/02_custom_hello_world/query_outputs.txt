@@ -60,7 +60,7 @@ nw_q2(2,greeting,first_greeting,'Hello World!')
 ---------------------------------------------------------------------------------------------------
 NW_Q3 : What literal values are passed to print_greeting() from the top of the script?
 
-nw_q3(ActivationId,Parameter,Value)
+nw_q3(ActivationId, Parameter, Value)
 ...................................................................................................
 nw_q3(6,greeting,'Back again!')
 
@@ -68,7 +68,7 @@ nw_q3(6,greeting,'Back again!')
 ---------------------------------------------------------------------------------------------------
 YW_NW_Q1 : What Python variables carries what values of custom_greeting into the greet_user workflow step?
 
-yw_nw_q1(VariableName, VariableId, VariableValue)
+yw_nw_q1(VariableId, VariableName, VariableValue)
 ...................................................................................................
 yw_nw_q1(4,greeting,'Hello World!')
 yw_nw_q1(13,greeting,'Goodbye World!')
