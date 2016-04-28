@@ -29,7 +29,8 @@ call_from_workflow_step(StepName, FunctionName, CallLine, ActivationId) :-
     CallLine >= StepBeginLine,
     CallLine =< StepEndLine.
 
-nw_variable_for_yw_in_port(VariableName, VariableId, VariableValue, InPort) :-
+:- table nw_variable_for_yw_in_port/4.
+nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, InPort) :-
     port(InPort, _, VariableName, _, _, _),
     usage(_, _, VariableId, _, _, Line),
     variable(_, _, VariableId, VariableName, _, VariableValue, _),

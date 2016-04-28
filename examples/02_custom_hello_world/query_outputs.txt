@@ -1,49 +1,76 @@
 
----------------------------------------------------------------------------------------------------------------------------
-yw_q1(WorkflowName,Description) % What is the name and description of the workflow implemented by the script?
----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+YW_Q1 : What is the name and description of the workflow implemented by the script?
+
+yw_q1(WorkflowName, Description)
+...................................................................................................
 yw_q1(CustomHelloWorld,Display one or more greetings to the user.)
 
----------------------------------------------------------------------------------------------------------------------------
-yw_q2(StepName,Description) % What workflow steps comprise the top-level workflow?
----------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+YW_Q2 : What workflow steps comprise the top-level workflow?
+
+yw_q2(StepName, Description)
+...................................................................................................
 yw_q2(greet_user,Greet the program user with the given message.)
 yw_q2(accept_greeting,Receive message to be displayed to the user as a greeting.)
 
----------------------------------------------------------------------------------------------------------------------------
-yw_q3(SourceFile,StartLine,EndLine) % Where is the definition of workflow step CustomHelloWorld.greet_user?
----------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+YW_Q3 : Where is the definition of workflow step CustomHelloWorld.greet_user?
+
+yw_q3(SourceFile, StartLine, EndLine)
+...................................................................................................
 yw_q3(custom_hello_world.py,11,15)
 
----------------------------------------------------------------------------------------------------------------------------
-yw_q4(OutputName,Description) % What are the names and descriptions of any outputs of the script?
----------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+YW_Q4 : What are the names and descriptions of any outputs of the script?
+
+yw_q4(OutputName, Description)
+...................................................................................................
 yw_q4(displayed_greeting,Greeting displayed to user.)
 
----------------------------------------------------------------------------------------------------------------------------
-yw_q5(ChannelName) % What data flows from the accept_greeting workflow step to the greet_user step?
----------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+YW_Q5 : What data flows from the accept_greeting workflow step to the greet_user step?
+
+yw_q5(ChannelName)
+...................................................................................................
 yw_q5(custom_greeting)
 
----------------------------------------------------------------------------------------------------------------------------
-nw_q1(FunctionName,CallLine) % What functions are called from the top level of the script?
----------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+NW_Q1 : What functions are called from the top level of the script?
+
+nw_q1(FunctionName, CallLine)
+...................................................................................................
 nw_q1(print_greeting)
 
----------------------------------------------------------------------------------------------------------------------------
-nw_q2(ActivationId,ParameterName,VariableName,Value) % What variable values are passed to print_greeting() from the top of the script?
----------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+NW_Q2 : What variable values are passed to print_greeting() from the top of the script?
+
+nw_q2(ActivationId, ParameterName, VariableName, Value)
+...................................................................................................
 nw_q2(4,greeting,second_greeting,'Goodbye World!')
 nw_q2(2,greeting,first_greeting,'Hello World!')
 
----------------------------------------------------------------------------------------------------------------------------
-nw_q3(ActivationId,Parameter,Value) % What literal values are passed to print_greeting() from the top of the script?
----------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+NW_Q3 : What literal values are passed to print_greeting() from the top of the script?
+
+nw_q3(ActivationId,Parameter,Value)
+...................................................................................................
 nw_q3(6,greeting,'Back again!')
 
----------------------------------------------------------------------------------------------------------------------------
-yw_nw_q1(VariableName,VariableId,VariableValue)) % What Python variables carries what values of custom_greeting into the greet_user workflow step?
----------------------------------------------------------------------------------------------------------------------------
-yw_nw_q1(greeting,20,'Back again!')
-yw_nw_q1(greeting,13,'Goodbye World!')
-yw_nw_q1(greeting,4,'Hello World!')
+
+---------------------------------------------------------------------------------------------------
+YW_NW_Q1 : What Python variables carries what values of custom_greeting into the greet_user workflow step?
+
+yw_nw_q1(VariableName, VariableId, VariableValue)
+...................................................................................................
+yw_nw_q1(4,greeting,'Hello World!')
+yw_nw_q1(13,greeting,'Goodbye World!')
+yw_nw_q1(20,greeting,'Back again!')
+

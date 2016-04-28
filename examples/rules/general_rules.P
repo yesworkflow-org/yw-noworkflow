@@ -1,0 +1,32 @@
+
+llength([],0).
+llength([_|T], N) :- llength(T, Nt), N is Nt + 1.
+
+banner(Name, Description, Signature) :-
+    writeln(''),
+    writeln('---------------------------------------------------------------------------------------------------'),
+    write(Name),
+    write(' : '),
+    writeln(Description),
+    writeln(''),
+    writeln(Signature),
+    writeln('...................................................................................................')
+    .
+
+end_query(P) :-
+    writeln(P).
+
+
+printall(Q) :-
+    call(Q),
+    writeln(Q),
+    fail
+    ;
+    true.
+
+count(Goal, Count) :-
+    findall(_, Goal, List),
+    llength(List, Count).
+
+
+function(0).

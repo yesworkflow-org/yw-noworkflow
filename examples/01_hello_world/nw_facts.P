@@ -12,7 +12,7 @@
 %
 
 :- dynamic(trial/10).
-trial(1, 1461795287.958889, 1461795288.082898, 'hello_world.py', 'cce1464a84e47f3728e0fc39a807ece654911300', 'run -e Tracer hello_world.py', nil, nil, 1, nil).
+trial(1, 1461800763.193253, 1461800763.303709, 'hello_world.py', 'cce1464a84e47f3728e0fc39a807ece654911300', 'run -e Tracer hello_world.py', nil, nil, 1, nil).
 
 %
 % FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
@@ -23,7 +23,7 @@ trial(1, 1461795287.958889, 1461795288.082898, 'hello_world.py', 'cce1464a84e47f
 %
 
 :- dynamic(tag/4).
-tag(1, 'AUTO', '1.1.1', 1461795288.046277).
+tag(1, 'AUTO', '1.1.1', 1461800763.272688).
 
 %
 % FACT DEFINITION: module(TrialId, Id, Name, Version, Path, CodeHash).
@@ -75,8 +75,8 @@ object(1, -1, 1, 'print', 'FUNCTION_CALL').
 %
 
 :- dynamic(activation/7).
-activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world.py', 61, 1461795288.082608, 1461795288.082824, nil).
-activation(1, 2, 'module.print', 6, 1461795288.082643, 1461795288.08266, 1).
+activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world.py', 61, 1461800763.303333, 1461800763.303635, nil).
+activation(1, 2, 'module.print', 6, 1461800763.303397, 1461800763.303464, 1).
 
 %
 % FACT DEFINITION: object_value(TrialId, ActivationId, Id, Name, Value, Type).
@@ -114,10 +114,10 @@ activation(1, 2, 'module.print', 6, 1461795288.082643, 1461795288.08266, 1).
 %
 
 :- dynamic(variable/7).
-variable(1, 2, 1, 'return', 6, nil, 1461795288.082667).
-variable(1, 0, 2, '--graybox--', 0, 'now(n/a)', 1461795288.082686).
-variable(1, 1, 3, 'module.print', 6, 'now(n/a)', 1461795288.082737).
-variable(1, 1, 4, 'print', 0, '<built-in function print>', 1461795288.082807).
+variable(1, 2, 1, 'return', 6, nil, 1461800763.303475).
+variable(1, 0, 2, '--graybox--', 0, 'now(n/a)', 1461800763.303486).
+variable(1, 1, 3, 'module.print', 6, 'now(n/a)', 1461800763.303536).
+variable(1, 1, 4, 'print', 0, '<built-in function print>', 1461800763.303617).
 
 %
 % FACT DEFINITION: usage(TrialId, ActivationId, VariableId, Id, Name, Line).

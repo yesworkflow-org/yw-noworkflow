@@ -2,13 +2,17 @@
 
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
+['../rules/general_rules'].
+['../rules/yw_rules'].
+['../rules/yw_nw_rules'].
 [yw_extract_facts].
 [yw_model_facts].
 [nw_facts].
-['../rules/yw_rules'].
-['../rules/yw_nw_rules'].
 
-banner('yw_q1(WorkflowName,Description) % What is the name and description of the workflow implemented by the script?').
+%-------------------------------------------------------------------------------
+banner( 'YW_Q1',
+        'What is the name and description of the workflow implemented by the script?',
+        'yw_q1(WorkflowName, Description)').
 [user].
 :- table yw_q1/2.
 yw_q1(WorkflowName,Description) :-
@@ -16,8 +20,14 @@ yw_q1(WorkflowName,Description) :-
     program_description(W, Description).
 end_of_file.
 printall(yw_q1(_,_)).
+end_query('').
+%-------------------------------------------------------------------------------
 
-banner('yw_q2(StepName,Description) % What workflow steps comprise the top-level workflow?').
+
+%-------------------------------------------------------------------------------
+banner( 'YW_Q2',
+        'What workflow steps comprise the top-level workflow?',
+        'yw_q2(StepName, Description)').
 [user].
 :- table yw_q2/2.
 yw_q2(StepName,Description) :-
@@ -27,16 +37,28 @@ yw_q2(StepName,Description) :-
     program_description(P, Description).
 end_of_file.
 printall(yw_q2(_,_)).
+end_query('').
+%-------------------------------------------------------------------------------
 
-banner('yw_q3(SourceFile,StartLine,EndLine) % Where is the definition of workflow step HelloWorld.print_greeting?').
+
+%-------------------------------------------------------------------------------
+banner( 'YW_Q3',
+        'Where is the definition of workflow step HelloWorld.print_greeting?',
+        'yw_q3(SourceFile, StartLine, EndLine)').
 [user].
 :- table yw_q3/3.
 yw_q3(SourceFile, StartLine, EndLine) :-
     program_source('HelloWorld.print_greeting', SourceFile, StartLine, EndLine).
 end_of_file.
 printall(yw_q3(_,_,_)).
+end_query('').
+%-------------------------------------------------------------------------------
 
-banner('yw_q4(OutputName,Description) % What are the names and descriptions of any outputs of the script?').
+
+%-------------------------------------------------------------------------------
+banner( 'YW_Q4',
+        'What are the names and descriptions of any outputs of the script?',
+        'yw_q4(OutputName, Description)').
 [user].
 :- table yw_q4/2.
 yw_q4(OutputName, Description) :-
@@ -46,21 +68,35 @@ yw_q4(OutputName, Description) :-
     port_description(P, Description).
 end_of_file.
 printall(yw_q4(_,_)).
+end_query('').
+%-------------------------------------------------------------------------------
 
-banner('nw_q1(FunctionName) % What functions are called from the top level of the script?').
+
+%-------------------------------------------------------------------------------
+banner( 'NW_Q1',
+        'What functions are called from the top level of the script?',
+        'nw_q1(FunctionName)').
 [user].
 :- table nw_q1/1.
 nw_q1(FunctionName) :-
     call_from_top_function(_, FunctionName, _).
 end_of_file.
 printall(nw_q1(_)).
+end_query('').
+%-------------------------------------------------------------------------------
 
-banner('ywnw_q1(FunctionName) % What functions are called from within the workflow step HelloWorld.print_greeting?').
+
+%-------------------------------------------------------------------------------
+banner( 'YW_NW_Q1',
+        'What functions are called from within the workflow step HelloWorld.print_greeting?',
+        'yw_nw_q1(FunctionName)').
 [user].
-:- table ywnw_q1/1.
-ywnw_q1(FunctionName) :-
+:- table yw_nw_q1/1.
+yw_nw_q1(FunctionName) :-
     call_from_workflow_step('HelloWorld.print_greeting', FunctionName, _, _).
 end_of_file.
-printall(ywnw_q1(_)).
+printall(yw_nw_q1(_)).
+end_query('').
+%-------------------------------------------------------------------------------
 
 END_XSB_STDIN

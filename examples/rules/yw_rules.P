@@ -1,28 +1,4 @@
 
-function(0).
-
-
-llength([],0).
-llength([_|T], N) :- llength(T, Nt), N is Nt + 1.
-
-banner(Message) :-
-    writeln(''),
-    writeln('---------------------------------------------------------------------------------------------------------------------------'),
-    writeln(Message),
-    writeln('---------------------------------------------------------------------------------------------------------------------------')
-    .
-
-printall(Q) :-
-    call(Q),
-    writeln(Q),
-    fail
-    ;
-    true.
-
-count(Goal, Count) :-
-    findall(_, Goal, List),
-    llength(List, Count).
-
 % Program P has description D.
 :- table program_description/2.
 program_description(P,D) :-
