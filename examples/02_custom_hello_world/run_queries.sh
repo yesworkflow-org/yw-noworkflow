@@ -23,7 +23,6 @@ yw_q1(WorkflowName,Description) :-
     program_description(W, Description).
 end_of_file.
 printall(yw_q1(_,_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 
@@ -40,7 +39,6 @@ yw_q2(StepName,Description) :-
     program_description(P, Description).
 end_of_file.
 printall(yw_q2(_,_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 
@@ -54,7 +52,6 @@ yw_q3(SourceFile, StartLine, EndLine) :-
     program_source('CustomHelloWorld.greet_user', SourceFile, StartLine, EndLine).
 end_of_file.
 printall(yw_q3(_,_,_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 
@@ -71,7 +68,6 @@ yw_q4(OutputName, Description) :-
     port_description(P, Description).
 end_of_file.
 printall(yw_q4(_,_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 
@@ -92,7 +88,6 @@ yw_q5(DataName) :-
     program(GreetUserStep,'greet_user',_,_,_).
 end_of_file.
 printall(yw_q5(_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 
@@ -106,7 +101,6 @@ nw_q1(FunctionName) :-
     call_from_top_function(_, FunctionName, _).
 end_of_file.
 printall(nw_q1(_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 
@@ -120,7 +114,6 @@ nw_q2(ActivationId, ParameterName, VariableName, Value) :-
     activation_argument_variable(ActivationId, 'print_greeting', ParameterName, VariableName, Value).
 end_of_file.
 printall(nw_q2(_,_,_,_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 
@@ -134,7 +127,6 @@ nw_q3(ActivationId, Parameter, Value) :-
     activation_argument_literal(ActivationId, 'print_greeting', Parameter, Value).
 end_of_file.
 printall(nw_q3(_,_,_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 
@@ -150,7 +142,6 @@ yw_nw_q1(VariableId,VariableName,VariableValue) :-
     nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId).
 end_of_file.
 printall(yw_nw_q1(_,_,_)).
-end_query('').
 %-------------------------------------------------------------------------------
 
 END_XSB_STDIN

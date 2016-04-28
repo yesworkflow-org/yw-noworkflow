@@ -4,6 +4,7 @@ llength([_|T], N) :- llength(T, Nt), N is Nt + 1.
 
 banner(Name, Description, Signature) :-
     writeln(''),
+    writeln(''),
     writeln('---------------------------------------------------------------------------------------------------'),
     write(Name),
     write(' : '),
@@ -12,10 +13,6 @@ banner(Name, Description, Signature) :-
     writeln(Signature),
     writeln('...................................................................................................')
     .
-
-end_query(P) :-
-    writeln(P).
-
 
 printall(Q) :-
     call(Q),
