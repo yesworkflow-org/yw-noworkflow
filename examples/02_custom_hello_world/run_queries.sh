@@ -49,18 +49,18 @@ yw_q4(OutputName, Description) :-
 end_of_file.
 printall(yw_q4(_,_)).
 
-banner('yw_q5(ChannelName) % What data connects the accept_greeting and greet_user workflow steps?').
+banner('yw_q5(ChannelName) % What data flows from the accept_greeting workflow step to the greet_user step?').
 [user].
 :- table yw_q5/1.
 yw_q5(DataName) :-
-    program(AcceptGreetingStep, 'accept_greeting', _, _, _),
-    program(GreetUserStep, 'greet_user', _, _, _),
-    has_out_port(AcceptGreetingStep, OutPort),
-    port_connects_to_channel(OutPort, Channel),
-    channel(Channel, Data),
-    port_connects_to_channel(InPort, Channel),
-    has_in_port(GreetUserStep, InPort),
-    data(Data,DataName,_).
+    program(AcceptGreetingStep,'accept_greeting',_,_,_),
+    has_out_port(AcceptGreetingStep,OutPort),
+    port_connects_to_channel(OutPort,Channel),
+    channel(Channel,Data),
+    data(Data,DataName,_),
+    port_connects_to_channel(InPort,Channel),
+    has_in_port(GreetUserStep,InPort),
+    program(GreetUserStep,'greet_user',_,_,_).
 end_of_file.
 printall(yw_q5(_)).
 
@@ -87,5 +87,15 @@ nw_q3(ActivationId, Parameter, Value) :-
     activation_argument_literal(ActivationId, 'print_greeting', Parameter, Value).
 end_of_file.
 printall(nw_q3(_,_,_)).
+
+banner('yw_nw_q1(VariableName,VariableId,VariableValue)) % What Python variables carries what values of custom_greeting into the greet_user workflow step?').
+[user].
+:- table yw_nw_q1/3.
+yw_nw_q1(VariableName,VariableId,VariableValue) :-
+    data(DataId,'custom_greeting',_),
+    port(PortId, 'in', _, _, _, DataId),
+    nw_variable_for_yw_in_port(VariableName, VariableId, VariableValue, PortId).
+end_of_file.
+printall(yw_nw_q1(_,_,_)).
 
 END_XSB_STDIN

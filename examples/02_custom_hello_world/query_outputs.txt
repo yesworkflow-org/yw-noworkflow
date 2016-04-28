@@ -21,7 +21,7 @@ yw_q4(OutputName,Description) % What are the names and descriptions of any outpu
 yw_q4(displayed_greeting,Greeting displayed to user.)
 
 ---------------------------------------------------------------------------------------------------------------------------
-yw_q5(ChannelName) % What data connects the accept_greeting and greet_user workflow steps?
+yw_q5(ChannelName) % What data flows from the accept_greeting workflow step to the greet_user step?
 ---------------------------------------------------------------------------------------------------------------------------
 yw_q5(custom_greeting)
 
@@ -40,3 +40,10 @@ nw_q2(2,greeting,first_greeting,'Hello World!')
 nw_q3(ActivationId,Parameter,Value) % What literal values are passed to print_greeting() from the top of the script?
 ---------------------------------------------------------------------------------------------------------------------------
 nw_q3(6,greeting,'Back again!')
+
+---------------------------------------------------------------------------------------------------------------------------
+yw_nw_q1(VariableName,VariableId,VariableValue)) % What Python variables carries what values of custom_greeting into the greet_user workflow step?
+---------------------------------------------------------------------------------------------------------------------------
+yw_nw_q1(greeting,20,'Back again!')
+yw_nw_q1(greeting,13,'Goodbye World!')
+yw_nw_q1(greeting,4,'Hello World!')

@@ -28,3 +28,12 @@ call_from_workflow_step(StepName, FunctionName, CallLine, ActivationId) :-
     program(StepId, _, StepName, StepBeginLine, StepEndLine),
     CallLine >= StepBeginLine,
     CallLine =< StepEndLine.
+
+nw_variable_for_yw_in_port(VariableName, VariableId, VariableValue, InPort) :-
+    port(InPort, _, VariableName, _, _, _),
+    usage(_, _, VariableId, _, _, Line),
+    variable(_, _, VariableId, VariableName, _, VariableValue, _),
+    has_in_port(WorkflowStep, InPort),
+    program(WorkflowStep, _, _, StepBeginLine, StepEndLine),
+    Line >= StepBeginLine,
+    Line =< StepEndLine.
