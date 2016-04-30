@@ -54,7 +54,7 @@ printall(yw_q3(_,_,_)).
 
 %-------------------------------------------------------------------------------
 banner( 'YW_Q4',
-        'What are the names and descriptions of any outputs of the script?',
+        'What are the names and descriptions of any outputs of the workflow?',
         'yw_q4(OutputName, Description)').
 [user].
 :- table yw_q4/2.

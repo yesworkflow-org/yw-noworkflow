@@ -25,7 +25,7 @@ yw_q3(hello_world.py,4,7)
 
 
 ---------------------------------------------------------------------------------------------------
-YW_Q4 : What are the names and descriptions of any outputs of the script?
+YW_Q4 : What are the names and descriptions of any outputs of the workflow?
 
 yw_q4(OutputName, Description)
 ...................................................................................................
