@@ -1,0 +1,216 @@
+
+%
+% FACT DEFINITION: trial(Id, Start, Finish, Script, CodeHash, Command, InheritedId, ParentId, Run, Docstring).
+% DESCRIPTION: informs that a given *script* with *docstring*,
+%              and content *code_hash*,
+%              executed during a time period from *start*to *finish*,
+%              using noWokflow's *command*,
+%              that generated a trial *id*.
+%              This trial uses modules from *inherited_id*,
+%              is based on *parent_id*,
+%              and might be a *run* or a backup trial.
+%
+
+:- dynamic(trial/10).
+trial(1, 1462200742.200214, 1462200742.324235, 'emphasized_hello_world.py', '2523c67341b7d2b753e19ba421cfbbf7729884fb', 'run -e Tracer emphasized_hello_world.py', nil, nil, 1, nil).
+
+%
+% FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
+% DESCRIPTION: informs that a given trial (*trial_id*)
+%              has a tag (*name*) of *type*,
+%              created at *timestamp*.
+%              
+%
+
+:- dynamic(tag/4).
+tag(1, 'AUTO', '1.1.1', 1462200742.278631).
+
+%
+% FACT DEFINITION: module(TrialId, Id, Name, Version, Path, CodeHash).
+% DESCRIPTION: informs that a given trial (*trial_id*)
+%              imported the *version* of a module (*name*),
+%              with content (*code_hash*) written in *path*.
+%
+
+:- dynamic(module/6).
+
+%
+% DESCRIPTION: informs that a environment attribute (*name*)
+%              was defined with *value*
+%              in a given trial (*trial_id*).
+%
+
+:- dynamic(environment/3).
+
+%
+% FACT DEFINITION: function_def(TrialId, Id, Name, CodeHash, FirstLine, LastLine, Docstring).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a function *name* was defined
+%              with content (*code_hash*)
+%              between *first_line* and *last_line*
+%              and with a *docstring*.
+%
+
+:- dynamic(function_def/7).
+function_def(1, 1, 'greet_user', '8a3fb7969e0de6c372a419b71fbfb58373a83437', 5, 16, nil).
+
+%
+% FACT DEFINITION: object(TrialId, FunctionDefId, Id, Name, Type).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a given function definition (*function_def_id*),
+%              has a GLOBAL/ARGUMENT/FUNCTION_CALL (*type*),
+%              with *name*.
+%              
+%
+
+:- dynamic(object/5).
+object(1, 1, 1, 'print', 'FUNCTION_CALL').
+object(1, -1, 2, 'greet_user', 'FUNCTION_CALL').
+object(1, -1, 3, 'greet_user', 'FUNCTION_CALL').
+object(1, -1, 4, 'greet_user', 'FUNCTION_CALL').
+
+%
+% FACT DEFINITION: activation(TrialId, Id, Name, Line, Start, Finish, CallerActivationId).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a function *name* was activated
+%              by another function (*caller_activation_id*)
+%              and executed during a time period from *start*
+%              to *finish*.
+%
+
+:- dynamic(activation/7).
+activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/03_emphasized_hello_world/emphasized_hello_world.py', 61, 1462200742.32295, 1462200742.324166, nil).
+activation(1, 2, 'greet_user', 23, 1462200742.32339, 1462200742.323573, 1).
+activation(1, 3, 'module.print', 16, 1462200742.323458, 1462200742.323477, 2).
+activation(1, 4, 'greet_user', 25, 1462200742.323734, 1462200742.323875, 1).
+activation(1, 5, 'module.print', 16, 1462200742.323786, 1462200742.323799, 4).
+activation(1, 6, 'greet_user', 26, 1462200742.323984, 1462200742.324118, 1).
+activation(1, 7, 'module.print', 16, 1462200742.324032, 1462200742.324045, 6).
+
+%
+% FACT DEFINITION: object_value(TrialId, ActivationId, Id, Name, Value, Type).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a given activation (*function_activation_id*),
+%              has a GLOBAL/ARGUMENT (*type*) variable *name*,
+%              with *value*.
+%              
+%
+
+:- dynamic(object_value/6).
+object_value(1, 2, 1, 'provided_greeting', '''Hello World''', 'ARGUMENT').
+object_value(1, 4, 2, 'provided_greeting', '''Goodbye World''', 'ARGUMENT').
+object_value(1, 6, 3, 'provided_greeting', '''Back again''', 'ARGUMENT').
+
+%
+% FACT DEFINITION: access(TrialId, Id, Name, Mode, ContentHashBefore, ContentHashAfter, Timestamp, ActivationId).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a file *name*
+%              was accessed by a function activation (*activation_id*)
+%              in a specific read or write *mode*
+%              at a specific *timestamp*.
+%              The content of the file
+%              was captured before (*content_hash_before*)
+%              and after (*content_hash_after*) the access.
+%
+
+:- dynamic(access/8).
+
+%
+% FACT DEFINITION: variable(TrialId, ActivationId, Id, Name, Line, Value, Timestamp).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              during a specific function activation (*activation_id*),
+%              in a specific *line* of code,
+%              and in a specific *timestamp*,
+%              a variable *name* was updated
+%              to a new *value*.
+%
+
+:- dynamic(variable/7).
+variable(1, 1, 1, 'greet_user', 5, '<function greet_user at 0x105aab268>', 1462200742.323022).
+variable(1, 1, 3, 'first_greeting', 22, '''Hello World''', 1462200742.32311).
+variable(1, 2, 4, 'provided_greeting', 5, '''Hello World''', 1462200742.323182).
+variable(1, 0, 5, '--graybox--', 0, 'now(n/a)', 1462200742.32323).
+variable(1, 2, 6, 'greeting', 10, '''Hello World!!''', 1462200742.323433).
+variable(1, 3, 7, 'return', 16, nil, 1462200742.323483).
+variable(1, 0, 8, '--graybox--', 0, 'now(n/a)', 1462200742.323489).
+variable(1, 2, 9, 'module.print', 16, 'now(n/a)', 1462200742.323525).
+variable(1, 1, 10, 'print', 0, '<built-in function print>', 1462200742.323562).
+variable(1, 2, 11, 'return', 16, 'None', 1462200742.323578).
+variable(1, 1, 12, 'greet_user', 23, 'now(n/a)', 1462200742.323584).
+variable(1, 1, 13, 'second_greeting', 24, '''Goodbye World''', 1462200742.323639).
+variable(1, 4, 14, 'provided_greeting', 5, '''Goodbye World''', 1462200742.323686).
+variable(1, 0, 15, '--graybox--', 0, 'now(n/a)', 1462200742.323716).
+variable(1, 4, 16, 'greeting', 10, '''Goodbye World!!''', 1462200742.323765).
+variable(1, 5, 17, 'return', 16, nil, 1462200742.323803).
+variable(1, 0, 18, '--graybox--', 0, 'now(n/a)', 1462200742.323808).
+variable(1, 4, 19, 'module.print', 16, 'now(n/a)', 1462200742.32384).
+variable(1, 4, 20, 'return', 16, 'None', 1462200742.323884).
+variable(1, 1, 21, 'greet_user', 25, 'now(n/a)', 1462200742.32389).
+variable(1, 6, 22, 'provided_greeting', 5, '''Back again''', 1462200742.32397).
+variable(1, 6, 23, 'greeting', 10, '''Back again!!''', 1462200742.324013).
+variable(1, 7, 24, 'return', 16, nil, 1462200742.324049).
+variable(1, 0, 25, '--graybox--', 0, 'now(n/a)', 1462200742.324054).
+variable(1, 6, 26, 'module.print', 16, 'now(n/a)', 1462200742.324085).
+variable(1, 6, 27, 'return', 16, 'None', 1462200742.324122).
+variable(1, 1, 28, 'greet_user', 26, 'now(n/a)', 1462200742.324128).
+
+%
+% FACT DEFINITION: usage(TrialId, ActivationId, VariableId, Id, Name, Line).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              during a specific function activation (*activation_id*),
+%              in a specific *line* of code,
+%              a variable *name* was accessed (read, delete).
+%
+
+:- dynamic(usage/6).
+usage(1, 2, 4, 1, 'provided_greeting', 10).
+usage(1, 2, 6, 2, 'greeting', 16).
+usage(1, 1, 1, 3, 'greet_user', 23).
+usage(1, 1, 3, 4, 'first_greeting', 23).
+usage(1, 4, 14, 5, 'provided_greeting', 10).
+usage(1, 4, 16, 6, 'greeting', 16).
+usage(1, 1, 1, 7, 'greet_user', 25).
+usage(1, 1, 13, 8, 'second_greeting', 25).
+usage(1, 6, 22, 9, 'provided_greeting', 10).
+usage(1, 6, 23, 10, 'greeting', 16).
+usage(1, 1, 1, 11, 'greet_user', 26).
+
+%
+% FACT DEFINITION: dependency(TrialId, Id, SourceActivationId, SourceId, TargetActivationId, TargetId).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              the value of a variable (*target_id*)
+%              in a specific function activation (*target_activation_id*),
+%              influenced somehow the value of another variable (*source_id*)
+%              in another function activation (*source_activation_id*).
+%              This influence can occur due to direct assignment,
+%              matching of arguments in function activations,
+%              changes in mutable arguments of function activations,
+%              assignment within control flow structure, and function return.
+%
+
+:- dynamic(dependency/6).
+dependency(1, 1, 1, 21, 1, 1).
+dependency(1, 2, 4, 19, 1, 10).
+dependency(1, 3, 4, 19, 5, 17).
+dependency(1, 4, 0, 8, 2, 6).
+dependency(1, 5, 6, 23, 6, 22).
+dependency(1, 6, 1, 12, 2, 11).
+dependency(1, 7, 7, 24, 0, 25).
+dependency(1, 8, 1, 28, 1, 1).
+dependency(1, 9, 2, 6, 2, 4).
+dependency(1, 10, 0, 18, 4, 16).
+dependency(1, 11, 4, 16, 4, 14).
+dependency(1, 12, 3, 7, 0, 8).
+dependency(1, 13, 2, 9, 3, 7).
+dependency(1, 14, 6, 26, 7, 24).
+dependency(1, 15, 1, 28, 6, 27).
+dependency(1, 16, 2, 4, 1, 3).
+dependency(1, 17, 1, 12, 1, 1).
+dependency(1, 18, 0, 25, 6, 23).
+dependency(1, 19, 0, 15, 1, 13).
+dependency(1, 20, 6, 26, 1, 10).
+dependency(1, 21, 2, 9, 1, 10).
+dependency(1, 22, 5, 17, 0, 18).
+dependency(1, 23, 0, 5, 1, 3).
+dependency(1, 24, 4, 14, 1, 13).
+dependency(1, 25, 1, 21, 4, 20).

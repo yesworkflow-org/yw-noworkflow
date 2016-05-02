@@ -1,0 +1,32 @@
+digraph Workflow {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label=EmphasizedHelloWorld
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+emphasize_greeting
+print_greeting
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+displayed_greeting [shape=record rankdir=LR label="{<f0> displayed_greeting |<f1> stream\:stdout}"];
+provided_greeting
+emphasized_greeting
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+emphasize_greeting -> emphasized_greeting
+provided_greeting -> emphasize_greeting
+print_greeting -> displayed_greeting
+emphasized_greeting -> print_greeting
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+provided_greeting_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+displayed_greeting_output_port [label=""]
+}}
+provided_greeting_input_port -> provided_greeting
+displayed_greeting -> displayed_greeting_output_port
+}

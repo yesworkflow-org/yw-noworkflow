@@ -1,0 +1,49 @@
+
+
+---------------------------------------------------------------------------------------------------
+YW_Q1 : What is the name and description of the workflow implemented by the script?
+
+yw_q1(WorkflowName, Description)
+...................................................................................................
+yw_q1('EmphasizedHelloWorld','Display one or more greetings to the user.').
+
+
+---------------------------------------------------------------------------------------------------
+YW_Q2 : What workflow steps comprise the top-level workflow?
+
+yw_q2(StepName, Description)
+...................................................................................................
+yw_q2(print_greeting,'Greet the user with the emphasized message.').
+yw_q2(emphasize_greeting,'Add emphasis to the provided greeting').
+
+
+---------------------------------------------------------------------------------------------------
+YW_Q3 : Where is the definition of workflow step emphasize_greeting?
+
+yw_q3(SourceFile, StartLine, EndLine)
+...................................................................................................
+yw_q3('emphasized_hello_world.py',7,11).
+
+
+---------------------------------------------------------------------------------------------------
+YW_Q4 : What are the names and descriptions of any outputs of the workflow?
+
+yw_q4(OutputName, Description)
+...................................................................................................
+yw_q4(displayed_greeting,'Greeting displayed to user.').
+
+
+---------------------------------------------------------------------------------------------------
+YW_Q5 : What data flows from the emphasize_greeting workflow step to the print_greeting step?
+
+yw_q5(DataName)
+...................................................................................................
+yw_q5(emphasized_greeting).
+
+
+---------------------------------------------------------------------------------------------------
+NW_Q1 : What functions are called from the top level of the script?
+
+nw_q1(FunctionName)
+...................................................................................................
+nw_q1(greet_user).
