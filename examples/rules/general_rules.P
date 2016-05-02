@@ -16,10 +16,13 @@ banner(Name, Description, Signature) :-
 
 printall(Q) :-
     call(Q),
-    writeln(Q),
+    writeq(Q),
+    writeln('.'),
     fail
     ;
     true.
+
+
 
 count(Goal, Count) :-
     findall(_, Goal, List),
