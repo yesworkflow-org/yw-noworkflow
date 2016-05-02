@@ -1,4 +1,4 @@
-# @begin CustomHelloWorld @desc Display one or more greetings to the user.
+# @begin custom_hello_world @desc Display one or more greetings to the user.
 # @in provided_greeting
 # @out displayed_greeting @desc Greeting displayed to user.
 
@@ -14,7 +14,7 @@ def print_greeting(greeting):
     print(greeting)
 # @end greet_user
 
-# @end CustomHelloWorld
+# @end custom_hello_world
 
 if __name__ == '__main__':
     first_greeting = 'Hello World!'

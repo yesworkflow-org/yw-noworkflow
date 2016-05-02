@@ -1,7 +1,6 @@
 
 RUN_STDOUT = run_outputs.txt
 RUN_PRODUCTS =  ${RUN_STDOUT}
-YW_FACTS = yw_extract_facts.P yw_model_facts.P
 YW_VIEWS = yw_views.P
 RULES = ../rules/yw_rules.P ../rules/yw_nw_rules.P ../rules/yw_view_rules.P
 QUERY_SCRIPT = run_queries.sh
@@ -15,7 +14,7 @@ PDFS = ${WORKFLOW_GRAPH}.pdf
 
 YW_PROPERTIES = yw.properties
 
-all: ${RUN_PRODUCTS} ${YW_VIEWS} ${NW_FACTS} ${QUERY_OUTPUTS} ${DOTS} ${PNGS} ${PDFS}
+all: ${QUERY_OUTPUTS} ${DOTS} ${PNGS} ${PDFS}
 
 run: ${RUN_PRODUCTS}
 yw: ${YW_VIEWS}
@@ -28,19 +27,15 @@ pdf: ${PDFS}
 ${RUN_STDOUT}: ${WORKFLOW_SCRIPT}
 	now run -e Tracer ${WORKFLOW_SCRIPT} &> ${RUN_STDOUT}
 
-${YW_FACTS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
-	bash -lc "yw model ${WORKFLOW_SCRIPT}"
-
-${YW_VIEWS}: ${YW_FACTS} ${RULES}
-	../rules/materialize_yw_views.sh &> ${YW_VIEWS}
-
-${WORKFLOW_GRAPH}.gv : ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
+${YW_VIEWS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
 	bash -lc "yw graph ${WORKFLOW_SCRIPT} > ${WORKFLOW_GRAPH}.gv"
+	../rules/materialize_yw_views.sh &> ${YW_VIEWS}
+	rm -f yw_extract_facts.* yw_model_facts.*
 
 ${NW_FACTS}: ${RUN_PRODUCTS}
 	now export -m dependency | grep -v 'environment(' > ${NW_FACTS}
 
-${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_FACTS} ${NW_FACTS} ${RULES}
+${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_VIEWS} ${NW_FACTS} ${RULES}
 	./run_queries.sh &> ${QUERY_OUTPUTS}
 
 ${PNGS}: ${WORKFLOW_GRAPH}.gv

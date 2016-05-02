@@ -14,7 +14,7 @@ activation_argument_variable(ActivationId, ActivatedFuncName,
                              FormalParamName, ActualParamName, Value) :-
     call_from_top_function(ActivationId, ActivatedFuncName, _),
     object_value(_, ActivationId, _, FormalParamName, Value, _),
-    expanded_dependency(_, _, ActivationId, _, CallerActivationId, ActualParamId),
+    dependency(_, _, ActivationId, _, CallerActivationId, ActualParamId),
     usage(_, CallerActivationId, ActualParamId, _, ActualParamName, _).
 
 :- table activation_argument_literal/4.
@@ -40,11 +40,10 @@ line_outside_range(Line, _, End) :-
     Line > End.
 
 :- table nw_variable_for_yw_in_port/4.
-nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, InPort) :-
-    port(InPort, _, VariableName, _, _, _),
+nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId) :-
+    yw_in_port(StepId, _, PortId, VariableName, _, _),
+    yw_workflow_step(StepId, _,_,_, StepBeginLine, StepEndLine),
     usage(_, _, VariableId, _, VariableName, UsageLine),
     variable(_, _, VariableId, VariableName, AssignmentLine, VariableValue, _),
-    has_in_port(WorkflowStep, InPort),
-    program(WorkflowStep, _, _, StepBeginLine, StepEndLine),
     line_outside_range(AssignmentLine, StepBeginLine, StepEndLine),
     line_inside_range(UsageLine, StepBeginLine, StepEndLine).

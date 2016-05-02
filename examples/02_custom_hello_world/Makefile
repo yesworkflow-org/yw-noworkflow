@@ -1,2 +1,2 @@
 WORKFLOW_SCRIPT = custom_hello_world.py
-include ../CommonTargets
+include ../Makefile
