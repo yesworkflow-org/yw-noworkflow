@@ -3,7 +3,7 @@
 extract_source(1, 'hello_world.py').
 
 % FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value).
-annotation(1, 1, 1, 'begin', '@begin', 'HelloWorld').
+annotation(1, 1, 1, 'begin', '@begin', 'hello_world').
 annotation(2, 1, 1, 'desc', '@desc', 'Exercise YW and NW with a classic program.').
 annotation(3, 1, 2, 'out', '@out', 'greeting').
 annotation(4, 1, 2, 'desc', '@desc', 'Greeting displayed to user.').
@@ -12,7 +12,7 @@ annotation(6, 1, 4, 'desc', '@desc', 'Greet the program user.').
 annotation(7, 1, 5, 'out', '@out', 'greeting').
 annotation(8, 1, 5, 'file', '@file', 'stream:stdout').
 annotation(9, 1, 7, 'end', '@end', 'print_greeting').
-annotation(10, 1, 9, 'end', '@end', 'HelloWorld').
+annotation(10, 1, 9, 'end', '@end', 'hello_world').
 
 % FACT: annotation_qualifies(qualifying_annotation_id, primary_annotation_id).
 annotation_qualifies(2, 1).

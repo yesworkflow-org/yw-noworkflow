@@ -1,7 +1,7 @@
 
 % FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
-program(1, 'HelloWorld', 'HelloWorld', 1, 10).
-program(2, 'print_greeting', 'HelloWorld.print_greeting', 5, 9).
+program(1, 'hello_world', 'hello_world', 1, 10).
+program(2, 'print_greeting', 'hello_world.print_greeting', 5, 9).
 
 % FACT: workflow(program_id).
 workflow(1).
@@ -12,8 +12,8 @@ workflow(1).
 has_subprogram(1, 2).
 
 % FACT: port(port_id, port_type, port_name, qualified_port_name, port_annotation_id, data_id).
-port(1, 'out', 'greeting', 'HelloWorld->greeting', 3, 1).
-port(2, 'out', 'greeting', 'HelloWorld.print_greeting->greeting', 7, 2).
+port(1, 'out', 'greeting', 'hello_world->greeting', 3, 1).
+port(2, 'out', 'greeting', 'hello_world.print_greeting->greeting', 7, 2).
 
 % FACT: port_alias(port_id, alias).
 
@@ -28,7 +28,7 @@ has_out_port(2, 2).
 
 % FACT: data(data_id, data_name, qualified_data_name).
 data(1, 'greeting', '[greeting]').
-data(2, 'greeting', 'HelloWorld[greeting]').
+data(2, 'greeting', 'hello_world[greeting]').
 
 % FACT: channel(channel_id, data_id).
 channel(1, 1).

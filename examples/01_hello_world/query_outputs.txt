@@ -5,7 +5,7 @@ YW_Q1 : What is the name and description of the workflow implemented by the scri
 
 yw_q1(WorkflowName, Description)
 ...................................................................................................
-yw_q1(HelloWorld,Exercise YW and NW with a classic program.)
+yw_q1(hello_world,'Exercise YW and NW with a classic program.').
 
 
 ---------------------------------------------------------------------------------------------------
@@ -13,15 +13,15 @@ YW_Q2 : What workflow steps comprise the top-level workflow?
 
 yw_q2(StepName, Description)
 ...................................................................................................
-yw_q2(HelloWorld.print_greeting,Greet the program user.)
+yw_q2(print_greeting,'Greet the program user.').
 
 
 ---------------------------------------------------------------------------------------------------
-YW_Q3 : Where is the definition of workflow step HelloWorld.print_greeting?
+YW_Q3 : Where is the definition of workflow step print_greeting?
 
 yw_q3(SourceFile, StartLine, EndLine)
 ...................................................................................................
-yw_q3(hello_world.py,4,7)
+yw_q3('hello_world.py',4,7).
 
 
 ---------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ YW_Q4 : What are the names and descriptions of any outputs of the workflow?
 
 yw_q4(OutputName, Description)
 ...................................................................................................
-yw_q4(greeting,Greeting displayed to user.)
+yw_q4(greeting,'Greeting displayed to user.').
 
 
 ---------------------------------------------------------------------------------------------------
@@ -37,12 +37,12 @@ NW_Q1 : What functions are called from the top level of the script?
 
 nw_q1(FunctionName)
 ...................................................................................................
-nw_q1(module.print)
+nw_q1('module.print').
 
 
 ---------------------------------------------------------------------------------------------------
-YW_NW_Q1 : What functions are called from within the workflow step HelloWorld.print_greeting?
+YW_NW_Q1 : What functions are called from within the workflow step print_greeting?
 
 yw_nw_q1(FunctionName)
 ...................................................................................................
-yw_nw_q1(module.print)
+yw_nw_q1('module.print').
