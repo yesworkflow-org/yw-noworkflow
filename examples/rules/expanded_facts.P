@@ -1,0 +1,20 @@
+:- table expanded_dependency/13.
+expanded_dependency(DependencyId,
+    UpstreamActId, UpstreamActName,
+    UpstreamVarId, UpstreamVarName, UpstreamVarValue, UpstreamVarLine,
+    DownstreamActId, DownstreamActName,
+    DownstreamVarId, DownstreamVarName, DownstreamVarValue, DownstreamVarLine) :-
+
+        dependency(_, DependencyId, DownstreamActId, DownstreamVarId, UpstreamActId, UpstreamVarId),
+        variable(_, _, UpstreamVarId, UpstreamVarName, UpstreamVarLine, UpstreamVarValue, _),
+        variable(_, _, DownstreamVarId, DownstreamVarName, DownstreamVarLine, DownstreamVarValue, _),
+        activation(_, UpstreamActId, UpstreamActName, _, _, _, _),
+        activation(_, DownstreamActId, DownstreamActName, _, _, _, _),
+        UpstreamVarLine \== 0.
+
+
+variable_dependency(TrialId, DependencyId, DownstreamActId, DownstreamVarId, UpstreamActId, UpstreamVarId)  :-
+    dependency(TrialId, DependencyId, DownstreamActId, DownstreamVarId, UpstreamActId, UpstreamVarId),
+    variable(TrialId, UpstreamActId, UpstreamVarId, _, UpstreamVarLine, _, _),
+    variable(TrialId, DownstreamActId, DownstreamVarId, _, _, _, _),
+    UpstreamVarLine \== 0.

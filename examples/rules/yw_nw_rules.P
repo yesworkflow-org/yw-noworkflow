@@ -10,10 +10,11 @@ call_from_top_function(ActivationId, FuncName, Line) :-
     script_activation(ScriptActivation).
 
 :- table activation_argument_variable/5.
-activation_argument_variable(ActivationId, FuncName, FormalParamName, ActualParamName, Value) :-
-    call_from_top_function(ActivationId, FuncName, _),
+activation_argument_variable(ActivationId, ActivatedFuncName,
+                             FormalParamName, ActualParamName, Value) :-
+    call_from_top_function(ActivationId, ActivatedFuncName, _),
     object_value(_, ActivationId, _, FormalParamName, Value, _),
-    dependency(_, _, ActivationId, _, CallerActivationId, ActualParamId),
+    expanded_dependency(_, _, ActivationId, _, CallerActivationId, ActualParamId),
     usage(_, CallerActivationId, ActualParamId, _, ActualParamName, _).
 
 :- table activation_argument_literal/4.
@@ -25,7 +26,7 @@ activation_argument_literal(ActivationId, FuncName, FormalParamName, Value) :-
 :- table call_from_workflow_step/4.
 call_from_workflow_step(StepName, FunctionName, CallLine, ActivationId) :-
     activation(_, ActivationId, FunctionName, CallLine, _, _, _),
-    program(_, _, StepName, StepBeginLine, StepEndLine),
+    yw_workflow_step(_, StepName, _, _,  StepBeginLine, StepEndLine),
     CallLine >= StepBeginLine,
     CallLine =< StepEndLine.
 

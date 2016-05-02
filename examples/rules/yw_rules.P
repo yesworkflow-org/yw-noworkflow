@@ -1,40 +1,4 @@
 
-% Program P has description D.
-:- table program_description/2.
-program_description(P,D) :-
-    program(P, _, _, BA, _),
-    annotation_qualifies(DA, BA),
-    annotation(DA, _, _, 'desc', _, D).
-
-% Port P has description D.
-:- table port_description/2.
-port_description(P,D) :-
-    port(P, _, _, _, PA, _),
-    annotation_qualifies(DA, PA),
-    annotation(DA, _, _, 'desc', _, D).
-
-% Program with qualified name QN is defined in source file SF from first line F to last line L.
-:- table program_source/4.
-program_source(QN, SF, F, L) :-
-    program(_, _, QN, BA, EA),
-    annotation(BA, S, F, _, _, _),
-    annotation(EA, S, L, _, _, _),
-    extract_source(S, SF).
-
-% Program P is a subprogram of another program (workflow) W.
-:- table subprogram/1.
-subprogram(P) :-
-    program(P, _, _, _, _),
-    program(W, _, _, _, _),
-    has_subprogram(W, P).
-
-% Workflow W is the top-level workflow with name N.
-:- table top_workflow/2.
-top_workflow(W,N) :-
-    program(W, N, _, _, _),
-    not function(W),
-    not subprogram(W).
-
 % Port P reads or writes data D with name N and qualified name QN.
 :- table port_data/3.
 port_data(P, N, QN) :-
