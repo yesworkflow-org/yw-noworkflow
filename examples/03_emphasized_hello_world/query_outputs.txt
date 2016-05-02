@@ -38,7 +38,7 @@ YW_Q5 : What data flows from the emphasize_greeting workflow step to the print_g
 
 yw_q5(DataName)
 ...................................................................................................
-yw_q5(emphasized_greeting).
+yw_q5(modified_greeting).
 
 
 ---------------------------------------------------------------------------------------------------

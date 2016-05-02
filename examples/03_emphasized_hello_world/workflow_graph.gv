@@ -10,12 +10,12 @@ print_greeting
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
 displayed_greeting [shape=record rankdir=LR label="{<f0> displayed_greeting |<f1> stream\:stdout}"];
 provided_greeting
-emphasized_greeting
+modified_greeting
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
-emphasize_greeting -> emphasized_greeting
+emphasize_greeting -> modified_greeting
 provided_greeting -> emphasize_greeting
 print_greeting -> displayed_greeting
-emphasized_greeting -> print_greeting
+modified_greeting -> print_greeting
 }}
 subgraph cluster_input_ports_group_outer { label=""; color=white
 subgraph cluster_input_ports_group_inner { label=""; color=white

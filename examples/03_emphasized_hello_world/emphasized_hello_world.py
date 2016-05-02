@@ -6,12 +6,12 @@ def greet_user(provided_greeting):
 
     # @begin emphasize_greeting @desc Add emphasis to the provided greeting
     # @in provided_greeting
-    # @out greeting @as emphasized_greeting
+    # @out greeting @as modified_greeting
     greeting = provided_greeting + '!!'
     # @end emphasize_greeting
 
     # @begin print_greeting @desc Greet the user with the emphasized message.
-    # @in greeting @as emphasized_greeting
+    # @in greeting @as modified_greeting
     # @out greeting @as displayed_greeting @file stream:stdout
     print(greeting)
     # @end print_greeting
