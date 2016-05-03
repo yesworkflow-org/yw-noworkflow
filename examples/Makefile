@@ -2,6 +2,7 @@
 RUN_STDOUT = run_outputs.txt
 RUN_PRODUCTS =  ${RUN_STDOUT}
 YW_VIEWS = yw_views.P
+NW_VIEWS = nw_views.P
 RULES = ../rules/yw_rules.P ../rules/yw_nw_rules.P ../rules/yw_view_rules.P
 QUERY_SCRIPT = run_queries.sh
 QUERY_OUTPUTS = query_outputs.txt
@@ -24,7 +25,7 @@ dots: ${DOTS}
 png: ${PNGS}
 pdf: ${PDFS}
 
-${RUN_STDOUT}: ${WORKFLOW_SCRIPT}
+${RUN_PRODUCTS}: ${WORKFLOW_SCRIPT}
 	now run -e Tracer ${WORKFLOW_SCRIPT} &> ${RUN_STDOUT}
 
 ${YW_VIEWS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
@@ -34,6 +35,7 @@ ${YW_VIEWS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
 
 ${NW_FACTS}: ${RUN_PRODUCTS}
 	now export -m dependency | grep -v 'environment(' > ${NW_FACTS}
+	../rules/materialize_nw_views.sh &> ${NW_VIEWS}
 
 ${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_VIEWS} ${NW_FACTS} ${RULES}
 	./run_queries.sh &> ${QUERY_OUTPUTS}
