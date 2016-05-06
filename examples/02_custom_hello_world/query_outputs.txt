@@ -1,3 +1,4 @@
+++Warning[XSB]: [Compiler] ../rules/yw_nw_rules : nw_variable_for_yw_in_port/4 declared as tabled, but not defined.
 
 
 ---------------------------------------------------------------------------------------------------
@@ -52,18 +53,18 @@ nw_q1(print_greeting).
 ---------------------------------------------------------------------------------------------------
 NW_Q2 : What variable values are passed as arguments to the function print_greeting()?
 
-nw_q2(ActivationId, ArgumentName, VariableName, Value).
+nw_q2(VariableName, Value).
 ...................................................................................................
-nw_q2(4,greeting,second_greeting,'Goodbye World!').
-nw_q2(2,greeting,first_greeting,'Hello World!').
+nw_q2(second_greeting,'Goodbye World!').
+nw_q2(first_greeting,'Hello World!').
 
 
 ---------------------------------------------------------------------------------------------------
 NW_Q3 : What literal values are passed as arguments to the function print_greeting()?
 
-nw_q3(ActivationId, ArgumentName, Value).
+nw_q3(Value).
 ...................................................................................................
-nw_q3(6,greeting,'Back again!').
+nw_q3('Back again!').
 
 
 ---------------------------------------------------------------------------------------------------
@@ -71,20 +72,6 @@ YW_NW_Q1 : What Python variables carries what values of custom_greeting into the
 
 yw_nw_q1(VariableId, VariableName, VariableValue).
 ...................................................................................................
-++Error[XSB/Runtime/P]: [Existence (No procedure usermod : usage / 6 exists)] []
-Forward Continuation...
-... machine:xsb_backtrace/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/machine.xwam
-... loader:load_pred1/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
-... loader:load_pred0/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
-... loader:load_pred/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
-... usage/6  From unknown
-... nw_variable_for_yw_in_port/4  From /Users/tmcphill/GitRepos/yw-noworkflow/examples/rules/yw_nw_rules.xwam
-... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
-... x_interp:_$call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
-... x_interp:call_query/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
-... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
-... standard:catch/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
-... x_interp:interpreter/0  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
-... loader:ll_code_call/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
-... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
-... standard:catch/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
+yw_nw_q1(20,greeting,'Back again!').
+yw_nw_q1(13,greeting,'Goodbye World!').
+yw_nw_q1(4,greeting,'Hello World!').

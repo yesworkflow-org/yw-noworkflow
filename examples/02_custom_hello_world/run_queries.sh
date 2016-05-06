@@ -99,27 +99,27 @@ printall(nw_q1(_)).
 %-------------------------------------------------------------------------------
 banner( 'NW_Q2',
         'What variable values are passed as arguments to the function print_greeting()?',
-        'nw_q2(ActivationId, ArgumentName, VariableName, Value).').
+        'nw_q2(VariableName, Value).').
 [user].
-:- table nw_q2/4.
-nw_q2(ActivationId, ArgumentName, VariableName, Value) :-
-    nw_function_argument(ActivationId, 'print_greeting', ArgumentName, _, Value, VariableName, VariableId),
+:- table nw_q2/2.
+nw_q2(VariableName, Value) :-
+    nw_function_argument(_, 'print_greeting', _, _, Value, VariableName, VariableId),
     VariableId \== nil.
 end_of_file.
-printall(nw_q2(_,_,_,_)).
+printall(nw_q2(_,_)).
 %-------------------------------------------------------------------------------
 
 
 %-------------------------------------------------------------------------------
 banner( 'NW_Q3',
         'What literal values are passed as arguments to the function print_greeting()?',
-        'nw_q3(ActivationId, ArgumentName, Value).').
+        'nw_q3(Value).').
 [user].
-:- table nw_q3/3.
-nw_q3(ActivationId, ArgumentName, Value) :-
-    nw_function_argument(ActivationId, 'print_greeting', ArgumentName, _, Value, _, nil).
+:- table nw_q3/1.
+nw_q3(Value) :-
+    nw_function_argument(_, 'print_greeting', _, _, Value, _, nil).
 end_of_file.
-printall(nw_q3(_,_,_)).
+printall(nw_q3(_)).
 %-------------------------------------------------------------------------------
 
 
@@ -131,7 +131,7 @@ banner( 'YW_NW_Q1',
 :- table yw_nw_q1/3.
 yw_nw_q1(VariableId,VariableName,VariableValue) :-
     yw_in_port(_, _, PortId, _, _, 'custom_greeting'),
-    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId).
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, _).
 end_of_file.
 printall(yw_nw_q1(_,_,_)).
 %-------------------------------------------------------------------------------
