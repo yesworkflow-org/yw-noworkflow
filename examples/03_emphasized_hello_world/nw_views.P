@@ -24,29 +24,39 @@ nw_function_activation(7,'module.print',16,6).
 
 
 %---------------------------------------------------------------------------------------------------
+% FACT: nw_function_argument(ActivationId, FunctionName, ArgumentName, ArgumentId, Value, VariableName, VariableId)
+%...................................................................................................
+nw_function_argument(2,greet_user,provided_greeting,6,'Hello World',provided_greeting,4).
+nw_function_argument(2,greet_user,provided_greeting,4,'Hello World',first_greeting,3).
+nw_function_argument(4,greet_user,provided_greeting,16,'Goodbye World',provided_greeting,14).
+nw_function_argument(4,greet_user,provided_greeting,14,'Goodbye World',second_greeting,13).
+nw_function_argument(6,greet_user,provided_greeting,23,'Back again',provided_greeting,22).
+
+
+%---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_assignment(ActivationId, VariableId, Name, Line, Value).
 %...................................................................................................
-nw_variable_assignment(1,3,first_greeting,22,'''Hello World''').
-nw_variable_assignment(2,4,provided_greeting,5,'''Hello World''').
-nw_variable_assignment(2,6,greeting,10,'''Hello World!!''').
-nw_variable_assignment(1,13,second_greeting,24,'''Goodbye World''').
-nw_variable_assignment(4,14,provided_greeting,5,'''Goodbye World''').
-nw_variable_assignment(4,16,greeting,10,'''Goodbye World!!''').
-nw_variable_assignment(6,22,provided_greeting,5,'''Back again''').
-nw_variable_assignment(6,23,greeting,10,'''Back again!!''').
+nw_variable_assignment(1,3,first_greeting,22,'Hello World').
+nw_variable_assignment(2,4,provided_greeting,5,'Hello World').
+nw_variable_assignment(2,6,greeting,10,'Hello World!!').
+nw_variable_assignment(1,13,second_greeting,24,'Goodbye World').
+nw_variable_assignment(4,14,provided_greeting,5,'Goodbye World').
+nw_variable_assignment(4,16,greeting,10,'Goodbye World!!').
+nw_variable_assignment(6,22,provided_greeting,5,'Back again').
+nw_variable_assignment(6,23,greeting,10,'Back again!!').
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_usage(UsageId, ActivationId, VariableId, Name, Line).
 %...................................................................................................
-nw_variable_usage(1,2,4,provided_greeting,'''Hello World''',10).
-nw_variable_usage(2,2,6,greeting,'''Hello World!!''',16).
-nw_variable_usage(4,1,3,first_greeting,'''Hello World''',23).
-nw_variable_usage(5,4,14,provided_greeting,'''Goodbye World''',10).
-nw_variable_usage(6,4,16,greeting,'''Goodbye World!!''',16).
-nw_variable_usage(8,1,13,second_greeting,'''Goodbye World''',25).
-nw_variable_usage(9,6,22,provided_greeting,'''Back again''',10).
-nw_variable_usage(10,6,23,greeting,'''Back again!!''',16).
+nw_variable_usage(1,2,4,provided_greeting,'Hello World',10).
+nw_variable_usage(2,2,6,greeting,'Hello World!!',16).
+nw_variable_usage(4,1,3,first_greeting,'Hello World',23).
+nw_variable_usage(5,4,14,provided_greeting,'Goodbye World',10).
+nw_variable_usage(6,4,16,greeting,'Goodbye World!!',16).
+nw_variable_usage(8,1,13,second_greeting,'Goodbye World',25).
+nw_variable_usage(9,6,22,provided_greeting,'Back again',10).
+nw_variable_usage(10,6,23,greeting,'Back again!!',16).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -55,5 +65,5 @@ nw_variable_usage(10,6,23,greeting,'''Back again!!''',16).
 %                              UpstreamActName, UpstreamVarId, UpstreamVarName).
 %...................................................................................................
 nw_variable_dependency(1,4,greet_user,16,greeting,4,greet_user,14,provided_greeting).
-nw_variable_dependency(8,6,greet_user,23,greeting,6,greet_user,22,provided_greeting).
-nw_variable_dependency(17,2,greet_user,6,greeting,2,greet_user,4,provided_greeting).
+nw_variable_dependency(7,2,greet_user,6,greeting,2,greet_user,4,provided_greeting).
+nw_variable_dependency(16,6,greet_user,23,greeting,6,greet_user,22,provided_greeting).

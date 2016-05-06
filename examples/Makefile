@@ -34,7 +34,7 @@ ${YW_VIEWS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
 	rm -f yw_extract_facts.* yw_model_facts.*
 
 ${NW_FACTS}: ${RUN_PRODUCTS}
-	now export -m dependency | grep -v 'environment(' > ${NW_FACTS}
+	now export -t -m dependency | grep -v 'environment(' > ${NW_FACTS}
 	../rules/materialize_nw_views.sh &> ${NW_VIEWS}
 
 ${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_VIEWS} ${NW_FACTS} ${RULES}

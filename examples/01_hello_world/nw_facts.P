@@ -12,7 +12,7 @@
 %
 
 :- dynamic(trial/10).
-trial(1, 1462224083.4197, 1462224083.538644, 'hello_world.py', 'fdf46f8f820d73f5aec85eeb270b008d1a002165', 'run -e Tracer hello_world.py', nil, nil, 1, nil).
+trial(1, nil, nil, 'hello_world.py', 'fdf46f8f820d73f5aec85eeb270b008d1a002165', 'run -e Tracer hello_world.py', nil, nil, 1, nil).
 
 %
 % FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
@@ -23,7 +23,7 @@ trial(1, 1462224083.4197, 1462224083.538644, 'hello_world.py', 'fdf46f8f820d73f5
 %
 
 :- dynamic(tag/4).
-tag(1, 'AUTO', '1.1.1', 1462224083.502209).
+tag(1, 'AUTO', '1.1.1', nil).
 
 %
 % FACT DEFINITION: module(TrialId, Id, Name, Version, Path, CodeHash).
@@ -75,8 +75,8 @@ object(1, -1, 1, 'print', 'FUNCTION_CALL').
 %
 
 :- dynamic(activation/7).
-activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world.py', 61, 1462224083.538368, 1462224083.538574, nil).
-activation(1, 2, 'module.print', 6, 1462224083.538407, 1462224083.538428, 1).
+activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world.py', 61, nil, nil, nil).
+activation(1, 2, 'module.print', 6, nil, nil, 1).
 
 %
 % FACT DEFINITION: object_value(TrialId, ActivationId, Id, Name, Value, Type).
@@ -102,6 +102,7 @@ activation(1, 2, 'module.print', 6, 1462224083.538407, 1462224083.538428, 1).
 %
 
 :- dynamic(access/8).
+access(1, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil, nil, nil).
 
 %
 % FACT DEFINITION: variable(TrialId, ActivationId, Id, Name, Line, Value, Timestamp).
@@ -114,10 +115,10 @@ activation(1, 2, 'module.print', 6, 1462224083.538407, 1462224083.538428, 1).
 %
 
 :- dynamic(variable/7).
-variable(1, 2, 1, 'return', 6, nil, 1462224083.538437).
-variable(1, 0, 2, '--graybox--', 0, 'now(n/a)', 1462224083.538449).
-variable(1, 1, 3, 'module.print', 6, 'now(n/a)', 1462224083.5385).
-variable(1, 1, 4, 'print', 0, '<built-in function print>', 1462224083.538558).
+variable(1, 2, 1, 'return', 6, nil, nil).
+variable(1, 0, 2, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 1, 3, 'module.print', 6, 'now(n/a)', nil).
+variable(1, 1, 4, 'print', 0, '<built-in function print>', nil).
 
 %
 % FACT DEFINITION: usage(TrialId, ActivationId, VariableId, Id, Name, Line).
@@ -143,6 +144,6 @@ variable(1, 1, 4, 'print', 0, '<built-in function print>', 1462224083.538558).
 %
 
 :- dynamic(dependency/6).
-dependency(1, 1, 1, 3, 2, 1).
+dependency(1, 1, 2, 1, 0, 2).
 dependency(1, 2, 1, 3, 1, 4).
-dependency(1, 3, 2, 1, 0, 2).
+dependency(1, 3, 1, 3, 2, 1).

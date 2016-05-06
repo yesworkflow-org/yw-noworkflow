@@ -3,7 +3,7 @@
 ---------------------------------------------------------------------------------------------------
 YW_Q1 : What is the name and description of the workflow implemented by the script?
 
-yw_q1(WorkflowName, Description)
+yw_q1(WorkflowName, Description).
 ...................................................................................................
 yw_q1(custom_hello_world,'Display one or more greetings to the user.').
 
@@ -11,7 +11,7 @@ yw_q1(custom_hello_world,'Display one or more greetings to the user.').
 ---------------------------------------------------------------------------------------------------
 YW_Q2 : What workflow steps comprise the top-level workflow?
 
-yw_q2(StepName, Description)
+yw_q2(StepName, Description).
 ...................................................................................................
 yw_q2(greet_user,'Greet the program user with the given message.').
 yw_q2(accept_greeting,'Receive message to be displayed to the user as a greeting.').
@@ -20,7 +20,7 @@ yw_q2(accept_greeting,'Receive message to be displayed to the user as a greeting
 ---------------------------------------------------------------------------------------------------
 YW_Q3 : Where is the definition of workflow step greet_user?
 
-yw_q3(SourceFile, StartLine, EndLine)
+yw_q3(SourceFile, StartLine, EndLine).
 ...................................................................................................
 yw_q3('custom_hello_world.py',11,15).
 
@@ -28,7 +28,7 @@ yw_q3('custom_hello_world.py',11,15).
 ---------------------------------------------------------------------------------------------------
 YW_Q4 : What are the names and descriptions of any outputs of the workflow?
 
-yw_q4(OutputName, Description)
+yw_q4(OutputName, Description).
 ...................................................................................................
 yw_q4(displayed_greeting,'Greeting displayed to user.').
 
@@ -36,7 +36,7 @@ yw_q4(displayed_greeting,'Greeting displayed to user.').
 ---------------------------------------------------------------------------------------------------
 YW_Q5 : What data flows from the accept_greeting workflow step to the greet_user step?
 
-yw_q5(DataName)
+yw_q5(DataName).
 ...................................................................................................
 yw_q5(custom_greeting).
 
@@ -44,33 +44,47 @@ yw_q5(custom_greeting).
 ---------------------------------------------------------------------------------------------------
 NW_Q1 : What functions are called from the top level of the script?
 
-nw_q1(FunctionName, CallLine)
+nw_q1(FunctionName).
 ...................................................................................................
 nw_q1(print_greeting).
 
 
 ---------------------------------------------------------------------------------------------------
-NW_Q2 : What variable values are passed to print_greeting() from the top of the script?
+NW_Q2 : What variable values are passed as arguments to the function print_greeting()?
 
-nw_q2(ActivationId, ParameterName, VariableName, Value)
+nw_q2(ActivationId, ArgumentName, VariableName, Value).
 ...................................................................................................
-nw_q2(4,greeting,second_greeting,'''Goodbye World!''').
-nw_q2(2,greeting,first_greeting,'''Hello World!''').
+nw_q2(4,greeting,second_greeting,'Goodbye World!').
+nw_q2(2,greeting,first_greeting,'Hello World!').
 
 
 ---------------------------------------------------------------------------------------------------
-NW_Q3 : What literal values are passed to print_greeting() from the top of the script?
+NW_Q3 : What literal values are passed as arguments to the function print_greeting()?
 
-nw_q3(ActivationId, Parameter, Value)
+nw_q3(ActivationId, ArgumentName, Value).
 ...................................................................................................
-nw_q3(6,greeting,'''Back again!''').
+nw_q3(6,greeting,'Back again!').
 
 
 ---------------------------------------------------------------------------------------------------
 YW_NW_Q1 : What Python variables carries what values of custom_greeting into the greet_user workflow step?
 
-yw_nw_q1(VariableId, VariableName, VariableValue)
+yw_nw_q1(VariableId, VariableName, VariableValue).
 ...................................................................................................
-yw_nw_q1(4,greeting,'''Hello World!''').
-yw_nw_q1(13,greeting,'''Goodbye World!''').
-yw_nw_q1(20,greeting,'''Back again!''').
+++Error[XSB/Runtime/P]: [Existence (No procedure usermod : usage / 6 exists)] []
+Forward Continuation...
+... machine:xsb_backtrace/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/machine.xwam
+... loader:load_pred1/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
+... loader:load_pred0/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
+... loader:load_pred/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
+... usage/6  From unknown
+... nw_variable_for_yw_in_port/4  From /Users/tmcphill/GitRepos/yw-noworkflow/examples/rules/yw_nw_rules.xwam
+... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
+... x_interp:_$call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
+... x_interp:call_query/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
+... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
+... standard:catch/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
+... x_interp:interpreter/0  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
+... loader:ll_code_call/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
+... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
+... standard:catch/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
