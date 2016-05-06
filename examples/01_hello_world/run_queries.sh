@@ -6,7 +6,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 ['../rules/yw_rules'].
 ['../rules/yw_nw_rules'].
 [yw_views].
-[nw_facts].
+[nw_views].
 
 %-------------------------------------------------------------------------------
 banner( 'YW_Q1',
@@ -75,7 +75,8 @@ banner( 'NW_Q1',
 [user].
 :- table nw_q1/1.
 nw_q1(FunctionName) :-
-    call_from_top_function(_, FunctionName, _).
+    nw_script_activation(_,_, ScriptActivationId, _),
+    nw_function_activation(_, FunctionName, _, ScriptActivationId).
 end_of_file.
 printall(nw_q1(_)).
 %-------------------------------------------------------------------------------
@@ -88,7 +89,7 @@ banner( 'YW_NW_Q1',
 [user].
 :- table yw_nw_q1/1.
 yw_nw_q1(FunctionName) :-
-    call_from_workflow_step('print_greeting', FunctionName, _, _).
+    nw_activation_from_yw_step('print_greeting', FunctionName, _, _).
 end_of_file.
 printall(yw_nw_q1(_)).
 %-------------------------------------------------------------------------------

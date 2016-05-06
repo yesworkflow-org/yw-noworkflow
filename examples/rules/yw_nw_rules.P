@@ -1,15 +1,9 @@
 
+nw_activation_from_yw_step(StepName, FunctionName, ActivationLine, ActivationId) :-
+    nw_function_activation(ActivationId, FunctionName, ActivationLine, _),
+    yw_workflow_step(_, StepName, _, _,  StepBeginLine, StepEndLine),
+    yw_nw_line_inside_range(ActivationLine, StepBeginLine, StepEndLine).
 
-:- table script_activation/1.
-script_activation(ScriptActivation) :-
-    activation(_, ScriptActivation, _, _, _, _, nil).
-
-:- table call_from_top_function/3.
-call_from_top_function(ActivationId, FuncName, Line) :-
-    activation(_, ActivationId, FuncName, Line, _, _, ScriptActivation),
-    script_activation(ScriptActivation).
-
-:- table activation_argument_variable/5.
 activation_argument_variable(ActivationId, ActivatedFuncName,
                              FormalParamName, ActualParamName, Value) :-
     call_from_top_function(ActivationId, ActivatedFuncName, _),
@@ -17,26 +11,18 @@ activation_argument_variable(ActivationId, ActivatedFuncName,
     dependency(_, _, ActivationId, _, CallerActivationId, ActualParamId),
     usage(_, CallerActivationId, ActualParamId, _, ActualParamName, _).
 
-:- table activation_argument_literal/4.
 activation_argument_literal(ActivationId, FuncName, FormalParamName, Value) :-
     call_from_top_function(ActivationId, FuncName, _),
     object_value(_, ActivationId, _, FormalParamName, Value, _),
     not activation_argument_variable(ActivationId, FuncName, FormalParamName, _, Value).
 
-:- table call_from_workflow_step/4.
-call_from_workflow_step(StepName, FunctionName, CallLine, ActivationId) :-
-    activation(_, ActivationId, FunctionName, CallLine, _, _, _),
-    yw_workflow_step(_, StepName, _, _,  StepBeginLine, StepEndLine),
-    CallLine >= StepBeginLine,
-    CallLine =< StepEndLine.
-
-line_inside_range(Line, Start, End) :-
+yw_nw_line_inside_range(Line, Start, End) :-
     Line >= Start,
     Line =< End.
 
-line_outside_range(Line, Start, _) :-
+yw_nw_line_inside_range(Line, Start, _) :-
     Line < Start.
-line_outside_range(Line, _, End) :-
+yw_nw_line_inside_range(Line, _, End) :-
     Line > End.
 
 :- table nw_variable_for_yw_in_port/4.
