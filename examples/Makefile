@@ -26,11 +26,11 @@ png: ${PNGS}
 pdf: ${PDFS}
 
 ${RUN_PRODUCTS}: ${WORKFLOW_SCRIPT}
-	now run -e Tracer ${WORKFLOW_SCRIPT} &> ${RUN_STDOUT}
+	now run -e Tracer ${WORKFLOW_SCRIPT} > ${RUN_STDOUT}
 
 ${YW_VIEWS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
 	bash -lc "yw graph ${WORKFLOW_SCRIPT} > ${WORKFLOW_GRAPH}.gv"
-	../rules/materialize_yw_views.sh &> ${YW_VIEWS}
+	../rules/materialize_yw_views.sh > ${YW_VIEWS}
 	rm -f yw_extract_facts.* yw_model_facts.*
 
 ${NW_FACTS}: ${RUN_PRODUCTS}

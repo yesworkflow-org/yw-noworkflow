@@ -46,19 +46,31 @@ NW_Q1 : What functions are called from the top level of the script?
 
 nw_q1(FunctionName)
 ...................................................................................................
-++Error[XSB/Runtime/P]: [Existence (No procedure usermod : call_from_top_function / 3 exists)] []
-Forward Continuation...
-... machine:xsb_backtrace/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/machine.xwam
-... loader:load_pred1/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
-... loader:load_pred0/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
-... loader:load_pred/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
-... call_from_top_function/3  From unknown
-... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
-... x_interp:_$call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
-... x_interp:call_query/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
-... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
-... standard:catch/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
-... x_interp:interpreter/0  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/x_interp.xwam
-... loader:ll_code_call/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/loader.xwam
-... standard:call/1  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
-... standard:catch/3  From /Users/tmcphill/SvnRepos/xsb-src/XSB/syslib/standard.xwam
+nw_q1(greet_user).
+
+
+---------------------------------------------------------------------------------------------------
+NW_Q2 : What variable values are passed to greet_user() from the top of the script?
+
+nw_q2(Variable, Value)
+...................................................................................................
+nw_q2(second_greeting,'Goodbye World').
+nw_q2(first_greeting,'Hello World').
+
+
+---------------------------------------------------------------------------------------------------
+NW_Q3 : What literal values are passed to greet_user() from the top of the script?
+
+nw_q3(Literal)
+...................................................................................................
+nw_q3('Back again').
+
+
+---------------------------------------------------------------------------------------------------
+YW_NW_Q1 : What Python variables carries values of modified_greeting into the print_greeting workflow step?
+
+yw_nw_q1(VariableId, VariableName, VariableValue)
+...................................................................................................
+yw_nw_q1(6,greeting,'Hello World!!').
+yw_nw_q1(16,greeting,'Goodbye World!!').
+yw_nw_q1(23,greeting,'Back again!!').

@@ -1,13 +1,13 @@
-% FACT: yw_workflow_script(WorkflowId, WorkflowName, SourceId, SourceFile).
-yw_workflow_script(1,hello_world,1,'hello_world.py').
-
 % FACT: yw_source_file(SourceId, SourceFile).
 yw_source_file(1,'hello_world.py').
+
+% FACT: yw_workflow_script(WorkflowId, WorkflowName, SourceId, SourceFile).
+yw_workflow_script(1,hello_world,1,'hello_world.py').
 
 % FACT: yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).
 yw_workflow(1,hello_world,nil,1,1,9).
 
-% FACT: yw_workflow_step(StepId, StepName, ParentWorkflowId, SourceId, BeginLine, EndLine).
+% FACT: yw_workflow_step(StepId, StepName, WorkflowId, SourceId, BeginLine, EndLine).
 yw_workflow_step(2,print_greeting,1,1,4,7).
 
 % FACT: yw_function(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, EndLine).
@@ -20,12 +20,12 @@ yw_out_port(2,print_greeting,2,greeting,2,greeting).
 
 % FACT: yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName).
 
-% FACT: yw_flow(SourceProgramId, SourceProgramName, DataId, DataName, SinkProgramId, SinkProgramName).
+% FACT: yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName).
 
-% FACT: yw_outflow(ProgramId, ProgramName,ProgramDataId, DataName, WorkflowId, WorkflowName).
+% FACT: yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).
 yw_outflow(2,print_greeting,2,greeting,1,hello_world).
 
-% FACT: yw_qualified_name(EntityType, Name, QualifiedName).
+% FACT: yw_qualified_name(EntityType, Id, QualifiedName).
 yw_qualified_name(program,1,hello_world).
 yw_qualified_name(program,2,'hello_world.print_greeting').
 yw_qualified_name(port,1,'hello_world->greeting').
@@ -33,7 +33,7 @@ yw_qualified_name(port,2,'hello_world.print_greeting->greeting').
 yw_qualified_name(data,1,'[greeting]').
 yw_qualified_name(data,2,'hello_world[greeting]').
 
-% FACT: yw_description(EntityType, Id, Description).
+% FACT: yw_description(EntityType, Id, Name, Description)).
 yw_description(program,1,hello_world,'Exercise YW and NW with a classic program.').
 yw_description(program,2,print_greeting,'Greet the program user.').
 yw_description(port,1,greeting,'Greeting displayed to user.').

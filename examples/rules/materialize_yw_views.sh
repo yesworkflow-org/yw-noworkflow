@@ -9,19 +9,19 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 ['../rules/general_rules'].
 ['../rules/yw_view_rules'].
 
-writeln('% FACT: yw_workflow_script(WorkflowId, WorkflowName, SourceId, SourceFile).').
-printall(yw_workflow_script(_,_,_,_)).
-writeln('').
-
 writeln('% FACT: yw_source_file(SourceId, SourceFile).').
 printall(yw_source_file(_,_)).
+writeln('').
+
+writeln('% FACT: yw_workflow_script(WorkflowId, WorkflowName, SourceId, SourceFile).').
+printall(yw_workflow_script(_,_,_,_)).
 writeln('').
 
 writeln('% FACT: yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).').
 printall(yw_workflow(_,_,_,_,_,_)).
 writeln('').
 
-writeln('% FACT: yw_workflow_step(StepId, StepName, ParentWorkflowId, SourceId, BeginLine, EndLine).').
+writeln('% FACT: yw_workflow_step(StepId, StepName, WorkflowId, SourceId, BeginLine, EndLine).').
 printall(yw_workflow_step(_,_,_,_,_,_)).
 writeln('').
 
@@ -41,19 +41,19 @@ writeln('% FACT: yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId
 printall(yw_inflow(_,_,_,_,_,_)).
 writeln('').
 
-writeln('% FACT: yw_flow(SourceProgramId, SourceProgramName, DataId, DataName, SinkProgramId, SinkProgramName).').
-printall(yw_flow(_,_,_,_,_,_)).
+writeln('% FACT: yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName).').
+printall(yw_flow(_,_,_,_,_,_,_,_,_,_)).
 writeln('').
 
-writeln('% FACT: yw_outflow(ProgramId, ProgramName,ProgramDataId, DataName, WorkflowId, WorkflowName).').
+writeln('% FACT: yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).').
 printall(yw_outflow(_,_,_,_,_,_)).
 writeln('').
 
-writeln('% FACT: yw_qualified_name(EntityType, Name, QualifiedName).').
+writeln('% FACT: yw_qualified_name(EntityType, Id, QualifiedName).').
 printall(yw_qualified_name(_,_,_)).
 writeln('').
 
-writeln('% FACT: yw_description(EntityType, Id, Description).').
+writeln('% FACT: yw_description(EntityType, Id, Name, Description)).').
 printall(yw_description(_,_,_,_)).
 writeln('').
 

@@ -1,4 +1,3 @@
-++Warning[XSB]: [Compiler] ../rules/yw_nw_rules : nw_variable_for_yw_in_port/4 declared as tabled, but not defined.
 
 
 ---------------------------------------------------------------------------------------------------
@@ -72,6 +71,6 @@ YW_NW_Q1 : What Python variables carries what values of custom_greeting into the
 
 yw_nw_q1(VariableId, VariableName, VariableValue).
 ...................................................................................................
-yw_nw_q1(20,greeting,'Back again!').
-yw_nw_q1(13,greeting,'Goodbye World!').
 yw_nw_q1(4,greeting,'Hello World!').
+yw_nw_q1(13,greeting,'Goodbye World!').
+yw_nw_q1(20,greeting,'Back again!').

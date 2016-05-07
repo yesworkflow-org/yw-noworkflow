@@ -25,7 +25,7 @@ yw_nw_line_outside_range(Line, Start, _) :-
 yw_nw_line_outside_range(Line, _, End) :-
     Line > End.
 
-:- table nw_variable_for_yw_in_port/4.
+:- table nw_variable_for_yw_in_port/5.
 nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, PortName) :-
     yw_in_port(StepId, _, PortId, PortName, _, _),
     yw_workflow_step(StepId, _,_,_, StepBeginLine, StepEndLine),

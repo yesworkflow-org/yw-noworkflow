@@ -5,7 +5,6 @@
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 ['../rules/general_rules'].
-['../rules/yw_rules'].
 ['../rules/yw_nw_rules'].
 [yw_views].
 [nw_views].
@@ -76,7 +75,7 @@ banner( 'YW_Q5',
 [user].
 :- table yw_q5/1.
 yw_q5(DataName) :-
-    yw_flow(_, 'accept_greeting', _, DataName, _, 'greet_user').
+    yw_flow(_, 'accept_greeting',_, _, _, DataName, _, _, _, 'greet_user').
 end_of_file.
 printall(yw_q5(_)).
 %-------------------------------------------------------------------------------

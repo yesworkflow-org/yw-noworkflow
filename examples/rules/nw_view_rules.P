@@ -24,9 +24,10 @@ nw_function_argument(ActivationId, FunctionName, ArgumentName, ArgumentId, Value
 
 nw_function_argument_variable(ActivationId, FunctionName, ArgumentName, ArgumentId, Value, VariableId, VariableName) :-
     activation(_, ActivationId, FunctionName, _,_,_,_),
-    object_value(_, ActivationId, _, ArgumentName, Value, 'ARGUMENT'),
+    object_value(_, ActivationId, _, ArgumentName, _, 'ARGUMENT'),
+    variable(_, ActivationId, ArgumentId, ArgumentName, _, Value, _),
     dependency(_,_, ActivationId, ArgumentId, CallerActivationId, VariableId),
-    usage(_, CallerActivationId, VariableId, _, VariableName, _).
+    variable(_, CallerActivationId, VariableId, VariableName, _, Value,_).
 
 nw_function_argument_literal(ActivationId, FunctionName, ArgumentName, ArgumentId, Value) :-
     activation(_, ActivationId, FunctionName, _,_,_,_),

@@ -26,11 +26,9 @@ nw_function_activation(7,'module.print',16,6).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_function_argument(ActivationId, FunctionName, ArgumentName, ArgumentId, Value, VariableName, VariableId)
 %...................................................................................................
-nw_function_argument(2,greet_user,provided_greeting,6,'Hello World',provided_greeting,4).
 nw_function_argument(2,greet_user,provided_greeting,4,'Hello World',first_greeting,3).
-nw_function_argument(4,greet_user,provided_greeting,16,'Goodbye World',provided_greeting,14).
 nw_function_argument(4,greet_user,provided_greeting,14,'Goodbye World',second_greeting,13).
-nw_function_argument(6,greet_user,provided_greeting,23,'Back again',provided_greeting,22).
+nw_function_argument(6,greet_user,provided_greeting,_h240,'Back again',nil,nil).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -64,6 +62,6 @@ nw_variable_usage(10,6,23,greeting,'Back again!!',16).
 %                              DownstreamVarId, DownstreamVarName,UpstreamActId,
 %                              UpstreamActName, UpstreamVarId, UpstreamVarName).
 %...................................................................................................
-nw_variable_dependency(1,4,greet_user,16,greeting,4,greet_user,14,provided_greeting).
-nw_variable_dependency(7,2,greet_user,6,greeting,2,greet_user,4,provided_greeting).
-nw_variable_dependency(16,6,greet_user,23,greeting,6,greet_user,22,provided_greeting).
+nw_variable_dependency(2,2,greet_user,6,greeting,2,greet_user,4,provided_greeting).
+nw_variable_dependency(5,4,greet_user,16,greeting,4,greet_user,14,provided_greeting).
+nw_variable_dependency(20,6,greet_user,23,greeting,6,greet_user,22,provided_greeting).
