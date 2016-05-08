@@ -13,7 +13,7 @@ nw_function_definition(1,print_greeting,8,14,nil).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_function_activation(ActivationId, Name, Line, CallerActivationId).
+% FACT: nw_function_activation(ActivationId, FunctionName, Line, CallerActivationId).
 %...................................................................................................
 nw_function_activation(2,print_greeting,21,1).
 nw_function_activation(3,'module.print',14,2).
@@ -24,15 +24,15 @@ nw_function_activation(7,'module.print',14,6).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_function_argument(ActivationId, FunctionName, ArgumentName, ArgumentId, Value, VariableName, VariableId)
+% FACT: nw_function_argument(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableName, VariableId)
 %...................................................................................................
-nw_function_argument(2,print_greeting,greeting,4,'Hello World!',first_greeting,3).
-nw_function_argument(4,print_greeting,greeting,13,'Goodbye World!',second_greeting,12).
-nw_function_argument(6,print_greeting,greeting,_h240,'Back again!',nil,nil).
+nw_function_argument(2,print_greeting,4,greeting,'Hello World!',first_greeting,3).
+nw_function_argument(4,print_greeting,13,greeting,'Goodbye World!',second_greeting,12).
+nw_function_argument(6,print_greeting,_h222,greeting,'Back again!',nil,nil).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_assignment(ActivationId, VariableId, Name, Line, Value).
+% FACT: nw_variable_assignment(ActivationId, VariableId, VariableName, Line, Value).
 %...................................................................................................
 nw_variable_assignment(1,3,first_greeting,20,'Hello World!').
 nw_variable_assignment(2,4,greeting,8,'Hello World!').
@@ -42,7 +42,7 @@ nw_variable_assignment(6,20,greeting,8,'Back again!').
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_usage(UsageId, ActivationId, VariableId, Name, Line).
+% FACT: nw_variable_usage(UsageId, ActivationId, VariableId, VariableName, VariableValue, Line).
 %...................................................................................................
 nw_variable_usage(1,2,4,greeting,'Hello World!',14).
 nw_variable_usage(3,1,3,first_greeting,'Hello World!',21).
@@ -52,7 +52,5 @@ nw_variable_usage(7,6,20,greeting,'Back again!',14).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_dependency(DependencyId, DownstreamActId, DownstreamActName,
-%                              DownstreamVarId, DownstreamVarName,UpstreamActId,
-%                              UpstreamActName, UpstreamVarId, UpstreamVarName).
+% FACT: nw_variable_dependency(ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................

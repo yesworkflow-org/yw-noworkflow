@@ -25,39 +25,37 @@ printall(nw_function_definition(_,_,_,_,_)).
 writeln(''),
 writeln(''),
 writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_function_activation(ActivationId, Name, Line, CallerActivationId).').
+writeln('% FACT: nw_function_activation(ActivationId, FunctionName, Line, CallerActivationId).').
 writeln('%...................................................................................................').
 printall(nw_function_activation(_,_,_,_)).
 
 writeln(''),
 writeln(''),
 writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_function_argument(ActivationId, FunctionName, ArgumentName, ArgumentId, Value, VariableName, VariableId)').
+writeln('% FACT: nw_function_argument(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableName, VariableId)').
 writeln('%...................................................................................................').
 printall(nw_function_argument(_,_,_,_,_,_,_)).
 
 writeln(''),
 writeln(''),
 writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_variable_assignment(ActivationId, VariableId, Name, Line, Value).').
+writeln('% FACT: nw_variable_assignment(ActivationId, VariableId, VariableName, Line, Value).').
 writeln('%...................................................................................................').
 printall(nw_variable_assignment(_,_,_,_,_)).
 
 writeln(''),
 writeln(''),
 writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_variable_usage(UsageId, ActivationId, VariableId, Name, Line).').
+writeln('% FACT: nw_variable_usage(UsageId, ActivationId, VariableId, VariableName, VariableValue, Line).').
 writeln('%...................................................................................................').
 printall(nw_variable_usage(_,_,_,_,_,_)).
 
 writeln(''),
 writeln(''),
-writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_variable_dependency(DependencyId, DownstreamActId, DownstreamActName,').
-writeln('%                              DownstreamVarId, DownstreamVarName,UpstreamActId,').
-writeln('%                              UpstreamActName, UpstreamVarId, UpstreamVarName).').
+writeln('%---------------------------------------------------------------------------------------------------').
+writeln('% FACT: nw_variable_dependency(ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)').
 writeln('%...................................................................................................').
-printall(nw_variable_dependency(_,_,_,_,_,_,_,_,_)).
+printall(nw_variable_dependency(_,_,_,_,_,_,_)).
 
 END_XSB_STDIN
 
