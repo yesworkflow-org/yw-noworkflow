@@ -87,21 +87,21 @@ nw_variable_usage(22,6,43,greeting,'Back again!!!',22).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_dependency(ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
+% FACT: nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................
-nw_variable_dependency(4,greet_user,15,22,i,17,count).
-nw_variable_dependency(4,greet_user,16,23,greeting,15,greeting).
-nw_variable_dependency(4,greet_user,16,23,greeting,16,emphasis).
-nw_variable_dependency(4,greet_user,16,23,greeting,17,count).
-nw_variable_dependency(6,greet_user,15,38,i,31,count).
-nw_variable_dependency(6,greet_user,15,42,i,31,count).
-nw_variable_dependency(6,greet_user,15,34,i,31,count).
-nw_variable_dependency(6,greet_user,16,35,greeting,31,count).
-nw_variable_dependency(6,greet_user,16,35,greeting,29,greeting).
-nw_variable_dependency(6,greet_user,16,35,greeting,30,emphasis).
-nw_variable_dependency(6,greet_user,16,43,greeting,30,emphasis).
-nw_variable_dependency(6,greet_user,16,43,greeting,31,count).
-nw_variable_dependency(6,greet_user,16,43,greeting,39,greeting).
-nw_variable_dependency(6,greet_user,16,39,greeting,35,greeting).
-nw_variable_dependency(6,greet_user,16,39,greeting,30,emphasis).
-nw_variable_dependency(6,greet_user,16,39,greeting,31,count).
+nw_variable_dependency(5,6,greet_user,16,43,greeting,31,count).
+nw_variable_dependency(10,6,greet_user,15,42,i,31,count).
+nw_variable_dependency(14,6,greet_user,16,43,greeting,39,greeting).
+nw_variable_dependency(19,6,greet_user,16,39,greeting,30,emphasis).
+nw_variable_dependency(23,6,greet_user,16,39,greeting,31,count).
+nw_variable_dependency(25,6,greet_user,15,38,i,31,count).
+nw_variable_dependency(27,4,greet_user,16,23,greeting,15,greeting).
+nw_variable_dependency(30,6,greet_user,16,43,greeting,30,emphasis).
+nw_variable_dependency(31,6,greet_user,16,35,greeting,29,greeting).
+nw_variable_dependency(32,4,greet_user,15,22,i,17,count).
+nw_variable_dependency(44,6,greet_user,15,34,i,31,count).
+nw_variable_dependency(46,4,greet_user,16,23,greeting,16,emphasis).
+nw_variable_dependency(47,6,greet_user,16,39,greeting,35,greeting).
+nw_variable_dependency(52,4,greet_user,16,23,greeting,17,count).
+nw_variable_dependency(53,6,greet_user,16,35,greeting,30,emphasis).
+nw_variable_dependency(57,6,greet_user,16,35,greeting,31,count).

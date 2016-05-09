@@ -53,9 +53,9 @@ printall(nw_variable_usage(_,_,_,_,_,_)).
 writeln(''),
 writeln(''),
 writeln('%---------------------------------------------------------------------------------------------------').
-writeln('% FACT: nw_variable_dependency(ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)').
+writeln('% FACT: nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)').
 writeln('%...................................................................................................').
-printall(nw_variable_dependency(_,_,_,_,_,_,_)).
+printall(nw_variable_dependency(_,_,_,_,_,_,_,_)).
 
 END_XSB_STDIN
 
