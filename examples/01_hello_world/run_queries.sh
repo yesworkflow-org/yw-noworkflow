@@ -2,8 +2,8 @@
 
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
-['../rules/general_rules'].
-['../rules/yw_nw_rules'].
+['../../rules/general_rules'].
+['../../rules/yw_nw_rules'].
 [yw_views].
 [nw_views].
 

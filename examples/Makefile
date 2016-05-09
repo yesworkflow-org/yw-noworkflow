@@ -1,20 +1,20 @@
 
 
-SUBDIRS =	01_hello_world 				\
-		 	02_custom_hello_world 		\
-			03_emphasized_hello_world 	\
-			04_iterative_emphasis		\
+SUBDIRS =	01_hello_world  \
+		 	02_custom_hello_world \
+			03_emphasized_hello_world \
+			04_iterative_emphasis \
 
 all:
-	for dir in $(SUBDIRS); do 									\
-		echo; 													\
+	for dir in $(SUBDIRS); do \
+		echo; \
 		echo "---------- Building $$dir --------------------" ;	\
-		make -C $$dir all; 										\
+		make -C $$dir all; \
 	done
 
 clean:
-	for dir in $(SUBDIRS); do 									\
-		echo; 													\
-		echo "---------- Cleaning $$dir --------------------" ;	\
-		make -C $$dir clean; 									\
+	for dir in $(SUBDIRS); do \
+		echo; \
+		echo "---------- Cleaning $$dir --------------------" ; \
+		make -C $$dir clean; \
 	done

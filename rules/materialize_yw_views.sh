@@ -6,8 +6,8 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 [yw_extract_facts].
 [yw_model_facts].
-['../rules/general_rules'].
-['../rules/yw_view_rules'].
+['../../rules/general_rules'].
+['../../rules/yw_view_rules'].
 
 writeln('% FACT: yw_source_file(SourceId, SourceFile).').
 printall(yw_source_file(_,_)).
