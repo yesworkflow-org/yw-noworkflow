@@ -1,20 +1,54 @@
+
+/* Start of top-level graph */
 digraph Workflow {
 rankdir=TB
+
+/* Title for graph */
 fontname=Courier; fontsize=18; labelloc=t
 label=hello_world
+
+/* Start of double cluster for drawing box around nodes in workflow */
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; color=white
+
+/* Style for nodes representing atomic programs in workflow */
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+
+/* Nodes representing atomic programs in workflow */
 print_greeting
+
+/* Style for nodes representing non-parameter data channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
 greeting [shape=record rankdir=LR label="{<f0> greeting |<f1> stream\:stdout}"];
+
+/* Style for nodes representing parameter channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+
+/* Edges representing connections between programs and channels */
 print_greeting -> greeting
+
+/* End of double cluster for drawing box around nodes in workflow */
 }}
+
+/* Hidden double-cluster for grouping workflow output ports */
 subgraph cluster_output_ports_group_outer { label=""; color=white
 subgraph cluster_output_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow output ports */
 node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
 greeting_output_port [label=""]
+
+/* End of double-cluster for grouping workflow output ports */
 }}
+
+/* Edges from channels to output ports */
 greeting -> greeting_output_port
+
+/* End of top-level graph */
 }
