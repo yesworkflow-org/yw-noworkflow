@@ -54,6 +54,7 @@ nw_usage_is_function_call(UsageId, VariableId) :-
     usage(_, _, VariableId, UsageId, Name, Line),
     activation(_,_, Name, Line, _,_,_).
 
+:- table nw_variable_dependency/7.
 nw_variable_dependency(ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName) :-
     dependency(_, _, ActivationId, DownstreamVarId, ActivationId, UpstreamVarId),
     nw_function_activation(ActivationId, FunctionName,_,_),
