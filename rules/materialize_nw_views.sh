@@ -8,57 +8,25 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 ['../../rules/general_rules'].
 ['../../rules/nw_view_rules'].
 
-writeln(''),
-writeln(''),
-writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_script_activation(Script, Command, ScriptActivation, Docstring).').
-writeln('%...................................................................................................').
+rule_banner('nw_script_activation(Script, Command, ScriptActivation, Docstring).').
 printall(nw_script_activation(_,_,_,_)).
 
-writeln(''),
-writeln(''),
-writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_function_definition(FunctionId, Name, FirstLine, LastLine, Docstring).').
-writeln('%...................................................................................................').
+rule_banner('nw_function_definition(FunctionId, Name, FirstLine, LastLine, Docstring).').
 printall(nw_function_definition(_,_,_,_,_)).
 
-writeln(''),
-writeln(''),
-writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_function_activation(ActivationId, FunctionName, Line, CallerActivationId).').
-writeln('%...................................................................................................').
+rule_banner('nw_function_activation(ActivationId, FunctionName, Line, CallerActivationId).').
 printall(nw_function_activation(_,_,_,_)).
 
-writeln(''),
-writeln(''),
-writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_function_argument(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableName, VariableId)').
-writeln('%...................................................................................................').
+rule_banner('nw_function_argument(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableName, VariableId)').
 printall(nw_function_argument(_,_,_,_,_,_,_)).
 
-writeln(''),
-writeln(''),
-writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_variable_assignment(ActivationId, VariableId, VariableName, Line, Value).').
-writeln('%...................................................................................................').
+rule_banner('nw_variable_assignment(ActivationId, VariableId, VariableName, Line, Value).').
 printall(nw_variable_assignment(_,_,_,_,_)).
 
-writeln(''),
-writeln(''),
-writeln('%---------------------------------------------------------------------------------------------------'),
-writeln('% FACT: nw_variable_usage(UsageId, ActivationId, VariableId, VariableName, VariableValue, Line).').
-writeln('%...................................................................................................').
+rule_banner('nw_variable_usage(UsageId, ActivationId, VariableId, VariableName, VariableValue, Line).').
 printall(nw_variable_usage(_,_,_,_,_,_)).
 
-writeln(''),
-writeln(''),
-writeln('%---------------------------------------------------------------------------------------------------').
-writeln('% FACT: nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)').
-writeln('%...................................................................................................').
+rule_banner('nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)').
 printall(nw_variable_dependency(_,_,_,_,_,_,_,_)).
 
 END_XSB_STDIN
-
-# writeln('% FACT: nw_function_call(FunctionId, FunctionCallId, Name).').
-# printall(nw_function_call(_,_,_)).
-# writeln('').

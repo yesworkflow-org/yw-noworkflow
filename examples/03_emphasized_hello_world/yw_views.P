@@ -1,38 +1,72 @@
+
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_source_file(SourceId, SourceFile).
+%...................................................................................................
 yw_source_file(1,'emphasized_hello_world.py').
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow_script(WorkflowId, WorkflowName, SourceId, SourceFile).
+%...................................................................................................
 yw_workflow_script(1,'EmphasizedHelloWorld',1,'emphasized_hello_world.py').
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).
+%...................................................................................................
 yw_workflow(1,'EmphasizedHelloWorld',nil,1,1,19).
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow_step(StepId, StepName, WorkflowId, SourceId, BeginLine, EndLine).
+%...................................................................................................
 yw_workflow_step(2,emphasize_greeting,1,1,7,11).
 yw_workflow_step(3,print_greeting,1,1,13,17).
 
-% FACT: yw_function(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, EndLine).
 
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_function(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, EndLine).
+%...................................................................................................
+
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_in_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).
+%...................................................................................................
 yw_in_port(1,'EmphasizedHelloWorld',1,provided_greeting,1,provided_greeting).
 yw_in_port(2,emphasize_greeting,3,provided_greeting,3,provided_greeting).
 yw_in_port(3,print_greeting,5,greeting,4,modified_greeting).
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_out_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).
+%...................................................................................................
 yw_out_port(1,'EmphasizedHelloWorld',2,displayed_greeting,2,displayed_greeting).
 yw_out_port(2,emphasize_greeting,4,greeting,4,modified_greeting).
 yw_out_port(3,print_greeting,6,greeting,5,displayed_greeting).
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName).
+%...................................................................................................
 yw_inflow(1,'EmphasizedHelloWorld',3,provided_greeting,2,emphasize_greeting).
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName).
+%...................................................................................................
 yw_flow(2,emphasize_greeting,4,greeting,4,modified_greeting,5,greeting,3,print_greeting).
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).
+%...................................................................................................
 yw_outflow(3,print_greeting,5,displayed_greeting,1,'EmphasizedHelloWorld').
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_qualified_name(EntityType, Id, QualifiedName).
+%...................................................................................................
 yw_qualified_name(program,1,'EmphasizedHelloWorld').
 yw_qualified_name(program,2,'EmphasizedHelloWorld.emphasize_greeting').
 yw_qualified_name(program,3,'EmphasizedHelloWorld.print_greeting').
@@ -48,9 +82,11 @@ yw_qualified_name(data,3,'EmphasizedHelloWorld[provided_greeting]').
 yw_qualified_name(data,4,'EmphasizedHelloWorld[modified_greeting]').
 yw_qualified_name(data,5,'EmphasizedHelloWorld[displayed_greeting]').
 
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_description(EntityType, Id, Name, Description)).
+%...................................................................................................
 yw_description(program,1,'EmphasizedHelloWorld','Display one or more greetings to the user.').
 yw_description(program,2,emphasize_greeting,'Add emphasis to the provided greeting').
 yw_description(program,3,print_greeting,'Greet the user with the emphasized message.').
 yw_description(port,2,displayed_greeting,'Greeting displayed to user.').
-
