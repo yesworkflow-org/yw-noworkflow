@@ -1,0 +1,16 @@
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_activation_from_yw_step(StepName, FunctionName, ActivationLine, ActivationId).
+%...................................................................................................
+nw_activation_from_yw_step(greet_user,'module.print',14,3).
+nw_activation_from_yw_step(greet_user,'module.print',14,5).
+nw_activation_from_yw_step(greet_user,'module.print',14,7).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, PortName).
+%...................................................................................................
+nw_variable_for_yw_in_port(20,greeting,'Back again!',5,greeting).
+nw_variable_for_yw_in_port(13,greeting,'Goodbye World!',5,greeting).
+nw_variable_for_yw_in_port(4,greeting,'Hello World!',5,greeting).

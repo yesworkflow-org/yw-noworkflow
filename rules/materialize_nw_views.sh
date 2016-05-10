@@ -8,6 +8,8 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 ['../../rules/general_rules'].
 ['../../rules/nw_view_rules'].
 
+set_prolog_flag(unknown, fail).
+
 rule_banner('nw_script_activation(Script, Command, ScriptActivation, Docstring).').
 printall(nw_script_activation(_,_,_,_)).
 

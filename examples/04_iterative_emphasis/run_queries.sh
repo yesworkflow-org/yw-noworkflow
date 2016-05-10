@@ -9,6 +9,8 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 [yw_views].
 [nw_views].
 
+set_prolog_flag(unknown, fail).
+
 %-------------------------------------------------------------------------------
 banner( 'YW_Q1',
         'What is the name and description of the workflow implemented by the script?',
@@ -139,5 +141,21 @@ yw_nw_q1(VariableId, VariableName, VariableValue) :-
 end_of_file.
 printall(yw_nw_q1(_,_,_)).
 %-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+%banner( 'YW_NW_Q2',
+%        'What values are emitted by the displayed_greeting output of the print_greeting step?',
+%        'yw_nw_q2(OutputValue)').
+%[user].
+%:- table yw_nw_q1/3.
+%yw_nw_q1(VariableValue) :-
+%    yw_out_port(_, 'print_greeting', PortId, _, _, 'displayed_greeting'),
+%    nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, PortId, _).
+%
+%end_of_file.
+%printall(yw_nw_q1(_,_,_)).
+%-------------------------------------------------------------------------------
+
 
 END_XSB_STDIN

@@ -7,6 +7,8 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 [yw_views].
 [nw_views].
 
+set_prolog_flag(unknown, fail).
+
 %-------------------------------------------------------------------------------
 banner( 'YW_Q1',
         'What is the name and description of the workflow implemented by the script?',

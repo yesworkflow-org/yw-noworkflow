@@ -9,6 +9,8 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 ['../../rules/general_rules'].
 ['../../rules/yw_view_rules'].
 
+set_prolog_flag(unknown, fail).
+
 rule_banner('yw_source_file(SourceId, SourceFile).').
 printall(yw_source_file(_,_)).
 

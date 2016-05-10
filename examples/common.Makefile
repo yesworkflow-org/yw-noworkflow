@@ -4,6 +4,7 @@ RUN_STDOUT = run_outputs.txt
 RUN_PRODUCTS =  ${RUN_STDOUT}
 YW_VIEWS = yw_views.P
 NW_VIEWS = nw_views.P
+YW_NW_VIEWS = yw_nw_views.P
 RULES = ${RULES_DIR}/yw_rules.P ${RULES_DIR}/yw_nw_rules.P ${RULES_DIR}/yw_view_rules.P
 QUERY_SCRIPT = run_queries.sh
 QUERY_OUTPUTS = query_outputs.txt
@@ -38,7 +39,10 @@ ${NW_FACTS}: ${RUN_PRODUCTS}
 	now export -t -m dependency | grep -v 'environment(' > ${NW_FACTS}
 	${RULES_DIR}/materialize_nw_views.sh &> ${NW_VIEWS}
 
-${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_VIEWS} ${NW_FACTS} ${RULES}
+${YW_NW_VIEWS}: ${YW_VIEWS} ${NW_VIEWS}
+	${RULES_DIR}/materialize_yw_nw_views.sh &> ${YW_NW_VIEWS}
+
+${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_VIEWS} ${NW_FACTS} ${YW_NW_VIEWS} ${RULES}
 	./run_queries.sh &> ${QUERY_OUTPUTS}
 
 ${PNGS}: ${WORKFLOW_GRAPH}.gv

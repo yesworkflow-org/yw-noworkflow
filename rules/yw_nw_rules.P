@@ -1,20 +1,7 @@
-
 nw_activation_from_yw_step(StepName, FunctionName, ActivationLine, ActivationId) :-
     nw_function_activation(ActivationId, FunctionName, ActivationLine, _),
     yw_workflow_step(_, StepName, _, _,  StepBeginLine, StepEndLine),
     nw_line_inside_yw_line_range(ActivationLine, StepBeginLine, StepEndLine).
-
-activation_argument_variable(ActivationId, ActivatedFuncName,
-                             FormalParamName, ActualParamName, Value) :-
-    call_from_top_function(ActivationId, ActivatedFuncName, _),
-    object_value(_, ActivationId, _, FormalParamName, Value, _),
-    dependency(_, _, ActivationId, _, CallerActivationId, ActualParamId),
-    usage(_, CallerActivationId, ActualParamId, _, ActualParamName, _).
-
-activation_argument_literal(ActivationId, FuncName, FormalParamName, Value) :-
-    call_from_top_function(ActivationId, FuncName, _),
-    object_value(_, ActivationId, _, FormalParamName, Value, _),
-    not activation_argument_variable(ActivationId, FuncName, FormalParamName, _, Value).
 
 nw_line_inside_yw_line_range(Line, RangeStart, RangeEnd) :-
     Line >= RangeStart,

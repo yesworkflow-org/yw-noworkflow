@@ -29,11 +29,6 @@ printall(Q) :-
     ;
     true.
 
-
-
 count(Goal, Count) :-
     findall(_, Goal, List),
     llength(List, Count).
-
-
-function(0).
