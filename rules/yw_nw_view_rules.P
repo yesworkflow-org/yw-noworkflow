@@ -1,6 +1,6 @@
-nw_activation_from_yw_step(StepName, FunctionName, ActivationLine, ActivationId) :-
+nw_activation_from_yw_step(StepId, StepName, ActivationId, FunctionName, ActivationLine) :-
     nw_function_activation(ActivationId, FunctionName, ActivationLine, _),
-    yw_workflow_step(_, StepName, _, _,  StepBeginLine, StepEndLine),
+    yw_workflow_step(StepId, StepName, _, _,  StepBeginLine, StepEndLine),
     nw_line_inside_yw_line_range(ActivationLine, StepBeginLine, StepEndLine).
 
 nw_line_inside_yw_line_range(Line, RangeStart, RangeEnd) :-
@@ -21,3 +21,13 @@ nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, Port
     nw_line_inside_yw_line_range(UsageLine, StepBeginLine, StepEndLine),
     nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
     nw_line_outside_yw_line_range(AssignmentLine, StepBeginLine, StepEndLine).
+
+:- table nw_variable_for_yw_out_port/5.
+nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, PortId, PortName) :-
+    yw_out_port(StepId, _, PortId, PortName, _, _),
+    yw_workflow_step(StepId, _,_,_, StepBeginLine, StepEndLine),
+    PortName = VariableName,
+    nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
+    nw_line_inside_yw_line_range(AssignmentLine, StepBeginLine, StepEndLine),
+    nw_variable_usage(_, _, VariableId, VariableName, _, UsageLine),
+    nw_line_outside_yw_line_range(UsageLine, StepBeginLine, StepEndLine).
