@@ -14,3 +14,8 @@ nw_activation_from_yw_step(2,'module.print',2,print_greeting,6).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
 %...................................................................................................
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, DataName).
+%...................................................................................................

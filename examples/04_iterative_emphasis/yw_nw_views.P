@@ -27,3 +27,15 @@ nw_variable_for_yw_in_port(43,greeting,'Back again!!!',8,emphasized_greeting,9,g
 %...................................................................................................
 nw_variable_for_yw_out_port(43,greeting,'Back again!!!',8,emphasized_greeting,8,greeting,2,emphasize_greeting).
 nw_variable_for_yw_out_port(23,greeting,'Goodbye World!',8,emphasized_greeting,8,greeting,2,emphasize_greeting).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, DataName).
+%...................................................................................................
+nw_variable_for_yw_data(43,greeting,'Back again!!!',8,emphasized_greeting).
+nw_variable_for_yw_data(23,greeting,'Goodbye World!',8,emphasized_greeting).
+nw_variable_for_yw_data(4,greeting,'Hello World',8,emphasized_greeting).
+nw_variable_for_yw_data(30,emphasis,!,6,provided_emphasis).
+nw_variable_for_yw_data(16,emphasis,!,6,provided_emphasis).
+nw_variable_for_yw_data(29,greeting,'Back again',5,provided_greeting).
+nw_variable_for_yw_data(15,greeting,'Goodbye World',5,provided_greeting).

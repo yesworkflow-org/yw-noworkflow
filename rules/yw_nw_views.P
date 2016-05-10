@@ -24,3 +24,9 @@ nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, Dat
     line_inside_range(AssignmentLine, StepBeginLine, StepEndLine),
     nw_variable_usage(_, _, VariableId, VariableName, _, UsageLine),
     line_outside_range(UsageLine, StepBeginLine, StepEndLine).
+
+:- table nw_variable_for_yw_data/5.
+nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, DataName) :-
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, _, _, _, _).
+nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, DataName) :-
+    nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, _, _, _, _).
