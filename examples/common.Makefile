@@ -1,5 +1,6 @@
 
 RULES_DIR = ../../rules
+RUN_SCRIPT = run.sh
 RUN_STDOUT = run_outputs.txt
 RUN_PRODUCTS =  ${RUN_STDOUT}
 YW_VIEWS = yw_views.P
@@ -27,8 +28,8 @@ dots: ${DOTS}
 png: ${PNGS}
 pdf: ${PDFS}
 
-${RUN_PRODUCTS}: ${WORKFLOW_SCRIPT}
-	now run -e Tracer ${WORKFLOW_SCRIPT} > ${RUN_STDOUT}
+${RUN_PRODUCTS}: ${RUN_SCRIPT} ${WORKFLOW_SCRIPT}
+	bash -l ${RUN_SCRIPT} > ${RUN_STDOUT}
 
 ${YW_VIEWS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
 	mkdir -p facts
