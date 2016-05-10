@@ -1,16 +1,9 @@
+
+:- table nw_activation_from_yw_step/5.
 nw_activation_from_yw_step(ActivationId, FunctionName, ActivationLine, StepId, StepName) :-
     nw_function_activation(ActivationId, FunctionName, ActivationLine, _),
     yw_workflow_step(StepId, StepName, _, _,  StepBeginLine, StepEndLine),
-    nw_line_inside_yw_line_range(ActivationLine, StepBeginLine, StepEndLine).
-
-nw_line_inside_yw_line_range(Line, RangeStart, RangeEnd) :-
-    Line >= RangeStart,
-    Line =< RangeEnd.
-
-nw_line_outside_yw_line_range(Line, RangeStart, _) :-
-    Line < RangeStart.
-nw_line_outside_yw_line_range(Line, _, RangeEnd) :-
-    Line > RangeEnd.
+    line_inside_range(ActivationLine, StepBeginLine, StepEndLine).
 
 :- table nw_variable_for_yw_in_port/5.
 nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, PortName) :-
@@ -18,9 +11,9 @@ nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, Port
     yw_workflow_step(StepId, _,_,_, StepBeginLine, StepEndLine),
     PortName = VariableName,
     nw_variable_usage(_, _, VariableId, VariableName, _, UsageLine),
-    nw_line_inside_yw_line_range(UsageLine, StepBeginLine, StepEndLine),
+    line_inside_range(UsageLine, StepBeginLine, StepEndLine),
     nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
-    nw_line_outside_yw_line_range(AssignmentLine, StepBeginLine, StepEndLine).
+    line_outside_range(AssignmentLine, StepBeginLine, StepEndLine).
 
 :- table nw_variable_for_yw_out_port/5.
 nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, PortId, PortName) :-
@@ -28,6 +21,6 @@ nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, PortId, Por
     yw_workflow_step(StepId, _,_,_, StepBeginLine, StepEndLine),
     PortName = VariableName,
     nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
-    nw_line_inside_yw_line_range(AssignmentLine, StepBeginLine, StepEndLine),
+    line_inside_range(AssignmentLine, StepBeginLine, StepEndLine),
     nw_variable_usage(_, _, VariableId, VariableName, _, UsageLine),
-    nw_line_outside_yw_line_range(UsageLine, StepBeginLine, StepEndLine).
+    line_outside_range(UsageLine, StepBeginLine, StepEndLine).

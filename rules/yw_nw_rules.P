@@ -1,0 +1,9 @@
+
+line_inside_range(Line, RangeStart, RangeEnd) :-
+    Line >= RangeStart,
+    Line =< RangeEnd.
+
+line_outside_range(Line, RangeStart, _) :-
+    Line < RangeStart.
+line_outside_range(Line, _, RangeEnd) :-
+    Line > RangeEnd.

@@ -6,7 +6,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 ['facts/nw_facts'].
 ['../../rules/general_rules'].
-['../../rules/nw_view_rules'].
+['../../rules/nw_views'].
 
 set_prolog_flag(unknown, fail).
 
