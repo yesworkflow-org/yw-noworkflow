@@ -4,8 +4,8 @@
 
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
-[yw_extract_facts].
-[yw_model_facts].
+['facts/yw_extract_facts'].
+['facts/yw_model_facts'].
 ['../../rules/general_rules'].
 ['../../rules/yw_view_rules'].
 

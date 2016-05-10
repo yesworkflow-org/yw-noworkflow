@@ -8,7 +8,7 @@ YW_NW_VIEWS = yw_nw_views.P
 RULES = ${RULES_DIR}/nw_view_rules.P ${RULES_DIR}/yw_view_rules.P ${RULES_DIR}/yw_nw_view_rules.P
 QUERY_SCRIPT = query.sh
 QUERY_OUTPUTS = query_outputs.txt
-NW_FACTS = nw_facts.P
+NW_FACTS = facts/nw_facts.P
 
 WORKFLOW_GRAPH = workflow_graph
 DOTS = ${WORKFLOW_GRAPH}.gv
@@ -31,11 +31,12 @@ ${RUN_PRODUCTS}: ${WORKFLOW_SCRIPT}
 	now run -e Tracer ${WORKFLOW_SCRIPT} > ${RUN_STDOUT}
 
 ${YW_VIEWS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
+	mkdir -p facts
 	bash -lc "yw graph ${WORKFLOW_SCRIPT} > ${WORKFLOW_GRAPH}.gv"
 	${RULES_DIR}/materialize_yw_views.sh > ${YW_VIEWS}
-	rm -f yw_extract_facts.* yw_model_facts.*
 
 ${NW_FACTS}: ${RUN_PRODUCTS}
+	mkdir -p facts
 	now export -t -m dependency | grep -v 'environment(' > ${NW_FACTS}
 	${RULES_DIR}/materialize_nw_views.sh &> ${NW_VIEWS}
 
@@ -53,4 +54,4 @@ ${PDFS}: ${WORKFLOW_GRAPH}.gv
 
 clean:
 	rm -f *.xwam *.gv *.png *.pdf *.P *.txt ${RULES_DIR}/*.xwam
-	rm -rf .noworkflow
+	rm -rf facts .noworkflow

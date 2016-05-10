@@ -1,0 +1,115 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+
+/* Nodes representing atomic programs in workflow */
+load_screening_results [label="load_screening_results"];
+calculate_strategy [label="calculate_strategy"];
+collect_data_set [label="collect_data_set"];
+transform_images [label="transform_images"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+corrected_image [shape=record rankdir=LR label="{<f0> corrected_image |<f1> file\:data\/DRT240\/DRT240_11000eV_002.img }"];
+sample_spreadsheet [shape=record rankdir=LR label="{<f0> sample_spreadsheet |<f1> file\:cassette_q55_spreadsheet.csv}"];
+raw_image [shape=record rankdir=LR label="{<f0> raw_image |<f1> file\:run/raw/q55/DRT240\/11000\/image_002.raw}"];
+calibration_image [shape=record rankdir=LR label="{<f0> calibration_image |<f1> file\:calibration.img}"];
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+sample_name [label="sample_name = DRT240"];
+sample_quality [label="sample_quality = 45"];
+accepted_sample [label="accepted_sample = DRT240"];
+sample_id [label="sample_id = DRT240"];
+energies [label="energies = [10000,11000,12000]"];
+energy [label="energy = 11000"];
+frame_number [label="frame_number = 2"]
+sample_score_cutoff [label="sample_score_cutoff = 12"];
+cassette_id [label="cassette_id = q55"];
+data_redundancy [label="data_redundancy = 0"];
+num_images [label="num_images = 2"];
+
+/* Edges representing connections between programs and channels */
+load_screening_results -> sample_name
+load_screening_results -> sample_quality
+cassette_id -> load_screening_results
+sample_spreadsheet -> load_screening_results
+calculate_strategy -> accepted_sample
+calculate_strategy -> num_images
+calculate_strategy -> energies
+sample_score_cutoff -> calculate_strategy
+data_redundancy -> calculate_strategy
+sample_name -> calculate_strategy
+sample_quality -> calculate_strategy
+collect_data_set -> sample_id
+collect_data_set -> energy
+collect_data_set -> frame_number
+collect_data_set -> raw_image
+cassette_id -> collect_data_set
+num_images -> collect_data_set
+accepted_sample -> collect_data_set
+energies -> collect_data_set
+transform_images -> corrected_image
+sample_id -> transform_images
+energy -> transform_images
+frame_number -> transform_images
+raw_image -> transform_images
+calibration_image -> transform_images
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Hidden double-cluster for grouping workflow input ports */
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+cassette_id_input_port [label=""]
+sample_score_cutoff_input_port [label=""]
+data_redundancy_input_port [label=""]
+sample_spreadsheet_input_port [label=""]
+calibration_image_input_port [label=""]
+
+/* End of double-cluster for grouping workflow input ports */
+}}
+
+/* Hidden double-cluster for grouping workflow output ports */
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+corrected_image_output_port [label=""]
+
+/* End of double-cluster for grouping workflow output ports */
+}}
+
+/* Edges from input ports to channels */
+cassette_id_input_port -> cassette_id
+sample_score_cutoff_input_port -> sample_score_cutoff
+data_redundancy_input_port -> data_redundancy
+sample_spreadsheet_input_port -> sample_spreadsheet
+calibration_image_input_port -> calibration_image
+
+/* Edges from channels to output ports */
+corrected_image -> corrected_image_output_port
+
+/* End of top-level graph */
+}

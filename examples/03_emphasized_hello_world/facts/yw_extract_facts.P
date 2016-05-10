@@ -1,0 +1,35 @@
+
+% FACT: extract_source(source_id, source_path).
+extract_source(1, 'emphasized_hello_world.py').
+
+% FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value).
+annotation(1, 1, 1, 'begin', '@begin', 'EmphasizedHelloWorld').
+annotation(2, 1, 1, 'desc', '@desc', 'Display one or more greetings to the user.').
+annotation(3, 1, 2, 'in', '@in', 'provided_greeting').
+annotation(4, 1, 3, 'out', '@out', 'displayed_greeting').
+annotation(5, 1, 3, 'desc', '@desc', 'Greeting displayed to user.').
+annotation(6, 1, 7, 'begin', '@begin', 'emphasize_greeting').
+annotation(7, 1, 7, 'desc', '@desc', 'Add emphasis to the provided greeting').
+annotation(8, 1, 8, 'in', '@in', 'provided_greeting').
+annotation(9, 1, 9, 'out', '@out', 'greeting').
+annotation(10, 1, 9, 'as', '@as', 'modified_greeting').
+annotation(11, 1, 11, 'end', '@end', 'emphasize_greeting').
+annotation(12, 1, 13, 'begin', '@begin', 'print_greeting').
+annotation(13, 1, 13, 'desc', '@desc', 'Greet the user with the emphasized message.').
+annotation(14, 1, 14, 'in', '@in', 'greeting').
+annotation(15, 1, 14, 'as', '@as', 'modified_greeting').
+annotation(16, 1, 15, 'out', '@out', 'greeting').
+annotation(17, 1, 15, 'as', '@as', 'displayed_greeting').
+annotation(18, 1, 15, 'file', '@file', 'stream:stdout').
+annotation(19, 1, 17, 'end', '@end', 'print_greeting').
+annotation(20, 1, 19, 'end', '@end', 'EmphasizedHelloWorld').
+
+% FACT: annotation_qualifies(qualifying_annotation_id, primary_annotation_id).
+annotation_qualifies(2, 1).
+annotation_qualifies(5, 4).
+annotation_qualifies(7, 6).
+annotation_qualifies(10, 9).
+annotation_qualifies(13, 12).
+annotation_qualifies(15, 14).
+annotation_qualifies(17, 16).
+annotation_qualifies(18, 16).
