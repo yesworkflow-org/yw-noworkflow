@@ -1,6 +1,6 @@
 
 :- table nw_activation_from_yw_step/5.
-nw_activation_from_yw_step(ActivationId, FunctionName, ActivationLine, StepId, StepName) :-
+nw_activation_from_yw_step(ActivationId, FunctionName, StepId, StepName, ActivationLine) :-
     nw_function_activation(ActivationId, FunctionName, ActivationLine, _),
     yw_workflow_step(StepId, StepName, _, _,  StepBeginLine, StepEndLine),
     line_inside_range(ActivationLine, StepBeginLine, StepEndLine).
