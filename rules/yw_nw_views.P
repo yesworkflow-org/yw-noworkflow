@@ -5,20 +5,20 @@ nw_activation_from_yw_step(ActivationId, FunctionName, StepId, StepName, Activat
     yw_workflow_step(StepId, StepName, _, _,  StepBeginLine, StepEndLine),
     line_inside_range(ActivationLine, StepBeginLine, StepEndLine).
 
-:- table nw_variable_for_yw_in_port/5.
-nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, PortName) :-
-    yw_in_port(StepId, _, PortId, PortName, _, _),
-    yw_workflow_step(StepId, _,_,_, StepBeginLine, StepEndLine),
+m:- table nw_variable_for_yw_in_port/9.
+nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+    yw_in_port(StepId, _, PortId, PortName, DataId, DataName),
+    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
     PortName = VariableName,
     nw_variable_usage(_, _, VariableId, VariableName, _, UsageLine),
     line_inside_range(UsageLine, StepBeginLine, StepEndLine),
     nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
     line_outside_range(AssignmentLine, StepBeginLine, StepEndLine).
 
-:- table nw_variable_for_yw_out_port/5.
-nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, PortId, PortName) :-
-    yw_out_port(StepId, _, PortId, PortName, _, _),
-    yw_workflow_step(StepId, _,_,_, StepBeginLine, StepEndLine),
+:- table nw_variable_for_yw_out_port/9.
+nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+    yw_out_port(StepId, _, PortId, PortName, DataId, DataName),
+    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
     PortName = VariableName,
     nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
     line_inside_range(AssignmentLine, StepBeginLine, StepEndLine),

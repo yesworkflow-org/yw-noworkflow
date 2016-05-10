@@ -135,8 +135,8 @@ banner( 'YW_NW_Q1',
 [user].
 :- table yw_nw_q1/3.
 yw_nw_q1(VariableId, VariableName, VariableValue) :-
-    yw_flow(_, _, _, _, _, 'emphasized_greeting', SinkPortId, _, _, 'print_greeting'),
-    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, SinkPortId, _).
+    yw_flow(_, _, _, _, _, 'emphasized_greeting', PortId, _, _, 'print_greeting'),
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, PortId, _, _, _).
 
 end_of_file.
 printall(yw_nw_q1(_,_,_)).
@@ -151,7 +151,7 @@ printall(yw_nw_q1(_,_,_)).
 %:- table yw_nw_q1/3.
 %yw_nw_q1(VariableValue) :-
 %    yw_out_port(_, 'print_greeting', PortId, _, _, 'displayed_greeting'),
-%    nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, PortId, _).
+%    nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, _, _, PortId, _, _, _).
 %
 %end_of_file.
 %printall(yw_nw_q1(_,_,_)).

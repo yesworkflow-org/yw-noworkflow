@@ -130,7 +130,7 @@ banner( 'YW_NW_Q1',
 :- table yw_nw_q1/3.
 yw_nw_q1(VariableId,VariableName,VariableValue) :-
     yw_in_port(_, _, PortId, _, _, 'custom_greeting'),
-    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, _).
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, PortId, _, _, _).
 end_of_file.
 printall(yw_nw_q1(_,_,_)).
 %-------------------------------------------------------------------------------

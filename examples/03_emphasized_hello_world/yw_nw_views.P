@@ -9,19 +9,19 @@ nw_activation_from_yw_step(3,'module.print',3,print_greeting,16).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, PortName).
+% FACT: nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
 %...................................................................................................
-nw_variable_for_yw_in_port(23,greeting,'Back again!!',5,greeting).
-nw_variable_for_yw_in_port(16,greeting,'Goodbye World!!',5,greeting).
-nw_variable_for_yw_in_port(6,greeting,'Hello World!!',5,greeting).
-nw_variable_for_yw_in_port(22,provided_greeting,'Back again',3,provided_greeting).
-nw_variable_for_yw_in_port(14,provided_greeting,'Goodbye World',3,provided_greeting).
-nw_variable_for_yw_in_port(4,provided_greeting,'Hello World',3,provided_greeting).
+nw_variable_for_yw_in_port(4,provided_greeting,'Hello World',3,provided_greeting,3,provided_greeting,2,emphasize_greeting).
+nw_variable_for_yw_in_port(14,provided_greeting,'Goodbye World',3,provided_greeting,3,provided_greeting,2,emphasize_greeting).
+nw_variable_for_yw_in_port(22,provided_greeting,'Back again',3,provided_greeting,3,provided_greeting,2,emphasize_greeting).
+nw_variable_for_yw_in_port(6,greeting,'Hello World!!',4,modified_greeting,5,greeting,3,print_greeting).
+nw_variable_for_yw_in_port(16,greeting,'Goodbye World!!',4,modified_greeting,5,greeting,3,print_greeting).
+nw_variable_for_yw_in_port(23,greeting,'Back again!!',4,modified_greeting,5,greeting,3,print_greeting).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, PortId, PortName).
+% FACT: nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
 %...................................................................................................
-nw_variable_for_yw_out_port(23,greeting,'Back again!!',4,greeting).
-nw_variable_for_yw_out_port(16,greeting,'Goodbye World!!',4,greeting).
-nw_variable_for_yw_out_port(6,greeting,'Hello World!!',4,greeting).
+nw_variable_for_yw_out_port(23,greeting,'Back again!!',4,modified_greeting,4,greeting,2,emphasize_greeting).
+nw_variable_for_yw_out_port(16,greeting,'Goodbye World!!',4,modified_greeting,4,greeting,2,emphasize_greeting).
+nw_variable_for_yw_out_port(6,greeting,'Hello World!!',4,modified_greeting,4,greeting,2,emphasize_greeting).

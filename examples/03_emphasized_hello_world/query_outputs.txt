@@ -71,6 +71,6 @@ YW_NW_Q1 : What Python variables carries values of modified_greeting into the pr
 
 yw_nw_q1(VariableId, VariableName, VariableValue)
 ...................................................................................................
-yw_nw_q1(6,greeting,'Hello World!!').
-yw_nw_q1(16,greeting,'Goodbye World!!').
 yw_nw_q1(23,greeting,'Back again!!').
+yw_nw_q1(16,greeting,'Goodbye World!!').
+yw_nw_q1(6,greeting,'Hello World!!').

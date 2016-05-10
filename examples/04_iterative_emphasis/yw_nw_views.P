@@ -9,19 +9,21 @@ nw_activation_from_yw_step(3,'module.print',3,print_greeting,22).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, PortName).
+% FACT: nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
 %...................................................................................................
-nw_variable_for_yw_in_port(43,greeting,'Back again!!!',9,greeting).
-nw_variable_for_yw_in_port(23,greeting,'Goodbye World!',9,greeting).
-nw_variable_for_yw_in_port(4,greeting,'Hello World',9,greeting).
-nw_variable_for_yw_in_port(30,emphasis,!,6,emphasis).
-nw_variable_for_yw_in_port(16,emphasis,!,6,emphasis).
-nw_variable_for_yw_in_port(29,greeting,'Back again',5,greeting).
-nw_variable_for_yw_in_port(15,greeting,'Goodbye World',5,greeting).
+nw_variable_for_yw_in_port(15,greeting,'Goodbye World',5,provided_greeting,5,greeting,2,emphasize_greeting).
+nw_variable_for_yw_in_port(29,greeting,'Back again',5,provided_greeting,5,greeting,2,emphasize_greeting).
+nw_variable_for_yw_in_port(16,emphasis,!,6,provided_emphasis,6,emphasis,2,emphasize_greeting).
+nw_variable_for_yw_in_port(30,emphasis,!,6,provided_emphasis,6,emphasis,2,emphasize_greeting).
+nw_variable_for_yw_in_port(30,emphasis,!,6,provided_emphasis,6,emphasis,2,emphasize_greeting).
+nw_variable_for_yw_in_port(30,emphasis,!,6,provided_emphasis,6,emphasis,2,emphasize_greeting).
+nw_variable_for_yw_in_port(4,greeting,'Hello World',8,emphasized_greeting,9,greeting,3,print_greeting).
+nw_variable_for_yw_in_port(23,greeting,'Goodbye World!',8,emphasized_greeting,9,greeting,3,print_greeting).
+nw_variable_for_yw_in_port(43,greeting,'Back again!!!',8,emphasized_greeting,9,greeting,3,print_greeting).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, PortId, PortName).
+% FACT: nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
 %...................................................................................................
-nw_variable_for_yw_out_port(43,greeting,'Back again!!!',8,greeting).
-nw_variable_for_yw_out_port(23,greeting,'Goodbye World!',8,greeting).
+nw_variable_for_yw_out_port(43,greeting,'Back again!!!',8,emphasized_greeting,8,greeting,2,emphasize_greeting).
+nw_variable_for_yw_out_port(23,greeting,'Goodbye World!',8,emphasized_greeting,8,greeting,2,emphasize_greeting).
