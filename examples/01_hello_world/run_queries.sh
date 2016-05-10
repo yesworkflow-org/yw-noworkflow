@@ -3,9 +3,9 @@
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 ['../../rules/general_rules'].
-['../../rules/yw_nw_rules'].
 [yw_views].
 [nw_views].
+[yw_nw_views].
 
 set_prolog_flag(unknown, fail).
 
