@@ -6,7 +6,7 @@ YW_VIEWS = yw_views.P
 NW_VIEWS = nw_views.P
 YW_NW_VIEWS = yw_nw_views.P
 RULES = ${RULES_DIR}/nw_view_rules.P ${RULES_DIR}/yw_view_rules.P ${RULES_DIR}/yw_nw_view_rules.P
-QUERY_SCRIPT = run_queries.sh
+QUERY_SCRIPT = query.sh
 QUERY_OUTPUTS = query_outputs.txt
 NW_FACTS = nw_facts.P
 
@@ -43,7 +43,7 @@ ${YW_NW_VIEWS}: ${YW_VIEWS} ${NW_VIEWS}
 	${RULES_DIR}/materialize_yw_nw_views.sh &> ${YW_NW_VIEWS}
 
 ${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_VIEWS} ${NW_FACTS} ${YW_NW_VIEWS} ${RULES}
-	./run_queries.sh &> ${QUERY_OUTPUTS}
+	bash -l ${QUERY_SCRIPT}  &> ${QUERY_OUTPUTS}
 
 ${PNGS}: ${WORKFLOW_GRAPH}.gv
 	dot -Tpng ${WORKFLOW_GRAPH}.gv -o ${WORKFLOW_GRAPH}.png
