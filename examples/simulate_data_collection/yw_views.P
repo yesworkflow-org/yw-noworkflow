@@ -1,0 +1,210 @@
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_source_file(SourceId, SourceFile).
+%...................................................................................................
+yw_source_file(1,'simulate_data_collection.py').
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_workflow_script(WorkflowId, WorkflowName, SourceId, SourceFile).
+%...................................................................................................
+yw_workflow_script(1,simulate_data_collection,1,'simulate_data_collection.py').
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).
+%...................................................................................................
+yw_workflow(1,simulate_data_collection,nil,1,12,154).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_workflow_step(StepId, StepName, WorkflowId, SourceId, BeginLine, EndLine).
+%...................................................................................................
+yw_workflow_step(2,initialize_run,1,1,32,45).
+yw_workflow_step(3,load_screening_results,1,1,49,59).
+yw_workflow_step(4,calculate_strategy,1,1,63,75).
+yw_workflow_step(5,log_rejected_sample,1,1,79,90).
+yw_workflow_step(6,collect_data_set,1,1,94,112).
+yw_workflow_step(7,transform_images,1,1,116,132).
+yw_workflow_step(8,log_average_image_intensity,1,1,136,150).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_function(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, EndLine).
+%...................................................................................................
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_in_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).
+%...................................................................................................
+yw_in_port(1,simulate_data_collection,4,sample_spreadsheet,4,sample_spreadsheet).
+yw_in_port(1,simulate_data_collection,5,calibration_image,5,calibration_image).
+yw_in_port(3,load_screening_results,12,sample_spreadsheet,12,sample_spreadsheet).
+yw_in_port(7,transform_images,37,raw_image_path,25,raw_image).
+yw_in_port(7,transform_images,38,calibration_image,26,calibration_image).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_out_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).
+%...................................................................................................
+yw_out_port(1,simulate_data_collection,6,corrected_image,6,corrected_image).
+yw_out_port(1,simulate_data_collection,7,run_log,7,run_log).
+yw_out_port(1,simulate_data_collection,8,collection_log,8,collection_log).
+yw_out_port(1,simulate_data_collection,9,rejection_log,9,rejection_log).
+yw_out_port(2,initialize_run,10,run_log,10,run_log).
+yw_out_port(3,load_screening_results,13,sample_name,13,sample_name).
+yw_out_port(3,load_screening_results,14,sample_quality,14,sample_quality).
+yw_out_port(4,calculate_strategy,19,accepted_sample,17,accepted_sample).
+yw_out_port(4,calculate_strategy,20,rejected_sample,18,rejected_sample).
+yw_out_port(4,calculate_strategy,21,num_images,19,num_images).
+yw_out_port(4,calculate_strategy,22,energies,20,energies).
+yw_out_port(5,log_rejected_sample,25,rejection_log,21,rejection_log).
+yw_out_port(6,collect_data_set,30,sample_id,22,sample_id).
+yw_out_port(6,collect_data_set,31,energy,23,energy).
+yw_out_port(6,collect_data_set,32,frame_number,24,frame_number).
+yw_out_port(6,collect_data_set,33,raw_image_path,25,raw_image).
+yw_out_port(7,transform_images,39,corrected_image,27,corrected_image).
+yw_out_port(7,transform_images,40,corrected_image_path,28,corrected_image_path).
+yw_out_port(7,transform_images,41,total_intensity,29,total_intensity).
+yw_out_port(7,transform_images,42,pixel_count,30,pixel_count).
+yw_out_port(8,log_average_image_intensity,49,collection_log,31,collection_log).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName).
+%...................................................................................................
+yw_inflow(1,simulate_data_collection,12,sample_spreadsheet,3,load_screening_results).
+yw_inflow(1,simulate_data_collection,26,calibration_image,7,transform_images).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName).
+%...................................................................................................
+yw_flow(6,collect_data_set,33,raw_image_path,25,raw_image,37,raw_image_path,7,transform_images).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).
+%...................................................................................................
+yw_outflow(2,initialize_run,10,run_log,1,simulate_data_collection).
+yw_outflow(5,log_rejected_sample,21,rejection_log,1,simulate_data_collection).
+yw_outflow(7,transform_images,27,corrected_image,1,simulate_data_collection).
+yw_outflow(8,log_average_image_intensity,31,collection_log,1,simulate_data_collection).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_qualified_name(EntityType, Id, QualifiedName).
+%...................................................................................................
+yw_qualified_name(program,1,simulate_data_collection).
+yw_qualified_name(program,2,'simulate_data_collection.initialize_run').
+yw_qualified_name(program,3,'simulate_data_collection.load_screening_results').
+yw_qualified_name(program,4,'simulate_data_collection.calculate_strategy').
+yw_qualified_name(program,5,'simulate_data_collection.log_rejected_sample').
+yw_qualified_name(program,6,'simulate_data_collection.collect_data_set').
+yw_qualified_name(program,7,'simulate_data_collection.transform_images').
+yw_qualified_name(program,8,'simulate_data_collection.log_average_image_intensity').
+yw_qualified_name(port,1,'simulate_data_collection<-cassette_id').
+yw_qualified_name(port,2,'simulate_data_collection<-sample_score_cutoff').
+yw_qualified_name(port,3,'simulate_data_collection<-data_redundancy').
+yw_qualified_name(port,4,'simulate_data_collection<-sample_spreadsheet').
+yw_qualified_name(port,5,'simulate_data_collection<-calibration_image').
+yw_qualified_name(port,6,'simulate_data_collection->corrected_image').
+yw_qualified_name(port,7,'simulate_data_collection->run_log').
+yw_qualified_name(port,8,'simulate_data_collection->collection_log').
+yw_qualified_name(port,9,'simulate_data_collection->rejection_log').
+yw_qualified_name(port,10,'simulate_data_collection.initialize_run->run_log').
+yw_qualified_name(port,11,'simulate_data_collection.load_screening_results<-cassette_id').
+yw_qualified_name(port,12,'simulate_data_collection.load_screening_results<-sample_spreadsheet').
+yw_qualified_name(port,13,'simulate_data_collection.load_screening_results->sample_name').
+yw_qualified_name(port,14,'simulate_data_collection.load_screening_results->sample_quality').
+yw_qualified_name(port,15,'simulate_data_collection.calculate_strategy<-sample_score_cutoff').
+yw_qualified_name(port,16,'simulate_data_collection.calculate_strategy<-data_redundancy').
+yw_qualified_name(port,17,'simulate_data_collection.calculate_strategy<-sample_name').
+yw_qualified_name(port,18,'simulate_data_collection.calculate_strategy<-sample_quality').
+yw_qualified_name(port,19,'simulate_data_collection.calculate_strategy->accepted_sample').
+yw_qualified_name(port,20,'simulate_data_collection.calculate_strategy->rejected_sample').
+yw_qualified_name(port,21,'simulate_data_collection.calculate_strategy->num_images').
+yw_qualified_name(port,22,'simulate_data_collection.calculate_strategy->energies').
+yw_qualified_name(port,23,'simulate_data_collection.log_rejected_sample<-cassette_id').
+yw_qualified_name(port,24,'simulate_data_collection.log_rejected_sample<-rejected_sample').
+yw_qualified_name(port,25,'simulate_data_collection.log_rejected_sample->rejection_log').
+yw_qualified_name(port,26,'simulate_data_collection.collect_data_set<-cassette_id').
+yw_qualified_name(port,27,'simulate_data_collection.collect_data_set<-num_images').
+yw_qualified_name(port,28,'simulate_data_collection.collect_data_set<-accepted_sample').
+yw_qualified_name(port,29,'simulate_data_collection.collect_data_set<-energies').
+yw_qualified_name(port,30,'simulate_data_collection.collect_data_set->sample_id').
+yw_qualified_name(port,31,'simulate_data_collection.collect_data_set->energy').
+yw_qualified_name(port,32,'simulate_data_collection.collect_data_set->frame_number').
+yw_qualified_name(port,33,'simulate_data_collection.collect_data_set->raw_image_path').
+yw_qualified_name(port,34,'simulate_data_collection.transform_images<-sample_id').
+yw_qualified_name(port,35,'simulate_data_collection.transform_images<-energy').
+yw_qualified_name(port,36,'simulate_data_collection.transform_images<-frame_number').
+yw_qualified_name(port,37,'simulate_data_collection.transform_images<-raw_image_path').
+yw_qualified_name(port,38,'simulate_data_collection.transform_images<-calibration_image').
+yw_qualified_name(port,39,'simulate_data_collection.transform_images->corrected_image').
+yw_qualified_name(port,40,'simulate_data_collection.transform_images->corrected_image_path').
+yw_qualified_name(port,41,'simulate_data_collection.transform_images->total_intensity').
+yw_qualified_name(port,42,'simulate_data_collection.transform_images->pixel_count').
+yw_qualified_name(port,43,'simulate_data_collection.log_average_image_intensity<-cassette_id').
+yw_qualified_name(port,44,'simulate_data_collection.log_average_image_intensity<-sample_id').
+yw_qualified_name(port,45,'simulate_data_collection.log_average_image_intensity<-frame_number').
+yw_qualified_name(port,46,'simulate_data_collection.log_average_image_intensity<-corrected_image_path').
+yw_qualified_name(port,47,'simulate_data_collection.log_average_image_intensity<-total_intensity').
+yw_qualified_name(port,48,'simulate_data_collection.log_average_image_intensity<-pixel_count').
+yw_qualified_name(port,49,'simulate_data_collection.log_average_image_intensity->collection_log').
+yw_qualified_name(data,1,'[cassette_id]').
+yw_qualified_name(data,2,'[sample_score_cutoff]').
+yw_qualified_name(data,3,'[data_redundancy]').
+yw_qualified_name(data,4,'[sample_spreadsheet]').
+yw_qualified_name(data,5,'[calibration_image]').
+yw_qualified_name(data,6,'[corrected_image]').
+yw_qualified_name(data,7,'[run_log]').
+yw_qualified_name(data,8,'[collection_log]').
+yw_qualified_name(data,9,'[rejection_log]').
+yw_qualified_name(data,10,'simulate_data_collection[run_log]').
+yw_qualified_name(data,11,'simulate_data_collection[cassette_id]').
+yw_qualified_name(data,12,'simulate_data_collection[sample_spreadsheet]').
+yw_qualified_name(data,13,'simulate_data_collection[sample_name]').
+yw_qualified_name(data,14,'simulate_data_collection[sample_quality]').
+yw_qualified_name(data,15,'simulate_data_collection[sample_score_cutoff]').
+yw_qualified_name(data,16,'simulate_data_collection[data_redundancy]').
+yw_qualified_name(data,17,'simulate_data_collection[accepted_sample]').
+yw_qualified_name(data,18,'simulate_data_collection[rejected_sample]').
+yw_qualified_name(data,19,'simulate_data_collection[num_images]').
+yw_qualified_name(data,20,'simulate_data_collection[energies]').
+yw_qualified_name(data,21,'simulate_data_collection[rejection_log]').
+yw_qualified_name(data,22,'simulate_data_collection[sample_id]').
+yw_qualified_name(data,23,'simulate_data_collection[energy]').
+yw_qualified_name(data,24,'simulate_data_collection[frame_number]').
+yw_qualified_name(data,25,'simulate_data_collection[raw_image]').
+yw_qualified_name(data,26,'simulate_data_collection[calibration_image]').
+yw_qualified_name(data,27,'simulate_data_collection[corrected_image]').
+yw_qualified_name(data,28,'simulate_data_collection[corrected_image_path]').
+yw_qualified_name(data,29,'simulate_data_collection[total_intensity]').
+yw_qualified_name(data,30,'simulate_data_collection[pixel_count]').
+yw_qualified_name(data,31,'simulate_data_collection[collection_log]').
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: yw_description(EntityType, Id, Name, Description)).
+%...................................................................................................
+yw_description(program,1,simulate_data_collection,'Workflow for collecting diffraction data from high quality crystals in a cassette.').
+yw_description(program,2,initialize_run,'Create run directory and initialize log files.').
+yw_description(program,3,load_screening_results,'Load sample information from spreadsheet.').
+yw_description(program,4,calculate_strategy,'Reject unsuitable crystals and compute 
+ best data sets to collect for accepted crystals.').
+yw_description(program,5,log_rejected_sample,'Record which samples were rejected.').
+yw_description(program,6,collect_data_set,'Collect data set using the given data collection parameters.').
+yw_description(program,7,transform_images,'Correct raw image using the detector calibration image.').
+yw_description(program,8,log_average_image_intensity,'Record statistics about each diffraction image.').
+yw_description(port,1,cassette_id,'The unique ID of the cassette containing the crystals.').
+yw_description(port,2,sample_score_cutoff,'The minimum quality score required of crystals.').
+yw_description(port,3,data_redundancy,'The desired redundancy of the data sets collected.').
+yw_description(port,4,sample_spreadsheet,'CSV file giving quality score for each crystal.').
+yw_description(port,5,calibration_image,'File used to correct raw diffraction images.').
+yw_description(port,6,corrected_image,'The corrected diffraction images collected on all crystals.').
+yw_description(port,30,sample_id,'The crystal that the diffraction image was collected from.').
+yw_description(port,31,energy,'Energy (in eV) at which the diffraction image was collected.').
+yw_description(port,32,frame_number,'Index of diffraction image within data set.').
+yw_description(port,33,raw_image_path,'Path of file storing the raw diffraction image.').

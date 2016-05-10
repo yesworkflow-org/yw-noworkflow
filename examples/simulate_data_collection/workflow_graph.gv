@@ -3,6 +3,10 @@
 digraph Workflow {
 rankdir=TB
 
+/* Title for graph */
+fontname=Courier; fontsize=18; labelloc=t
+label=simulate_data_collection
+
 /* Start of double cluster for drawing box around nodes in workflow */
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; color=white
@@ -11,48 +15,63 @@ subgraph cluster_workflow_box_inner { label=""; color=white
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
 
 /* Nodes representing atomic programs in workflow */
-load_screening_results [label="load_screening_results"];
-calculate_strategy [label="calculate_strategy"];
-collect_data_set [label="collect_data_set"];
-transform_images [label="transform_images"];
+initialize_run
+load_screening_results
+calculate_strategy
+log_rejected_sample
+collect_data_set
+transform_images
+log_average_image_intensity
 
 /* Style for nodes representing non-parameter data channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
 
 /* Nodes for non-parameter data channels in workflow */
-corrected_image [shape=record rankdir=LR label="{<f0> corrected_image |<f1> file\:data\/DRT240\/DRT240_11000eV_002.img }"];
-sample_spreadsheet [shape=record rankdir=LR label="{<f0> sample_spreadsheet |<f1> file\:cassette_q55_spreadsheet.csv}"];
-raw_image [shape=record rankdir=LR label="{<f0> raw_image |<f1> file\:run/raw/q55/DRT240\/11000\/image_002.raw}"];
+corrected_image [shape=record rankdir=LR label="{<f0> corrected_image |<f1> file\:run/data/\{sample_id\}/\{sample_id\}_\{energy\}eV_\{frame_number\}.img}"];
+run_log [shape=record rankdir=LR label="{<f0> run_log |<f1> file\:run/run_log.txt}"];
+collection_log [shape=record rankdir=LR label="{<f0> collection_log |<f1> file\:run/collected_images.csv}"];
+rejection_log [shape=record rankdir=LR label="{<f0> rejection_log |<f1> file\:run/rejected_samples.txt}"];
+sample_spreadsheet [shape=record rankdir=LR label="{<f0> sample_spreadsheet |<f1> file\:cassette_\{cassette_id\}_spreadsheet.csv}"];
+raw_image [shape=record rankdir=LR label="{<f0> raw_image |<f1> file\:run/raw/\{cassette_id\}/\{sample_id\}/e\{energy\}/image_\{frame_number\}.raw}"];
 calibration_image [shape=record rankdir=LR label="{<f0> calibration_image |<f1> file\:calibration.img}"];
 
 /* Style for nodes representing parameter channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
 
 /* Nodes representing parameter channels in workflow */
-sample_name [label="sample_name = DRT240"];
-sample_quality [label="sample_quality = 45"];
-accepted_sample [label="accepted_sample = DRT240"];
-sample_id [label="sample_id = DRT240"];
-energies [label="energies = [10000,11000,12000]"];
-energy [label="energy = 11000"];
-frame_number [label="frame_number = 2"]
-sample_score_cutoff [label="sample_score_cutoff = 12"];
-cassette_id [label="cassette_id = q55"];
-data_redundancy [label="data_redundancy = 0"];
-num_images [label="num_images = 2"];
+cassette_id
+sample_score_cutoff
+data_redundancy
+sample_name
+sample_quality
+rejected_sample
+num_images
+accepted_sample
+energies
+sample_id
+energy
+frame_number
+corrected_image_path
+total_intensity
+pixel_count
 
 /* Edges representing connections between programs and channels */
+initialize_run -> run_log
 load_screening_results -> sample_name
 load_screening_results -> sample_quality
 cassette_id -> load_screening_results
 sample_spreadsheet -> load_screening_results
 calculate_strategy -> accepted_sample
+calculate_strategy -> rejected_sample
 calculate_strategy -> num_images
 calculate_strategy -> energies
 sample_score_cutoff -> calculate_strategy
 data_redundancy -> calculate_strategy
 sample_name -> calculate_strategy
 sample_quality -> calculate_strategy
+log_rejected_sample -> rejection_log
+cassette_id -> log_rejected_sample
+rejected_sample -> log_rejected_sample
 collect_data_set -> sample_id
 collect_data_set -> energy
 collect_data_set -> frame_number
@@ -62,11 +81,21 @@ num_images -> collect_data_set
 accepted_sample -> collect_data_set
 energies -> collect_data_set
 transform_images -> corrected_image
+transform_images -> corrected_image_path
+transform_images -> total_intensity
+transform_images -> pixel_count
 sample_id -> transform_images
 energy -> transform_images
 frame_number -> transform_images
 raw_image -> transform_images
 calibration_image -> transform_images
+log_average_image_intensity -> collection_log
+cassette_id -> log_average_image_intensity
+sample_id -> log_average_image_intensity
+frame_number -> log_average_image_intensity
+corrected_image_path -> log_average_image_intensity
+total_intensity -> log_average_image_intensity
+pixel_count -> log_average_image_intensity
 
 /* End of double cluster for drawing box around nodes in workflow */
 }}
@@ -97,6 +126,9 @@ node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontn
 
 /* Nodes representing workflow output ports */
 corrected_image_output_port [label=""]
+run_log_output_port [label=""]
+collection_log_output_port [label=""]
+rejection_log_output_port [label=""]
 
 /* End of double-cluster for grouping workflow output ports */
 }}
@@ -110,6 +142,9 @@ calibration_image_input_port -> calibration_image
 
 /* Edges from channels to output ports */
 corrected_image -> corrected_image_output_port
+run_log -> run_log_output_port
+collection_log -> collection_log_output_port
+rejection_log -> rejection_log_output_port
 
 /* End of top-level graph */
 }
