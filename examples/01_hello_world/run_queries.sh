@@ -90,7 +90,7 @@ banner( 'YW_NW_Q1',
 [user].
 :- table yw_nw_q1/1.
 yw_nw_q1(FunctionName) :-
-    nw_activation_from_yw_step(_, 'print_greeting', _, FunctionName, _).
+    nw_activation_from_yw_step(_, FunctionName, _, _, 'print_greeting').
 end_of_file.
 printall(yw_nw_q1(_)).
 %-------------------------------------------------------------------------------

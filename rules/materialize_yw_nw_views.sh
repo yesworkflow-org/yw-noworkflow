@@ -11,7 +11,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 set_prolog_flag(unknown, fail).
 
-rule_banner('nw_activation_from_yw_step(StepId, StepName, ActivationId, FunctionName, ActivationLine).').
+rule_banner('nw_activation_from_yw_step(ActivationId, FunctionName, ActivationLine, StepId, StepName).').
 printall(nw_activation_from_yw_step(_,_,_,_,_)).
 
 rule_banner('nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, PortId, PortName).').

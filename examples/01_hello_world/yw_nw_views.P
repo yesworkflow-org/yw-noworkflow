@@ -1,9 +1,9 @@
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_activation_from_yw_step(StepId, StepName, ActivationId, FunctionName, ActivationLine).
+% FACT: nw_activation_from_yw_step(ActivationId, FunctionName, ActivationLine, StepId, StepName).
 %...................................................................................................
-nw_activation_from_yw_step(2,print_greeting,2,'module.print',6).
+nw_activation_from_yw_step(2,'module.print',6,2,print_greeting).
 
 
 %---------------------------------------------------------------------------------------------------

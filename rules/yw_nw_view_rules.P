@@ -1,4 +1,4 @@
-nw_activation_from_yw_step(StepId, StepName, ActivationId, FunctionName, ActivationLine) :-
+nw_activation_from_yw_step(ActivationId, FunctionName, ActivationLine, StepId, StepName) :-
     nw_function_activation(ActivationId, FunctionName, ActivationLine, _),
     yw_workflow_step(StepId, StepName, _, _,  StepBeginLine, StepEndLine),
     nw_line_inside_yw_line_range(ActivationLine, StepBeginLine, StepEndLine).
