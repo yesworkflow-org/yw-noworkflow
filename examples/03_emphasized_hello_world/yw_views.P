@@ -47,11 +47,11 @@ yw_step_input(3,print_greeting,in,5,greeting,4,modified_greeting).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: yw_out_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).
+% FACT: yw_step_output(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
-yw_out_port(1,'EmphasizedHelloWorld',2,displayed_greeting,2,displayed_greeting).
-yw_out_port(2,emphasize_greeting,4,greeting,4,modified_greeting).
-yw_out_port(3,print_greeting,6,greeting,5,displayed_greeting).
+yw_step_output(1,'EmphasizedHelloWorld',out,2,displayed_greeting,2,displayed_greeting).
+yw_step_output(2,emphasize_greeting,out,4,greeting,4,modified_greeting).
+yw_step_output(3,print_greeting,out,6,greeting,5,displayed_greeting).
 
 
 %---------------------------------------------------------------------------------------------------

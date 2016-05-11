@@ -36,7 +36,7 @@ nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, Data
 
 :- table nw_variable_for_yw_out_port/9.
 nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
-    yw_out_port(StepId, _, PortId, PortName, DataId, DataName),
+    yw_step_output(StepId, _, _, PortId, PortName, DataId, DataName),
     yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
     PortName = VariableName,
     nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),

@@ -82,29 +82,29 @@ yw_step_input(8,log_average_image_intensity,param,48,pixel_count,30,pixel_count)
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: yw_out_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).
+% FACT: yw_step_output(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
-yw_out_port(1,simulate_data_collection,6,corrected_image,6,corrected_image).
-yw_out_port(1,simulate_data_collection,7,run_log,7,run_log).
-yw_out_port(1,simulate_data_collection,8,collection_log,8,collection_log).
-yw_out_port(1,simulate_data_collection,9,rejection_log,9,rejection_log).
-yw_out_port(2,initialize_run,10,run_log,10,run_log).
-yw_out_port(3,load_screening_results,13,sample_name,13,sample_name).
-yw_out_port(3,load_screening_results,14,sample_quality,14,sample_quality).
-yw_out_port(4,calculate_strategy,19,accepted_sample,17,accepted_sample).
-yw_out_port(4,calculate_strategy,20,rejected_sample,18,rejected_sample).
-yw_out_port(4,calculate_strategy,21,num_images,19,num_images).
-yw_out_port(4,calculate_strategy,22,energies,20,energies).
-yw_out_port(5,log_rejected_sample,25,rejection_log,21,rejection_log).
-yw_out_port(6,collect_data_set,30,sample_id,22,sample_id).
-yw_out_port(6,collect_data_set,31,energy,23,energy).
-yw_out_port(6,collect_data_set,32,frame_number,24,frame_number).
-yw_out_port(6,collect_data_set,33,raw_image_path,25,raw_image).
-yw_out_port(7,transform_images,39,corrected_image,27,corrected_image).
-yw_out_port(7,transform_images,40,corrected_image_path,28,corrected_image_path).
-yw_out_port(7,transform_images,41,total_intensity,29,total_intensity).
-yw_out_port(7,transform_images,42,pixel_count,30,pixel_count).
-yw_out_port(8,log_average_image_intensity,49,collection_log,31,collection_log).
+yw_step_output(1,simulate_data_collection,out,6,corrected_image,6,corrected_image).
+yw_step_output(1,simulate_data_collection,out,7,run_log,7,run_log).
+yw_step_output(1,simulate_data_collection,out,8,collection_log,8,collection_log).
+yw_step_output(1,simulate_data_collection,out,9,rejection_log,9,rejection_log).
+yw_step_output(2,initialize_run,out,10,run_log,10,run_log).
+yw_step_output(3,load_screening_results,out,13,sample_name,13,sample_name).
+yw_step_output(3,load_screening_results,out,14,sample_quality,14,sample_quality).
+yw_step_output(4,calculate_strategy,out,19,accepted_sample,17,accepted_sample).
+yw_step_output(4,calculate_strategy,out,20,rejected_sample,18,rejected_sample).
+yw_step_output(4,calculate_strategy,out,21,num_images,19,num_images).
+yw_step_output(4,calculate_strategy,out,22,energies,20,energies).
+yw_step_output(5,log_rejected_sample,out,25,rejection_log,21,rejection_log).
+yw_step_output(6,collect_data_set,out,30,sample_id,22,sample_id).
+yw_step_output(6,collect_data_set,out,31,energy,23,energy).
+yw_step_output(6,collect_data_set,out,32,frame_number,24,frame_number).
+yw_step_output(6,collect_data_set,out,33,raw_image_path,25,raw_image).
+yw_step_output(7,transform_images,out,39,corrected_image,27,corrected_image).
+yw_step_output(7,transform_images,out,40,corrected_image_path,28,corrected_image_path).
+yw_step_output(7,transform_images,out,41,total_intensity,29,total_intensity).
+yw_step_output(7,transform_images,out,42,pixel_count,30,pixel_count).
+yw_step_output(8,log_average_image_intensity,out,49,collection_log,31,collection_log).
 
 
 %---------------------------------------------------------------------------------------------------

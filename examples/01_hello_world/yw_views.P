@@ -42,10 +42,10 @@ yw_workflow_step(2,print_greeting,1,1,4,7).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: yw_out_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).
+% FACT: yw_step_output(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
-yw_out_port(1,hello_world,1,greeting,1,greeting).
-yw_out_port(2,print_greeting,2,greeting,2,greeting).
+yw_step_output(1,hello_world,out,1,greeting,1,greeting).
+yw_step_output(2,print_greeting,out,2,greeting,2,greeting).
 
 
 %---------------------------------------------------------------------------------------------------

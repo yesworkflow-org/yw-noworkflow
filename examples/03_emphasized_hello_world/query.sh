@@ -61,7 +61,7 @@ banner( 'YW_Q4',
 :- table yw_q4/2.
 yw_q4(OutputName, Description) :-
     yw_workflow_script(WorkflowId,_,_,_),
-    yw_out_port(WorkflowId, _, PortId, _,_, OutputName),
+    yw_step_output(WorkflowId, _, _, PortId, _,_, OutputName),
     yw_description(port, PortId, _, Description).
 end_of_file.
 printall(yw_q4(_,_)).

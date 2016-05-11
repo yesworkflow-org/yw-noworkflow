@@ -63,7 +63,7 @@ banner( 'YW_Q4',
 :- table yw_q4/2.
 yw_q4(OutputName, Description) :-
     yw_workflow_script(WorkflowId,_,_,_),
-    yw_out_port(WorkflowId, _, PortId, _,_, OutputName),
+    yw_step_output(WorkflowId, _, _, PortId, _,_, OutputName),
     yw_description(port, PortId, _, Description).
 end_of_file.
 printall(yw_q4(_,_)).
@@ -150,7 +150,7 @@ printall(yw_nw_q1(_,_,_)).
 %[user].
 %:- table yw_nw_q1/3.
 %yw_nw_q1(VariableValue) :-
-%    yw_out_port(_, 'print_greeting', PortId, _, _, 'displayed_greeting'),
+%    yw_step_output(_, 'print_greeting', _, PortId, _, _, 'displayed_greeting'),
 %    nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, _, _, PortId, _, _, _).
 %
 %end_of_file.
