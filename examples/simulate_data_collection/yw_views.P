@@ -49,6 +49,42 @@ yw_workflow_step(8,log_average_image_intensity,1,1,136,150).
 
 
 %---------------------------------------------------------------------------------------------------
+% FACT: yw_data(DataId, DataName, WorkflowId, WorkflowName).
+%...................................................................................................
+yw_data(1,cassette_id,nil,nil).
+yw_data(2,sample_score_cutoff,nil,nil).
+yw_data(3,data_redundancy,nil,nil).
+yw_data(4,sample_spreadsheet,nil,nil).
+yw_data(5,calibration_image,nil,nil).
+yw_data(6,corrected_image,nil,nil).
+yw_data(7,run_log,nil,nil).
+yw_data(8,collection_log,nil,nil).
+yw_data(9,rejection_log,nil,nil).
+yw_data(10,run_log,1,simulate_data_collection).
+yw_data(11,cassette_id,1,simulate_data_collection).
+yw_data(12,sample_spreadsheet,1,simulate_data_collection).
+yw_data(13,sample_name,1,simulate_data_collection).
+yw_data(14,sample_quality,1,simulate_data_collection).
+yw_data(15,sample_score_cutoff,1,simulate_data_collection).
+yw_data(16,data_redundancy,1,simulate_data_collection).
+yw_data(17,accepted_sample,1,simulate_data_collection).
+yw_data(18,rejected_sample,1,simulate_data_collection).
+yw_data(19,num_images,1,simulate_data_collection).
+yw_data(20,energies,1,simulate_data_collection).
+yw_data(21,rejection_log,1,simulate_data_collection).
+yw_data(22,sample_id,1,simulate_data_collection).
+yw_data(23,energy,1,simulate_data_collection).
+yw_data(24,frame_number,1,simulate_data_collection).
+yw_data(25,raw_image,1,simulate_data_collection).
+yw_data(26,calibration_image,1,simulate_data_collection).
+yw_data(27,corrected_image,1,simulate_data_collection).
+yw_data(28,corrected_image_path,1,simulate_data_collection).
+yw_data(29,total_intensity,1,simulate_data_collection).
+yw_data(30,pixel_count,1,simulate_data_collection).
+yw_data(31,collection_log,1,simulate_data_collection).
+
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
 yw_step_input(1,simulate_data_collection,in,4,sample_spreadsheet,4,sample_spreadsheet).

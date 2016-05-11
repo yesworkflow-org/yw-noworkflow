@@ -29,6 +29,9 @@ printall(yw_workflow_step(_,_,_,_,_,_)).
 rule_banner('yw_function(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, EndLine).').
 printall(yw_function(_,_,_,_,_,_)).
 
+rule_banner('yw_data(DataId, DataName, WorkflowId, WorkflowName).').
+printall(yw_data(_,_,_,_)).
+
 rule_banner('yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).').
 printall(yw_step_input(_,_,_,_,_,_,_)).
 

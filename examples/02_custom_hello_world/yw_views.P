@@ -39,6 +39,16 @@ yw_workflow_step(3,greet_user,1,1,11,15).
 
 
 %---------------------------------------------------------------------------------------------------
+% FACT: yw_data(DataId, DataName, WorkflowId, WorkflowName).
+%...................................................................................................
+yw_data(5,displayed_greeting,1,custom_hello_world).
+yw_data(4,custom_greeting,1,custom_hello_world).
+yw_data(3,provided_greeting,1,custom_hello_world).
+yw_data(2,displayed_greeting,nil,nil).
+yw_data(1,provided_greeting,nil,nil).
+
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
 yw_step_input(1,custom_hello_world,in,1,provided_greeting,1,provided_greeting).

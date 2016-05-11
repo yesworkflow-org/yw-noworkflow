@@ -39,6 +39,20 @@ yw_workflow_step(3,print_greeting,1,1,19,23).
 
 
 %---------------------------------------------------------------------------------------------------
+% FACT: yw_data(DataId, DataName, WorkflowId, WorkflowName).
+%...................................................................................................
+yw_data(1,provided_greeting,nil,nil).
+yw_data(2,provided_emphasis,nil,nil).
+yw_data(3,emphasis_count,nil,nil).
+yw_data(4,displayed_greeting,nil,nil).
+yw_data(5,provided_greeting,1,'EmphasizedHelloWorld').
+yw_data(6,provided_emphasis,1,'EmphasizedHelloWorld').
+yw_data(7,emphasis_count,1,'EmphasizedHelloWorld').
+yw_data(8,emphasized_greeting,1,'EmphasizedHelloWorld').
+yw_data(9,displayed_greeting,1,'EmphasizedHelloWorld').
+
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
 yw_step_input(1,'EmphasizedHelloWorld',in,1,provided_greeting,1,provided_greeting).

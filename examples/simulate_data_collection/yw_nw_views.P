@@ -155,11 +155,11 @@ nw_variable_for_yw_in_port(4800,sample_id,'DRT322',22,sample_id,44,sample_id,8,l
 nw_variable_for_yw_in_port(4800,sample_id,'DRT322',22,sample_id,34,sample_id,7,transform_images).
 nw_variable_for_yw_in_port(1408,raw_image_path,'run/raw/q55/DRT240/e10000/image_002.raw',25,raw_image,37,raw_image_path,7,transform_images).
 nw_variable_for_yw_in_port(1412,corrected_image_path,'run/data/DRT240/DRT240_10000eV_002.img',28,corrected_image_path,46,corrected_image_path,8,log_average_image_intensity).
-nw_variable_for_yw_in_port(263,rejected_sample,'DRT110',18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
 nw_variable_for_yw_in_port(2120,energy,'11000',23,energy,35,energy,7,transform_images).
 nw_variable_for_yw_in_port(4744,sample_name,'DRT322',13,sample_name,17,sample_name,4,calculate_strategy).
 nw_variable_for_yw_in_port(2505,pixel_count,'10',30,pixel_count,48,pixel_count,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(2121,frame_number,'1',24,frame_number,36,frame_number,7,transform_images).
+nw_variable_for_yw_in_port(265,rejected_sample,'DRT110',18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
 nw_variable_for_yw_in_port(4745,sample_quality,'28',14,sample_quality,18,sample_quality,4,calculate_strategy).
 nw_variable_for_yw_in_port(2506,total_intensity,'440',29,total_intensity,47,total_intensity,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(2123,raw_image_path,'run/raw/q55/DRT240/e11000/image_001.raw',25,raw_image,37,raw_image_path,7,transform_images).
@@ -180,13 +180,13 @@ nw_variable_for_yw_in_port(5464,pixel_count,'10',30,pixel_count,48,pixel_count,8
 nw_variable_for_yw_in_port(2840,corrected_image_path,'run/data/DRT240/DRT240_11000eV_002.img',28,corrected_image_path,46,corrected_image_path,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(5080,frame_number,'1',24,frame_number,36,frame_number,7,transform_images).
 nw_variable_for_yw_in_port(5465,total_intensity,'0',29,total_intensity,47,total_intensity,8,log_average_image_intensity).
-nw_variable_for_yw_in_port(4762,rejected_sample,'None',18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
+nw_variable_for_yw_in_port(4762,energies,'[10000, 11000]',20,energies,29,energies,6,collect_data_set).
 nw_variable_for_yw_in_port(5082,raw_image_path,'run/raw/q55/DRT322/e10000/image_001.raw',25,raw_image,37,raw_image_path,7,transform_images).
 nw_variable_for_yw_in_port(4763,accepted_sample,'DRT322',17,accepted_sample,28,accepted_sample,6,collect_data_set).
 nw_variable_for_yw_in_port(3548,energy,'12000',23,energy,35,energy,7,transform_images).
 nw_variable_for_yw_in_port(412,sample_id,'DRT240',22,sample_id,44,sample_id,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(412,sample_id,'DRT240',22,sample_id,34,sample_id,7,transform_images).
-nw_variable_for_yw_in_port(4764,energies,'[10000, 11000]',20,energies,29,energies,6,collect_data_set).
+nw_variable_for_yw_in_port(4764,rejected_sample,'None',18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
 nw_variable_for_yw_in_port(3933,pixel_count,'10',30,pixel_count,48,pixel_count,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(3549,frame_number,'1',24,frame_number,36,frame_number,7,transform_images).
 nw_variable_for_yw_in_port(4765,num_images,'2',19,num_images,27,num_images,6,collect_data_set).
@@ -222,11 +222,11 @@ nw_variable_for_yw_in_port(7221,frame_number,'2',24,frame_number,36,frame_number
 nw_variable_for_yw_in_port(693,frame_number,'1',24,frame_number,36,frame_number,7,transform_images).
 nw_variable_for_yw_in_port(7606,total_intensity,'980',29,total_intensity,47,total_intensity,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(1078,total_intensity,'0',29,total_intensity,47,total_intensity,8,log_average_image_intensity).
-nw_variable_for_yw_in_port(374,rejected_sample,'None',18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
+nw_variable_for_yw_in_port(374,energies,'[10000, 11000, 12000]',20,energies,29,energies,6,collect_data_set).
 nw_variable_for_yw_in_port(375,accepted_sample,'DRT240',17,accepted_sample,28,accepted_sample,6,collect_data_set).
 nw_variable_for_yw_in_port(7223,raw_image_path,'run/raw/q55/DRT322/e11000/image_002.raw',25,raw_image,37,raw_image_path,7,transform_images).
 nw_variable_for_yw_in_port(695,raw_image_path,'run/raw/q55/DRT240/e10000/image_001.raw',25,raw_image,37,raw_image_path,7,transform_images).
-nw_variable_for_yw_in_port(376,energies,'[10000, 11000, 12000]',20,energies,29,energies,6,collect_data_set).
+nw_variable_for_yw_in_port(376,rejected_sample,'None',18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
 nw_variable_for_yw_in_port(377,num_images,'2',19,num_images,27,num_images,6,collect_data_set).
 nw_variable_for_yw_in_port(250,sample_name,'DRT110',13,sample_name,17,sample_name,4,calculate_strategy).
 nw_variable_for_yw_in_port(7227,corrected_image_path,'run/data/DRT322/DRT322_11000eV_002.img',28,corrected_image_path,46,corrected_image_path,8,log_average_image_intensity).
@@ -244,12 +244,12 @@ nw_variable_for_yw_in_port(1791,total_intensity,'310',29,total_intensity,47,tota
 nw_variable_for_yw_out_port(1408,raw_image_path,'run/raw/q55/DRT240/e10000/image_002.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
 nw_variable_for_yw_out_port(4800,sample_id,'DRT322',22,sample_id,30,sample_id,6,collect_data_set).
 nw_variable_for_yw_out_port(1412,corrected_image_path,'run/data/DRT240/DRT240_10000eV_002.img',28,corrected_image_path,40,corrected_image_path,7,transform_images).
-nw_variable_for_yw_out_port(263,rejected_sample,'DRT110',18,rejected_sample,20,rejected_sample,4,calculate_strategy).
 nw_variable_for_yw_out_port(2120,energy,'11000',23,energy,31,energy,6,collect_data_set).
 nw_variable_for_yw_out_port(4744,sample_name,'DRT322',13,sample_name,13,sample_name,3,load_screening_results).
 nw_variable_for_yw_out_port(2505,pixel_count,'10',30,pixel_count,42,pixel_count,7,transform_images).
 nw_variable_for_yw_out_port(2121,frame_number,'1',24,frame_number,32,frame_number,6,collect_data_set).
 nw_variable_for_yw_out_port(4745,sample_quality,'28',14,sample_quality,14,sample_quality,3,load_screening_results).
+nw_variable_for_yw_out_port(265,rejected_sample,'DRT110',18,rejected_sample,20,rejected_sample,4,calculate_strategy).
 nw_variable_for_yw_out_port(2506,total_intensity,'440',29,total_intensity,41,total_intensity,7,transform_images).
 nw_variable_for_yw_out_port(2123,raw_image_path,'run/raw/q55/DRT240/e11000/image_001.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
 nw_variable_for_yw_out_port(2127,corrected_image_path,'run/data/DRT240/DRT240_11000eV_001.img',28,corrected_image_path,40,corrected_image_path,7,transform_images).
@@ -264,11 +264,11 @@ nw_variable_for_yw_out_port(2840,corrected_image_path,'run/data/DRT240/DRT240_11
 nw_variable_for_yw_out_port(5080,frame_number,'1',24,frame_number,32,frame_number,6,collect_data_set).
 nw_variable_for_yw_out_port(5465,total_intensity,'0',29,total_intensity,41,total_intensity,7,transform_images).
 nw_variable_for_yw_out_port(5082,raw_image_path,'run/raw/q55/DRT322/e10000/image_001.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
-nw_variable_for_yw_out_port(4762,rejected_sample,'None',18,rejected_sample,20,rejected_sample,4,calculate_strategy).
+nw_variable_for_yw_out_port(4762,energies,'[10000, 11000]',20,energies,22,energies,4,calculate_strategy).
 nw_variable_for_yw_out_port(4763,accepted_sample,'DRT322',17,accepted_sample,19,accepted_sample,4,calculate_strategy).
 nw_variable_for_yw_out_port(3548,energy,'12000',23,energy,31,energy,6,collect_data_set).
 nw_variable_for_yw_out_port(412,sample_id,'DRT240',22,sample_id,30,sample_id,6,collect_data_set).
-nw_variable_for_yw_out_port(4764,energies,'[10000, 11000]',20,energies,22,energies,4,calculate_strategy).
+nw_variable_for_yw_out_port(4764,rejected_sample,'None',18,rejected_sample,20,rejected_sample,4,calculate_strategy).
 nw_variable_for_yw_out_port(3933,pixel_count,'10',30,pixel_count,42,pixel_count,7,transform_images).
 nw_variable_for_yw_out_port(3549,frame_number,'1',24,frame_number,32,frame_number,6,collect_data_set).
 nw_variable_for_yw_out_port(4765,num_images,'2',19,num_images,21,num_images,4,calculate_strategy).
@@ -304,11 +304,11 @@ nw_variable_for_yw_out_port(7221,frame_number,'2',24,frame_number,32,frame_numbe
 nw_variable_for_yw_out_port(693,frame_number,'1',24,frame_number,32,frame_number,6,collect_data_set).
 nw_variable_for_yw_out_port(7606,total_intensity,'980',29,total_intensity,41,total_intensity,7,transform_images).
 nw_variable_for_yw_out_port(1078,total_intensity,'0',29,total_intensity,41,total_intensity,7,transform_images).
-nw_variable_for_yw_out_port(374,rejected_sample,'None',18,rejected_sample,20,rejected_sample,4,calculate_strategy).
+nw_variable_for_yw_out_port(374,energies,'[10000, 11000, 12000]',20,energies,22,energies,4,calculate_strategy).
 nw_variable_for_yw_out_port(7223,raw_image_path,'run/raw/q55/DRT322/e11000/image_002.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
 nw_variable_for_yw_out_port(695,raw_image_path,'run/raw/q55/DRT240/e10000/image_001.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
 nw_variable_for_yw_out_port(375,accepted_sample,'DRT240',17,accepted_sample,19,accepted_sample,4,calculate_strategy).
-nw_variable_for_yw_out_port(376,energies,'[10000, 11000, 12000]',20,energies,22,energies,4,calculate_strategy).
+nw_variable_for_yw_out_port(376,rejected_sample,'None',18,rejected_sample,20,rejected_sample,4,calculate_strategy).
 nw_variable_for_yw_out_port(377,num_images,'2',19,num_images,21,num_images,4,calculate_strategy).
 nw_variable_for_yw_out_port(250,sample_name,'DRT110',13,sample_name,13,sample_name,3,load_screening_results).
 nw_variable_for_yw_out_port(7227,corrected_image_path,'run/data/DRT322/DRT322_11000eV_002.img',28,corrected_image_path,40,corrected_image_path,7,transform_images).
@@ -326,11 +326,11 @@ nw_variable_for_yw_out_port(1791,total_intensity,'310',29,total_intensity,41,tot
 nw_variable_for_yw_data(4800,sample_id,'DRT322',22,sample_id).
 nw_variable_for_yw_data(1408,raw_image_path,'run/raw/q55/DRT240/e10000/image_002.raw',25,raw_image).
 nw_variable_for_yw_data(1412,corrected_image_path,'run/data/DRT240/DRT240_10000eV_002.img',28,corrected_image_path).
-nw_variable_for_yw_data(263,rejected_sample,'DRT110',18,rejected_sample).
 nw_variable_for_yw_data(2120,energy,'11000',23,energy).
 nw_variable_for_yw_data(4744,sample_name,'DRT322',13,sample_name).
 nw_variable_for_yw_data(2505,pixel_count,'10',30,pixel_count).
 nw_variable_for_yw_data(2121,frame_number,'1',24,frame_number).
+nw_variable_for_yw_data(265,rejected_sample,'DRT110',18,rejected_sample).
 nw_variable_for_yw_data(4745,sample_quality,'28',14,sample_quality).
 nw_variable_for_yw_data(2506,total_intensity,'440',29,total_intensity).
 nw_variable_for_yw_data(2123,raw_image_path,'run/raw/q55/DRT240/e11000/image_001.raw',25,raw_image).
@@ -349,9 +349,9 @@ nw_variable_for_yw_data(2840,corrected_image_path,'run/data/DRT240/DRT240_11000e
 nw_variable_for_yw_data(5464,pixel_count,'10',30,pixel_count).
 nw_variable_for_yw_data(5465,total_intensity,'0',29,total_intensity).
 nw_variable_for_yw_data(5082,raw_image_path,'run/raw/q55/DRT322/e10000/image_001.raw',25,raw_image).
-nw_variable_for_yw_data(4762,rejected_sample,'None',18,rejected_sample).
+nw_variable_for_yw_data(4762,energies,'[10000, 11000]',20,energies).
 nw_variable_for_yw_data(4763,accepted_sample,'DRT322',17,accepted_sample).
-nw_variable_for_yw_data(4764,energies,'[10000, 11000]',20,energies).
+nw_variable_for_yw_data(4764,rejected_sample,'None',18,rejected_sample).
 nw_variable_for_yw_data(412,sample_id,'DRT240',22,sample_id).
 nw_variable_for_yw_data(3548,energy,'12000',23,energy).
 nw_variable_for_yw_data(4765,num_images,'2',19,num_images).
@@ -387,13 +387,13 @@ nw_variable_for_yw_data(693,frame_number,'1',24,frame_number).
 nw_variable_for_yw_data(7221,frame_number,'2',24,frame_number).
 nw_variable_for_yw_data(1077,pixel_count,'10',30,pixel_count).
 nw_variable_for_yw_data(7605,pixel_count,'10',30,pixel_count).
-nw_variable_for_yw_data(374,rejected_sample,'None',18,rejected_sample).
+nw_variable_for_yw_data(374,energies,'[10000, 11000, 12000]',20,energies).
 nw_variable_for_yw_data(1078,total_intensity,'0',29,total_intensity).
 nw_variable_for_yw_data(7606,total_intensity,'980',29,total_intensity).
 nw_variable_for_yw_data(695,raw_image_path,'run/raw/q55/DRT240/e10000/image_001.raw',25,raw_image).
 nw_variable_for_yw_data(7223,raw_image_path,'run/raw/q55/DRT322/e11000/image_002.raw',25,raw_image).
 nw_variable_for_yw_data(375,accepted_sample,'DRT240',17,accepted_sample).
-nw_variable_for_yw_data(376,energies,'[10000, 11000, 12000]',20,energies).
+nw_variable_for_yw_data(376,rejected_sample,'None',18,rejected_sample).
 nw_variable_for_yw_data(377,num_images,'2',19,num_images).
 nw_variable_for_yw_data(250,sample_name,'DRT110',13,sample_name).
 nw_variable_for_yw_data(251,sample_quality,'10',14,sample_quality).
