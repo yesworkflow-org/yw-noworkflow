@@ -39,11 +39,11 @@ yw_workflow_step(3,print_greeting,1,1,13,17).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: yw_in_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).
+% FACT: yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
-yw_in_port(1,'EmphasizedHelloWorld',1,provided_greeting,1,provided_greeting).
-yw_in_port(2,emphasize_greeting,3,provided_greeting,3,provided_greeting).
-yw_in_port(3,print_greeting,5,greeting,4,modified_greeting).
+yw_step_input(1,'EmphasizedHelloWorld',in,1,provided_greeting,1,provided_greeting).
+yw_step_input(2,emphasize_greeting,in,3,provided_greeting,3,provided_greeting).
+yw_step_input(3,print_greeting,in,5,greeting,4,modified_greeting).
 
 
 %---------------------------------------------------------------------------------------------------

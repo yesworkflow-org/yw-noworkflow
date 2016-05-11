@@ -13,6 +13,7 @@ nw_activation_into_yw_program(ActivationId, FunctionName, StepId, StepName, Acti
     nw_function_definition(_, FunctionName, FunctionStartLine, _, _),
     line_inside_range(FunctionStartLine, StepBeginLine, StepEndLine).
 
+:- table _nw_activation_into_yw_step_subprogram/2.
 _nw_activation_into_yw_step_subprogram(ActivationId, StepId) :-
     nw_activation_into_yw_program(ActivationId, _, StepId, _, _, _),
     nw_activation_into_yw_program(ActivationId, _, SubprogramId, _, _, _),
@@ -23,9 +24,9 @@ nw_activation_into_yw_step(ActivationId, FunctionName, StepId, StepName, Activat
     nw_activation_into_yw_program(ActivationId, FunctionName, StepId, StepName, ActivationLine, CallerActivationId),
     not _nw_activation_into_yw_step_subprogram(ActivationId, StepId).
 
-m:- table nw_variable_for_yw_in_port/9.
+:- table nw_variable_for_yw_in_port/9.
 nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
-    yw_in_port(StepId, _, PortId, PortName, DataId, DataName),
+    yw_step_input(StepId, _, _, PortId, PortName, DataId, DataName),
     yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
     PortName = VariableName,
     nw_variable_usage(_, _, VariableId, VariableName, _, UsageLine),

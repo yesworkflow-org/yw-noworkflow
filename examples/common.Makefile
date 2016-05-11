@@ -23,6 +23,7 @@ all: ${QUERY_OUTPUTS} ${DOTS} ${PNGS} ${PDFS}
 run: ${RUN_PRODUCTS}
 yw: ${YW_VIEWS}
 nw: ${NW_FACTS}
+ywnw: ${YW_NW_VIEWS}
 query: ${QUERY_OUTPUTS}
 dots: ${DOTS}
 png: ${PNGS}
@@ -39,13 +40,13 @@ ${YW_VIEWS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
 ${NW_FACTS}: ${RUN_PRODUCTS}
 	mkdir -p facts
 	now export -t -m dependency | grep -v 'environment(' > ${NW_FACTS}
-	${RULES_DIR}/materialize_nw_views.sh &> ${NW_VIEWS}
+	${RULES_DIR}/materialize_nw_views.sh > ${NW_VIEWS}
 
 ${YW_NW_VIEWS}: ${YW_VIEWS} ${NW_VIEWS}
-	${RULES_DIR}/materialize_yw_nw_views.sh &> ${YW_NW_VIEWS}
+	${RULES_DIR}/materialize_yw_nw_views.sh > ${YW_NW_VIEWS}
 
 ${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_VIEWS} ${NW_FACTS} ${YW_NW_VIEWS} ${RULES}
-	bash -l ${QUERY_SCRIPT}  &> ${QUERY_OUTPUTS}
+	bash -l ${QUERY_SCRIPT} > ${QUERY_OUTPUTS}
 
 ${PNGS}: ${WORKFLOW_GRAPH}.gv
 	dot -Tpng ${WORKFLOW_GRAPH}.gv -o ${WORKFLOW_GRAPH}.png

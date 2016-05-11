@@ -12,7 +12,7 @@
 %
 
 :- dynamic(trial/10).
-trial(1, nil, nil, 'iterative_emphasis.py', 'ddb6545f630d5707fc310254fa74f0bc839c5a7c', 'run -e Tracer iterative_emphasis.py', nil, nil, 1, nil).
+trial(1, nil, nil, 'iterative_emphasis.py', '4c7a204fc509a4a87d97d0e3cef3e2e664a773d6', 'run -e Tracer iterative_emphasis.py', nil, nil, 1, nil).
 
 %
 % FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
@@ -52,7 +52,7 @@ tag(1, 'AUTO', '1.1.1', nil).
 %
 
 :- dynamic(function_def/7).
-function_def(1, 1, 'greet_user', 'b3e72d9351504099a6b733ca6fd2f6cc4dc3c9fd', 7, 22, nil).
+function_def(1, 1, 'greet_user', 'c5170f66f469dad717a7efd55f34a4f4711a1930', 7, 22, nil).
 
 %
 % FACT DEFINITION: object(TrialId, FunctionDefId, Id, Name, Type).
@@ -100,12 +100,12 @@ activation(1, 7, 'module.print', 22, nil, nil, 6).
 :- dynamic(object_value/6).
 object_value(1, 2, 1, 'greeting', 'Hello World', 'ARGUMENT').
 object_value(1, 2, 2, 'emphasis', '!', 'ARGUMENT').
-object_value(1, 2, 3, 'count', '0', 'ARGUMENT').
+object_value(1, 2, 3, 'count', '1', 'ARGUMENT').
 object_value(1, 4, 4, 'greeting', 'Goodbye World', 'ARGUMENT').
-object_value(1, 4, 5, 'emphasis', '!', 'ARGUMENT').
-object_value(1, 4, 6, 'count', '1', 'ARGUMENT').
+object_value(1, 4, 5, 'emphasis', '?', 'ARGUMENT').
+object_value(1, 4, 6, 'count', '2', 'ARGUMENT').
 object_value(1, 6, 7, 'greeting', 'Back again', 'ARGUMENT').
-object_value(1, 6, 8, 'emphasis', '!', 'ARGUMENT').
+object_value(1, 6, 8, 'emphasis', '?!', 'ARGUMENT').
 object_value(1, 6, 9, 'count', '3', 'ARGUMENT').
 
 %
@@ -134,53 +134,61 @@ access(1, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil,
 %
 
 :- dynamic(variable/7).
-variable(1, 1, 1, 'greet_user', 7, '<function greet_user at 0x1043b0840>', nil).
+variable(1, 1, 1, 'greet_user', 7, '<function greet_user at 0x1049b0598>', nil).
 variable(1, 1, 3, 'first_greeting', 28, 'Hello World', nil).
 variable(1, 2, 4, 'greeting', 7, 'Hello World', nil).
 variable(1, 2, 5, 'emphasis', 7, '!', nil).
-variable(1, 2, 6, 'count', 7, '0', nil).
+variable(1, 2, 6, 'count', 7, '1', nil).
 variable(1, 0, 7, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 3, 8, 'return', 22, nil, nil).
+variable(1, 2, 8, 'range(0, count)', 15, 'now(n/a)', nil).
 variable(1, 0, 9, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 2, 10, 'module.print', 22, 'now(n/a)', nil).
-variable(1, 1, 11, 'print', 0, '<built-in function print>', nil).
-variable(1, 2, 12, 'return', 22, 'None', nil).
-variable(1, 1, 13, 'greet_user', 29, 'now(n/a)', nil).
-variable(1, 1, 14, 'second_greeting', 30, 'Goodbye World', nil).
-variable(1, 4, 15, 'greeting', 7, 'Goodbye World', nil).
-variable(1, 4, 16, 'emphasis', 7, '!', nil).
-variable(1, 4, 17, 'count', 7, '1', nil).
-variable(1, 0, 18, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 4, 19, 'range(0, count)', 15, 'now(n/a)', nil).
-variable(1, 0, 20, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 1, 21, 'range', 0, '<class ''range''>', nil).
-variable(1, 4, 22, 'i', 15, '0', nil).
-variable(1, 4, 23, 'greeting', 16, 'Goodbye World!', nil).
-variable(1, 5, 24, 'return', 22, nil, nil).
+variable(1, 1, 10, 'range', 0, '<class ''range''>', nil).
+variable(1, 2, 11, 'i', 15, '0', nil).
+variable(1, 2, 12, 'greeting', 16, 'Hello World!', nil).
+variable(1, 3, 13, 'return', 22, nil, nil).
+variable(1, 0, 14, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 2, 15, 'module.print', 22, 'now(n/a)', nil).
+variable(1, 1, 16, 'print', 0, '<built-in function print>', nil).
+variable(1, 2, 17, 'return', 22, 'None', nil).
+variable(1, 1, 18, 'greet_user', 29, 'now(n/a)', nil).
+variable(1, 1, 19, 'second_greeting', 30, 'Goodbye World', nil).
+variable(1, 4, 20, 'greeting', 7, 'Goodbye World', nil).
+variable(1, 4, 21, 'emphasis', 7, '?', nil).
+variable(1, 4, 22, 'count', 7, '2', nil).
+variable(1, 0, 23, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 4, 24, 'range(0, count)', 15, 'now(n/a)', nil).
 variable(1, 0, 25, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 4, 26, 'module.print', 22, 'now(n/a)', nil).
-variable(1, 4, 27, 'return', 22, 'None', nil).
-variable(1, 1, 28, 'greet_user', 31, 'now(n/a)', nil).
-variable(1, 6, 29, 'greeting', 7, 'Back again', nil).
-variable(1, 6, 30, 'emphasis', 7, '!', nil).
-variable(1, 6, 31, 'count', 7, '3', nil).
-variable(1, 6, 32, 'range(0, count)', 15, 'now(n/a)', nil).
+variable(1, 4, 26, 'i', 15, '0', nil).
+variable(1, 4, 27, 'greeting', 16, 'Goodbye World?', nil).
+variable(1, 4, 28, 'range(0, count)', 15, 'now(n/a)', nil).
+variable(1, 0, 29, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 4, 30, 'i', 15, '1', nil).
+variable(1, 4, 31, 'greeting', 16, 'Goodbye World??', nil).
+variable(1, 5, 32, 'return', 22, nil, nil).
 variable(1, 0, 33, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 6, 34, 'i', 15, '0', nil).
-variable(1, 6, 35, 'greeting', 16, 'Back again!', nil).
-variable(1, 6, 36, 'range(0, count)', 15, 'now(n/a)', nil).
-variable(1, 0, 37, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 6, 38, 'i', 15, '1', nil).
-variable(1, 6, 39, 'greeting', 16, 'Back again!!', nil).
+variable(1, 4, 34, 'module.print', 22, 'now(n/a)', nil).
+variable(1, 4, 35, 'return', 22, 'None', nil).
+variable(1, 1, 36, 'greet_user', 31, 'now(n/a)', nil).
+variable(1, 6, 37, 'greeting', 7, 'Back again', nil).
+variable(1, 6, 38, 'emphasis', 7, '?!', nil).
+variable(1, 6, 39, 'count', 7, '3', nil).
 variable(1, 6, 40, 'range(0, count)', 15, 'now(n/a)', nil).
 variable(1, 0, 41, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 6, 42, 'i', 15, '2', nil).
-variable(1, 6, 43, 'greeting', 16, 'Back again!!!', nil).
-variable(1, 7, 44, 'return', 22, nil, nil).
+variable(1, 6, 42, 'i', 15, '0', nil).
+variable(1, 6, 43, 'greeting', 16, 'Back again?!', nil).
+variable(1, 6, 44, 'range(0, count)', 15, 'now(n/a)', nil).
 variable(1, 0, 45, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 6, 46, 'module.print', 22, 'now(n/a)', nil).
-variable(1, 6, 47, 'return', 22, 'None', nil).
-variable(1, 1, 48, 'greet_user', 32, 'now(n/a)', nil).
+variable(1, 6, 46, 'i', 15, '1', nil).
+variable(1, 6, 47, 'greeting', 16, 'Back again?!?!', nil).
+variable(1, 6, 48, 'range(0, count)', 15, 'now(n/a)', nil).
+variable(1, 0, 49, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 6, 50, 'i', 15, '2', nil).
+variable(1, 6, 51, 'greeting', 16, 'Back again?!?!?!', nil).
+variable(1, 7, 52, 'return', 22, nil, nil).
+variable(1, 0, 53, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 6, 54, 'module.print', 22, 'now(n/a)', nil).
+variable(1, 6, 55, 'return', 22, 'None', nil).
+variable(1, 1, 56, 'greet_user', 32, 'now(n/a)', nil).
 
 %
 % FACT DEFINITION: usage(TrialId, ActivationId, VariableId, Id, Name, Line).
@@ -192,28 +200,34 @@ variable(1, 1, 48, 'greet_user', 32, 'now(n/a)', nil).
 
 :- dynamic(usage/6).
 usage(1, 2, 6, 1, 'count', 14).
-usage(1, 2, 4, 2, 'greeting', 22).
-usage(1, 1, 1, 3, 'greet_user', 29).
-usage(1, 1, 3, 4, 'first_greeting', 29).
-usage(1, 4, 17, 5, 'count', 14).
-usage(1, 4, 17, 6, 'count', 15).
-usage(1, 4, 15, 7, 'greeting', 16).
-usage(1, 4, 16, 8, 'emphasis', 16).
-usage(1, 4, 23, 9, 'greeting', 22).
-usage(1, 1, 1, 10, 'greet_user', 31).
-usage(1, 1, 14, 11, 'second_greeting', 31).
-usage(1, 6, 31, 12, 'count', 14).
-usage(1, 6, 31, 13, 'count', 15).
-usage(1, 6, 29, 14, 'greeting', 16).
-usage(1, 6, 30, 15, 'emphasis', 16).
-usage(1, 6, 31, 16, 'count', 15).
-usage(1, 6, 35, 17, 'greeting', 16).
-usage(1, 6, 30, 18, 'emphasis', 16).
-usage(1, 6, 31, 19, 'count', 15).
-usage(1, 6, 39, 20, 'greeting', 16).
-usage(1, 6, 30, 21, 'emphasis', 16).
-usage(1, 6, 43, 22, 'greeting', 22).
-usage(1, 1, 1, 23, 'greet_user', 32).
+usage(1, 2, 6, 2, 'count', 15).
+usage(1, 2, 4, 3, 'greeting', 16).
+usage(1, 2, 5, 4, 'emphasis', 16).
+usage(1, 2, 12, 5, 'greeting', 22).
+usage(1, 1, 1, 6, 'greet_user', 29).
+usage(1, 1, 3, 7, 'first_greeting', 29).
+usage(1, 4, 22, 8, 'count', 14).
+usage(1, 4, 22, 9, 'count', 15).
+usage(1, 4, 20, 10, 'greeting', 16).
+usage(1, 4, 21, 11, 'emphasis', 16).
+usage(1, 4, 22, 12, 'count', 15).
+usage(1, 4, 27, 13, 'greeting', 16).
+usage(1, 4, 21, 14, 'emphasis', 16).
+usage(1, 4, 31, 15, 'greeting', 22).
+usage(1, 1, 1, 16, 'greet_user', 31).
+usage(1, 1, 19, 17, 'second_greeting', 31).
+usage(1, 6, 39, 18, 'count', 14).
+usage(1, 6, 39, 19, 'count', 15).
+usage(1, 6, 37, 20, 'greeting', 16).
+usage(1, 6, 38, 21, 'emphasis', 16).
+usage(1, 6, 39, 22, 'count', 15).
+usage(1, 6, 43, 23, 'greeting', 16).
+usage(1, 6, 38, 24, 'emphasis', 16).
+usage(1, 6, 39, 25, 'count', 15).
+usage(1, 6, 47, 26, 'greeting', 16).
+usage(1, 6, 38, 27, 'emphasis', 16).
+usage(1, 6, 51, 28, 'greeting', 22).
+usage(1, 1, 1, 29, 'greet_user', 32).
 
 %
 % FACT DEFINITION: dependency(TrialId, Id, SourceActivationId, SourceId, TargetActivationId, TargetId).
@@ -229,61 +243,79 @@ usage(1, 1, 1, 23, 'greet_user', 32).
 %
 
 :- dynamic(dependency/6).
-dependency(1, 1, 4, 19, 1, 21).
-dependency(1, 2, 4, 22, 4, 19).
-dependency(1, 3, 6, 34, 6, 31).
-dependency(1, 4, 6, 35, 6, 30).
-dependency(1, 5, 4, 15, 1, 14).
-dependency(1, 6, 1, 48, 1, 1).
-dependency(1, 7, 6, 43, 6, 31).
-dependency(1, 8, 0, 25, 4, 23).
-dependency(1, 9, 6, 39, 6, 35).
-dependency(1, 10, 6, 34, 6, 32).
-dependency(1, 11, 6, 43, 6, 39).
-dependency(1, 12, 6, 38, 6, 32).
-dependency(1, 13, 1, 13, 2, 12).
-dependency(1, 14, 7, 44, 0, 45).
-dependency(1, 15, 0, 41, 6, 31).
-dependency(1, 16, 4, 22, 4, 17).
-dependency(1, 17, 6, 32, 1, 21).
-dependency(1, 18, 0, 20, 4, 17).
-dependency(1, 19, 2, 10, 3, 8).
-dependency(1, 20, 6, 40, 0, 41).
-dependency(1, 21, 4, 23, 4, 15).
-dependency(1, 22, 6, 46, 7, 44).
-dependency(1, 23, 2, 10, 1, 11).
-dependency(1, 24, 6, 39, 6, 30).
-dependency(1, 25, 0, 33, 6, 31).
-dependency(1, 26, 6, 42, 6, 31).
-dependency(1, 27, 0, 37, 6, 31).
-dependency(1, 28, 1, 13, 1, 1).
-dependency(1, 29, 1, 28, 1, 1).
-dependency(1, 30, 4, 26, 1, 11).
-dependency(1, 31, 6, 46, 1, 11).
-dependency(1, 32, 1, 48, 6, 47).
-dependency(1, 33, 4, 23, 4, 17).
-dependency(1, 34, 6, 40, 1, 21).
-dependency(1, 35, 6, 42, 6, 32).
-dependency(1, 36, 0, 18, 1, 14).
-dependency(1, 37, 4, 23, 4, 16).
-dependency(1, 38, 6, 35, 6, 31).
-dependency(1, 39, 5, 24, 0, 25).
-dependency(1, 40, 6, 36, 0, 37).
-dependency(1, 41, 6, 39, 6, 38).
-dependency(1, 42, 0, 9, 2, 4).
-dependency(1, 43, 6, 35, 6, 29).
-dependency(1, 44, 6, 36, 1, 21).
-dependency(1, 45, 2, 4, 1, 3).
-dependency(1, 46, 6, 43, 6, 42).
-dependency(1, 47, 6, 39, 6, 31).
-dependency(1, 48, 4, 23, 4, 22).
-dependency(1, 49, 1, 28, 4, 27).
-dependency(1, 50, 6, 38, 6, 31).
-dependency(1, 51, 3, 8, 0, 9).
-dependency(1, 52, 4, 19, 0, 20).
-dependency(1, 53, 6, 43, 6, 30).
-dependency(1, 54, 0, 7, 1, 3).
-dependency(1, 55, 0, 45, 6, 43).
-dependency(1, 56, 6, 35, 6, 34).
-dependency(1, 57, 6, 32, 0, 33).
-dependency(1, 58, 4, 26, 5, 24).
+dependency(1, 1, 4, 27, 4, 22).
+dependency(1, 2, 2, 4, 1, 3).
+dependency(1, 3, 6, 47, 6, 46).
+dependency(1, 4, 2, 12, 2, 6).
+dependency(1, 5, 6, 51, 6, 38).
+dependency(1, 6, 0, 7, 1, 3).
+dependency(1, 7, 6, 40, 1, 10).
+dependency(1, 8, 0, 29, 4, 22).
+dependency(1, 9, 1, 36, 1, 1).
+dependency(1, 10, 3, 13, 0, 14).
+dependency(1, 11, 0, 25, 4, 22).
+dependency(1, 12, 0, 45, 6, 39).
+dependency(1, 13, 6, 47, 6, 43).
+dependency(1, 14, 6, 51, 6, 39).
+dependency(1, 15, 4, 31, 4, 21).
+dependency(1, 16, 6, 43, 6, 38).
+dependency(1, 17, 0, 41, 6, 39).
+dependency(1, 18, 1, 36, 4, 35).
+dependency(1, 19, 7, 52, 0, 53).
+dependency(1, 20, 1, 18, 1, 1).
+dependency(1, 21, 0, 49, 6, 39).
+dependency(1, 22, 6, 47, 6, 38).
+dependency(1, 23, 6, 46, 6, 39).
+dependency(1, 24, 4, 20, 1, 19).
+dependency(1, 25, 6, 43, 6, 37).
+dependency(1, 26, 6, 47, 6, 39).
+dependency(1, 27, 6, 51, 6, 50).
+dependency(1, 28, 6, 48, 1, 10).
+dependency(1, 29, 6, 54, 1, 16).
+dependency(1, 30, 0, 14, 2, 12).
+dependency(1, 31, 6, 50, 6, 40).
+dependency(1, 32, 5, 32, 0, 33).
+dependency(1, 33, 4, 26, 4, 22).
+dependency(1, 34, 0, 23, 1, 19).
+dependency(1, 35, 4, 31, 4, 22).
+dependency(1, 36, 2, 15, 1, 16).
+dependency(1, 37, 2, 8, 1, 10).
+dependency(1, 38, 2, 12, 2, 11).
+dependency(1, 39, 2, 11, 2, 6).
+dependency(1, 40, 4, 28, 0, 29).
+dependency(1, 41, 2, 8, 0, 9).
+dependency(1, 42, 2, 12, 2, 5).
+dependency(1, 43, 4, 24, 0, 25).
+dependency(1, 44, 6, 40, 0, 41).
+dependency(1, 45, 2, 12, 2, 4).
+dependency(1, 46, 1, 18, 2, 17).
+dependency(1, 47, 4, 30, 4, 24).
+dependency(1, 48, 6, 48, 0, 49).
+dependency(1, 49, 4, 24, 1, 10).
+dependency(1, 50, 2, 11, 2, 8).
+dependency(1, 51, 6, 43, 6, 42).
+dependency(1, 52, 6, 54, 7, 52).
+dependency(1, 53, 1, 56, 1, 1).
+dependency(1, 54, 4, 34, 1, 16).
+dependency(1, 55, 4, 27, 4, 21).
+dependency(1, 56, 6, 42, 6, 39).
+dependency(1, 57, 6, 43, 6, 39).
+dependency(1, 58, 4, 26, 4, 24).
+dependency(1, 59, 2, 15, 3, 13).
+dependency(1, 60, 6, 44, 0, 45).
+dependency(1, 61, 0, 33, 4, 31).
+dependency(1, 62, 0, 9, 2, 6).
+dependency(1, 63, 6, 51, 6, 47).
+dependency(1, 64, 1, 56, 6, 55).
+dependency(1, 65, 4, 27, 4, 26).
+dependency(1, 66, 4, 34, 5, 32).
+dependency(1, 67, 4, 28, 1, 10).
+dependency(1, 68, 4, 31, 4, 30).
+dependency(1, 69, 0, 53, 6, 51).
+dependency(1, 70, 4, 30, 4, 22).
+dependency(1, 71, 6, 42, 6, 40).
+dependency(1, 72, 4, 27, 4, 20).
+dependency(1, 73, 6, 46, 6, 40).
+dependency(1, 74, 6, 44, 1, 10).
+dependency(1, 75, 6, 50, 6, 39).
+dependency(1, 76, 4, 31, 4, 27).

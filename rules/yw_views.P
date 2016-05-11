@@ -26,11 +26,16 @@ yw_function(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, End
     yw_program(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, EndLine),
     function(FunctionId).
 
-yw_in_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName) :-
-    port(PortId, 'in', PortName, _, _, DataId),
+yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName) :-
+    _yw_input_port(PortId, PortType, PortName, DataId),
     has_in_port(ProgramId, PortId),
     yw_program(ProgramId, ProgramName,_,_,_,_),
     data(DataId,DataName,_).
+
+_yw_input_port(PortId, in, PortName, DataId) :-
+    port(PortId, in, PortName, _, _, DataId).
+_yw_input_port(PortId, param, PortName, DataId) :-
+    port(PortId, param, PortName, _, _, DataId).
 
 yw_out_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName) :-
     port(PortId, 'out', PortName, _, _, DataId),
@@ -39,14 +44,14 @@ yw_out_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName) :-
     data(DataId,DataName,_).
 
 yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName) :-
-    yw_in_port(ProgramId, ProgramName, _, _, DataId, DataName),
-    yw_in_port(WorkflowId, WorkflowName, _, _, _, DataName),
+    yw_step_input(ProgramId, ProgramName, _, _, _, DataId, DataName),
+    yw_step_input(WorkflowId, WorkflowName, _, _, _, _, DataName),
     _yw_parent_workflow(ProgramId, WorkflowId),
     data(DataId, DataName, _).
 
 yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName) :-
     yw_out_port(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName),
-    yw_in_port(SinkProgramId, SinkProgramName, SinkPortId, SinkPortName, DataId, DataName).
+    yw_step_input(SinkProgramId, SinkProgramName, _, SinkPortId, SinkPortName, DataId, DataName).
 
 yw_outflow(ProgramId, ProgramName, DataId, DataName, WorkflowId, WorkflowName) :-
     yw_out_port(ProgramId, ProgramName, _, _, DataId, DataName),

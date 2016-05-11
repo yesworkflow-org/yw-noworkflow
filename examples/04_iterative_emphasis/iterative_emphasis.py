@@ -4,7 +4,7 @@
 # @param emphasis_count
 # @out displayed_greeting @desc Greeting displayed to user.
 
-def greet_user(greeting, emphasis='!', count=0):
+def greet_user(greeting, emphasis='!', count=1):
 
     # @begin emphasize_greeting @desc Add emphasis to the provided greeting
     # @in greeting @as provided_greeting
@@ -28,5 +28,5 @@ if __name__ == '__main__':
     first_greeting = 'Hello World'
     greet_user(first_greeting)
     second_greeting = 'Goodbye World'
-    greet_user(second_greeting, '!', 1)
-    greet_user("Back again", '!', 3)
+    greet_user(second_greeting, '?', 2)
+    greet_user("Back again", '?!', 3)

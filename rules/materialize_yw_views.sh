@@ -29,8 +29,8 @@ printall(yw_workflow_step(_,_,_,_,_,_)).
 rule_banner('yw_function(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, EndLine).').
 printall(yw_function(_,_,_,_,_,_)).
 
-rule_banner('yw_in_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).').
-printall(yw_in_port(_,_,_,_,_,_)).
+rule_banner('yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).').
+printall(yw_step_input(_,_,_,_,_,_,_)).
 
 rule_banner('yw_out_port(ProgramId, ProgramName, PortId, PortName, DataId, DataName).').
 printall(yw_out_port(_,_,_,_,_,_)).
