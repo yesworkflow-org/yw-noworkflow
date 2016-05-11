@@ -13,6 +13,19 @@ yw_workflow_script(1,simulate_data_collection,1,'simulate_data_collection.py').
 
 
 %---------------------------------------------------------------------------------------------------
+% FACT: yw_program(WorkflowId, ProgramName, WorkflowId, SourceId, BeginLine, EndLine).
+%...................................................................................................
+yw_program(1,simulate_data_collection,nil,1,12,154).
+yw_program(2,initialize_run,1,1,32,45).
+yw_program(3,load_screening_results,1,1,49,59).
+yw_program(4,calculate_strategy,1,1,63,75).
+yw_program(5,log_rejected_sample,1,1,79,90).
+yw_program(6,collect_data_set,1,1,94,112).
+yw_program(7,transform_images,1,1,116,132).
+yw_program(8,log_average_image_intensity,1,1,136,150).
+
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).
 %...................................................................................................
 yw_workflow(1,simulate_data_collection,nil,1,12,154).

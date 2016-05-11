@@ -17,6 +17,9 @@ printall(yw_source_file(_,_)).
 rule_banner('yw_workflow_script(WorkflowId, WorkflowName, SourceId, SourceFile).').
 printall(yw_workflow_script(_,_,_,_)).
 
+rule_banner('yw_program(WorkflowId, ProgramName, WorkflowId, SourceId, BeginLine, EndLine).').
+printall(yw_program(_,_,_,_,_,_)).
+
 rule_banner('yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).').
 printall(yw_workflow(_,_,_,_,_,_)).
 

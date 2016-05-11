@@ -11,6 +11,9 @@ nw_activation_from_yw_step(3,'module.print',3,print_greeting,22).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_activation_into_yw_step(ActivationId, FunctionName, StepId, StepName, ActivationLine, CallerActivationId).
 %...................................................................................................
+nw_activation_into_yw_step(2,greet_user,1,'EmphasizedHelloWorld',29,1).
+nw_activation_into_yw_step(4,greet_user,1,'EmphasizedHelloWorld',31,1).
+nw_activation_into_yw_step(6,greet_user,1,'EmphasizedHelloWorld',32,1).
 
 
 %---------------------------------------------------------------------------------------------------

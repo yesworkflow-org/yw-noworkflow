@@ -13,6 +13,13 @@ yw_workflow_script(1,hello_world,1,'hello_world.py').
 
 
 %---------------------------------------------------------------------------------------------------
+% FACT: yw_program(WorkflowId, ProgramName, WorkflowId, SourceId, BeginLine, EndLine).
+%...................................................................................................
+yw_program(1,hello_world,nil,1,1,9).
+yw_program(2,print_greeting,1,1,4,7).
+
+
+%---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).
 %...................................................................................................
 yw_workflow(1,hello_world,nil,1,1,9).
