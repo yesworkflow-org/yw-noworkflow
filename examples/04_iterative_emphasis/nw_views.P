@@ -15,6 +15,7 @@ nw_function_definition(1,greet_user,7,22,nil).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_function_activation(ActivationId, FunctionName, Line, CallerActivationId).
 %...................................................................................................
+nw_function_activation(1,'/Users/tmcphill/GitRepos/yw-noworkflow/examples/04_iterative_emphasis/iterative_emphasis.py',61,nil).
 nw_function_activation(2,greet_user,29,1).
 nw_function_activation(3,'module.print',22,2).
 nw_function_activation(4,greet_user,31,1).
@@ -89,19 +90,19 @@ nw_variable_usage(22,6,43,greeting,'Back again!!!',22).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................
-nw_variable_dependency(1,6,greet_user,16,43,greeting,30,emphasis).
-nw_variable_dependency(9,4,greet_user,16,23,greeting,17,count).
-nw_variable_dependency(11,6,greet_user,16,43,greeting,39,greeting).
-nw_variable_dependency(15,4,greet_user,16,23,greeting,16,emphasis).
-nw_variable_dependency(21,4,greet_user,16,23,greeting,15,greeting).
-nw_variable_dependency(22,4,greet_user,15,22,i,17,count).
-nw_variable_dependency(26,6,greet_user,15,38,i,31,count).
-nw_variable_dependency(28,6,greet_user,16,35,greeting,30,emphasis).
-nw_variable_dependency(35,6,greet_user,16,35,greeting,29,greeting).
-nw_variable_dependency(39,6,greet_user,16,39,greeting,30,emphasis).
-nw_variable_dependency(40,6,greet_user,16,43,greeting,31,count).
-nw_variable_dependency(42,6,greet_user,15,34,i,31,count).
-nw_variable_dependency(51,6,greet_user,16,35,greeting,31,count).
-nw_variable_dependency(52,6,greet_user,16,39,greeting,35,greeting).
-nw_variable_dependency(54,6,greet_user,16,39,greeting,31,count).
-nw_variable_dependency(55,6,greet_user,15,42,i,31,count).
+nw_variable_dependency(8,4,greet_user,16,23,greeting,17,count).
+nw_variable_dependency(9,6,greet_user,16,43,greeting,39,greeting).
+nw_variable_dependency(12,6,greet_user,16,35,greeting,31,count).
+nw_variable_dependency(20,6,greet_user,15,38,i,31,count).
+nw_variable_dependency(23,6,greet_user,16,35,greeting,29,greeting).
+nw_variable_dependency(24,6,greet_user,16,39,greeting,31,count).
+nw_variable_dependency(25,6,greet_user,15,42,i,31,count).
+nw_variable_dependency(26,4,greet_user,16,23,greeting,16,emphasis).
+nw_variable_dependency(31,4,greet_user,16,23,greeting,15,greeting).
+nw_variable_dependency(33,6,greet_user,16,35,greeting,30,emphasis).
+nw_variable_dependency(35,6,greet_user,16,43,greeting,31,count).
+nw_variable_dependency(45,4,greet_user,15,22,i,17,count).
+nw_variable_dependency(48,6,greet_user,16,43,greeting,30,emphasis).
+nw_variable_dependency(50,6,greet_user,16,39,greeting,30,emphasis).
+nw_variable_dependency(51,6,greet_user,15,34,i,31,count).
+nw_variable_dependency(53,6,greet_user,16,39,greeting,35,greeting).

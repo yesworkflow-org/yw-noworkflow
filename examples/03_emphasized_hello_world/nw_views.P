@@ -15,6 +15,7 @@ nw_function_definition(1,greet_user,5,16,nil).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_function_activation(ActivationId, FunctionName, Line, CallerActivationId).
 %...................................................................................................
+nw_function_activation(1,'/Users/tmcphill/GitRepos/yw-noworkflow/examples/03_emphasized_hello_world/emphasized_hello_world.py',61,nil).
 nw_function_activation(2,greet_user,23,1).
 nw_function_activation(3,'module.print',16,2).
 nw_function_activation(4,greet_user,25,1).
@@ -60,6 +61,6 @@ nw_variable_usage(10,6,23,greeting,'Back again!!',16).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................
-nw_variable_dependency(19,4,greet_user,10,16,greeting,14,provided_greeting).
-nw_variable_dependency(13,2,greet_user,10,6,greeting,4,provided_greeting).
-nw_variable_dependency(12,6,greet_user,10,23,greeting,22,provided_greeting).
+nw_variable_dependency(6,2,greet_user,10,6,greeting,4,provided_greeting).
+nw_variable_dependency(4,6,greet_user,10,23,greeting,22,provided_greeting).
+nw_variable_dependency(3,4,greet_user,10,16,greeting,14,provided_greeting).

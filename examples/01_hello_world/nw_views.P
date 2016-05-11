@@ -14,6 +14,7 @@ nw_script_activation('hello_world.py','run -e Tracer hello_world.py',1,nil).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_function_activation(ActivationId, FunctionName, Line, CallerActivationId).
 %...................................................................................................
+nw_function_activation(1,'/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world.py',61,nil).
 nw_function_activation(2,'module.print',6,1).
 
 

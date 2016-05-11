@@ -8,8 +8,8 @@ nw_function_definition(FunctionId, FunctionName, FirstLine, LastLine, Docstring)
     function_def(_, FunctionId, FunctionName, _, FirstLine, LastLine, Docstring).
 
 nw_function_activation(ActivationId, FunctionName, CallerLine, CallerActivationId) :-
-    activation(_, ActivationId, FunctionName, CallerLine, _, _, CallerActivationId),
-    CallerActivationId \== nil.
+    activation(_, ActivationId, FunctionName, CallerLine, _, _, CallerActivationId).
+%    CallerActivationId \== nil.
 
 nw_function_call(FunctionId, FunctionCallId, Name) :-
     object(_, FunctionId, FunctionCallId, Name, 'FUNCTION_CALL').
