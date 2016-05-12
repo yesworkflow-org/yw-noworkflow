@@ -1,0 +1,22 @@
+
+digraph YW_DATA {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label="hello_world"
+subgraph cluster_workflow { label=""; color=black; penwidth=2
+subgraph cluster_workflow_inner { label=""; color=white
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+greeting
+}}
+subgraph cluster_inflows { label=""; color=white
+subgraph cluster_inflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+}}
+subgraph cluster_outflows { label=""; color=white
+subgraph cluster_outflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+greeting_outflow [label=""]
+}}
+greeting -> greeting_outflow
+}
+

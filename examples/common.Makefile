@@ -1,5 +1,6 @@
 
 RULES_DIR = ../../rules
+GRAPH_RULES_DIR = ../../graphs
 RUN_SCRIPT = run.sh
 RUN_STDOUT = run_outputs.txt
 RUN_PRODUCTS =  ${RUN_STDOUT}
@@ -12,9 +13,11 @@ QUERY_OUTPUTS = query_outputs.txt
 NW_FACTS = facts/nw_facts.P
 
 WORKFLOW_GRAPH = workflow_graph
-DOTS = ${WORKFLOW_GRAPH}.gv
-PNGS = ${WORKFLOW_GRAPH}.png
-PDFS = ${WORKFLOW_GRAPH}.pdf
+YW_DATA_GRAPH = yw_data_graph
+
+DOTS = ${WORKFLOW_GRAPH}.gv ${YW_DATA_GRAPH}.gv
+PNGS = ${WORKFLOW_GRAPH}.png ${YW_DATA_GRAPH}.png
+PDFS = ${WORKFLOW_GRAPH}.pdf ${YW_DATA_GRAPH}.pdf
 
 YW_PROPERTIES = yw.properties
 
@@ -48,11 +51,16 @@ ${YW_NW_VIEWS}: ${YW_VIEWS} ${NW_VIEWS}
 ${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_VIEWS} ${NW_FACTS} ${YW_NW_VIEWS} ${RULES}
 	bash -l ${QUERY_SCRIPT} > ${QUERY_OUTPUTS}
 
-${PNGS}: ${WORKFLOW_GRAPH}.gv
-	dot -Tpng ${WORKFLOW_GRAPH}.gv -o ${WORKFLOW_GRAPH}.png
+${DOTS}: ${YW_NW_VIEWS}
+	bash -l ../../graphs/${YW_DATA_GRAPH}.sh > ${YW_DATA_GRAPH}.gv
 
-${PDFS}: ${WORKFLOW_GRAPH}.gv
+${PNGS}: ${DOTS}
+	dot -Tpng ${WORKFLOW_GRAPH}.gv -o ${WORKFLOW_GRAPH}.png
+	dot -Tpng ${YW_DATA_GRAPH}.gv -o ${YW_DATA_GRAPH}.png
+
+${PDFS}: ${DOTS}
 	dot -Tpdf ${WORKFLOW_GRAPH}.gv -o ${WORKFLOW_GRAPH}.pdf
+	dot -Tpdf ${YW_DATA_GRAPH}.gv -o ${YW_DATA_GRAPH}.pdf
 
 clean:
 	rm -f *.xwam *.gv *.png *.pdf *.P *.txt ${RULES_DIR}/*.xwam

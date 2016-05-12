@@ -1,0 +1,123 @@
+
+digraph YW_DATA {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label="simulate_data_collection"
+subgraph cluster_workflow { label=""; color=black; penwidth=2
+subgraph cluster_workflow_inner { label=""; color=white
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+run_log
+cassette_id
+sample_spreadsheet
+sample_name
+sample_quality
+sample_score_cutoff
+data_redundancy
+accepted_sample
+rejected_sample
+num_images
+energies
+rejection_log
+sample_id
+energy
+frame_number
+raw_image
+calibration_image
+corrected_image
+corrected_image_path
+total_intensity
+pixel_count
+collection_log
+cassette_id -> sample_name
+sample_spreadsheet -> sample_name
+cassette_id -> sample_quality
+sample_spreadsheet -> sample_quality
+sample_name -> accepted_sample
+sample_quality -> accepted_sample
+sample_score_cutoff -> accepted_sample
+data_redundancy -> accepted_sample
+sample_name -> rejected_sample
+sample_quality -> rejected_sample
+sample_score_cutoff -> rejected_sample
+data_redundancy -> rejected_sample
+sample_name -> num_images
+sample_quality -> num_images
+sample_score_cutoff -> num_images
+data_redundancy -> num_images
+sample_name -> energies
+sample_quality -> energies
+sample_score_cutoff -> energies
+data_redundancy -> energies
+cassette_id -> rejection_log
+rejected_sample -> rejection_log
+cassette_id -> sample_id
+accepted_sample -> sample_id
+num_images -> sample_id
+energies -> sample_id
+cassette_id -> energy
+accepted_sample -> energy
+num_images -> energy
+energies -> energy
+cassette_id -> frame_number
+accepted_sample -> frame_number
+num_images -> frame_number
+energies -> frame_number
+cassette_id -> raw_image
+accepted_sample -> raw_image
+num_images -> raw_image
+energies -> raw_image
+sample_id -> corrected_image
+energy -> corrected_image
+frame_number -> corrected_image
+raw_image -> corrected_image
+calibration_image -> corrected_image
+sample_id -> corrected_image_path
+energy -> corrected_image_path
+frame_number -> corrected_image_path
+raw_image -> corrected_image_path
+calibration_image -> corrected_image_path
+sample_id -> total_intensity
+energy -> total_intensity
+frame_number -> total_intensity
+raw_image -> total_intensity
+calibration_image -> total_intensity
+sample_id -> pixel_count
+energy -> pixel_count
+frame_number -> pixel_count
+raw_image -> pixel_count
+calibration_image -> pixel_count
+cassette_id -> collection_log
+sample_id -> collection_log
+frame_number -> collection_log
+corrected_image_path -> collection_log
+total_intensity -> collection_log
+pixel_count -> collection_log
+}}
+subgraph cluster_inflows { label=""; color=white
+subgraph cluster_inflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+data_redundancy_inflow [label=""]
+sample_score_cutoff_inflow [label=""]
+cassette_id_inflow [label=""]
+calibration_image_inflow [label=""]
+sample_spreadsheet_inflow [label=""]
+}}
+data_redundancy_inflow -> data_redundancy
+sample_score_cutoff_inflow -> sample_score_cutoff
+cassette_id_inflow -> cassette_id
+calibration_image_inflow -> calibration_image
+sample_spreadsheet_inflow -> sample_spreadsheet
+subgraph cluster_outflows { label=""; color=white
+subgraph cluster_outflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+collection_log_outflow [label=""]
+corrected_image_outflow [label=""]
+rejection_log_outflow [label=""]
+run_log_outflow [label=""]
+}}
+collection_log -> collection_log_outflow
+corrected_image -> corrected_image_outflow
+rejection_log -> rejection_log_outflow
+run_log -> run_log_outflow
+}
+
