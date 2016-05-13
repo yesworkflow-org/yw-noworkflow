@@ -1,5 +1,5 @@
 
-digraph YW_DATA {
+digraph yw_data_view {
 rankdir=TB
 fontname=Courier; fontsize=18; labelloc=t
 label="custom_hello_world"
@@ -10,20 +10,20 @@ displayed_greeting
 custom_greeting
 provided_greeting
 node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
-custom_greeting -> displayed_greeting
-provided_greeting -> custom_greeting
 }}
-subgraph cluster_inflows { label=""; color=white
+subgraph cluster_inflows { label=""; color=white; penwidth=2
 subgraph cluster_inflows_inner { label=""; color=white
 node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
 provided_greeting_inflow [label=""]
 }}
-provided_greeting_inflow -> provided_greeting
-subgraph cluster_outflows { label=""; color=white
+subgraph cluster_outflows { label=""; color=white; penwidth=2
 subgraph cluster_outflows_inner { label=""; color=white
 node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
 displayed_greeting_outflow [label=""]
 }}
+custom_greeting -> displayed_greeting
+provided_greeting -> custom_greeting
+provided_greeting_inflow -> provided_greeting
 displayed_greeting -> displayed_greeting_outflow
 }
 

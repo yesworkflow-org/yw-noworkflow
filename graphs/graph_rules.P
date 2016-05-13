@@ -1,36 +1,32 @@
 
-graph_begin(Name, Title, Layout) :-
+gv_graph(Name, Title, Layout) :-
     nl,
     write('digraph '), write(Name), writeln(' {'),
     write('rankdir='), writeln(Layout),
     writeln('fontname=Courier; fontsize=18; labelloc=t'),
     write('label="'), write(Title), writeln('"').
 
-start_visible_cluster_box(Name) :-
-    write('subgraph cluster_'), write(Name), write(' { label=""; color=black; penwidth=2'), nl,
+gv_cluster(Name, Color) :-
+    write('subgraph cluster_'), write(Name), write(' { label=""; color='), write(Color), write('; penwidth=2'), nl,
     write('subgraph cluster_'), write(Name), write('_inner { label=""; color=white'), nl.
 
-start_invisible_cluster_box(Name) :-
-    write('subgraph cluster_'), write(Name), write(' { label=""; color=white'), nl,
-    write('subgraph cluster_'), write(Name), write('_inner { label=""; color=white'), nl.
-
-end_cluster_box() :-
+gv_cluster_end() :-
     writeln('}}').
 
-data_node_style() :-
+gv_node_style_data() :-
     writeln('node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]').
 
-param_node_style() :-
+gv_node_style_param() :-
     writeln('node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]').
 
-workflow_port_style() :-
+gv_node_style_workflow_port() :-
     writeln('node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]').
 
-graph_end() :-
+gv_graph_end() :-
     writeln('}'),
     nl.
 
-graph_data_in_nodes(WorkflowId) :-
+gv_data_in_nodes(WorkflowId) :-
     yw_data(DataId, DataName, WorkflowId, _),
     not yw_data_only_used_as_param(DataId),
     writeq(DataName), nl,
@@ -39,7 +35,15 @@ graph_data_in_nodes(WorkflowId) :-
     true.
 
 
-graph_data_to_data_edges(WorkflowId) :-
+gv_data_param_nodes(WorkflowId) :-
+    yw_data(DataId, DataName, WorkflowId, _),
+    yw_data_used_as_param(DataId),
+    writeq(DataName), nl,
+    fail
+    ;
+    true.
+
+gv_data_to_data_edges(WorkflowId) :-
     yw_data(DownstreamDataId, DownstreamDataName, WorkflowId, _),
     yw_data(UpstreamDataId, UpstreamDataName, WorkflowId, _),
     yw_data_immediately_downstream(UpstreamDataId, DownstreamDataId),
@@ -50,21 +54,21 @@ graph_data_to_data_edges(WorkflowId) :-
     ;
     true.
 
-graph_inflow_nodes(WorkflowId) :-
+gv_inflow_nodes(WorkflowId) :-
     yw_inflow_data(WorkflowId, _, _, DataName),
     write(DataName), write('_inflow [label=""]'), nl,
     fail
     ;
     true.
 
-graph_outflow_nodes(WorkflowId) :-
+gv_outflow_nodes(WorkflowId) :-
     yw_outflow_data(WorkflowId, _, _, DataName),
     write(DataName), write('_outflow [label=""]'), nl,
     fail
     ;
     true.
 
-graph_inflow_to_data_edges(WorkflowId) :-
+gv_inflow_to_data_edges(WorkflowId) :-
     yw_inflow_data(WorkflowId, _, _, DataName),
     write(DataName), write('_inflow'),
     write(' -> '),
@@ -73,7 +77,7 @@ graph_inflow_to_data_edges(WorkflowId) :-
     ;
     true.
 
-graph_data_to_outflow_edges(WorkflowId) :-
+gv_data_to_outflow_edges(WorkflowId) :-
     yw_outflow_data(WorkflowId, _, _, DataName),
     writeq(DataName),
     write(' -> '),
@@ -82,13 +86,6 @@ graph_data_to_outflow_edges(WorkflowId) :-
     ;
     true.
 
-graph_data_param_nodes(WorkflowId) :-
-    yw_data(DataId, DataName, WorkflowId, _),
-    yw_data_used_as_param(DataId),
-    writeq(DataName), nl,
-    fail
-    ;
-    true.
 
 :- table yw_data_used_as_in/1.
 yw_data_used_as_in(DataId) :-
