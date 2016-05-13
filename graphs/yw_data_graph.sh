@@ -7,6 +7,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 set_prolog_flag(unknown, fail).
 
 [yw_views].
+['../../rules/general_rules'].
 ['../../graphs/graph_rules'].
 
 [user].
@@ -18,7 +19,9 @@ graph() :-
 
     start_visible_cluster_box('workflow'),
     data_node_style(),
-    graph_data_nodes(WorkflowId),
+    graph_data_in_nodes(WorkflowId),
+    param_node_style(),
+    graph_data_param_nodes(WorkflowId),
     graph_data_to_data_edges(WorkflowId),
     end_cluster_box(),
 

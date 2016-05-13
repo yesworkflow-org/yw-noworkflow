@@ -20,6 +20,9 @@ end_cluster_box() :-
 data_node_style() :-
     writeln('node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]').
 
+param_node_style() :-
+    writeln('node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]').
+
 workflow_port_style() :-
     writeln('node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]').
 
@@ -27,12 +30,14 @@ graph_end() :-
     writeln('}'),
     nl.
 
-graph_data_nodes(WorkflowId) :-
-    yw_data(_, DataName, WorkflowId, _),
+graph_data_in_nodes(WorkflowId) :-
+    yw_data(DataId, DataName, WorkflowId, _),
+    not yw_data_only_used_as_param(DataId),
     writeq(DataName), nl,
     fail
     ;
     true.
+
 
 graph_data_to_data_edges(WorkflowId) :-
     yw_data(DownstreamDataId, DownstreamDataName, WorkflowId, _),
@@ -77,6 +82,27 @@ graph_data_to_outflow_edges(WorkflowId) :-
     ;
     true.
 
+graph_data_param_nodes(WorkflowId) :-
+    yw_data(DataId, DataName, WorkflowId, _),
+    yw_data_used_as_param(DataId),
+    writeq(DataName), nl,
+    fail
+    ;
+    true.
+
+:- table yw_data_used_as_in/1.
+yw_data_used_as_in(DataId) :-
+    yw_step_input(_, _, in, _, _, DataId, _).
+
+:- table yw_data_used_as_param/1.
+yw_data_used_as_param(DataId) :-
+    yw_step_input(_, _, param, _, _, DataId, _).
+
+:- table yw_data_only_used_as_param/1.
+yw_data_only_used_as_param(DataId) :-
+    yw_data_used_as_param(DataId),
+    not yw_data_used_as_in(DataId).
+
 :- table yw_inflow_data/4.
 yw_inflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
     yw_inflow(WorkflowId, WorkflowName, DataId, DataName, _, _).
@@ -84,7 +110,6 @@ yw_inflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
 :- table yw_outflow_data/4.
 yw_outflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
     yw_outflow(_, _, DataId, DataName, WorkflowId, WorkflowName).
-
 
 :- table yw_data_immediately_downstream/2.
 yw_data_immediately_downstream(UpstreamDataId,DownstreamDataId) :-

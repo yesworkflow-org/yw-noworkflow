@@ -7,8 +7,14 @@ subgraph cluster_workflow { label=""; color=black; penwidth=2
 subgraph cluster_workflow_inner { label=""; color=white
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
 run_log
-cassette_id
 sample_spreadsheet
+rejection_log
+raw_image
+calibration_image
+corrected_image
+collection_log
+node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
+cassette_id
 sample_name
 sample_quality
 sample_score_cutoff
@@ -17,17 +23,12 @@ accepted_sample
 rejected_sample
 num_images
 energies
-rejection_log
 sample_id
 energy
 frame_number
-raw_image
-calibration_image
-corrected_image
 corrected_image_path
 total_intensity
 pixel_count
-collection_log
 cassette_id -> sample_name
 sample_spreadsheet -> sample_name
 cassette_id -> sample_quality

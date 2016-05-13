@@ -9,6 +9,7 @@ node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname
 displayed_greeting
 modified_greeting
 provided_greeting
+node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
 modified_greeting -> displayed_greeting
 provided_greeting -> modified_greeting
 }}

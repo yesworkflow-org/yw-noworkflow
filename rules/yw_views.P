@@ -93,7 +93,6 @@ yw_description(EntityType, Id, Name, Description) :-
     annotation(DescAnnotationId, _, _, 'desc', _, Description),
     EntityType = port.
 
-
 % private helper rules for creating views
 
 _yw_parent_workflow(ProgramId, WorkflowId, WorkflowName) :-

@@ -8,9 +8,10 @@ subgraph cluster_workflow_inner { label=""; color=white
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
 provided_greeting
 provided_emphasis
-emphasis_count
 emphasized_greeting
 displayed_greeting
+node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
+emphasis_count
 provided_greeting -> emphasized_greeting
 provided_emphasis -> emphasized_greeting
 emphasis_count -> emphasized_greeting
