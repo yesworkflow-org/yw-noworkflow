@@ -13,6 +13,12 @@ gv_cluster(Name, Color) :-
 gv_cluster_end() :-
     writeln('}}').
 
+gv_node_style_atomic_steps() :-
+    writeln('node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]').
+
+gv_node_style_composite_steps() :-
+    gv_node_style_atomic_steps().
+
 gv_node_style_data() :-
     writeln('node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]').
 
@@ -26,6 +32,21 @@ gv_graph_end() :-
     writeln('}'),
     nl.
 
+gv_atomic_step_nodes(WorkflowId) :-
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
+    not yw_workflow(StepId, _, _, _, _, _),
+    writeq(StepName), nl,
+    fail
+    ;
+    true.
+
+gv_composite_step_nodes(WorkflowId) :-
+    yw_workflow(_, StepName, WorkflowId, _, _, _),
+    writeq(StepName), nl,
+    fail
+    ;
+    true.
+
 gv_data_in_nodes(WorkflowId) :-
     yw_data(DataId, DataName, WorkflowId, _),
     not yw_data_only_used_as_param(DataId),
@@ -34,22 +55,10 @@ gv_data_in_nodes(WorkflowId) :-
     ;
     true.
 
-
 gv_data_param_nodes(WorkflowId) :-
     yw_data(DataId, DataName, WorkflowId, _),
     yw_data_used_as_param(DataId),
     writeq(DataName), nl,
-    fail
-    ;
-    true.
-
-gv_data_to_data_edges(WorkflowId) :-
-    yw_data(DownstreamDataId, DownstreamDataName, WorkflowId, _),
-    yw_data(UpstreamDataId, UpstreamDataName, WorkflowId, _),
-    yw_data_immediately_downstream(UpstreamDataId, DownstreamDataId),
-    writeq(UpstreamDataName),
-    write(' -> '),
-    writeq(DownstreamDataName), nl,
     fail
     ;
     true.
@@ -68,24 +77,53 @@ gv_outflow_nodes(WorkflowId) :-
     ;
     true.
 
+gv_data_to_data_edges(WorkflowId) :-
+    yw_data(DownstreamDataId, DownstreamDataName, WorkflowId, _),
+    yw_data(UpstreamDataId, UpstreamDataName, WorkflowId, _),
+    yw_data_immediately_downstream(UpstreamDataId, DownstreamDataId),
+    writeq(UpstreamDataName), write(' -> '), writeq(DownstreamDataName), nl,
+    fail
+    ;
+    true.
+
+gv_step_to_step_edges(WorkflowId) :-
+    yw_workflow_step(SourceProgramId, SourceProgramName, WorkflowId, _, _, _),
+    yw_workflow_step(SinkProgramId, SinkProgramName, WorkflowId, _, _, _),
+    yw_step_immediately_downstream(SourceProgramId, SinkProgramId),
+    writeq(SourceProgramName), write(' -> '), writeq(SinkProgramName), nl,
+    fail
+    ;
+    true.
+
+gv_inflow_to_program_edges(WorkflowId) :-
+    yw_inflow(WorkflowId, _, _, DataName, StepId, StepName),
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
+    writeq(DataName), write('_inflow'), write(' -> '), writeq(StepName), nl,
+    fail
+    ;
+    true.
+
+gv_program_to_outflow_edges(WorkflowId) :-
+    yw_outflow(StepId, StepName, _, DataName, WorkflowId, _),
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
+    writeq(StepName), write(' -> '), writeq(DataName), write('_outflow'), nl,
+    fail
+    ;
+    true.
+
 gv_inflow_to_data_edges(WorkflowId) :-
     yw_inflow_data(WorkflowId, _, _, DataName),
-    write(DataName), write('_inflow'),
-    write(' -> '),
-    writeq(DataName), nl,
+    write(DataName), write('_inflow'), write(' -> '), writeq(DataName), nl,
     fail
     ;
     true.
 
 gv_data_to_outflow_edges(WorkflowId) :-
     yw_outflow_data(WorkflowId, _, _, DataName),
-    writeq(DataName),
-    write(' -> '),
-    write(DataName), write('_outflow'), nl,
+    writeq(DataName), write(' -> '), write(DataName), write('_outflow'), nl,
     fail
     ;
     true.
-
 
 :- table yw_data_used_as_in/1.
 yw_data_used_as_in(DataId) :-
@@ -109,6 +147,12 @@ yw_outflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
     yw_outflow(_, _, DataId, DataName, WorkflowId, WorkflowName).
 
 :- table yw_data_immediately_downstream/2.
-yw_data_immediately_downstream(UpstreamDataId,DownstreamDataId) :-
+yw_data_immediately_downstream(UpstreamDataId, DownstreamDataId) :-
     yw_step_input(StepId, _, _, _, _, UpstreamDataId, _),
     yw_step_output(StepId, _, _, _, _, DownstreamDataId, _).
+
+:- table yw_step_immediately_downstream/2.
+yw_step_immediately_downstream(SourceProgramId, SinkProgramId) :-
+    yw_workflow_step(SourceProgramId, _, _, _, _, _),
+    yw_workflow_step(SinkProgramId, _, _, _, _, _),
+    yw_flow(SourceProgramId, _, _, _, _, _, _, _, SinkProgramId, _).
