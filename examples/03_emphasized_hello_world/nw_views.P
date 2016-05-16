@@ -61,6 +61,6 @@ nw_variable_usage(10,6,23,greeting,'Back again!!',16).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................
-nw_variable_dependency(17,2,greet_user,10,6,greeting,4,provided_greeting).
-nw_variable_dependency(15,4,greet_user,10,16,greeting,14,provided_greeting).
-nw_variable_dependency(8,6,greet_user,10,23,greeting,22,provided_greeting).
+nw_variable_dependency(22,4,greet_user,10,16,greeting,14,provided_greeting).
+nw_variable_dependency(21,6,greet_user,10,23,greeting,22,provided_greeting).
+nw_variable_dependency(6,2,greet_user,10,6,greeting,4,provided_greeting).
