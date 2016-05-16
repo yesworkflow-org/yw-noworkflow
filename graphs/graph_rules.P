@@ -49,15 +49,14 @@ gv_composite_step_nodes(WorkflowId) :-
 
 gv_data_in_nodes(WorkflowId) :-
     yw_data(DataId, DataName, WorkflowId, _),
-    not yw_data_only_used_as_param(DataId),
+    not yw_workflow_param(_, _, DataId, _),
     writeq(DataName), nl,
     fail
     ;
     true.
 
 gv_data_param_nodes(WorkflowId) :-
-    yw_data(DataId, DataName, WorkflowId, _),
-    yw_data_used_as_param(DataId),
+    yw_workflow_param(WorkflowId, WorkflowName, DataId, DataName),
     writeq(DataName), nl,
     fail
     ;
@@ -156,6 +155,11 @@ yw_data_used_as_param(DataId) :-
 yw_data_only_used_as_param(DataId) :-
     yw_data_used_as_param(DataId),
     not yw_data_used_as_in(DataId).
+
+:- table yw_workflow_param/4.
+yw_workflow_param(WorkflowId, WorkflowName, DataId, DataName) :-
+    yw_inflow(WorkflowId, WorkflowName, DataId, DataName, _, _),
+    yw_step_input(_, _, param, _, _, DataId, _).
 
 :- table yw_inflow_data/4.
 yw_inflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
