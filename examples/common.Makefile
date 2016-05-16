@@ -10,7 +10,6 @@ YW_MODEL_OPTIONS = -c extract.language=python \
                    -c extract.factsfile=${YW_EXTRACT_FACTS} \
                    -c model.factsfile=${YW_MODEL_FACTS} \
                    -c query.engine=xsb
-YW_GRAPH_OPTIONS = -c extract.language=python
 
 RUN_SCRIPT = run.sh
 RUN_STDOUT = run_outputs.txt
@@ -26,14 +25,14 @@ RULES = ${RULES_DIR}/nw_views.P ${RULES_DIR}/yw_views.P ${RULES_DIR}/yw_nw_views
 QUERY_SCRIPT = query.sh
 QUERY_OUTPUTS = query_outputs.txt
 
-WORKFLOW_GRAPH = workflow_graph
 YW_DATA_GRAPH = yw_data_graph
 YW_PROCESS_GRAPH = yw_process_graph
-YW_GRAPHS = ${WORKFLOW_GRAPH}.gv ${YW_DATA_GRAPH}.gv ${YW_PROCESS_GRAPH}.gv
+YW_COMBINED_GRAPH = yw_combined_graph
+YW_GRAPHS = ${YW_DATA_GRAPH}.gv ${YW_PROCESS_GRAPH}.gv ${YW_COMBINED_GRAPH}.gv
 GRAPHS = ${YW_GRAPHS}
 
-PNGS = ${WORKFLOW_GRAPH}.png ${YW_DATA_GRAPH}.png ${YW_PROCESS_GRAPH}.png
-PDFS = ${WORKFLOW_GRAPH}.pdf ${YW_DATA_GRAPH}.pdf ${YW_PROCESS_GRAPH}.pdf
+PNGS = ${YW_DATA_GRAPH}.png ${YW_PROCESS_GRAPH}.png ${YW_COMBINED_GRAPH}.png
+PDFS = ${YW_DATA_GRAPH}.pdf ${YW_PROCESS_GRAPH}.pdf ${YW_COMBINED_GRAPH}.pdf
 
 YW_PROPERTIES = yw.properties
 
@@ -63,9 +62,9 @@ ${YW_FACTS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
 	${RULES_DIR}/materialize_yw_views.sh > ${YW_VIEWS}
 
 ${YW_GRAPHS}: ${YW_VIEWS}
-	bash -lc "yw graph ${WORKFLOW_SCRIPT} ${YW_GRAPH_OPTIONS} > ${WORKFLOW_GRAPH}.gv"
 	bash -l ../../graphs/${YW_DATA_GRAPH}.sh > ${YW_DATA_GRAPH}.gv
 	bash -l ../../graphs/${YW_PROCESS_GRAPH}.sh > ${YW_PROCESS_GRAPH}.gv
+	bash -l ../../graphs/${YW_COMBINED_GRAPH}.sh > ${YW_COMBINED_GRAPH}.gv
 
 ${RUN_OUTPUTS}: ${RUN_SCRIPT} ${WORKFLOW_SCRIPT}
 	bash -l ${RUN_SCRIPT} > ${RUN_STDOUT}

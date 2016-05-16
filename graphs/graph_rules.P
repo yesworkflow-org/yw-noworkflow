@@ -95,6 +95,25 @@ gv_step_to_step_edges(WorkflowId) :-
     ;
     true.
 
+gv_data_to_step_edges(WorkflowId) :-
+    yw_data(DataId, DataName, WorkflowId, _),
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
+    yw_step_input(StepId, _, _, _, _, DataId, _),
+    writeq(DataName), write(' -> '), writeq(StepName), nl,
+    fail
+    ;
+    true.
+
+gv_step_to_data_edges(WorkflowId) :-
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
+    yw_data(DataId, DataName, WorkflowId, _),
+    yw_step_output(StepId, _, _, _, _, DataId, _),
+    writeq(StepName), write(' -> '), writeq(DataName), nl,
+    fail
+    ;
+    true.
+
+
 gv_inflow_to_program_edges(WorkflowId) :-
     yw_inflow(WorkflowId, _, _, DataName, StepId, StepName),
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
