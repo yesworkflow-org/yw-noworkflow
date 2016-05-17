@@ -40,6 +40,14 @@ gv_atomic_step_nodes(WorkflowId) :-
     ;
     true.
 
+gv_atomic_step_nodes_upstream_of_data(WorkflowId, DataId) :-
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
+    yw_data_downstream_of_step(StepId, DataId),
+    writeq(StepName), nl,
+    fail
+    ;
+    true.
+
 gv_composite_step_nodes(WorkflowId) :-
     yw_workflow(_, StepName, WorkflowId, _, _, _),
     writeq(StepName), nl,
@@ -47,7 +55,15 @@ gv_composite_step_nodes(WorkflowId) :-
     ;
     true.
 
-gv_data_in_nodes(WorkflowId) :-
+gv_composite_step_nodes_upstream_of_data(WorkflowId, DataId) :-
+    yw_workflow(StepId, StepName, WorkflowId, _, _, _),
+    yw_data_downstream_of_step(StepId, DataId),
+    writeq(StepName), nl,
+    fail
+    ;
+    true.
+
+gv_data_nodes(WorkflowId) :-
     yw_data(DataId, DataName, WorkflowId, _),
     not yw_workflow_param(_, _, DataId, _),
     writeq(DataName), nl,
@@ -55,8 +71,29 @@ gv_data_in_nodes(WorkflowId) :-
     ;
     true.
 
-gv_data_param_nodes(WorkflowId) :-
-    yw_workflow_param(WorkflowId, WorkflowName, DataId, DataName),
+gv_data_node(DataId) :-
+    yw_data(DataId, DataName, _, _),
+    writeq(DataName), nl.
+
+gv_data_nodes_upstream_of_data(WorkflowId, DownstreamDataId) :-
+    yw_data(DataId, DataName, WorkflowId, _),
+    not yw_workflow_param(_, _, DataId, _),
+    yw_data_downstream(DataId, DownstreamDataId),
+    writeq(DataName), nl,
+    fail
+    ;
+    true.
+
+gv_param_nodes(WorkflowId) :-
+    yw_workflow_param(WorkflowId, _, _, DataName),
+    writeq(DataName), nl,
+    fail
+    ;
+    true.
+
+gv_param_nodes_upstream_of_data(WorkflowId, DownstreamDataId) :-
+    yw_workflow_param(WorkflowId, _, _, DataName),
+    yw_data_downstream(DataId, DownstreamDataId),
     writeq(DataName), nl,
     fail
     ;
@@ -69,8 +106,23 @@ gv_inflow_nodes(WorkflowId) :-
     ;
     true.
 
+gv_inflow_nodes_upstream_of_data(WorkflowId, DownstreamDataId) :-
+    yw_inflow_data(WorkflowId, _, DataId, DataName),
+    yw_data_downstream(DataId, DownstreamDataId),
+    write(DataName), write('_inflow [label=""]'), nl,
+    fail
+    ;
+    true.
+
 gv_outflow_nodes(WorkflowId) :-
     yw_outflow_data(WorkflowId, _, _, DataName),
+    write(DataName), write('_outflow [label=""]'), nl,
+    fail
+    ;
+    true.
+
+gv_outflow_node_for_data(WorkflowId, DataId) :-
+    yw_outflow_data(WorkflowId, _, DataId, DataName),
     write(DataName), write('_outflow [label=""]'), nl,
     fail
     ;
@@ -103,6 +155,17 @@ gv_data_to_step_edges(WorkflowId) :-
     ;
     true.
 
+:- table gv_data_to_step_edges_upstream_of_data/2.
+gv_data_to_step_edges_upstream_of_data(WorkflowId, DownstreamDataId) :-
+    yw_data(DataId, DataName, WorkflowId, _),
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
+    yw_step_input(StepId, _, _, _, _, DataId, _),
+    yw_data_downstream_of_step(StepId, DownstreamDataId),
+    writeq(DataName), write(' -> '), writeq(StepName), nl,
+    fail
+    ;
+    true.
+
 gv_step_to_data_edges(WorkflowId) :-
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
     yw_data(DataId, DataName, WorkflowId, _),
@@ -112,6 +175,15 @@ gv_step_to_data_edges(WorkflowId) :-
     ;
     true.
 
+gv_step_to_data_edges_upstream_of_data(WorkflowId, DownstreamDataId) :-
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
+    yw_data(DataId, DataName, WorkflowId, _),
+    yw_step_output(StepId, _, _, _, _, DataId, _),
+    yw_data_downstream(DataId, DownstreamDataId),
+    writeq(StepName), write(' -> '), writeq(DataName), nl,
+    fail
+    ;
+    true.
 
 gv_inflow_to_program_edges(WorkflowId) :-
     yw_inflow(WorkflowId, _, _, DataName, StepId, StepName),
@@ -136,8 +208,23 @@ gv_inflow_to_data_edges(WorkflowId) :-
     ;
     true.
 
+gv_inflow_to_data_edges_upstream_of_data(WorkflowId, DownstreamDataId) :-
+    yw_inflow_data(WorkflowId, _, DataId, DataName),
+    yw_data_downstream(DataId, DownstreamDataId),
+    write(DataName), write('_inflow'), write(' -> '), writeq(DataName), nl,
+    fail
+    ;
+    true.
+
 gv_data_to_outflow_edges(WorkflowId) :-
     yw_outflow_data(WorkflowId, _, _, DataName),
+    writeq(DataName), write(' -> '), write(DataName), write('_outflow'), nl,
+    fail
+    ;
+    true.
+
+gv_data_to_outflow_edges_upstream_of_data(WorkflowId, DataId) :-
+    yw_outflow_data(WorkflowId, _, DataId, DataName),
     writeq(DataName), write(' -> '), write(DataName), write('_outflow'), nl,
     fail
     ;
@@ -170,12 +257,35 @@ yw_outflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
     yw_outflow(_, _, DataId, DataName, WorkflowId, WorkflowName).
 
 :- table yw_data_immediately_downstream/2.
-yw_data_immediately_downstream(UpstreamDataId, DownstreamDataId) :-
-    yw_step_input(StepId, _, _, _, _, UpstreamDataId, _),
-    yw_step_output(StepId, _, _, _, _, DownstreamDataId, _).
+yw_data_immediately_downstream(D1, D2) :-
+    yw_step_input(StepId, _, _, _, _, D1, _),
+    yw_step_output(StepId, _, _, _, _, D2, _).
+
+:- table yw_data_downstream/2.
+yw_data_downstream(D1, D2) :-
+    D1 = D2.
+yw_data_downstream(D1, D2) :-
+    yw_data_immediately_downstream(D1, D2).
+yw_data_downstream(D1, D2):-
+    yw_data_immediately_downstream(D1, D),
+    yw_data_downstream(D, D2).
 
 :- table yw_step_immediately_downstream/2.
-yw_step_immediately_downstream(SourceProgramId, SinkProgramId) :-
-    yw_workflow_step(SourceProgramId, _, _, _, _, _),
-    yw_workflow_step(SinkProgramId, _, _, _, _, _),
-    yw_flow(SourceProgramId, _, _, _, _, _, _, _, SinkProgramId, _).
+yw_step_immediately_downstream(S1, S2) :-
+    yw_workflow_step(S1, _, _, _, _, _),
+    yw_workflow_step(S2, _, _, _, _, _),
+    yw_flow(S1, _, _, _, _, _, _, _, S2, _).
+
+:- table yw_step_downstream/2.
+yw_step_downstream(S1, S2) :-
+    yw_step_immediately_downstream(S1, S2).
+yw_step_downstream(S1, S2) :-
+    yw_step_immediately_downstream(S1, S),
+    yw_step_downstream(S, S2).
+
+:- table yw_data_downstream_of_step/2.
+yw_data_downstream_of_step(S1, D2) :-
+    yw_step_output(S1, _, _, _, _, D2, _).
+yw_data_downstream_of_step(S1, D2) :-
+    yw_step_output(S2, _, _, _, _, D2, _),
+    yw_step_downstream(S1, S2).

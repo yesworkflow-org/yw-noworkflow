@@ -18,9 +18,9 @@ graph() :-
 
         gv_cluster('workflow', 'black'),
             gv_node_style_data(),
-            gv_data_in_nodes(W),
+            gv_data_nodes(W),
             gv_node_style_param(),
-            gv_data_param_nodes(W),
+            gv_param_nodes(W),
         gv_cluster_end(),
 
         gv_cluster('inflows', 'white'),

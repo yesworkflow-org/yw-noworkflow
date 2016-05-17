@@ -1,17 +1,4 @@
 
-% Port P reads or writes data D with name N and qualified name QN.
-:- table port_data/3.
-port_data(P, N, QN) :-
-    port_connects_to_channel(P, C),
-    channel(C, D),
-    data(D, N, QN).
-
-% Port P is an input for data D.
-:- table data_in_port/2.
-data_in_port(P, D) :-
-    port_connects_to_channel(P, C),
-    channel(C, D),
-    has_in_port(_, P).
 
 % Program P1 is immediately downstream of Program P2.
 :- table program_immediately_downstream/2.
