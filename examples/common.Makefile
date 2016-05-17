@@ -38,8 +38,6 @@ GRAPHS = ${YW_GRAPHS}
 PNGS = ${YW_DATA_GRAPH}.png ${YW_PROCESS_GRAPH}.png ${YW_COMBINED_GRAPH}.png ${YW_PROSPECTIVE_LINEAGE_GRAPH}.png
 PDFS = ${YW_DATA_GRAPH}.pdf ${YW_PROCESS_GRAPH}.pdf ${YW_COMBINED_GRAPH}.pdf ${YW_PROSPECTIVE_LINEAGE_GRAPH}.pdf
 
-YW_PROPERTIES = yw.properties
-
 all: ${YW_FACTS} ${RUN_OUTPUTS} ${NW_FACTS} ${YW_NW_VIEWS} ${QUERY_OUTPUTS} ${GRAPHS}
 
 yw: ${YW_FACTS} ${YW_GRAPHS}
@@ -60,7 +58,7 @@ pdf: ${PDFS}
 .gv.png:
 	dot -Tpng $*.gv -o $*.png
 
-${YW_FACTS}: ${WORKFLOW_SCRIPT} ${YW_PROPERTIES}
+${YW_FACTS}: ${WORKFLOW_SCRIPT}
 	mkdir -p facts
 	bash -lc "yw model ${WORKFLOW_SCRIPT} ${YW_MODEL_OPTIONS}"
 	${RULES_DIR}/materialize_yw_views.sh > ${YW_VIEWS}
