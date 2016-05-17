@@ -92,7 +92,7 @@ gv_param_nodes(WorkflowId) :-
     true.
 
 gv_param_nodes_upstream_of_data(WorkflowId, DownstreamDataId) :-
-    yw_workflow_param(WorkflowId, _, _, DataName),
+    yw_workflow_param(WorkflowId, _, DataId, DataName),
     yw_data_downstream(DataId, DownstreamDataId),
     writeq(DataName), nl,
     fail
