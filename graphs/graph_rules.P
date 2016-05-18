@@ -1,17 +1,17 @@
 
 gv_graph(Name, Title, Layout) :-
     nl,
-    write('digraph '), write(Name), writeln(' {'),
-    write('rankdir='), writeln(Layout),
-    writeln('fontname=Courier; fontsize=18; labelloc=t'),
-    write('label="'), write(Title), writeln('"').
+    fmt_write('digraph %S {',                           args(Name)), nl,
+    fmt_write('rankdir=%S',                             args(Layout)), nl,
+    fmt_write('fontname=%S; fontsize=%S; labelloc=%S',  args('Courier', 18, t)), nl,
+    fmt_write('label="%S"',                             args(Title)), nl.
 
 gv_cluster(Name, Color) :-
-    write('subgraph cluster_'), write(Name), write(' { label=""; color='), write(Color), write('; penwidth=2'), nl,
-    write('subgraph cluster_'), write(Name), write('_inner { label=""; color=white'), nl.
+    fmt_write('subgraph cluster_%S { label=%S; color=%S; penwidth=%S',    args(Name, '""', Color, 2)), nl,
+    fmt_write('subgraph cluster_%S_inner { label=%S; color=white',        args(Name, '""')), nl.
 
 gv_cluster_end() :-
-    writeln('}}').
+    write('}}'), nl.
 
 gv_nodestyle__atomic_step() :-
     writeln('node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]').
@@ -29,8 +29,7 @@ gv_node_style__workflow_port() :-
     writeln('node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]').
 
 gv_graph_end() :-
-    writeln('}'),
-    nl.
+    write('}'), nl, nl.
 
 gv_nodes__atomic_steps(WorkflowId) :-
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
@@ -101,7 +100,7 @@ gv_nodes__params__upstream_of_data(WorkflowId, DownstreamDataId) :-
 
 gv_nodes__inflows(WorkflowId) :-
     yw_inflow_data(WorkflowId, _, _, DataName),
-    write(DataName), write('_inflow [label=""]'), nl,
+    fmt_write('%S_inflow [label=""]', args(DataName)), nl,
     fail
     ;
     true.
@@ -109,21 +108,21 @@ gv_nodes__inflows(WorkflowId) :-
 gv_nodes__inflows__upstream_of_data(WorkflowId, DownstreamDataId) :-
     yw_inflow_data(WorkflowId, _, DataId, DataName),
     yw_data_downstream(DataId, DownstreamDataId),
-    write(DataName), write('_inflow [label=""]'), nl,
+    fmt_write('%S_inflow [label=""]', args(DataName)), nl,
     fail
     ;
     true.
 
 gv_nodes__outflows(WorkflowId) :-
     yw_outflow_data(WorkflowId, _, _, DataName),
-    write(DataName), write('_outflow [label=""]'), nl,
+    fmt_write('%S_outflow [label=""]', args(DataName)), nl,
     fail
     ;
     true.
 
 gv_node__outflow_for_data(WorkflowId, DataId) :-
     yw_outflow_data(WorkflowId, _, DataId, DataName),
-    write(DataName), write('_outflow [label=""]'), nl,
+    fmt_write('%S_outflow [label=""]', args(DataName)), nl,
     fail
     ;
     true.
@@ -132,7 +131,7 @@ gv_edges__data_to_data(WorkflowId) :-
     yw_data(DownstreamDataId, DownstreamDataName, WorkflowId, _),
     yw_data(UpstreamDataId, UpstreamDataName, WorkflowId, _),
     yw_data_immediately_downstream(UpstreamDataId, DownstreamDataId),
-    writeq(UpstreamDataName), write(' -> '), writeq(DownstreamDataName), nl,
+    fmt_write('%S -> %S', args(UpstreamDataName, DownstreamDataName)), nl,
     fail
     ;
     true.
@@ -141,7 +140,7 @@ gv_edges__step_to_step(WorkflowId) :-
     yw_workflow_step(SourceProgramId, SourceProgramName, WorkflowId, _, _, _),
     yw_workflow_step(SinkProgramId, SinkProgramName, WorkflowId, _, _, _),
     yw_step_immediately_downstream(SourceProgramId, SinkProgramId),
-    writeq(SourceProgramName), write(' -> '), writeq(SinkProgramName), nl,
+    fmt_write('%S -> %S', args(SourceProgramName, SinkProgramName)), nl,
     fail
     ;
     true.
@@ -150,7 +149,7 @@ gv_edges__data_to_step(WorkflowId) :-
     yw_data(DataId, DataName, WorkflowId, _),
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
     yw_step_input(StepId, _, _, _, _, DataId, _),
-    writeq(DataName), write(' -> '), writeq(StepName), nl,
+    fmt_write('%S -> %S', args(DataName, StepName)), nl,
     fail
     ;
     true.
@@ -160,7 +159,7 @@ gv_edges__data_to_step__upstream_of_data(WorkflowId, DownstreamDataId) :-
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
     yw_step_input(StepId, _, _, _, _, DataId, _),
     yw_data_downstream_of_step(StepId, DownstreamDataId),
-    writeq(DataName), write(' -> '), writeq(StepName), nl,
+    fmt_write('%S -> %S', args(DataName, StepName)), nl,
     fail
     ;
     true.
@@ -169,7 +168,7 @@ gv_edges__step_to_data(WorkflowId) :-
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
     yw_data(DataId, DataName, WorkflowId, _),
     yw_step_output(StepId, _, _, _, _, DataId, _),
-    writeq(StepName), write(' -> '), writeq(DataName), nl,
+    fmt_write('%S -> %S', args(StepName, DataName)), nl,
     fail
     ;
     true.
@@ -179,7 +178,7 @@ gv_edges__step_to_data__upstream_of_data(WorkflowId, DownstreamDataId) :-
     yw_data(DataId, DataName, WorkflowId, _),
     yw_step_output(StepId, _, _, _, _, DataId, _),
     yw_data_downstream(DataId, DownstreamDataId),
-    writeq(StepName), write(' -> '), writeq(DataName), nl,
+    fmt_write('%S -> %S', args(StepName, DataName)), nl,
     fail
     ;
     true.
@@ -187,7 +186,7 @@ gv_edges__step_to_data__upstream_of_data(WorkflowId, DownstreamDataId) :-
 gv_edges__inflow_to_step(WorkflowId) :-
     yw_inflow(WorkflowId, _, _, DataName, StepId, StepName),
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    writeq(DataName), write('_inflow'), write(' -> '), writeq(StepName), nl,
+    fmt_write('%S_inflow -> %S', args(DataName, StepName)), nl,
     fail
     ;
     true.
@@ -195,14 +194,14 @@ gv_edges__inflow_to_step(WorkflowId) :-
 gv_edges__step_to_outflow(WorkflowId) :-
     yw_outflow(StepId, StepName, _, DataName, WorkflowId, _),
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    writeq(StepName), write(' -> '), writeq(DataName), write('_outflow'), nl,
+    fmt_write('%S -> %S_outflow', args(StepName, DataName)), nl,
     fail
     ;
     true.
 
 gv_edges__inflow_to_data(WorkflowId) :-
     yw_inflow_data(WorkflowId, _, _, DataName),
-    write(DataName), write('_inflow'), write(' -> '), writeq(DataName), nl,
+    fmt_write('%S_inflow -> %S', args(DataName, DataName)), nl,
     fail
     ;
     true.
@@ -210,24 +209,26 @@ gv_edges__inflow_to_data(WorkflowId) :-
 gv_edges__inflow_to_data__upstream_of_data(WorkflowId, DownstreamDataId) :-
     yw_inflow_data(WorkflowId, _, DataId, DataName),
     yw_data_downstream(DataId, DownstreamDataId),
-    write(DataName), write('_inflow'), write(' -> '), writeq(DataName), nl,
+    fmt_write('%S_inflow -> %S', args(DataName, DataName)), nl,
     fail
     ;
     true.
 
 gv_edges__data_to_outflow(WorkflowId) :-
     yw_outflow_data(WorkflowId, _, _, DataName),
-    writeq(DataName), write(' -> '), write(DataName), write('_outflow'), nl,
+    fmt_write('%S -> %S_outflow', args(DataName, DataName)), nl,
     fail
     ;
     true.
 
 gv_edges__data_to_outflow__upstream_of_data(WorkflowId, DataId) :-
     yw_outflow_data(WorkflowId, _, DataId, DataName),
-    writeq(DataName), write(' -> '), write(DataName), write('_outflow'), nl,
+    fmt_write('%S -> %S_outflow', args(DataName, DataName)), nl,
     fail
     ;
     true.
+
+
 
 :- table yw_data_used_as_in/1.
 yw_data_used_as_in(DataId) :-
