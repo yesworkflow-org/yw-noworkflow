@@ -17,25 +17,25 @@ graph() :-
     gv_graph('yw_data_view', WorkflowName, 'TB'),
 
         gv_cluster('workflow', 'black'),
-            gv_node_style_data(),
-            gv_data_nodes(W),
-            gv_node_style_param(),
-            gv_param_nodes(W),
+            gv_node_style__data(),
+            gv_nodes__data(W),
+            gv_node_style__param(),
+            gv_nodes__params(W),
         gv_cluster_end(),
 
         gv_cluster('inflows', 'white'),
-            gv_node_style_workflow_port(),
-            gv_inflow_nodes(W),
+            gv_node_style__workflow_port(),
+            gv_nodes__inflows(W),
         gv_cluster_end(),
 
         gv_cluster('outflows', 'white'),
-            gv_node_style_workflow_port(),
-            gv_outflow_nodes(W),
+            gv_node_style__workflow_port(),
+            gv_nodes__outflows(W),
         gv_cluster_end(),
 
-        gv_data_to_data_edges(W),
-        gv_inflow_to_data_edges(W),
-        gv_data_to_outflow_edges(W),
+        gv_edges__data_to_data(W),
+        gv_edges__inflow_to_data(W),
+        gv_edges__data_to_outflow(W),
 
     gv_graph_end().
 

@@ -17,25 +17,25 @@ graph() :-
     gv_graph('yw_data_view', WorkflowName, 'TB'),
 
         gv_cluster('workflow', 'black'),
-            gv_node_style_atomic_steps(),
-            gv_atomic_step_nodes(W),
-            gv_node_style_composite_steps(),
-            gv_composite_step_nodes(W),
+            gv_nodestyle__atomic_step(),
+            gv_nodes__atomic_steps(W),
+            gv_nodestyle__subworkflow(),
+            gv_nodes__subworkflows(W),
         gv_cluster_end(),
 
         gv_cluster('inflows', 'white'),
-            gv_node_style_workflow_port(),
-            gv_inflow_nodes(W),
+            gv_node_style__workflow_port(),
+            gv_nodes__inflows(W),
         gv_cluster_end(),
 
         gv_cluster('outflows', 'white'),
-            gv_node_style_workflow_port(),
-            gv_outflow_nodes(W),
+            gv_node_style__workflow_port(),
+            gv_nodes__outflows(W),
         gv_cluster_end(),
 
-        gv_step_to_step_edges(W),
-        gv_inflow_to_program_edges(W),
-        gv_program_to_outflow_edges(W),
+        gv_edges__step_to_step(W),
+        gv_edges__inflow_to_step(W),
+        gv_edges__step_to_outflow(W),
 
     gv_graph_end().
 
