@@ -1,4 +1,5 @@
 
+
 gv_graph(Name, Title, Layout) :-
     nl,
     fmt_write('digraph %S {',                           args(Name)), nl,
@@ -6,286 +7,26 @@ gv_graph(Name, Title, Layout) :-
     fmt_write('fontname=%S; fontsize=%S; labelloc=%S',  args('Courier', 18, t)), nl,
     fmt_write('label="%S"',                             args(Title)), nl.
 
+gv_graph_end() :-
+    write('}'), nl, nl.
+
 gv_cluster(Name, Color) :-
-    fmt_write('subgraph cluster_%S { label=%S; color=%S; penwidth=%S',    args(Name, '""', Color, 2)), nl,
-    fmt_write('subgraph cluster_%S_inner { label=%S; color=white',        args(Name, '""')), nl.
+    fmt_write('subgraph cluster_%S { label=%S; color=%S; penwidth=%S',  args(Name, '""', Color, 2)), nl,
+    fmt_write('subgraph cluster_%S_inner { label=%S; color=white',      args(Name, '""')), nl.
 
 gv_cluster_end() :-
     write('}}'), nl.
 
-gv_nodestyle__atomic_step() :-
-    writeln('node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]').
+gv_nodestyle(Shape, Style, Fillcolor, Peripheries, Fontname) :-
+    fmt_write('node[shape=%S style="%S" fillcolor="%S" peripheries=%S fontname=%S]',
+               args(Shape, Style, Fillcolor, Peripheries, Fontname)), nl.
 
-gv_nodestyle__subworkflow() :-
-    gv_nodestyle__atomic_step().
+gv_nodestyle(Shape, Fillcolor, Peripheries, Width) :-
+    fmt_write('node[shape=%S fillcolor="%S" peripheries=%S width=%S]',
+               args(Shape, Fillcolor, Peripheries, Width)), nl.
 
-gv_node_style__data() :-
-    writeln('node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]').
+gv_unlabeled_node(Name) :-
+    fmt_write('%S [label=""]', args(Name)), nl.
 
-gv_node_style__param() :-
-    writeln('node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]').
-
-gv_node_style__workflow_port() :-
-    writeln('node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]').
-
-gv_graph_end() :-
-    write('}'), nl, nl.
-
-gv_nodes__atomic_steps(WorkflowId) :-
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    not yw_workflow(StepId, _, _, _, _, _),
-    writeq(StepName), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__atomic_steps__upstream_of_data(WorkflowId, DataId) :-
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    yw_data_downstream_of_step(StepId, DataId),
-    writeq(StepName), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__subworkflows(WorkflowId) :-
-    yw_workflow(_, StepName, WorkflowId, _, _, _),
-    writeq(StepName), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__subworkflows__upstream_of_data(WorkflowId, DataId) :-
-    yw_workflow(StepId, StepName, WorkflowId, _, _, _),
-    yw_data_downstream_of_step(StepId, DataId),
-    writeq(StepName), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__data(WorkflowId) :-
-    yw_data(DataId, DataName, WorkflowId, _),
-    not yw_workflow_param(_, _, DataId, _),
-    writeq(DataName), nl,
-    fail
-    ;
-    true.
-
-gv_node__data(DataId) :-
-    yw_data(DataId, DataName, _, _),
-    writeq(DataName), nl.
-
-gv_nodes__data__upstream_of_data(WorkflowId, DownstreamDataId) :-
-    yw_data(DataId, DataName, WorkflowId, _),
-    not yw_workflow_param(_, _, DataId, _),
-    yw_data_downstream(DataId, DownstreamDataId),
-    writeq(DataName), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__params(WorkflowId) :-
-    yw_workflow_param(WorkflowId, _, _, DataName),
-    writeq(DataName), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__params__upstream_of_data(WorkflowId, DownstreamDataId) :-
-    yw_workflow_param(WorkflowId, _, DataId, DataName),
-    yw_data_downstream(DataId, DownstreamDataId),
-    writeq(DataName), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__inflows(WorkflowId) :-
-    yw_inflow_data(WorkflowId, _, _, DataName),
-    fmt_write('%S_inflow [label=""]', args(DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__inflows__upstream_of_data(WorkflowId, DownstreamDataId) :-
-    yw_inflow_data(WorkflowId, _, DataId, DataName),
-    yw_data_downstream(DataId, DownstreamDataId),
-    fmt_write('%S_inflow [label=""]', args(DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_nodes__outflows(WorkflowId) :-
-    yw_outflow_data(WorkflowId, _, _, DataName),
-    fmt_write('%S_outflow [label=""]', args(DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_node__outflow_for_data(WorkflowId, DataId) :-
-    yw_outflow_data(WorkflowId, _, DataId, DataName),
-    fmt_write('%S_outflow [label=""]', args(DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__data_to_data(WorkflowId) :-
-    yw_data(DownstreamDataId, DownstreamDataName, WorkflowId, _),
-    yw_data(UpstreamDataId, UpstreamDataName, WorkflowId, _),
-    yw_data_immediately_downstream(UpstreamDataId, DownstreamDataId),
-    fmt_write('%S -> %S', args(UpstreamDataName, DownstreamDataName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__step_to_step(WorkflowId) :-
-    yw_workflow_step(SourceProgramId, SourceProgramName, WorkflowId, _, _, _),
-    yw_workflow_step(SinkProgramId, SinkProgramName, WorkflowId, _, _, _),
-    yw_step_immediately_downstream(SourceProgramId, SinkProgramId),
-    fmt_write('%S -> %S', args(SourceProgramName, SinkProgramName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__data_to_step(WorkflowId) :-
-    yw_data(DataId, DataName, WorkflowId, _),
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    yw_step_input(StepId, _, _, _, _, DataId, _),
-    fmt_write('%S -> %S', args(DataName, StepName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__data_to_step__upstream_of_data(WorkflowId, DownstreamDataId) :-
-    yw_data(DataId, DataName, WorkflowId, _),
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    yw_step_input(StepId, _, _, _, _, DataId, _),
-    yw_data_downstream_of_step(StepId, DownstreamDataId),
-    fmt_write('%S -> %S', args(DataName, StepName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__step_to_data(WorkflowId) :-
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    yw_data(DataId, DataName, WorkflowId, _),
-    yw_step_output(StepId, _, _, _, _, DataId, _),
-    fmt_write('%S -> %S', args(StepName, DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__step_to_data__upstream_of_data(WorkflowId, DownstreamDataId) :-
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    yw_data(DataId, DataName, WorkflowId, _),
-    yw_step_output(StepId, _, _, _, _, DataId, _),
-    yw_data_downstream(DataId, DownstreamDataId),
-    fmt_write('%S -> %S', args(StepName, DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__inflow_to_step(WorkflowId) :-
-    yw_inflow(WorkflowId, _, _, DataName, StepId, StepName),
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    fmt_write('%S_inflow -> %S', args(DataName, StepName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__step_to_outflow(WorkflowId) :-
-    yw_outflow(StepId, StepName, _, DataName, WorkflowId, _),
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
-    fmt_write('%S -> %S_outflow', args(StepName, DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__inflow_to_data(WorkflowId) :-
-    yw_inflow_data(WorkflowId, _, _, DataName),
-    fmt_write('%S_inflow -> %S', args(DataName, DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__inflow_to_data__upstream_of_data(WorkflowId, DownstreamDataId) :-
-    yw_inflow_data(WorkflowId, _, DataId, DataName),
-    yw_data_downstream(DataId, DownstreamDataId),
-    fmt_write('%S_inflow -> %S', args(DataName, DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__data_to_outflow(WorkflowId) :-
-    yw_outflow_data(WorkflowId, _, _, DataName),
-    fmt_write('%S -> %S_outflow', args(DataName, DataName)), nl,
-    fail
-    ;
-    true.
-
-gv_edges__data_to_outflow__upstream_of_data(WorkflowId, DataId) :-
-    yw_outflow_data(WorkflowId, _, DataId, DataName),
-    fmt_write('%S -> %S_outflow', args(DataName, DataName)), nl,
-    fail
-    ;
-    true.
-
-
-
-:- table yw_data_used_as_in/1.
-yw_data_used_as_in(DataId) :-
-    yw_step_input(_, _, in, _, _, DataId, _).
-
-:- table yw_data_used_as_param/1.
-yw_data_used_as_param(DataId) :-
-    yw_step_input(_, _, param, _, _, DataId, _).
-
-:- table yw_data_only_used_as_param/1.
-yw_data_only_used_as_param(DataId) :-
-    yw_data_used_as_param(DataId),
-    not yw_data_used_as_in(DataId).
-
-:- table yw_workflow_param/4.
-yw_workflow_param(WorkflowId, WorkflowName, DataId, DataName) :-
-    yw_inflow(WorkflowId, WorkflowName, DataId, DataName, _, _),
-    yw_step_input(_, _, param, _, _, DataId, _).
-
-:- table yw_inflow_data/4.
-yw_inflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
-    yw_inflow(WorkflowId, WorkflowName, DataId, DataName, _, _).
-
-:- table yw_outflow_data/4.
-yw_outflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
-    yw_outflow(_, _, DataId, DataName, WorkflowId, WorkflowName).
-
-:- table yw_data_immediately_downstream/2.
-yw_data_immediately_downstream(D1, D2) :-
-    yw_step_input(StepId, _, _, _, _, D1, _),
-    yw_step_output(StepId, _, _, _, _, D2, _).
-
-:- table yw_data_downstream/2.
-yw_data_downstream(D1, D2) :-
-    D1 = D2.
-yw_data_downstream(D1, D2) :-
-    yw_data_immediately_downstream(D1, D2).
-yw_data_downstream(D1, D2):-
-    yw_data_immediately_downstream(D1, D),
-    yw_data_downstream(D, D2).
-
-:- table yw_step_immediately_downstream/2.
-yw_step_immediately_downstream(S1, S2) :-
-    yw_workflow_step(S1, _, _, _, _, _),
-    yw_workflow_step(S2, _, _, _, _, _),
-    yw_flow(S1, _, _, _, _, _, _, _, S2, _).
-
-:- table yw_step_downstream/2.
-yw_step_downstream(S1, S2) :-
-    yw_step_immediately_downstream(S1, S2).
-yw_step_downstream(S1, S2) :-
-    yw_step_immediately_downstream(S1, S),
-    yw_step_downstream(S, S2).
-
-:- table yw_data_downstream_of_step/2.
-yw_data_downstream_of_step(S1, D2) :-
-    yw_step_output(S1, _, _, _, _, D2, _).
-yw_data_downstream_of_step(S1, D2) :-
-    yw_step_output(S2, _, _, _, _, D2, _),
-    yw_step_downstream(S1, S2).
+gv_unlabeled_edge(From, To) :-
+    fmt_write('%S -> %S', args(From, To)), nl.
