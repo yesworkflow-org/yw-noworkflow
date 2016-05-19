@@ -77,7 +77,7 @@ banner( 'NW_Q1',
 :- table nw_q1/1.
 nw_q1(FunctionName) :-
     nw_script_activation(_,_, ScriptActivationId, _),
-    nw_function_activation(_, FunctionName, _, ScriptActivationId).
+    nw_function_activation(_, _, FunctionName, _, ScriptActivationId).
 end_of_file.
 printall(nw_q1(_)).
 %-------------------------------------------------------------------------------

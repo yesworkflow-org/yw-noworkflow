@@ -16,8 +16,8 @@ printall(nw_script_activation(_,_,_,_)).
 rule_banner('nw_function_definition(FunctionId, Name, FirstLine, LastLine, Docstring).').
 printall(nw_function_definition(_,_,_,_,_)).
 
-rule_banner('nw_function_activation(ActivationId, FunctionName, Line, CallerActivationId).').
-printall(nw_function_activation(_,_,_,_)).
+rule_banner('nw_function_activation(ActivationId, FunctionId, FunctionName, Line, CallerActivationId).').
+printall(nw_function_activation(_,_,_,_,_)).
 
 rule_banner('nw_function_argument(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableName, VariableId)').
 printall(nw_function_argument(_,_,_,_,_,_,_)).

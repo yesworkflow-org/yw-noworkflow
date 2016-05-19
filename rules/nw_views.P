@@ -7,8 +7,12 @@ nw_script_activation(Script, Command, ScriptActivation, Docstring) :-
 nw_function_definition(FunctionId, FunctionName, FirstLine, LastLine, Docstring) :-
     function_def(_, FunctionId, FunctionName, _, FirstLine, LastLine, Docstring).
 
-nw_function_activation(ActivationId, FunctionName, CallerLine, CallerActivationId) :-
-    activation(_, ActivationId, FunctionName, CallerLine, _, _, CallerActivationId).
+nw_function_activation(ActivationId, FunctionId, FunctionName, CallerLine, CallerActivationId) :-
+    activation(_, ActivationId, FunctionName, CallerLine, _, _, CallerActivationId),
+    nw_function_definition(FunctionId, FunctionName, _, _, _).
+nw_function_activation(ActivationId, nil, FunctionName, CallerLine, CallerActivationId) :-
+    activation(_, ActivationId, FunctionName, CallerLine, _, _, CallerActivationId),
+    not nw_function_definition(FunctionId, FunctionName, _, _, _).
 
 nw_function_call(FunctionId, FunctionCallId, Name) :-
     object(_, FunctionId, FunctionCallId, Name, 'FUNCTION_CALL').
@@ -56,6 +60,6 @@ nw_usage_is_function_call(UsageId, VariableId) :-
 :- table nw_variable_dependency/8.
 nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName) :-
     dependency(_, DependencyId, ActivationId, DownstreamVarId, ActivationId, UpstreamVarId),
-    nw_function_activation(ActivationId, FunctionName,_,_),
+    nw_function_activation(ActivationId, _, FunctionName, _, _),
     nw_variable_assignment(ActivationId, DownstreamVarId, DownstreamVarName, AssignmentLine, _),
     nw_variable_usage(_, ActivationId, UpstreamVarId, UpstreamVarName, _, _).

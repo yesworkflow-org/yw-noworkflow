@@ -16,13 +16,13 @@ nw_activation_from_yw_step(836,'str.format',6,collect_data_set,110).
 nw_activation_from_yw_step(772,'writer.writerow',8,log_average_image_intensity,148).
 nw_activation_from_yw_step(196,'module.writer',8,log_average_image_intensity,147).
 nw_activation_from_yw_step(837,write,6,collect_data_set,110).
-nw_activation_from_yw_step(773,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(709,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(197,'writer.writerow',8,log_average_image_intensity,148).
+nw_activation_from_yw_step(773,collect_next_image,6,collect_data_set,109).
+nw_activation_from_yw_step(134,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(774,spreadsheet_rows,3,load_screening_results,56).
 nw_activation_from_yw_step(710,transform_image,7,transform_images,129).
 nw_activation_from_yw_step(198,collect_next_image,6,collect_data_set,109).
-nw_activation_from_yw_step(134,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(647,'str.format',7,transform_images,130).
 nw_activation_from_yw_step(135,transform_image,7,transform_images,129).
 nw_activation_from_yw_step(776,'str.format',3,load_screening_results,57).
@@ -35,26 +35,26 @@ nw_activation_from_yw_step(74,calculate_strategy,4,calculate_strategy,73).
 nw_activation_from_yw_step(907,'writer.writerow',8,log_average_image_intensity,148).
 nw_activation_from_yw_step(587,write,6,collect_data_set,110).
 nw_activation_from_yw_step(75,'str.format',6,collect_data_set,107).
-nw_activation_from_yw_step(908,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(844,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(76,write,6,collect_data_set,107).
+nw_activation_from_yw_step(908,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(845,transform_image,7,transform_images,129).
 nw_activation_from_yw_step(14,exists,2,initialize_run,35).
 nw_activation_from_yw_step(655,open,8,log_average_image_intensity,146).
 nw_activation_from_yw_step(15,exists,2,initialize_run,38).
-nw_activation_from_yw_step(784,calculate_strategy,4,calculate_strategy,73).
 nw_activation_from_yw_step(656,'module.writer',8,log_average_image_intensity,147).
 nw_activation_from_yw_step(16,'module.remove',2,initialize_run,39).
+nw_activation_from_yw_step(784,calculate_strategy,4,calculate_strategy,73).
 nw_activation_from_yw_step(785,'str.format',6,collect_data_set,107).
 nw_activation_from_yw_step(657,'writer.writerow',8,log_average_image_intensity,148).
 nw_activation_from_yw_step(17,exists,2,initialize_run,38).
 nw_activation_from_yw_step(786,write,6,collect_data_set,107).
-nw_activation_from_yw_step(658,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(594,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(18,'module.remove',2,initialize_run,39).
+nw_activation_from_yw_step(658,collect_next_image,6,collect_data_set,109).
+nw_activation_from_yw_step(19,exists,2,initialize_run,38).
 nw_activation_from_yw_step(595,transform_image,7,transform_images,129).
 nw_activation_from_yw_step(83,collect_next_image,6,collect_data_set,109).
-nw_activation_from_yw_step(19,exists,2,initialize_run,38).
 nw_activation_from_yw_step(532,'str.format',7,transform_images,130).
 nw_activation_from_yw_step(20,'module.remove',2,initialize_run,39).
 nw_activation_from_yw_step(533,write,7,transform_images,130).
@@ -71,9 +71,9 @@ nw_activation_from_yw_step(1181,'str.format',6,collect_data_set,110).
 nw_activation_from_yw_step(541,'module.writer',8,log_average_image_intensity,147).
 nw_activation_from_yw_step(1182,write,6,collect_data_set,110).
 nw_activation_from_yw_step(542,'writer.writerow',8,log_average_image_intensity,148).
-nw_activation_from_yw_step(543,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(479,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(31,write,2,initialize_run,43).
+nw_activation_from_yw_step(543,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(480,transform_image,7,transform_images,129).
 nw_activation_from_yw_step(417,'str.format',7,transform_images,130).
 nw_activation_from_yw_step(1250,open,8,log_average_image_intensity,146).
@@ -81,12 +81,12 @@ nw_activation_from_yw_step(418,write,7,transform_images,130).
 nw_activation_from_yw_step(1251,'module.writer',8,log_average_image_intensity,147).
 nw_activation_from_yw_step(1252,'writer.writerow',8,log_average_image_intensity,148).
 nw_activation_from_yw_step(356,'str.format',6,collect_data_set,110).
-nw_activation_from_yw_step(1253,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(1189,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(357,write,6,collect_data_set,110).
+nw_activation_from_yw_step(1253,collect_next_image,6,collect_data_set,109).
+nw_activation_from_yw_step(38,'str.format',3,load_screening_results,55).
 nw_activation_from_yw_step(1254,spreadsheet_rows,3,load_screening_results,56).
 nw_activation_from_yw_step(1190,transform_image,7,transform_images,129).
-nw_activation_from_yw_step(38,'str.format',3,load_screening_results,55).
 nw_activation_from_yw_step(1127,'str.format',7,transform_images,130).
 nw_activation_from_yw_step(39,spreadsheet_rows,3,load_screening_results,56).
 nw_activation_from_yw_step(1256,'__exit__',3,load_screening_results,56).
@@ -96,20 +96,20 @@ nw_activation_from_yw_step(1066,'str.format',6,collect_data_set,110).
 nw_activation_from_yw_step(426,'module.writer',8,log_average_image_intensity,147).
 nw_activation_from_yw_step(1067,write,6,collect_data_set,110).
 nw_activation_from_yw_step(427,'writer.writerow',8,log_average_image_intensity,148).
-nw_activation_from_yw_step(428,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(364,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(44,'str.format',3,load_screening_results,57).
-nw_activation_from_yw_step(365,transform_image,7,transform_images,129).
+nw_activation_from_yw_step(428,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(45,write,3,load_screening_results,57).
+nw_activation_from_yw_step(365,transform_image,7,transform_images,129).
 nw_activation_from_yw_step(302,'str.format',7,transform_images,130).
 nw_activation_from_yw_step(1135,open,8,log_average_image_intensity,146).
 nw_activation_from_yw_step(303,write,7,transform_images,130).
 nw_activation_from_yw_step(1136,'module.writer',8,log_average_image_intensity,147).
 nw_activation_from_yw_step(1137,'writer.writerow',8,log_average_image_intensity,148).
 nw_activation_from_yw_step(241,'str.format',6,collect_data_set,110).
-nw_activation_from_yw_step(1138,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(1074,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(242,write,6,collect_data_set,110).
+nw_activation_from_yw_step(1138,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(1075,transform_image,7,transform_images,129).
 nw_activation_from_yw_step(1012,'str.format',7,transform_images,130).
 nw_activation_from_yw_step(52,calculate_strategy,4,calculate_strategy,73).
@@ -121,8 +121,8 @@ nw_activation_from_yw_step(951,'str.format',6,collect_data_set,110).
 nw_activation_from_yw_step(311,'module.writer',8,log_average_image_intensity,147).
 nw_activation_from_yw_step(952,write,6,collect_data_set,110).
 nw_activation_from_yw_step(312,'writer.writerow',8,log_average_image_intensity,148).
-nw_activation_from_yw_step(313,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(249,'str.format',7,transform_images,128).
+nw_activation_from_yw_step(313,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(762,'str.format',7,transform_images,130).
 nw_activation_from_yw_step(250,transform_image,7,transform_images,129).
 nw_activation_from_yw_step(763,write,7,transform_images,130).
@@ -136,10 +136,10 @@ nw_activation_from_yw_step(1022,'writer.writerow',8,log_average_image_intensity,
 nw_activation_from_yw_step(702,write,6,collect_data_set,110).
 nw_activation_from_yw_step(126,'str.format',6,collect_data_set,110).
 nw_activation_from_yw_step(62,'str.format',5,log_rejected_sample,87).
-nw_activation_from_yw_step(1023,collect_next_image,6,collect_data_set,109).
 nw_activation_from_yw_step(959,'str.format',7,transform_images,128).
 nw_activation_from_yw_step(127,write,6,collect_data_set,110).
 nw_activation_from_yw_step(63,'TextIOWrapper.write',5,log_rejected_sample,87).
+nw_activation_from_yw_step(1023,collect_next_image,6,collect_data_set,109).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -182,14 +182,14 @@ nw_variable_for_yw_in_port(5080,frame_number,'1',24,frame_number,36,frame_number
 nw_variable_for_yw_in_port(5465,pixel_count,'10',30,pixel_count,48,pixel_count,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(4762,rejected_sample,'None',18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
 nw_variable_for_yw_in_port(5082,raw_image_path,'run/raw/q55/DRT322/e10000/image_001.raw',25,raw_image,37,raw_image_path,7,transform_images).
-nw_variable_for_yw_in_port(4763,accepted_sample,'DRT322',17,accepted_sample,28,accepted_sample,6,collect_data_set).
+nw_variable_for_yw_in_port(4763,num_images,'2',19,num_images,27,num_images,6,collect_data_set).
 nw_variable_for_yw_in_port(3548,energy,'12000',23,energy,35,energy,7,transform_images).
 nw_variable_for_yw_in_port(412,sample_id,'DRT240',22,sample_id,44,sample_id,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(412,sample_id,'DRT240',22,sample_id,34,sample_id,7,transform_images).
 nw_variable_for_yw_in_port(4764,energies,'[10000, 11000]',20,energies,29,energies,6,collect_data_set).
 nw_variable_for_yw_in_port(3933,total_intensity,'820',29,total_intensity,47,total_intensity,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(3549,frame_number,'1',24,frame_number,36,frame_number,7,transform_images).
-nw_variable_for_yw_in_port(4765,num_images,'2',19,num_images,27,num_images,6,collect_data_set).
+nw_variable_for_yw_in_port(4765,accepted_sample,'DRT322',17,accepted_sample,28,accepted_sample,6,collect_data_set).
 nw_variable_for_yw_in_port(3934,pixel_count,'10',30,pixel_count,48,pixel_count,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(5086,corrected_image_path,'run/data/DRT322/DRT322_10000eV_001.img',28,corrected_image_path,46,corrected_image_path,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(3551,raw_image_path,'run/raw/q55/DRT240/e12000/image_001.raw',25,raw_image,37,raw_image_path,7,transform_images).
@@ -223,11 +223,11 @@ nw_variable_for_yw_in_port(693,frame_number,'1',24,frame_number,36,frame_number,
 nw_variable_for_yw_in_port(7606,pixel_count,'10',30,pixel_count,48,pixel_count,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(1078,pixel_count,'10',30,pixel_count,48,pixel_count,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(374,rejected_sample,'None',18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
-nw_variable_for_yw_in_port(375,accepted_sample,'DRT240',17,accepted_sample,28,accepted_sample,6,collect_data_set).
+nw_variable_for_yw_in_port(375,num_images,'2',19,num_images,27,num_images,6,collect_data_set).
 nw_variable_for_yw_in_port(7223,raw_image_path,'run/raw/q55/DRT322/e11000/image_002.raw',25,raw_image,37,raw_image_path,7,transform_images).
 nw_variable_for_yw_in_port(695,raw_image_path,'run/raw/q55/DRT240/e10000/image_001.raw',25,raw_image,37,raw_image_path,7,transform_images).
 nw_variable_for_yw_in_port(376,energies,'[10000, 11000, 12000]',20,energies,29,energies,6,collect_data_set).
-nw_variable_for_yw_in_port(377,num_images,'2',19,num_images,27,num_images,6,collect_data_set).
+nw_variable_for_yw_in_port(377,accepted_sample,'DRT240',17,accepted_sample,28,accepted_sample,6,collect_data_set).
 nw_variable_for_yw_in_port(250,sample_name,'DRT110',13,sample_name,17,sample_name,4,calculate_strategy).
 nw_variable_for_yw_in_port(7227,corrected_image_path,'run/data/DRT322/DRT322_11000eV_002.img',28,corrected_image_path,46,corrected_image_path,8,log_average_image_intensity).
 nw_variable_for_yw_in_port(699,corrected_image_path,'run/data/DRT240/DRT240_10000eV_001.img',28,corrected_image_path,46,corrected_image_path,8,log_average_image_intensity).
@@ -265,13 +265,13 @@ nw_variable_for_yw_out_port(5080,frame_number,'1',24,frame_number,32,frame_numbe
 nw_variable_for_yw_out_port(5465,pixel_count,'10',30,pixel_count,42,pixel_count,7,transform_images).
 nw_variable_for_yw_out_port(5082,raw_image_path,'run/raw/q55/DRT322/e10000/image_001.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
 nw_variable_for_yw_out_port(4762,rejected_sample,'None',18,rejected_sample,20,rejected_sample,4,calculate_strategy).
-nw_variable_for_yw_out_port(4763,accepted_sample,'DRT322',17,accepted_sample,19,accepted_sample,4,calculate_strategy).
+nw_variable_for_yw_out_port(4763,num_images,'2',19,num_images,21,num_images,4,calculate_strategy).
 nw_variable_for_yw_out_port(3548,energy,'12000',23,energy,31,energy,6,collect_data_set).
 nw_variable_for_yw_out_port(412,sample_id,'DRT240',22,sample_id,30,sample_id,6,collect_data_set).
 nw_variable_for_yw_out_port(4764,energies,'[10000, 11000]',20,energies,22,energies,4,calculate_strategy).
 nw_variable_for_yw_out_port(3933,total_intensity,'820',29,total_intensity,41,total_intensity,7,transform_images).
 nw_variable_for_yw_out_port(3549,frame_number,'1',24,frame_number,32,frame_number,6,collect_data_set).
-nw_variable_for_yw_out_port(4765,num_images,'2',19,num_images,21,num_images,4,calculate_strategy).
+nw_variable_for_yw_out_port(4765,accepted_sample,'DRT322',17,accepted_sample,19,accepted_sample,4,calculate_strategy).
 nw_variable_for_yw_out_port(3934,pixel_count,'10',30,pixel_count,42,pixel_count,7,transform_images).
 nw_variable_for_yw_out_port(5086,corrected_image_path,'run/data/DRT322/DRT322_10000eV_001.img',28,corrected_image_path,40,corrected_image_path,7,transform_images).
 nw_variable_for_yw_out_port(3551,raw_image_path,'run/raw/q55/DRT240/e12000/image_001.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
@@ -307,9 +307,9 @@ nw_variable_for_yw_out_port(1078,pixel_count,'10',30,pixel_count,42,pixel_count,
 nw_variable_for_yw_out_port(374,rejected_sample,'None',18,rejected_sample,20,rejected_sample,4,calculate_strategy).
 nw_variable_for_yw_out_port(7223,raw_image_path,'run/raw/q55/DRT322/e11000/image_002.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
 nw_variable_for_yw_out_port(695,raw_image_path,'run/raw/q55/DRT240/e10000/image_001.raw',25,raw_image,33,raw_image_path,6,collect_data_set).
-nw_variable_for_yw_out_port(375,accepted_sample,'DRT240',17,accepted_sample,19,accepted_sample,4,calculate_strategy).
+nw_variable_for_yw_out_port(375,num_images,'2',19,num_images,21,num_images,4,calculate_strategy).
 nw_variable_for_yw_out_port(376,energies,'[10000, 11000, 12000]',20,energies,22,energies,4,calculate_strategy).
-nw_variable_for_yw_out_port(377,num_images,'2',19,num_images,21,num_images,4,calculate_strategy).
+nw_variable_for_yw_out_port(377,accepted_sample,'DRT240',17,accepted_sample,19,accepted_sample,4,calculate_strategy).
 nw_variable_for_yw_out_port(250,sample_name,'DRT110',13,sample_name,13,sample_name,3,load_screening_results).
 nw_variable_for_yw_out_port(7227,corrected_image_path,'run/data/DRT322/DRT322_11000eV_002.img',28,corrected_image_path,40,corrected_image_path,7,transform_images).
 nw_variable_for_yw_out_port(699,corrected_image_path,'run/data/DRT240/DRT240_10000eV_001.img',28,corrected_image_path,40,corrected_image_path,7,transform_images).
@@ -350,11 +350,11 @@ nw_variable_for_yw_data(5464,total_intensity,'0',29,total_intensity).
 nw_variable_for_yw_data(5465,pixel_count,'10',30,pixel_count).
 nw_variable_for_yw_data(5082,raw_image_path,'run/raw/q55/DRT322/e10000/image_001.raw',25,raw_image).
 nw_variable_for_yw_data(4762,rejected_sample,'None',18,rejected_sample).
-nw_variable_for_yw_data(4763,accepted_sample,'DRT322',17,accepted_sample).
+nw_variable_for_yw_data(4763,num_images,'2',19,num_images).
 nw_variable_for_yw_data(4764,energies,'[10000, 11000]',20,energies).
 nw_variable_for_yw_data(412,sample_id,'DRT240',22,sample_id).
 nw_variable_for_yw_data(3548,energy,'12000',23,energy).
-nw_variable_for_yw_data(4765,num_images,'2',19,num_images).
+nw_variable_for_yw_data(4765,accepted_sample,'DRT322',17,accepted_sample).
 nw_variable_for_yw_data(3549,frame_number,'1',24,frame_number).
 nw_variable_for_yw_data(3933,total_intensity,'820',29,total_intensity).
 nw_variable_for_yw_data(5086,corrected_image_path,'run/data/DRT322/DRT322_10000eV_001.img',28,corrected_image_path).
@@ -392,9 +392,9 @@ nw_variable_for_yw_data(1078,pixel_count,'10',30,pixel_count).
 nw_variable_for_yw_data(7606,pixel_count,'10',30,pixel_count).
 nw_variable_for_yw_data(695,raw_image_path,'run/raw/q55/DRT240/e10000/image_001.raw',25,raw_image).
 nw_variable_for_yw_data(7223,raw_image_path,'run/raw/q55/DRT322/e11000/image_002.raw',25,raw_image).
-nw_variable_for_yw_data(375,accepted_sample,'DRT240',17,accepted_sample).
+nw_variable_for_yw_data(375,num_images,'2',19,num_images).
 nw_variable_for_yw_data(376,energies,'[10000, 11000, 12000]',20,energies).
-nw_variable_for_yw_data(377,num_images,'2',19,num_images).
+nw_variable_for_yw_data(377,accepted_sample,'DRT240',17,accepted_sample).
 nw_variable_for_yw_data(250,sample_name,'DRT110',13,sample_name).
 nw_variable_for_yw_data(251,sample_quality,'10',14,sample_quality).
 nw_variable_for_yw_data(699,corrected_image_path,'run/data/DRT240/DRT240_10000eV_001.img',28,corrected_image_path).

@@ -1,14 +1,14 @@
 
 :- table nw_activation_from_yw_step/5.
 nw_activation_from_yw_step(ActivationId, FunctionName, StepId, StepName, ActivationLine) :-
-    nw_function_activation(ActivationId, FunctionName, ActivationLine, _),
+    nw_function_activation(ActivationId, _, FunctionName, ActivationLine, _),
     yw_workflow_step(StepId, StepName, _, _,  StepBeginLine, StepEndLine),
     line_inside_range(ActivationLine, StepBeginLine, StepEndLine).
 
 :- table nw_activation_into_yw_program/6.
 nw_activation_into_yw_program(ActivationId, FunctionName, StepId, StepName, ActivationLine, CallerActivationId) :-
     yw_program(StepId, StepName, _, _,  StepBeginLine, StepEndLine),
-    nw_function_activation(ActivationId, FunctionName, ActivationLine, CallerActivationId),
+    nw_function_activation(ActivationId, _, FunctionName, ActivationLine, CallerActivationId),
     line_outside_range(ActivationLine, StepBeginLine, StepEndLine),
     nw_function_definition(_, FunctionName, FunctionStartLine, _, _),
     line_inside_range(FunctionStartLine, StepBeginLine, StepEndLine).

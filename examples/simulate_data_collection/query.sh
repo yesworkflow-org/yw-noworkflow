@@ -90,7 +90,7 @@ banner( 'NW_Q1',
 [user].
 :- table nw_q1/1.
 nw_q1(FunctionName) :-
-    nw_function_activation(_, FunctionName, _, ScriptActivation),
+    nw_function_activation(_, _, FunctionName, _, ScriptActivation),
     nw_script_activation(_, _, ScriptActivation, _).
 end_of_file.
 printall(nw_q1(_)).
@@ -105,7 +105,7 @@ banner( 'NW_Q2',
 :- table nw_q2/2.
 nw_q2(VariableName, Value) :-
     nw_script_activation(_, _, ScriptActivationId, _),
-    nw_function_activation(ActivationId, 'greet_user', _, ScriptActivationId),
+    nw_function_activation(ActivationId, _, 'greet_user', _, ScriptActivationId),
     nw_function_argument(ActivationId, _, _, _, Value, VariableName, VariableId),
     VariableId \== nil.
 end_of_file.
@@ -121,7 +121,7 @@ banner( 'NW_Q3',
 :- table nw_q3/1.
 nw_q3(Literal) :-
     nw_script_activation(_, _, ScriptActivationId, _),
-    nw_function_activation(ActivationId, 'greet_user', _, ScriptActivationId),
+    nw_function_activation(ActivationId, _, 'greet_user', _, ScriptActivationId),
     nw_function_argument(ActivationId, _, _, 'greeting', Literal, nil, nil).
 end_of_file.
 printall(nw_q3(_)).
