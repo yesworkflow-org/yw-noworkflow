@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -l
+#!/usr/bin/env bash
 
 # run the simulation creating a mininum of outputs
 now run -e Tracer simulate_data_collection.py q55 --cutoff 12 --redundancy 0 | cut -c 21-
