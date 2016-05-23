@@ -1,38 +1,38 @@
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_script_activation(Script, Command, ScriptActivation, Docstring).
+% FACT: nw_script_activation(Script, Command, ScriptAct, Docstring).
 %...................................................................................................
 nw_script_activation('hello_world.py','run -e Tracer hello_world.py',1,nil).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_function_definition(FunctionId, Name, FirstLine, LastLine, Docstring).
+% FACT: nw_function_definition(FuncId, Name, FirstLine, LastLine, Docstring).
 %...................................................................................................
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_function_activation(ActivationId, FunctionId, FunctionName, Line, CallerActivationId).
+% FACT: nw_function_activation(ActId, FuncId, FuncName, Line, CallerActId).
 %...................................................................................................
 nw_function_activation(1,nil,'/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world.py',61,nil).
 nw_function_activation(2,nil,'module.print',6,1).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_function_argument(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableName, VariableId)
+% FACT: nw_function_argument(ActId, FuncName, LocalVarId, LocalVarName, Value, Type, CallerVarName, CallerVarId)
 %...................................................................................................
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_assignment(ActivationId, VariableId, VariableName, Line, Value).
+% FACT: nw_variable_assignment(ActId, VarId, VarName, Line, Value).
 %...................................................................................................
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_usage(UsageId, ActivationId, VariableId, VariableName, VariableValue, Line).
+% FACT: nw_variable_usage(UsageId, ActId, VariableId, VarName, VarValue, Line).
 %...................................................................................................
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
+% FACT: nw_variable_dependency(DependencyId, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................

@@ -102,8 +102,7 @@ banner( 'NW_Q2',
 [user].
 :- table nw_q2/2.
 nw_q2(VariableName, Value) :-
-    nw_function_argument(_, 'print_greeting', _, _, Value, VariableName, VariableId),
-    VariableId \== nil.
+    nw_function_argument(_, 'print_greeting', _, _, Value, variable, VariableName, _).
 end_of_file.
 printall(nw_q2(_,_)).
 %-------------------------------------------------------------------------------
@@ -116,7 +115,7 @@ banner( 'NW_Q3',
 [user].
 :- table nw_q3/1.
 nw_q3(Value) :-
-    nw_function_argument(_, 'print_greeting', _, _, Value, _, nil).
+    nw_function_argument(_, 'print_greeting', _, _, Value, literal, _, _).
 end_of_file.
 printall(nw_q3(_)).
 %-------------------------------------------------------------------------------
@@ -130,7 +129,7 @@ banner( 'YW_NW_Q1',
 :- table yw_nw_q1/3.
 yw_nw_q1(VariableId,VariableName,VariableValue) :-
     yw_step_input(_, _, _, PortId, _, _, 'custom_greeting'),
-    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, PortId, _, _, _).
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, _, PortId, _, _, _).
 end_of_file.
 printall(yw_nw_q1(_,_,_)).
 %-------------------------------------------------------------------------------
