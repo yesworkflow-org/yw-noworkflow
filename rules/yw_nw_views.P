@@ -13,8 +13,8 @@ nw_activation_into_yw_program(ActivationId, FunctionName, StepId, StepName, Acti
     nw_function_definition(_, FunctionName, FunctionStartLine, _, _),
     line_inside_range(FunctionStartLine, StepBeginLine, StepEndLine).
 
-:- table _nw_activation_into_yw_step_subprogram/2.
-_nw_activation_into_yw_step_subprogram(ActivationId, StepId) :-
+:- table nw_activation_into_yw_step_subprogram/2.
+nw_activation_into_yw_step_subprogram(ActivationId, StepId) :-
     nw_activation_into_yw_program(ActivationId, _, StepId, _, _, _),
     nw_activation_into_yw_program(ActivationId, _, SubprogramId, _, _, _),
     yw_workflow_step(SubprogramId, _, StepId, _, _, _).
@@ -22,30 +22,32 @@ _nw_activation_into_yw_step_subprogram(ActivationId, StepId) :-
 :- table nw_activation_into_yw_step/6.
 nw_activation_into_yw_step(ActivationId, FunctionName, StepId, StepName, ActivationLine, CallerActivationId) :-
     nw_activation_into_yw_program(ActivationId, FunctionName, StepId, StepName, ActivationLine, CallerActivationId),
-    not _nw_activation_into_yw_step_subprogram(ActivationId, StepId).
+    not nw_activation_into_yw_step_subprogram(ActivationId, StepId).
 
-:- table nw_variable_for_yw_in_port/9.
-nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
-    yw_step_input(StepId, _, _, PortId, PortName, DataId, DataName),
-    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
-    PortName = VariableName,
-    nw_variable_usage(_, _, VariableId, VariableName, _, UsageLine),
-    line_inside_range(UsageLine, StepBeginLine, StepEndLine),
-    nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
-    line_outside_range(AssignmentLine, StepBeginLine, StepEndLine).
+:- table nw_variable_for_yw_in_port/10.
+nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, Type, PortId, PortName, StepId, StepName) :-
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName),
+    Type = variable.
+nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, Type, PortId, PortName, StepId, StepName) :-
+    nw_argument_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName),
+    Type = argument.
 
 :- table nw_variable_for_yw_out_port/9.
+% Output variables assigned inside the step then used outside the step.
 nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
     yw_step_output(StepId, _, _, PortId, PortName, DataId, DataName),
-    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
     PortName = VariableName,
-    nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
-    line_inside_range(AssignmentLine, StepBeginLine, StepEndLine),
-    nw_variable_usage(_, _, VariableId, VariableName, _, UsageLine),
-    line_outside_range(UsageLine, StepBeginLine, StepEndLine).
+    nw_variable_assigned_in_yw_step(VariableId, VariableName, VariableValue, StepId, StepName, _),
+    nw_variable_used_outside_yw_step(VariableId, _, _, StepId, _, _).
+% Output variables that are input variables with names matching outputs and no matching assignments in step.
+nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+    PortName = VariableName,
+    yw_step_output(StepId, StepName, _, PortId, PortName, DataId, DataName),
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, _, _, _, StepId, _),
+    not nw_variable_assigned_in_yw_step(_, VariableName, _, StepId, _, _).
 
 :- table nw_variable_for_yw_data/5.
 nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, DataName) :-
-    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, _, _, _, _).
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, _, _, _, _, _).
 nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, DataName) :-
     nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, _, _, _, _).

@@ -25,8 +25,15 @@ gv_nodestyle(Shape, Fillcolor, Peripheries, Width) :-
     fmt_write('node[shape=%S fillcolor="%S" peripheries=%S width=%S]',
                args(Shape, Fillcolor, Peripheries, Width)), nl.
 
+gv_labeled_node(Name) :-
+   write(Name), nl.
+
 gv_unlabeled_node(Name) :-
     fmt_write('%S [label=""]', args(Name)), nl.
+
+gv_record_node(Name, TopText, BottomText) :-
+    fmt_write('%S [shape=record rankdir=LR label="{<f0> %S |<f1> %S}"]',
+               args(Name, TopText, BottomText)), nl.
 
 gv_unlabeled_edge(From, To) :-
     fmt_write('%S -> %S', args(From, To)), nl.

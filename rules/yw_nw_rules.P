@@ -7,3 +7,42 @@ line_outside_range(Line, RangeStart, _) :-
     Line < RangeStart.
 line_outside_range(Line, _, RangeEnd) :-
     Line > RangeEnd.
+
+nw_variable_assigned_in_yw_step(VariableId, VariableName, VariableValue, StepId, StepName, AssignmentLine) :-
+    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
+    nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
+    line_inside_range(AssignmentLine, StepBeginLine, StepEndLine).
+
+nw_variable_assigned_outside_yw_step(VariableId, VariableName, VariableValue, StepId, StepName, AssignmentLine) :-
+    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
+    nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
+    line_outside_range(AssignmentLine, StepBeginLine, StepEndLine).
+
+nw_variable_used_in_yw_step(VariableId, VariableName, VariableValue, StepId, StepName, UsageLine) :-
+    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
+    nw_variable_usage(_, _, VariableId, VariableName, VariableValue, UsageLine),
+    line_inside_range(UsageLine, StepBeginLine, StepEndLine).
+
+nw_variable_used_outside_yw_step(VariableId, VariableName, VariableValue, StepId, StepName, UsageLine) :-
+    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
+    nw_variable_usage(_, _, VariableId, VariableName, VariableValue, UsageLine),
+    line_outside_range(UsageLine, StepBeginLine, StepEndLine).
+
+% Variables assigned outside, then used inside, the step with the given input port.
+:- table nw_variable_for_yw_in_port/9.
+nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+    PortName = VariableName,
+    yw_step_input(StepId, StepName, _, PortId, PortName, DataId, DataName),
+    nw_variable_used_in_yw_step(VariableId, VariableName, VariableValue, StepId, _, _),
+    nw_variable_assigned_outside_yw_step(VariableId, _, _, StepId, _, _).
+
+% Variables assigned as arguments in function calls into the step from outside the step.
+:- table nw_argument_for_yw_in_port/9.
+nw_argument_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+    yw_step_input(StepId, _, _, PortId, PortName, DataId, DataName),
+    yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
+    PortName = VariableName,
+    nw_function_argument(ActivationId, _, VariableId, _, VariableValue, _, _, _),
+    not nw_variable_for_yw_in_port(VariableId, _, _, DataId, _, PortId, _, StepId, _),
+    nw_function_activation(ActivationId, _, _, CallLine, _),
+    line_outside_range(CallLine, StepBeginLine, StepEndLine).

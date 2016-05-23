@@ -1,44 +1,43 @@
 
 
-nw_script_activation(Script, Command, ScriptActivation, Docstring) :-
+nw_script_activation(Script, Command, ScriptActId, Docstring) :-
     trial(_,_,_, Script, _, Command, _,_,_, Docstring),
-    activation(_, ScriptActivation, _,_,_,_, nil).
+    activation(_, ScriptActId, _,_,_,_, nil).
 
-nw_function_definition(FunctionId, FunctionName, FirstLine, LastLine, Docstring) :-
-    function_def(_, FunctionId, FunctionName, _, FirstLine, LastLine, Docstring).
+nw_function_definition(FuncId, FuncName, FirstLine, LastLine, Docstring) :-
+    function_def(_, FuncId, FuncName, _, FirstLine, LastLine, Docstring).
 
-nw_function_activation(ActivationId, FunctionId, FunctionName, CallerLine, CallerActivationId) :-
-    activation(_, ActivationId, FunctionName, CallerLine, _, _, CallerActivationId),
-    nw_function_definition(FunctionId, FunctionName, _, _, _).
-nw_function_activation(ActivationId, nil, FunctionName, CallerLine, CallerActivationId) :-
-    activation(_, ActivationId, FunctionName, CallerLine, _, _, CallerActivationId),
-    not nw_function_definition(FunctionId, FunctionName, _, _, _).
+nw_function_activation(ActId, FuncId, FuncName, CallerLine, CallerActivationId) :-
+    activation(_, ActId, FuncName, CallerLine, _, _, CallerActivationId),
+    nw_function_definition(FuncId, FuncName, _, _, _).
+nw_function_activation(ActId, nil, FuncName, CallerLine, CallerActivationId) :-
+    activation(_, ActId, FuncName, CallerLine, _, _, CallerActivationId),
+    not nw_function_definition(_, FuncName, _, _, _).
 
-nw_function_call(FunctionId, FunctionCallId, Name) :-
-    object(_, FunctionId, FunctionCallId, Name, 'FUNCTION_CALL').
 
-nw_function_argument(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableName, VariableId) :-
-    nw_function_argument_variable(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableId, VariableName),
-    VariableId \== nil.
-nw_function_argument(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableName, VariableId) :-
-    nw_function_argument_literal(ActivationId, FunctionName, ArgumentId, ArgumentName, Value),
-    VariableId = nil,
-    VariableName = nil.
+nw_function_argument(ActId, FuncName, LocalVarId, LocalVarName, Value, variable, CallerVarName, CallerVarId) :-
+    nw_function_argument_variable(ActId, FuncName, LocalVarId, LocalVarName, Value, CallerVarId, CallerVarName),
+    CallerVarId \== nil.
+nw_function_argument(ActId, FuncName, LocalVarId, LocalVarName, Value, literal, CallerVarName, CallerVarId) :-
+    nw_function_argument_literal(ActId, FuncName, LocalVarId, LocalVarName, Value),
+    CallerVarId = nil,
+    CallerVarName = nil.
 
-nw_function_argument_variable(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, VariableId, VariableName) :-
-    activation(_, ActivationId, FunctionName, _,_,_,_),
-    object_value(_, ActivationId, _, ArgumentName, _, 'ARGUMENT'),
-    variable(_, ActivationId, ArgumentId, ArgumentName, _, Value, _),
-    dependency(_,_, ActivationId, ArgumentId, CallerActivationId, VariableId),
-    variable(_, CallerActivationId, VariableId, VariableName, _, Value,_).
+nw_function_argument_variable(ActId, FuncName, LocalVarId, LocalVarName, Value, CallerVarId, CallerVarName) :-
+    activation(_, ActId, FuncName, _,_,_,_),
+    object_value(_, ActId, _, LocalVarName, _, 'ARGUMENT'),
+    variable(_, ActId, LocalVarId, LocalVarName, _, Value, _),
+    dependency(_,_, ActId, LocalVarId, CallerActivationId, CallerVarId),
+    variable(_, CallerActivationId, CallerVarId, CallerVarName, _, Value,_).
 
-nw_function_argument_literal(ActivationId, FunctionName, ArgumentId, ArgumentName, Value) :-
-    activation(_, ActivationId, FunctionName, _,_,_,_),
-    object_value(_, ActivationId, _, ArgumentName, Value, 'ARGUMENT'),
-    not nw_function_argument_variable(ActivationId, FunctionName, ArgumentId, ArgumentName, Value, _,_).
+nw_function_argument_literal(ActId, FuncName, LocalVarId, LocalVarName, Value) :-
+    activation(_, ActId, FuncName, _,_,_,_),
+    object_value(_, ActId, _, LocalVarName, _, 'ARGUMENT'),
+    variable(_, ActId, LocalVarId, LocalVarName, _, Value, _),
+    not nw_function_argument_variable(ActId, FuncName, _, LocalVarName, Value, _,_).
 
-nw_variable_assignment(ActivationId, VariableId, VariableName, Line, Value) :-
-    variable(_, ActivationId, VariableId, VariableName, Line, Value, _),
+nw_variable_assignment(ActId, VariableId, VariableName, Line, Value) :-
+    variable(_, ActId, VariableId, VariableName, Line, Value, _),
     not nw_variable_is_function(VariableId),
     Line \== 0,
     VariableName \== 'return',
@@ -48,8 +47,8 @@ nw_variable_is_function(VariableId) :-
     variable(_, VariableId, _, Name, Line, _, _),
     function_def(_,_, Name, _, Line, _,_).
 
-nw_variable_usage(UsageId, ActivationId, VariableId, VariableName, VariableValue, Line) :-
-    usage(_, ActivationId, VariableId, UsageId, VariableName, Line),
+nw_variable_usage(UsageId, ActId, VariableId, VariableName, VariableValue, Line) :-
+    usage(_, ActId, VariableId, UsageId, VariableName, Line),
     variable(_,_, VariableId, VariableName, _, VariableValue, _),
     not nw_usage_is_function_call(UsageId, VariableId).
 
@@ -58,8 +57,8 @@ nw_usage_is_function_call(UsageId, VariableId) :-
     activation(_,_, Name, Line, _,_,_).
 
 :- table nw_variable_dependency/8.
-nw_variable_dependency(DependencyId, ActivationId, FunctionName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName) :-
-    dependency(_, DependencyId, ActivationId, DownstreamVarId, ActivationId, UpstreamVarId),
-    nw_function_activation(ActivationId, _, FunctionName, _, _),
-    nw_variable_assignment(ActivationId, DownstreamVarId, DownstreamVarName, AssignmentLine, _),
-    nw_variable_usage(_, ActivationId, UpstreamVarId, UpstreamVarName, _, _).
+nw_variable_dependency(DependencyId, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName) :-
+    dependency(_, DependencyId, ActId, DownstreamVarId, ActId, UpstreamVarId),
+    nw_function_activation(ActId, _, FuncName, _, _),
+    nw_variable_assignment(ActId, DownstreamVarId, DownstreamVarName, AssignmentLine, _),
+    nw_variable_usage(_, ActId, UpstreamVarId, UpstreamVarName, _, _).
