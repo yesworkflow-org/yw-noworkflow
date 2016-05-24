@@ -44,8 +44,8 @@ printall(yw_inflow(_,_,_,_,_,_)).
 rule_banner('yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName).').
 printall(yw_flow(_,_,_,_,_,_,_,_,_,_)).
 
-rule_banner('yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).').
-printall(yw_outflow(_,_,_,_,_,_)).
+rule_banner('yw_outflow(StepId, StepName, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, WorkflowOutDataId, WorkflowOutDataName).').
+printall(yw_outflow(_,_,_,_,_,_,_,_)).
 
 rule_banner('yw_qualified_name(EntityType, Id, QualifiedName).').
 printall(yw_qualified_name(_,_,_)).

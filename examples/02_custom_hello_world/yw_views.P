@@ -77,9 +77,9 @@ yw_flow(2,accept_greeting,4,greeting,4,custom_greeting,5,greeting,3,greet_user).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).
+% FACT: yw_outflow(StepId, StepName, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, WorkflowOutDataId, WorkflowOutDataName).
 %...................................................................................................
-yw_outflow(3,greet_user,5,displayed_greeting,1,custom_hello_world).
+yw_outflow(3,greet_user,5,displayed_greeting,1,custom_hello_world,2,displayed_greeting).
 
 
 %---------------------------------------------------------------------------------------------------

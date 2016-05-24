@@ -11,7 +11,7 @@ yw_program(ProgramId, ProgramName, ParentWorkflowId, SourceId, BeginLine, EndLin
     program(ProgramId, ProgramName, _, BeginId, EndId),
     annotation(BeginId, SourceId, BeginLine, _, _, _),
     annotation(EndId, SourceId, EndLine, _, _, _),
-    _yw_parent_workflow(ProgramId, ParentWorkflowId, _).
+    yw_parent_workflow(ProgramId, ParentWorkflowId, _).
 
 yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine) :-
     yw_program(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine),
@@ -30,12 +30,12 @@ yw_function(FunctionId, FunctionName, ParentWorkflowId, SourceId, BeginLine, End
 yw_data(DataId, DataName, WorkflowId, WorkflowName) :-
     data(DataId, DataName, _),
     port(PortId, _, _, _, _, DataId),
-    _has_port(ProgramId, PortId),
-    _yw_parent_workflow(ProgramId, WorkflowId, WorkflowName).
+    yw_program_has_port(ProgramId, PortId),
+    yw_parent_workflow(ProgramId, WorkflowId, WorkflowName).
 
-_has_port(BlockId, PortId) :-
+yw_program_has_port(BlockId, PortId) :-
     has_in_port(BlockId, PortId).
-_has_port(BlockId, PortId) :-
+yw_program_has_port(BlockId, PortId) :-
     has_out_port(BlockId, PortId).
 
 yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName) :-
@@ -59,18 +59,19 @@ yw_step_output(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataN
 yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName) :-
     yw_step_input(ProgramId, ProgramName, _, _, _, DataId, DataName),
     yw_step_input(WorkflowId, WorkflowName, _, _, _, _, DataName),
-    _yw_parent_workflow(ProgramId, WorkflowId, _),
+    yw_parent_workflow(ProgramId, WorkflowId, _),
     data(DataId, DataName, _).
 
 yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName) :-
     yw_step_output(SourceProgramId, SourceProgramName, _, SourcePortId, SourcePortName, DataId, DataName),
     yw_step_input(SinkProgramId, SinkProgramName, _, SinkPortId, SinkPortName, DataId, DataName).
 
-yw_outflow(ProgramId, ProgramName, DataId, DataName, WorkflowId, WorkflowName) :-
-    yw_step_output(ProgramId, ProgramName, _, _, _, DataId, DataName),
-    yw_step_output(WorkflowId, WorkflowName, _, _, _, _, DataName),
-    _yw_parent_workflow(ProgramId, WorkflowId, _),
-    data(DataId, DataName,_).
+yw_outflow(StepId, StepName, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, WorkflowOutDataId, WorkflowOutDataName) :-
+    yw_step_output(WorkflowId, WorkflowName, _, _, _, WorkflowOutDataId, WorkflowOutDataName),
+    WorkflowOutDataName = StepOutDataName,
+    yw_step_output(StepId, StepName, _, _, _, StepOutDataId, StepOutDataName),
+    yw_parent_workflow(StepId, WorkflowId, _),
+    data(StepOutDataId, StepOutDataName,_).
 
 yw_qualified_name(EntityType, Id, QualifiedName) :-
     program(Id, _, QualifiedName, _, _),
@@ -95,8 +96,8 @@ yw_description(EntityType, Id, Name, Description) :-
 
 % private helper rules for creating views
 
-_yw_parent_workflow(ProgramId, WorkflowId, WorkflowName) :-
+yw_parent_workflow(ProgramId, WorkflowId, WorkflowName) :-
     has_subprogram(WorkflowId, ProgramId),
     program(WorkflowId, WorkflowName, _, _, _).
-_yw_parent_workflow(ProgramId, nil, nil) :-
+yw_parent_workflow(ProgramId, nil, nil) :-
     not has_subprogram(_,ProgramId).

@@ -46,3 +46,27 @@ nw_argument_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, Data
     not nw_variable_for_yw_in_port(VariableId, _, _, DataId, _, PortId, _, StepId, _),
     nw_function_activation(ActivationId, _, _, CallLine, _),
     line_outside_range(CallLine, StepBeginLine, StepEndLine).
+
+% Output variables assigned inside the step then used outside the step.
+:- table nw_variable_for_yw_out_port_assigned/9.
+nw_variable_for_yw_out_port_assigned(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+    yw_step_output(StepId, _, _, PortId, PortName, DataId, DataName),
+    PortName = VariableName,
+    nw_variable_assigned_in_yw_step(VariableId, VariableName, VariableValue, StepId, StepName, _),
+    nw_variable_used_outside_yw_step(VariableId, _, _, StepId, _, _).
+
+% Output variables that are input variables with names matching outputs and no matching assignments in step.
+:- table nw_variable_for_yw_out_port_thru/9.
+nw_variable_for_yw_out_port_thru(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+    PortName = VariableName,
+    yw_step_output(StepId, StepName, _, PortId, PortName, DataId, DataName),
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, _, _, _, StepId, _),
+    not nw_variable_assigned_in_yw_step(_, VariableName, _, StepId, _, _).
+
+% Output variables corresponding to outflows on containing workflow.
+:- table nw_variable_for_yw_outflow/9.
+nw_variable_for_yw_outflow(VariableId, VariableName, VariableValue, WorkflowOutDataId, WorkflowOutDataName, WorkflowPortId, WorkflowPortName, WorkflowId, WorkflowName) :-
+    nw_variable_for_yw_out_port_thru(VariableId, VariableName, VariableValue, StepOutDataId, StepOutDataName, _, _, StepId, _),
+    WorkflowOutDataName = StepOutDataName,
+    yw_outflow(StepId, _, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, WorkflowOutDataId, WorkflowOutDataName),
+    yw_step_output(WorkflowId, _, out, WorkflowPortId, WorkflowPortName, WorkflowOutDataId, _).

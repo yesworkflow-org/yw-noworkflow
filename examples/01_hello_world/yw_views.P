@@ -66,9 +66,9 @@ yw_step_output(2,print_greeting,out,2,greeting,2,greeting).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).
+% FACT: yw_outflow(StepId, StepName, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, WorkflowOutDataId, WorkflowOutDataName).
 %...................................................................................................
-yw_outflow(2,print_greeting,2,greeting,1,hello_world).
+yw_outflow(2,print_greeting,2,greeting,1,hello_world,1,greeting).
 
 
 %---------------------------------------------------------------------------------------------------

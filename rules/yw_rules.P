@@ -22,8 +22,8 @@ yw_inflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
     yw_inflow(WorkflowId, WorkflowName, DataId, DataName, _, _).
 
 :- table yw_outflow_data/4.
-yw_outflow_data(WorkflowId, WorkflowName, DataId, DataName) :-
-    yw_outflow(_, _, DataId, DataName, WorkflowId, WorkflowName).
+yw_outflow_data(WorkflowId, WorkflowName, StepOutDataId, StepOutDataName) :-
+    yw_outflow(_, _, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, _, _).
 
 :- table yw_data_immediately_downstream/2.
 yw_data_immediately_downstream(D1, D2) :-

@@ -33,18 +33,12 @@ nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, Data
     Type = argument.
 
 :- table nw_variable_for_yw_out_port/9.
-% Output variables assigned inside the step then used outside the step.
 nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
-    yw_step_output(StepId, _, _, PortId, PortName, DataId, DataName),
-    PortName = VariableName,
-    nw_variable_assigned_in_yw_step(VariableId, VariableName, VariableValue, StepId, StepName, _),
-    nw_variable_used_outside_yw_step(VariableId, _, _, StepId, _, _).
-% Output variables that are input variables with names matching outputs and no matching assignments in step.
+    nw_variable_for_yw_out_port_assigned(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
 nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
-    PortName = VariableName,
-    yw_step_output(StepId, StepName, _, PortId, PortName, DataId, DataName),
-    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, _, _, _, StepId, _),
-    not nw_variable_assigned_in_yw_step(_, VariableName, _, StepId, _, _).
+    nw_variable_for_yw_out_port_thru(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
+nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+    nw_variable_for_yw_outflow(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
 
 :- table nw_variable_for_yw_data/5.
 nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, DataName) :-

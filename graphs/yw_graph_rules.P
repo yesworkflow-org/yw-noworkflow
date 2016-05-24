@@ -203,7 +203,7 @@ gv_edges__inflow_to_step(WorkflowId) :-
     true.
 
 gv_edges__step_to_outflow(WorkflowId) :-
-    yw_outflow(StepId, StepName, _, DataName, WorkflowId, _),
+    yw_outflow(StepId, StepName, _, DataName, WorkflowId, _, _, _),
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
     yw_outflow_name_for_data_name(OutflowName, DataName),
     gv_unlabeled_edge(StepName, OutflowName),
