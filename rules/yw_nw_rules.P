@@ -47,6 +47,14 @@ nw_argument_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, Data
     nw_function_activation(ActivationId, _, _, CallLine, _),
     line_outside_range(CallLine, StepBeginLine, StepEndLine).
 
+% Inflow variables corresponding to inflows on containing workflow.
+:- table nw_variable_for_yw_inflow/9.
+nw_variable_for_yw_inflow(VariableId, VariableName, VariableValue, WorkflowInDataId, WorkflowInDataName, WorkflowPortId, WorkflowPortName, WorkflowId, WorkflowName) :-
+    nw_argument_for_yw_in_port(VariableId, VariableName, VariableValue, StepInDataId, StepInDataName, _, _, StepId, StepName),
+    yw_inflow(WorkflowId, WorkflowName, StepInDataId, StepInDataName, StepId, StepName),
+    WorkflowInDataName = StepInDataName,
+    yw_step_input(WorkflowId, WorkflowName, _, WorkflowPortId, WorkflowPortName, WorkflowInDataId, WorkflowInDataName).
+
 % Output variables assigned inside the step then used outside the step.
 :- table nw_variable_for_yw_out_port_assigned/9.
 nw_variable_for_yw_out_port_assigned(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-

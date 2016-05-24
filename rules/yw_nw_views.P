@@ -31,6 +31,9 @@ nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, Data
 nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, Type, PortId, PortName, StepId, StepName) :-
     nw_argument_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName),
     Type = argument.
+nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, Type, PortId, PortName, StepId, StepName) :-
+    nw_variable_for_yw_inflow(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName),
+    Type = inflow.
 
 :- table nw_variable_for_yw_out_port/9.
 nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-

@@ -56,11 +56,11 @@ yw_step_output(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataN
     data(DataId,DataName,_),
     PortType = out.
 
-yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName) :-
-    yw_step_input(ProgramId, ProgramName, _, _, _, DataId, DataName),
-    yw_step_input(WorkflowId, WorkflowName, _, _, _, _, DataName),
-    yw_parent_workflow(ProgramId, WorkflowId, _),
-    data(DataId, DataName, _).
+yw_inflow(WorkflowId, WorkflowName, StepInputDataId, StepInputDataName, StepId, StepName) :-
+    yw_step_input(StepId, StepName, _, _, _, StepInputDataId, StepInputDataName),
+    yw_step_input(WorkflowId, WorkflowName, _, _, _, _, StepInputDataName),
+    yw_parent_workflow(StepId, WorkflowId, _),
+    data(StepInputDataId, StepInputDataName, _).
 
 yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName) :-
     yw_step_output(SourceProgramId, SourceProgramName, _, SourcePortId, SourcePortName, DataId, DataName),
