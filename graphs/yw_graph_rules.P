@@ -73,9 +73,10 @@ gv_nodes__data__upstream_of_data(WorkflowId, DownstreamDataId) :-
     ;
     true.
 
-gv_nodes__data_value__upstream_of_data(WorkflowId, DownstreamDataId) :-
+gv_nodes__data_value__upstream_of_data(WorkflowId, DownstreamDataId, DownstreamVariableId) :-
     yw_data_downstream(DataId, DownstreamDataId),
 %    not yw_workflow_param(_, _, DataId, _),
+    VariableId = DownstreamVariableId,
     nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, _),
     yw_data(DataId, DataName, WorkflowId, _),
     concat_atom(['[data', DataId, '] ', DataName], Top),

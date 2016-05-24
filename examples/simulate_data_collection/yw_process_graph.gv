@@ -27,10 +27,10 @@ sample_spreadsheet_inflow [label=""]
 subgraph cluster_outflows { label=""; color=white; penwidth=2
 subgraph cluster_outflows_inner { label=""; color=white
 node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
-collection_log_outflow [label=""]
-corrected_image_outflow [label=""]
 rejection_log_outflow [label=""]
+collection_log_outflow [label=""]
 run_log_outflow [label=""]
+corrected_image_outflow [label=""]
 }}
 load_screening_results -> calculate_strategy
 calculate_strategy -> log_rejected_sample
@@ -46,9 +46,9 @@ data_redundancy_inflow -> calculate_strategy
 cassette_id_inflow -> log_rejected_sample
 cassette_id_inflow -> collect_data_set
 cassette_id_inflow -> log_average_image_intensity
-initialize_run -> run_log_outflow
-log_rejected_sample -> rejection_log_outflow
 transform_images -> corrected_image_outflow
+initialize_run -> run_log_outflow
 log_average_image_intensity -> collection_log_outflow
+log_rejected_sample -> rejection_log_outflow
 }
 

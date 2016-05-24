@@ -42,10 +42,10 @@ sample_spreadsheet_inflow [label=""]
 subgraph cluster_outflows { label=""; color=white; penwidth=2
 subgraph cluster_outflows_inner { label=""; color=white
 node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
-collection_log_outflow [label=""]
-corrected_image_outflow [label=""]
 rejection_log_outflow [label=""]
+collection_log_outflow [label=""]
 run_log_outflow [label=""]
+corrected_image_outflow [label=""]
 }}
 cassette_id -> sample_name
 sample_spreadsheet -> sample_name
@@ -116,9 +116,9 @@ sample_score_cutoff_inflow -> sample_score_cutoff
 cassette_id_inflow -> cassette_id
 calibration_image_inflow -> calibration_image
 sample_spreadsheet_inflow -> sample_spreadsheet
-collection_log -> collection_log_outflow
-corrected_image -> corrected_image_outflow
 rejection_log -> rejection_log_outflow
+collection_log -> collection_log_outflow
 run_log -> run_log_outflow
+corrected_image -> corrected_image_outflow
 }
 
