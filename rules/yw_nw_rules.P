@@ -39,11 +39,11 @@ nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, Data
 % Variables assigned as arguments in function calls into the step from outside the step.
 :- table nw_argument_for_yw_in_port/9.
 nw_argument_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
-    yw_step_input(StepId, _, _, PortId, PortName, DataId, DataName),
-    yw_program(StepId, StepName,_,_, StepBeginLine, StepEndLine),
-    PortName = VariableName,
-    nw_function_argument(ActivationId, _, VariableId, _, VariableValue, _, _, _),
-    not nw_variable_for_yw_in_port(VariableId, _, _, DataId, _, PortId, _, StepId, _),
+    yw_step_input(StepId, StepName, _, PortId, PortName, DataId, DataName),
+    yw_program(StepId, _, _, _, StepBeginLine, StepEndLine),
+    VariableName = PortName,
+    nw_function_argument(ActivationId, _, VariableId, VariableName, VariableValue, _, _, _),
+    not nw_variable_for_yw_in_port(VariableId, _, _, _, _, PortId, _, _, _),
     nw_function_activation(ActivationId, _, _, CallLine, _),
     line_outside_range(CallLine, StepBeginLine, StepEndLine).
 
