@@ -31,9 +31,11 @@ nw_function_argument_variable(ActId, FuncName, LocalVarId, LocalVarName, Value, 
     variable(_, CallerActivationId, CallerVarId, CallerVarName, _, Value,_).
 
 nw_function_argument_literal(ActId, FuncName, LocalVarId, LocalVarName, Value) :-
-    activation(_, ActId, FuncName, _,_,_,_),
+    activation(_, ActId, FuncName, _, _, _, _),
     object_value(_, ActId, _, LocalVarName, _, 'ARGUMENT'),
-    variable(_, ActId, LocalVarId, LocalVarName, _, Value, _),
+    variable(_, ActId, LocalVarId, LocalVarName, AssignmentLine, Value, _),
+    nw_function_definition(_, FuncName, FuncDefLine, _, _),
+    AssignmentLine = FuncDefLine,
     not nw_function_argument_variable(ActId, FuncName, _, LocalVarName, Value, _,_).
 
 nw_variable_assignment(ActId, VariableId, VariableName, Line, Value) :-
