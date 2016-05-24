@@ -104,8 +104,7 @@ banner( 'NW_Q2',
 nw_q2(VariableName, Value) :-
     nw_script_activation(_, _, ScriptActivationId, _),
     nw_function_activation(ActivationId, _, 'greet_user', _, ScriptActivationId),
-    nw_function_argument(ActivationId, _, _, _, Value, VariableName, VariableId),
-    VariableId \== nil.
+    nw_function_argument(ActivationId, _, _, _, Value, variable, VariableName, _).
 end_of_file.
 printall(nw_q2(_,_)).
 %-------------------------------------------------------------------------------
@@ -117,10 +116,10 @@ banner( 'NW_Q3',
         'nw_q3(Literal)').
 [user].
 :- table nw_q3/1.
-nw_q3(Literal) :-
+nw_q3(Value) :-
     nw_script_activation(_, _, ScriptActivationId, _),
     nw_function_activation(ActivationId, _, 'greet_user', _, ScriptActivationId),
-    nw_function_argument(ActivationId, _, _, _, Literal, nil, nil).
+    nw_function_argument(ActivationId, _, _, _, Value, literal, nil, nil).
 end_of_file.
 printall(nw_q3(_)).
 %-------------------------------------------------------------------------------
@@ -134,7 +133,7 @@ banner( 'YW_NW_Q1',
 :- table yw_nw_q1/3.
 yw_nw_q1(VariableId, VariableName, VariableValue) :-
     yw_flow(_, _, _, _, _, 'modified_greeting', SinkPortId, _, _, 'print_greeting'),
-    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, SinkPortId, _, _, _).
+    nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, _, SinkPortId, _, _, _).
 
 end_of_file.
 printall(yw_nw_q1(_,_,_)).

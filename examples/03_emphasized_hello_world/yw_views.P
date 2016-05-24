@@ -77,9 +77,9 @@ yw_flow(2,emphasize_greeting,4,greeting,4,modified_greeting,5,greeting,3,print_g
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).
+% FACT: yw_outflow(StepId, StepName, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, WorkflowOutDataId, WorkflowOutDataName).
 %...................................................................................................
-yw_outflow(3,print_greeting,5,displayed_greeting,1,'EmphasizedHelloWorld').
+yw_outflow(3,print_greeting,5,displayed_greeting,1,'EmphasizedHelloWorld',2,displayed_greeting).
 
 
 %---------------------------------------------------------------------------------------------------
