@@ -177,12 +177,12 @@ yw_flow(7,transform_images,42,pixel_count,30,pixel_count,48,pixel_count,8,log_av
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: yw_outflow(ProgramId, ProgramName, ProgramDataId, DataName, WorkflowId, WorkflowName).
+% FACT: yw_outflow(StepId, StepName, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, WorkflowOutDataId, WorkflowOutDataName).
 %...................................................................................................
-yw_outflow(2,initialize_run,10,run_log,1,simulate_data_collection).
-yw_outflow(5,log_rejected_sample,21,rejection_log,1,simulate_data_collection).
-yw_outflow(7,transform_images,27,corrected_image,1,simulate_data_collection).
-yw_outflow(8,log_average_image_intensity,31,collection_log,1,simulate_data_collection).
+yw_outflow(7,transform_images,27,corrected_image,1,simulate_data_collection,6,corrected_image).
+yw_outflow(2,initialize_run,10,run_log,1,simulate_data_collection,7,run_log).
+yw_outflow(8,log_average_image_intensity,31,collection_log,1,simulate_data_collection,8,collection_log).
+yw_outflow(5,log_rejected_sample,21,rejection_log,1,simulate_data_collection,9,rejection_log).
 
 
 %---------------------------------------------------------------------------------------------------

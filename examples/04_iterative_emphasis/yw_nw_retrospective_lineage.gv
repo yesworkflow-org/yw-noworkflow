@@ -10,6 +10,8 @@ emphasize_greeting
 print_greeting
 node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+provided_emphasis [shape=record rankdir=LR label="{<f0> [data6] provided_emphasis |<f1> [var38] emphasis = ?!}"]
+emphasis_count [shape=record rankdir=LR label="{<f0> [data7] emphasis_count |<f1> [var39] count = 3}"]
 emphasized_greeting [shape=record rankdir=LR label="{<f0> [data8] emphasized_greeting |<f1> [var51] greeting = Back again?!?!?!}"]
 displayed_greeting [shape=record rankdir=LR label="{<f0> [data9] displayed_greeting |<f1> [var51] greeting = Back again?!?!?!}"]
 }}

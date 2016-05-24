@@ -10,6 +10,7 @@ emphasize_greeting
 print_greeting
 node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+provided_greeting [shape=record rankdir=LR label="{<f0> [data3] provided_greeting |<f1> [var14] provided_greeting = Goodbye World}"]
 modified_greeting [shape=record rankdir=LR label="{<f0> [data4] modified_greeting |<f1> [var16] greeting = Goodbye World!!}"]
 displayed_greeting [shape=record rankdir=LR label="{<f0> [data5] displayed_greeting |<f1> [var16] greeting = Goodbye World!!}"]
 }}
