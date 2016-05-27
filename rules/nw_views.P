@@ -65,3 +65,9 @@ nw_variable_dependency(Why, ActId, FuncName, AssignmentLine, DownstreamVarId, Do
     nw_variable_usage(_, ActId, UpstreamVarId, UpstreamVarName, _, _),
     nw_function_activation(ActId, _, FuncName, _, _),
     Why = assignment.
+nw_variable_dependency(Why, CalledActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName) :-
+    dependency(_, _, CalledActId, DownstreamVarId, CallerActId, UpstreamVarId),
+    nw_variable_assignment(CalledActId, DownstreamVarId, DownstreamVarName, AssignmentLine, _),
+    nw_variable_usage(_, _, UpstreamVarId, UpstreamVarName, _, _),
+    nw_function_activation(CalledActId, _, FuncName, _, CallerActId),
+    Why = argument.
