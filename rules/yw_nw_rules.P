@@ -8,6 +8,16 @@ line_outside_range(Line, RangeStart, _) :-
 line_outside_range(Line, _, RangeEnd) :-
     Line > RangeEnd.
 
+:- table data_values_upstream_of_data_product/9.
+data_values_upstream_of_data_product(WorkflowId, DataId, DataName, VarId, VarName, VarValue, ProductVarId, ProductVarName, ProductVarValue) :-
+    nw_dependency(_, VarId, VarName, VarValue, _, ProductVarId, ProductVarName, ProductVarValue),
+    nw_variable_for_yw_data(VarId, _, _, DataId, DataName),
+    yw_data(DataId, _, WorkflowId, _).
+
+data_values_upstream_of_data_product_9 :-
+    printall(data_values_upstream_of_data_product(_,_,_,_,_,_,_,_,_)).
+
+
 :- table nw_variable_in_yw_lineage_of_nw_variable/11.
 nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, DataName, VarId, VarName, Value, DownstreamDataId, DownstreamDataName, DownstreamVarId, DownstreamVarName, DownstreamVarValue) :-
     nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, VarId, DownstreamDataId, DownstreamVarId),

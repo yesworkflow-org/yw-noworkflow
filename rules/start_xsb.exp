@@ -4,6 +4,8 @@ spawn xsb --nobanner --nofeedback
 
 expect "| ?- "
 
+send {['./facts/nw_facts'].}
+send \n
 send {[yw_views].}
 send \n
 send {[nw_views].}

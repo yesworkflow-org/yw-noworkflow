@@ -5,8 +5,9 @@ DataProductValue=$2
 
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
-set_prolog_flag(unknown, fail).
+%set_prolog_flag(unknown, fail).
 
+['./facts/nw_facts'].
 [yw_views].
 [nw_views].
 [yw_nw_views].
@@ -33,8 +34,8 @@ graph() :-
             gv_nodes__subworkflows__upstream_of_data(W, DataProductId),
             gv_node_style__data(),
             gv_nodes__data_values__upstream_of_data_product(W, DataProductId, DataProductName, DataProductValue),
-            gv_node_style__param(),
-            gv_nodes__param_values__upstream_of_data_product(W, DataProductId, DataProductName, DataProductValue),
+            %gv_node_style__param(),
+            %gv_nodes__param_values__upstream_of_data_product(W, DataProductId, DataProductName, DataProductValue),
         gv_cluster_end(),
 
         gv_cluster('inflows', 'white'),

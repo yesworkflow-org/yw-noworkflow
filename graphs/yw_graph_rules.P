@@ -73,7 +73,17 @@ gv_nodes__data__upstream_of_data(WorkflowId, DownstreamDataId) :-
     ;
     true.
 
-gv_nodes__data_values__upstream_of_data_product(WorkflowId, DataProductId, DataProductName, DataProductValue) :-
+gv_nodes__data_values__upstream_of_data_product(WorkflowId, ProductDataId, ProductDataName, ProductVarValue) :-
+    nw_variable_for_yw_data(ProductVarId, ProductVarName, _, ProductDataId, ProductDataName),
+    data_values_upstream_of_data_product(WorkflowId, DataId, DataName, VarId, VarName, VarValue, ProductVarId, ProductVarName, ProductVarValue),
+    concat_atom(['[data', DataId, '] ', DataName], Top),
+    concat_atom(['[var', VarId, '] ', VarName, ' = ', VarValue], Bottom),
+    gv_record_node(DataName, Top, Bottom),
+    fail
+    ;
+    true.
+
+_gv_nodes__data_values__upstream_of_data_product(WorkflowId, DataProductId, DataProductName, DataProductValue) :-
     yw_data(DataId, _, WorkflowId, _),
     not yw_workflow_param(_, _, DataId, _),
     nw_variable_in_yw_lineage_of_nw_variable(_, DataId, DataName, VarId, VarName, Value, DataProductId, DataProductName, _, _, DataProductValue),
@@ -84,7 +94,7 @@ gv_nodes__data_values__upstream_of_data_product(WorkflowId, DataProductId, DataP
     ;
     true.
 
-gv_nodes__param_values__upstream_of_data_product(WorkflowId, DataProductId, DataProductName, DataProductValue) :-
+_gv_nodes__param_values__upstream_of_data_product(WorkflowId, DataProductId, DataProductName, DataProductValue) :-
     yw_workflow_param(WorkflowId, _, DataId, _),
     nw_variable_in_yw_lineage_of_nw_variable(_, DataId, DataName, VarId, VarName, Value, DataProductId, DataProductName, _, _, DataProductValue),
     concat_atom(['[data', DataId, '] ', DataName], Top),
