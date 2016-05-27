@@ -90,3 +90,6 @@ ${QUERY_OUTPUTS}: ${QUERY_SCRIPT} ${YW_NW_VIEWS} ${RULES}
 
 clean:
 	rm -rf facts .noworkflow *.xwam *.gv *.png *.pdf *.P *.txt ${RULES_DIR}/*.xwam
+
+interact: ${YW_FACTS} ${NW_FACTS} ${YW_NW_VIEWS}
+	expect ../../rules/start_xsb.exp
