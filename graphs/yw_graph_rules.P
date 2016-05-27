@@ -252,3 +252,14 @@ gv_edges__data_to_outflow__upstream_of_data(WorkflowId, DataId) :-
     fail
     ;
     true.
+
+gv_edges__nw_dependencies() :-
+    dependency(_, _, _, SourceId, _, TargetId),
+    variable(_, _, SourceId, SourceName, _, SourceValue, _),
+    variable(_, _, TargetId, TargetName, _, TargetValue, _),
+    concat_atom(['\"', SourceName, ' = ', SourceValue, '\"'], Source),
+    concat_atom(['\"', TargetName, ' = ', TargetValue, '\"'], Target),
+    gv_unlabeled_edge(Target, Source),
+    fail
+    ;
+    true.
