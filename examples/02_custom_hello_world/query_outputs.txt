@@ -74,3 +74,13 @@ yw_nw_q1(VariableId, VariableName, VariableValue).
 yw_nw_q1(20,greeting,'Back again!').
 yw_nw_q1(13,greeting,'Goodbye World!').
 yw_nw_q1(4,greeting,'Hello World!').
+
+
+---------------------------------------------------------------------------------------------------
+YW_NW_Q2 : What Python variables are associated with each YW data element in the lineage of displayed_greeting value "Back again!"?
+
+yw_nw_q2(DataId, DataName, VarId, VarName, Value, DownstreamDataId, DownstreamDataName, DownstreamVarId, DownstreamVarName).
+...................................................................................................
+yw_nw_q2(3,provided_greeting,20,greeting,'Back again!',5,displayed_greeting,20,greeting).
+yw_nw_q2(4,custom_greeting,20,greeting,'Back again!',5,displayed_greeting,20,greeting).
+yw_nw_q2(5,displayed_greeting,20,greeting,'Back again!',5,displayed_greeting,20,greeting).

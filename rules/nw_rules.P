@@ -1,0 +1,15 @@
+
+:- table nw_variable_directly_upstream_of_variable/2.
+nw_variable_directly_upstream_of_variable(VarId, DownstreamVarId) :-
+    nw_variable_dependency(_, _, _, _, DownstreamVarId, _, VarId, _).
+
+nw_variable_directly_upstream_of_variable_2 :- printall(nw_variable_directly_upstream_of_variable(_,_)).
+
+:- table nw_variable_upstream_of_variable/2.
+nw_variable_upstream_of_variable(VarId, DownstreamVarId) :-
+    nw_variable_directly_upstream_of_variable(VarId, DownstreamVarId).
+nw_variable_upstream_of_variable(VarId, DownstreamVarId) :-
+    nw_variable_directly_upstream_of_variable(VarId, V),
+    nw_variable_upstream_of_variable(V, DownstreamVarId).
+
+nw_variable_upstream_of_variable_2 :- printall(nw_variable_upstream_of_variable(_,_)).

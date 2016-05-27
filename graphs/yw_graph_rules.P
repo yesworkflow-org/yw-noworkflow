@@ -73,24 +73,26 @@ gv_nodes__data__upstream_of_data(WorkflowId, DownstreamDataId) :-
     ;
     true.
 
-gv_nodes__data_value__upstream_of_data(WorkflowId, DownstreamDataId, DownstreamVariableId) :-
-    yw_data_downstream(DataId, DownstreamDataId),
-%    not yw_workflow_param(_, _, DataId, _),
-    variable_upstream_of_variable(VariableId, DownstreamVariableId),
-    nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, _),
-    yw_data(DataId, DataName, WorkflowId, _),
+gv_nodes__data_values__upstream_of_data_product(WorkflowId, DataProductId, DataProductName, DataProductValue) :-
+    yw_data(DataId, _, WorkflowId, _),
+    not yw_workflow_param(_, _, DataId, _),
+    nw_variable_in_yw_lineage_of_nw_variable(_, DataId, DataName, VarId, VarName, Value, DataProductId, DataProductName, _, _, DataProductValue),
     concat_atom(['[data', DataId, '] ', DataName], Top),
-    concat_atom(['[var', VariableId, '] ', VariableName, ' = ', VariableValue], Bottom),
+    concat_atom(['[var', VarId, '] ', VarName, ' = ', Value], Bottom),
     gv_record_node(DataName, Top, Bottom),
     fail
     ;
     true.
 
-variable_upstream_of_variable(UpstreamVarId, DownstreamVarId) :-
-    UpstreamVarId = DownstreamVarId.
-variable_upstream_of_variable(UpstreamVarId, DownstreamVarId) :-
-    dependency(_, _, _, DownstreamVarId, _, UpstreamVarId).
-
+gv_nodes__param_values__upstream_of_data_product(WorkflowId, DataProductId, DataProductName, DataProductValue) :-
+    yw_workflow_param(WorkflowId, _, DataId, _),
+    nw_variable_in_yw_lineage_of_nw_variable(_, DataId, DataName, VarId, VarName, Value, DataProductId, DataProductName, _, _, DataProductValue),
+    concat_atom(['[data', DataId, '] ', DataName], Top),
+    concat_atom(['[var', VarId, '] ', VarName, ' = ', Value], Bottom),
+    gv_record_node(DataName, Top, Bottom),
+    fail
+    ;
+    true.
 
 gv_nodes__params(WorkflowId) :-
     yw_workflow_param(WorkflowId, _, _, DataName),

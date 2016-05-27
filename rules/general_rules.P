@@ -1,3 +1,5 @@
+compiler_options([xpp_on]).
+
 
 llength([],0).
 llength([_|T], N) :- llength(T, Nt), N is Nt + 1.

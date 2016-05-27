@@ -29,4 +29,5 @@ if __name__ == '__main__':
     greet_user(first_greeting)
     second_greeting = 'Goodbye World'
     greet_user(second_greeting, '?', 2)
-    greet_user("Back again", '?!', 3)
+    third_emph_count = 3
+    greet_user("Back again", '?!', third_emph_count)

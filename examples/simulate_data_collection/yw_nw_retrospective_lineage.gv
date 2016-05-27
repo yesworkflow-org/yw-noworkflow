@@ -12,7 +12,9 @@ collect_data_set
 transform_images
 node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
-corrected_image_path [shape=record rankdir=LR label="{<f0> [data28] corrected_image_path |<f1> [var4268] corrected_image_path = run/data/DRT240/DRT240_12000eV_002.img}"]
+corrected_image_path [shape=record rankdir=LR label="{<f0> [data28] corrected_image_path |<f1> [var2842] corrected_image_path = run/data/DRT240/DRT240_11000eV_002.img}"]
+corrected_image_path [shape=record rankdir=LR label="{<f0> [data28] corrected_image_path |<f1> [var2840] corrected_image_path = run/data/DRT240/DRT240_11000eV_002.img}"]
+node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
 }}
 subgraph cluster_inflows { label=""; color=white; penwidth=2
 subgraph cluster_inflows_inner { label=""; color=white

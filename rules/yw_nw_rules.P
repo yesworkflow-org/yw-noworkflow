@@ -8,6 +8,44 @@ line_outside_range(Line, RangeStart, _) :-
 line_outside_range(Line, _, RangeEnd) :-
     Line > RangeEnd.
 
+:- table nw_variable_in_yw_lineage_of_nw_variable/11.
+nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, DataName, VarId, VarName, Value, DownstreamDataId, DownstreamDataName, DownstreamVarId, DownstreamVarName, DownstreamVarValue) :-
+    nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, VarId, DownstreamDataId, DownstreamVarId),
+    yw_data(DataId, DataName, _, _),
+    nw_variable_assignment(_, VarId, VarName, _, Value),
+    yw_data(DownstreamDataId, DownstreamDataName, _, _),
+    nw_variable_assignment(_, DownstreamVarId, DownstreamVarName, _, DownstreamVarValue).
+
+nw_variable_in_yw_lineage_of_nw_variable_11 :-
+    writeln('nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, DataName, VarId, VarName, Value, DownstreamDataId, DownstreamDataName, DownstreamVarId, DownstreamVarName, DownstreamVarValue).'),
+    printall(nw_variable_in_yw_lineage_of_nw_variable(_,_,_,_,_,_,_,_,_,_,_)).
+
+:- table nw_variable_in_yw_lineage_of_nw_variable/5.
+nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, VarId, DownstreamDataId, DownstreamVarId) :-
+    nw_variable_for_yw_data(VarId, _, _, DataId, _),
+    DataId = DownstreamDataId,
+    VarId = DownstreamVarId,
+    Why = yw_identity_nw_identity.
+nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, VarId, DownstreamDataId, DownstreamVarId) :-
+    nw_variable_for_yw_data(VarId, _, _, DataId, _),
+    nw_variable_for_yw_data(DownstreamVarId, _, _, DownstreamDataId, _),
+    yw_data_downstream(DataId, DownstreamDataId),
+    VarId = DownstreamVarId,
+    DataId \== DownstreamDataId,
+    Why = yw_lineage_nw_identity.
+nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, VarId, DownstreamDataId, DownstreamVarId) :-
+    nw_variable_for_yw_data(VarId, _, _, DataId, _),
+    nw_variable_for_yw_data(DownstreamVarId, _, _, DownstreamDataId, _),
+    yw_data_downstream(DataId, DownstreamDataId),
+    nw_variable_upstream_of_variable(VarId, DownstreamVarId),
+    VarId \= DownstreamVarId,
+    DataId \== DownstreamDataId,
+    Why = lineage.
+
+nw_variable_in_yw_lineage_of_nw_variable_5 :-
+    writeln('nw_variable_in_yw_lineage_of_nw_variable(Why, DataId, VarId, DownstreamDataId, DownstreamVarId).'),
+    printall(nw_variable_in_yw_lineage_of_nw_variable(_,_,_,_,_)).
+
 nw_variable_assigned_in_yw_step(VariableId, VariableName, VariableValue, StepId, StepName, AssignmentLine) :-
     yw_workflow_step(StepId, StepName,_,_, StepBeginLine, StepEndLine),
     nw_variable_assignment(_, VariableId, VariableName, AssignmentLine, VariableValue),
