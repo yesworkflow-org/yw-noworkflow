@@ -28,7 +28,7 @@ printall(nw_variable_assignment(_,_,_,_,_)).
 rule_banner('nw_variable_usage(UsageId, ActId, VariableId, VarName, VarValue, Line).').
 printall(nw_variable_usage(_,_,_,_,_,_)).
 
-rule_banner('nw_variable_dependency(DependencyId, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)').
+rule_banner('nw_variable_dependency(Why, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)').
 printall(nw_variable_dependency(_,_,_,_,_,_,_,_)).
 
 END_XSB_STDIN

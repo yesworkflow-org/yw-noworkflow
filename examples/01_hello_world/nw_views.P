@@ -34,5 +34,5 @@ nw_function_activation(2,nil,'module.print',6,1).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_dependency(DependencyId, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
+% FACT: nw_variable_dependency(Why, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................

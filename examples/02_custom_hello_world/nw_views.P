@@ -53,5 +53,5 @@ nw_variable_usage(7,6,20,greeting,'Back again!',14).
 
 
 %---------------------------------------------------------------------------------------------------
-% FACT: nw_variable_dependency(DependencyId, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
+% FACT: nw_variable_dependency(Why, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................
