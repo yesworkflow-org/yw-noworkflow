@@ -71,3 +71,14 @@ nw_variable_dependency(Why, CalledActId, FuncName, AssignmentLine, DownstreamVar
     nw_variable_usage(_, _, UpstreamVarId, UpstreamVarName, _, _),
     nw_function_activation(CalledActId, _, FuncName, _, CallerActId),
     Why = argument.
+nw_variable_dependency(Why, CalledActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName) :-
+    variable(_, CalledActId, UpstreamVarId, UpstreamVarName, _, _, _),
+    variable(_, CalledActId, ReturnId, 'return', _, _, _),
+    dependency(_, _, CalledActId, ReturnId, CalledActId, UpstreamVarId),
+    variable(_, CallerActId, FunctionValueId, _, _, 'now(n/a)', _),
+    dependency(_, _, CallerActId, FunctionValueId, CalledActId, ReturnId),
+    variable(_, CallerActId, DownstreamVarId, DownstreamVarName, _, _, _),
+    dependency(_, _, CallerActId, DownstreamVarId, CallerActId, FunctionValueId),
+    nw_variable_assignment(_, DownstreamVarId, DownstreamVarName, AssignmentLine, _),
+    nw_function_activation(CalledActId, _, FuncName, _, _),
+    Why = return.

@@ -1,0 +1,413 @@
+
+%
+% FACT DEFINITION: trial(Id, Start, Finish, Script, CodeHash, Command, InheritedId, ParentId, Run, Docstring).
+% DESCRIPTION: informs that a given *script* with *docstring*,
+%              and content *code_hash*,
+%              executed during a time period from *start*to *finish*,
+%              using noWokflow's *command*,
+%              that generated a trial *id*.
+%              This trial uses modules from *inherited_id*,
+%              is based on *parent_id*,
+%              and might be a *run* or a backup trial.
+%
+
+:- dynamic(trial/10).
+trial(1, nil, nil, 'iterative_emphasis.py', '98ee152943c56bd57d3935fca17fa3648caa2bb5', 'run -e Tracer iterative_emphasis.py', nil, nil, 1, nil).
+
+%
+% FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
+% DESCRIPTION: informs that a given trial (*trial_id*)
+%              has a tag (*name*) of *type*,
+%              created at *timestamp*.
+%              
+%
+
+:- dynamic(tag/4).
+tag(1, 'AUTO', '1.1.1', nil).
+
+%
+% FACT DEFINITION: module(TrialId, Id, Name, Version, Path, CodeHash).
+% DESCRIPTION: informs that a given trial (*trial_id*)
+%              imported the *version* of a module (*name*),
+%              with content (*code_hash*) written in *path*.
+%
+
+:- dynamic(module/6).
+
+%
+% DESCRIPTION: informs that a environment attribute (*name*)
+%              was defined with *value*
+%              in a given trial (*trial_id*).
+%
+
+:- dynamic(environment/3).
+
+%
+% FACT DEFINITION: function_def(TrialId, Id, Name, CodeHash, FirstLine, LastLine, Docstring).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a function *name* was defined
+%              with content (*code_hash*)
+%              between *first_line* and *last_line*
+%              and with a *docstring*.
+%
+
+:- dynamic(function_def/7).
+function_def(1, 1, 'greet_user', '7bfb6c158c0c11229fe40adc461b0dbc21afffa5', 7, 20, nil).
+function_def(1, 2, 'add_suffix', 'e600ab4161a4807a6435ff87c06c9f5ad58c6980', 25, 30, nil).
+
+%
+% FACT DEFINITION: object(TrialId, FunctionDefId, Id, Name, Type).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a given function definition (*function_def_id*),
+%              has a GLOBAL/ARGUMENT/FUNCTION_CALL (*type*),
+%              with *name*.
+%              
+%
+
+:- dynamic(object/5).
+object(1, 1, 1, 'add_suffix', 'FUNCTION_CALL').
+object(1, 1, 2, 'print', 'FUNCTION_CALL').
+object(1, 2, 3, 'range', 'FUNCTION_CALL').
+object(1, -1, 4, 'greet_user', 'FUNCTION_CALL').
+object(1, -1, 5, 'greet_user', 'FUNCTION_CALL').
+object(1, -1, 6, 'greet_user', 'FUNCTION_CALL').
+
+%
+% FACT DEFINITION: activation(TrialId, Id, Name, Line, Start, Finish, CallerActivationId).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a function *name* was activated
+%              by another function (*caller_activation_id*)
+%              and executed during a time period from *start*
+%              to *finish*.
+%
+
+:- dynamic(activation/7).
+activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/05_emphasis_function/iterative_emphasis.py', 61, nil, nil, nil).
+activation(1, 2, 'greet_user', 34, nil, nil, 1).
+activation(1, 3, 'add_suffix', 14, nil, nil, 2).
+activation(1, 4, 'module.print', 20, nil, nil, 2).
+activation(1, 5, 'greet_user', 36, nil, nil, 1).
+activation(1, 6, 'add_suffix', 14, nil, nil, 5).
+activation(1, 7, 'module.print', 20, nil, nil, 5).
+activation(1, 8, 'greet_user', 38, nil, nil, 1).
+activation(1, 9, 'add_suffix', 14, nil, nil, 8).
+activation(1, 10, 'module.print', 20, nil, nil, 8).
+
+%
+% FACT DEFINITION: object_value(TrialId, ActivationId, Id, Name, Value, Type).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a given activation (*function_activation_id*),
+%              has a GLOBAL/ARGUMENT (*type*) variable *name*,
+%              with *value*.
+%              
+%
+
+:- dynamic(object_value/6).
+object_value(1, 2, 1, 'greeting', 'Hello World', 'ARGUMENT').
+object_value(1, 2, 2, 'emphasis', '!', 'ARGUMENT').
+object_value(1, 2, 3, 'count', '1', 'ARGUMENT').
+object_value(1, 3, 4, 'prefix', 'Hello World', 'ARGUMENT').
+object_value(1, 3, 5, 'suffix', '!', 'ARGUMENT').
+object_value(1, 3, 6, 'count', '1', 'ARGUMENT').
+object_value(1, 5, 7, 'greeting', 'Goodbye World', 'ARGUMENT').
+object_value(1, 5, 8, 'emphasis', '?', 'ARGUMENT').
+object_value(1, 5, 9, 'count', '2', 'ARGUMENT').
+object_value(1, 6, 10, 'prefix', 'Goodbye World', 'ARGUMENT').
+object_value(1, 6, 11, 'suffix', '?', 'ARGUMENT').
+object_value(1, 6, 12, 'count', '2', 'ARGUMENT').
+object_value(1, 8, 13, 'greeting', 'Back again', 'ARGUMENT').
+object_value(1, 8, 14, 'emphasis', '?!', 'ARGUMENT').
+object_value(1, 8, 15, 'count', '3', 'ARGUMENT').
+object_value(1, 9, 16, 'prefix', 'Back again', 'ARGUMENT').
+object_value(1, 9, 17, 'suffix', '?!', 'ARGUMENT').
+object_value(1, 9, 18, 'count', '3', 'ARGUMENT').
+
+%
+% FACT DEFINITION: access(TrialId, Id, Name, Mode, ContentHashBefore, ContentHashAfter, Timestamp, ActivationId).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              a file *name*
+%              was accessed by a function activation (*activation_id*)
+%              in a specific read or write *mode*
+%              at a specific *timestamp*.
+%              The content of the file
+%              was captured before (*content_hash_before*)
+%              and after (*content_hash_after*) the access.
+%
+
+:- dynamic(access/8).
+access(1, f1, '/dev/null', 'w', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', nil, nil, nil).
+
+%
+% FACT DEFINITION: variable(TrialId, ActivationId, Id, Name, Line, Value, Timestamp).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              during a specific function activation (*activation_id*),
+%              in a specific *line* of code,
+%              and in a specific *timestamp*,
+%              a variable *name* was updated
+%              to a new *value*.
+%
+
+:- dynamic(variable/7).
+variable(1, 1, 1, 'greet_user', 7, '<function greet_user at 0x105be5950>', nil).
+variable(1, 1, 2, 'add_suffix', 25, '<function add_suffix at 0x106ba7d08>', nil).
+variable(1, 1, 4, 'first_greeting', 33, 'Hello World', nil).
+variable(1, 2, 5, 'greeting', 7, 'Hello World', nil).
+variable(1, 2, 6, 'emphasis', 7, '!', nil).
+variable(1, 2, 7, 'count', 7, '1', nil).
+variable(1, 0, 8, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 3, 9, 'prefix', 25, 'Hello World', nil).
+variable(1, 3, 10, 'suffix', 25, '!', nil).
+variable(1, 3, 11, 'count', 25, '1', nil).
+variable(1, 0, 12, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 3, 13, 'string', 26, 'Hello World', nil).
+variable(1, 3, 14, 'range(0, count)', 28, 'now(n/a)', nil).
+variable(1, 0, 15, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 1, 16, 'range', 0, '<class ''range''>', nil).
+variable(1, 3, 17, 'i', 28, '0', nil).
+variable(1, 3, 18, 'string', 29, 'Hello World!', nil).
+variable(1, 3, 19, 'return', 30, 'Hello World!', nil).
+variable(1, 2, 20, 'add_suffix', 14, 'now(n/a)', nil).
+variable(1, 2, 21, 'greeting', 14, 'Hello World!', nil).
+variable(1, 4, 22, 'return', 20, nil, nil).
+variable(1, 0, 23, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 2, 24, 'module.print', 20, 'now(n/a)', nil).
+variable(1, 1, 25, 'print', 0, '<built-in function print>', nil).
+variable(1, 2, 26, 'return', 20, 'None', nil).
+variable(1, 1, 27, 'greet_user', 34, 'now(n/a)', nil).
+variable(1, 1, 28, 'second_greeting', 35, 'Goodbye World', nil).
+variable(1, 5, 29, 'greeting', 7, 'Goodbye World', nil).
+variable(1, 5, 30, 'emphasis', 7, '?', nil).
+variable(1, 5, 31, 'count', 7, '2', nil).
+variable(1, 0, 32, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 6, 33, 'prefix', 25, 'Goodbye World', nil).
+variable(1, 6, 34, 'suffix', 25, '?', nil).
+variable(1, 6, 35, 'count', 25, '2', nil).
+variable(1, 0, 36, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 6, 37, 'string', 26, 'Goodbye World', nil).
+variable(1, 6, 38, 'range(0, count)', 28, 'now(n/a)', nil).
+variable(1, 0, 39, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 6, 40, 'i', 28, '0', nil).
+variable(1, 6, 41, 'string', 29, 'Goodbye World?', nil).
+variable(1, 6, 42, 'range(0, count)', 28, 'now(n/a)', nil).
+variable(1, 0, 43, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 6, 44, 'i', 28, '1', nil).
+variable(1, 6, 45, 'string', 29, 'Goodbye World??', nil).
+variable(1, 6, 46, 'return', 30, 'Goodbye World??', nil).
+variable(1, 5, 47, 'add_suffix', 14, 'now(n/a)', nil).
+variable(1, 5, 48, 'greeting', 14, 'Goodbye World??', nil).
+variable(1, 7, 49, 'return', 20, nil, nil).
+variable(1, 0, 50, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 5, 51, 'module.print', 20, 'now(n/a)', nil).
+variable(1, 5, 52, 'return', 20, 'None', nil).
+variable(1, 1, 53, 'greet_user', 36, 'now(n/a)', nil).
+variable(1, 1, 54, 'third_emph_count', 37, '3', nil).
+variable(1, 8, 55, 'count', 7, '3', nil).
+variable(1, 8, 56, 'greeting', 7, 'Back again', nil).
+variable(1, 8, 57, 'emphasis', 7, '?!', nil).
+variable(1, 0, 58, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 9, 59, 'prefix', 25, 'Back again', nil).
+variable(1, 9, 60, 'suffix', 25, '?!', nil).
+variable(1, 9, 61, 'count', 25, '3', nil).
+variable(1, 0, 62, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 9, 63, 'string', 26, 'Back again', nil).
+variable(1, 9, 64, 'range(0, count)', 28, 'now(n/a)', nil).
+variable(1, 0, 65, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 9, 66, 'i', 28, '0', nil).
+variable(1, 9, 67, 'string', 29, 'Back again?!', nil).
+variable(1, 9, 68, 'range(0, count)', 28, 'now(n/a)', nil).
+variable(1, 0, 69, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 9, 70, 'i', 28, '1', nil).
+variable(1, 9, 71, 'string', 29, 'Back again?!?!', nil).
+variable(1, 9, 72, 'range(0, count)', 28, 'now(n/a)', nil).
+variable(1, 0, 73, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 9, 74, 'i', 28, '2', nil).
+variable(1, 9, 75, 'string', 29, 'Back again?!?!?!', nil).
+variable(1, 9, 76, 'return', 30, 'Back again?!?!?!', nil).
+variable(1, 8, 77, 'add_suffix', 14, 'now(n/a)', nil).
+variable(1, 8, 78, 'greeting', 14, 'Back again?!?!?!', nil).
+variable(1, 10, 79, 'return', 20, nil, nil).
+variable(1, 0, 80, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 8, 81, 'module.print', 20, 'now(n/a)', nil).
+variable(1, 8, 82, 'return', 20, 'None', nil).
+variable(1, 1, 83, 'greet_user', 38, 'now(n/a)', nil).
+
+%
+% FACT DEFINITION: usage(TrialId, ActivationId, VariableId, Id, Name, Line).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              during a specific function activation (*activation_id*),
+%              in a specific *line* of code,
+%              a variable *name* was accessed (read, delete).
+%
+
+:- dynamic(usage/6).
+usage(1, 3, 9, 1, 'prefix', 26).
+usage(1, 3, 11, 2, 'count', 27).
+usage(1, 3, 11, 3, 'count', 28).
+usage(1, 3, 13, 4, 'string', 29).
+usage(1, 3, 10, 5, 'suffix', 29).
+usage(1, 3, 18, 6, 'string', 30).
+usage(1, 2, 5, 7, 'greeting', 14).
+usage(1, 2, 6, 8, 'emphasis', 14).
+usage(1, 2, 7, 9, 'count', 14).
+usage(1, 2, 21, 10, 'greeting', 20).
+usage(1, 1, 1, 11, 'greet_user', 34).
+usage(1, 1, 4, 12, 'first_greeting', 34).
+usage(1, 6, 33, 13, 'prefix', 26).
+usage(1, 6, 35, 14, 'count', 27).
+usage(1, 6, 35, 15, 'count', 28).
+usage(1, 6, 37, 16, 'string', 29).
+usage(1, 6, 34, 17, 'suffix', 29).
+usage(1, 6, 35, 18, 'count', 28).
+usage(1, 6, 41, 19, 'string', 29).
+usage(1, 6, 34, 20, 'suffix', 29).
+usage(1, 6, 45, 21, 'string', 30).
+usage(1, 5, 29, 22, 'greeting', 14).
+usage(1, 5, 30, 23, 'emphasis', 14).
+usage(1, 5, 31, 24, 'count', 14).
+usage(1, 5, 48, 25, 'greeting', 20).
+usage(1, 1, 1, 26, 'greet_user', 36).
+usage(1, 1, 28, 27, 'second_greeting', 36).
+usage(1, 9, 59, 28, 'prefix', 26).
+usage(1, 9, 61, 29, 'count', 27).
+usage(1, 9, 61, 30, 'count', 28).
+usage(1, 9, 63, 31, 'string', 29).
+usage(1, 9, 60, 32, 'suffix', 29).
+usage(1, 9, 61, 33, 'count', 28).
+usage(1, 9, 67, 34, 'string', 29).
+usage(1, 9, 60, 35, 'suffix', 29).
+usage(1, 9, 61, 36, 'count', 28).
+usage(1, 9, 71, 37, 'string', 29).
+usage(1, 9, 60, 38, 'suffix', 29).
+usage(1, 9, 75, 39, 'string', 30).
+usage(1, 8, 56, 40, 'greeting', 14).
+usage(1, 8, 57, 41, 'emphasis', 14).
+usage(1, 8, 55, 42, 'count', 14).
+usage(1, 8, 78, 43, 'greeting', 20).
+usage(1, 1, 1, 44, 'greet_user', 38).
+usage(1, 1, 54, 45, 'third_emph_count', 38).
+
+%
+% FACT DEFINITION: dependency(TrialId, Id, SourceActivationId, SourceId, TargetActivationId, TargetId).
+% DESCRIPTION: informs that in a given trial (*trial_id*),
+%              the value of a variable (*target_id*)
+%              in a specific function activation (*target_activation_id*),
+%              influenced somehow the value of another variable (*source_id*)
+%              in another function activation (*source_activation_id*).
+%              This influence can occur due to direct assignment,
+%              matching of arguments in function activations,
+%              changes in mutable arguments of function activations,
+%              assignment within control flow structure, and function return.
+%
+
+:- dynamic(dependency/6).
+dependency(1, 1, 0, 80, 8, 78).
+dependency(1, 2, 9, 76, 9, 75).
+dependency(1, 3, 0, 32, 1, 28).
+dependency(1, 4, 3, 9, 2, 5).
+dependency(1, 5, 8, 55, 1, 54).
+dependency(1, 6, 3, 14, 0, 15).
+dependency(1, 7, 6, 45, 6, 44).
+dependency(1, 8, 5, 29, 1, 28).
+dependency(1, 9, 8, 77, 1, 2).
+dependency(1, 10, 6, 42, 1, 16).
+dependency(1, 11, 3, 18, 3, 17).
+dependency(1, 12, 6, 41, 6, 35).
+dependency(1, 13, 6, 46, 6, 45).
+dependency(1, 14, 9, 64, 0, 65).
+dependency(1, 15, 6, 37, 6, 33).
+dependency(1, 16, 1, 53, 5, 52).
+dependency(1, 17, 3, 19, 3, 18).
+dependency(1, 18, 6, 45, 6, 41).
+dependency(1, 19, 0, 69, 9, 61).
+dependency(1, 20, 9, 75, 9, 61).
+dependency(1, 21, 3, 17, 3, 11).
+dependency(1, 22, 8, 77, 9, 76).
+dependency(1, 23, 9, 59, 8, 56).
+dependency(1, 24, 7, 49, 0, 50).
+dependency(1, 25, 6, 40, 6, 38).
+dependency(1, 26, 6, 38, 1, 16).
+dependency(1, 27, 9, 74, 9, 64).
+dependency(1, 28, 3, 18, 3, 11).
+dependency(1, 29, 9, 72, 1, 16).
+dependency(1, 30, 3, 13, 3, 9).
+dependency(1, 31, 0, 8, 1, 4).
+dependency(1, 32, 0, 73, 9, 61).
+dependency(1, 33, 0, 23, 2, 21).
+dependency(1, 34, 0, 39, 6, 35).
+dependency(1, 35, 6, 45, 6, 34).
+dependency(1, 36, 3, 11, 2, 7).
+dependency(1, 37, 6, 41, 6, 34).
+dependency(1, 38, 6, 40, 6, 35).
+dependency(1, 39, 0, 43, 6, 35).
+dependency(1, 40, 5, 47, 1, 2).
+dependency(1, 41, 9, 74, 9, 61).
+dependency(1, 42, 0, 65, 9, 61).
+dependency(1, 43, 9, 66, 9, 61).
+dependency(1, 44, 6, 44, 6, 38).
+dependency(1, 45, 0, 36, 5, 31).
+dependency(1, 46, 9, 70, 9, 61).
+dependency(1, 47, 2, 5, 1, 4).
+dependency(1, 48, 9, 64, 1, 16).
+dependency(1, 49, 9, 71, 9, 61).
+dependency(1, 50, 9, 71, 9, 60).
+dependency(1, 51, 3, 18, 3, 10).
+dependency(1, 52, 5, 51, 7, 49).
+dependency(1, 53, 2, 24, 1, 25).
+dependency(1, 54, 0, 15, 3, 11).
+dependency(1, 55, 4, 22, 0, 23).
+dependency(1, 56, 6, 33, 5, 29).
+dependency(1, 57, 2, 20, 3, 19).
+dependency(1, 58, 9, 61, 8, 55).
+dependency(1, 59, 9, 75, 9, 71).
+dependency(1, 60, 0, 36, 5, 30).
+dependency(1, 61, 6, 41, 6, 37).
+dependency(1, 62, 3, 14, 1, 16).
+dependency(1, 63, 0, 36, 5, 29).
+dependency(1, 64, 3, 17, 3, 14).
+dependency(1, 65, 0, 62, 8, 55).
+dependency(1, 66, 0, 12, 2, 5).
+dependency(1, 67, 6, 41, 6, 40).
+dependency(1, 68, 9, 75, 9, 60).
+dependency(1, 69, 2, 24, 4, 22).
+dependency(1, 70, 3, 10, 2, 6).
+dependency(1, 71, 9, 68, 0, 69).
+dependency(1, 72, 0, 62, 8, 57).
+dependency(1, 73, 9, 71, 9, 70).
+dependency(1, 74, 9, 67, 9, 66).
+dependency(1, 75, 0, 58, 1, 54).
+dependency(1, 76, 6, 42, 0, 43).
+dependency(1, 77, 10, 79, 0, 80).
+dependency(1, 78, 9, 71, 9, 67).
+dependency(1, 79, 8, 78, 8, 77).
+dependency(1, 80, 2, 21, 2, 20).
+dependency(1, 81, 2, 20, 1, 2).
+dependency(1, 82, 5, 51, 1, 25).
+dependency(1, 83, 8, 81, 10, 79).
+dependency(1, 84, 5, 47, 6, 46).
+dependency(1, 85, 5, 48, 5, 47).
+dependency(1, 86, 1, 27, 1, 1).
+dependency(1, 87, 8, 81, 1, 25).
+dependency(1, 88, 9, 67, 9, 60).
+dependency(1, 89, 9, 75, 9, 74).
+dependency(1, 90, 9, 67, 9, 61).
+dependency(1, 91, 1, 53, 1, 1).
+dependency(1, 92, 6, 35, 5, 31).
+dependency(1, 93, 1, 83, 8, 82).
+dependency(1, 94, 0, 12, 2, 7).
+dependency(1, 95, 0, 62, 8, 56).
+dependency(1, 96, 1, 27, 2, 26).
+dependency(1, 97, 0, 50, 5, 48).
+dependency(1, 98, 9, 63, 9, 59).
+dependency(1, 99, 9, 66, 9, 64).
+dependency(1, 100, 6, 34, 5, 30).
+dependency(1, 101, 3, 18, 3, 13).
+dependency(1, 102, 0, 12, 2, 6).
+dependency(1, 103, 9, 70, 9, 64).
+dependency(1, 104, 9, 72, 0, 73).
+dependency(1, 105, 6, 44, 6, 35).
+dependency(1, 106, 9, 68, 1, 16).
+dependency(1, 107, 9, 60, 8, 57).
+dependency(1, 108, 6, 38, 0, 39).
+dependency(1, 109, 9, 67, 9, 63).
+dependency(1, 110, 1, 83, 1, 1).
+dependency(1, 111, 6, 45, 6, 35).

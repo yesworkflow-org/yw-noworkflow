@@ -4,6 +4,7 @@ SUBDIRS =	01_hello_world  \
 		 	02_custom_hello_world \
 			03_emphasized_hello_world \
 			04_iterative_emphasis \
+			05_emphasis_function \
 			simulate_data_collection
 
 all:

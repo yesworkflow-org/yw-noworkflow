@@ -1,0 +1,99 @@
+
+% FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
+program(1, 'EmphasizedHelloWorld', 'EmphasizedHelloWorld', 1, 27).
+program(2, 'emphasize_greeting', 'EmphasizedHelloWorld.emphasize_greeting', 8, 18).
+program(3, 'print_greeting', 'EmphasizedHelloWorld.print_greeting', 19, 26).
+
+% FACT: workflow(program_id).
+workflow(1).
+
+% FACT: function(program_id).
+
+% FACT: has_subprogram(program_id, subprogram_id).
+has_subprogram(1, 2).
+has_subprogram(1, 3).
+
+% FACT: port(port_id, port_type, port_name, qualified_port_name, port_annotation_id, data_id).
+port(1, 'in', 'provided_greeting', 'EmphasizedHelloWorld<-provided_greeting', 3, 1).
+port(2, 'in', 'provided_emphasis', 'EmphasizedHelloWorld<-provided_emphasis', 4, 2).
+port(3, 'param', 'emphasis_count', 'EmphasizedHelloWorld<-emphasis_count', 5, 3).
+port(4, 'out', 'displayed_greeting', 'EmphasizedHelloWorld->displayed_greeting', 6, 4).
+port(5, 'in', 'greeting', 'EmphasizedHelloWorld.emphasize_greeting<-greeting', 10, 5).
+port(6, 'in', 'emphasis', 'EmphasizedHelloWorld.emphasize_greeting<-emphasis', 12, 6).
+port(7, 'param', 'count', 'EmphasizedHelloWorld.emphasize_greeting<-count', 14, 7).
+port(8, 'out', 'greeting', 'EmphasizedHelloWorld.emphasize_greeting->greeting', 16, 8).
+port(9, 'in', 'greeting', 'EmphasizedHelloWorld.print_greeting<-greeting', 21, 8).
+port(10, 'out', 'greeting', 'EmphasizedHelloWorld.print_greeting->greeting', 23, 9).
+
+% FACT: port_alias(port_id, alias).
+port_alias(5, 'provided_greeting').
+port_alias(6, 'provided_emphasis').
+port_alias(7, 'emphasis_count').
+port_alias(8, 'emphasized_greeting').
+port_alias(9, 'emphasized_greeting').
+port_alias(10, 'displayed_greeting').
+
+% FACT: port_uri_template(port_id, uri).
+port_uri_template(10, 'stream:stdout').
+
+% FACT: has_in_port(block_id, port_id).
+has_in_port(1, 1).
+has_in_port(1, 2).
+has_in_port(1, 3).
+has_in_port(2, 5).
+has_in_port(2, 6).
+has_in_port(2, 7).
+has_in_port(3, 9).
+
+% FACT: has_out_port(block_id, port_id).
+has_out_port(1, 4).
+has_out_port(2, 8).
+has_out_port(3, 10).
+
+% FACT: data(data_id, data_name, qualified_data_name).
+data(1, 'provided_greeting', '[provided_greeting]').
+data(2, 'provided_emphasis', '[provided_emphasis]').
+data(3, 'emphasis_count', '[emphasis_count]').
+data(4, 'displayed_greeting', '[displayed_greeting]').
+data(5, 'provided_greeting', 'EmphasizedHelloWorld[provided_greeting]').
+data(6, 'provided_emphasis', 'EmphasizedHelloWorld[provided_emphasis]').
+data(7, 'emphasis_count', 'EmphasizedHelloWorld[emphasis_count]').
+data(8, 'emphasized_greeting', 'EmphasizedHelloWorld[emphasized_greeting]').
+data(9, 'displayed_greeting', 'EmphasizedHelloWorld[displayed_greeting]').
+
+% FACT: channel(channel_id, data_id).
+channel(1, 4).
+channel(2, 5).
+channel(3, 6).
+channel(4, 7).
+channel(5, 8).
+channel(6, 1).
+channel(7, 2).
+channel(8, 3).
+channel(9, 9).
+
+% FACT: port_connects_to_channel(port_id, channel_id).
+port_connects_to_channel(10, 1).
+port_connects_to_channel(5, 2).
+port_connects_to_channel(6, 3).
+port_connects_to_channel(7, 4).
+port_connects_to_channel(8, 5).
+port_connects_to_channel(9, 5).
+port_connects_to_channel(5, 6).
+port_connects_to_channel(6, 7).
+port_connects_to_channel(7, 8).
+port_connects_to_channel(10, 9).
+
+% FACT: inflow_connects_to_channel(port_id, channel_id).
+inflow_connects_to_channel(1, 2).
+inflow_connects_to_channel(2, 3).
+inflow_connects_to_channel(3, 4).
+inflow_connects_to_channel(1, 6).
+inflow_connects_to_channel(2, 7).
+inflow_connects_to_channel(3, 8).
+
+% FACT: outflow_connects_to_channel(port_id, channel_id).
+outflow_connects_to_channel(4, 1).
+outflow_connects_to_channel(4, 9).
+
+% FACT: uri_variable(uri_variable_id, variable_name, port_id).

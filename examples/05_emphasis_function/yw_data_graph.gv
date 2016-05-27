@@ -1,0 +1,37 @@
+
+digraph yw_data_view {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label="EmphasizedHelloWorld"
+subgraph cluster_workflow { label=""; color=black; penwidth=2
+subgraph cluster_workflow_inner { label=""; color=white
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+provided_greeting
+provided_emphasis
+emphasized_greeting
+displayed_greeting
+node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
+emphasis_count
+}}
+subgraph cluster_inflows { label=""; color=white; penwidth=2
+subgraph cluster_inflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+emphasis_count_inflow [label=""]
+provided_emphasis_inflow [label=""]
+provided_greeting_inflow [label=""]
+}}
+subgraph cluster_outflows { label=""; color=white; penwidth=2
+subgraph cluster_outflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+displayed_greeting_outflow [label=""]
+}}
+provided_greeting -> emphasized_greeting
+provided_emphasis -> emphasized_greeting
+emphasis_count -> emphasized_greeting
+emphasized_greeting -> displayed_greeting
+emphasis_count_inflow -> emphasis_count
+provided_emphasis_inflow -> provided_emphasis
+provided_greeting_inflow -> provided_greeting
+displayed_greeting -> displayed_greeting_outflow
+}
+
