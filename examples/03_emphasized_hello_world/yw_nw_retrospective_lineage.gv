@@ -10,10 +10,9 @@ emphasize_greeting
 print_greeting
 node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
-displayed_greeting [shape=record rankdir=LR label="{<f0> [data5] displayed_greeting |<f1> [var23] greeting = Back again!!}"]
 modified_greeting [shape=record rankdir=LR label="{<f0> [data4] modified_greeting |<f1> [var23] greeting = Back again!!}"]
+displayed_greeting [shape=record rankdir=LR label="{<f0> [data5] displayed_greeting |<f1> [var23] greeting = Back again!!}"]
 provided_greeting [shape=record rankdir=LR label="{<f0> [data3] provided_greeting |<f1> [var22] provided_greeting = Back again}"]
-node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
 }}
 subgraph cluster_inflows { label=""; color=white; penwidth=2
 subgraph cluster_inflows_inner { label=""; color=white
