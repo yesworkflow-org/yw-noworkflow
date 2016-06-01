@@ -1,0 +1,93 @@
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_activation_from_yw_step(ActivationId, FunctionName, StepId, StepName, ActivationLine).
+%...................................................................................................
+nw_activation_from_yw_step(3,open,2,read_greeting_definitions,16).
+nw_activation_from_yw_step(4,'__init__',2,read_greeting_definitions,17).
+nw_activation_from_yw_step(5,'__iter__',2,read_greeting_definitions,19).
+nw_activation_from_yw_step(6,'__next__',2,read_greeting_definitions,19).
+nw_activation_from_yw_step(7,add_suffix,3,emphasize_greeting,32).
+nw_activation_from_yw_step(8,'module.print',4,print_greeting,38).
+nw_activation_from_yw_step(9,'__next__',2,read_greeting_definitions,19).
+nw_activation_from_yw_step(10,add_suffix,3,emphasize_greeting,32).
+nw_activation_from_yw_step(11,'module.print',4,print_greeting,38).
+nw_activation_from_yw_step(12,'__next__',2,read_greeting_definitions,19).
+nw_activation_from_yw_step(13,add_suffix,3,emphasize_greeting,32).
+nw_activation_from_yw_step(14,'module.print',4,print_greeting,38).
+nw_activation_from_yw_step(15,'__next__',2,read_greeting_definitions,19).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_activation_into_yw_step(ActivationId, FunctionName, StepId, StepName, ActivationLine, CallerActivationId).
+%...................................................................................................
+nw_activation_into_yw_step(2,greet_user,1,greetings_from_file,51,1).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, Type, PortId, PortName, StepId, StepName).
+%...................................................................................................
+nw_variable_for_yw_in_port(7,input_file_path,'input.csv',1,input_file_path,argument,1,input_file_path,1,greetings_from_file).
+nw_variable_for_yw_in_port(7,input_file_path,'input.csv',4,input_file_path,variable,4,input_file_path,2,read_greeting_definitions).
+nw_variable_for_yw_in_port(71,greeting,'Goodbye World??',9,emphasized_greeting,variable,13,greeting,4,print_greeting).
+nw_variable_for_yw_in_port(11,input_file,'<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>',5,input_file,defined,5,input_file,2,read_greeting_definitions).
+nw_variable_for_yw_in_port(79,greeting,'Back again',6,provided_greeting,variable,9,greeting,3,emphasize_greeting).
+nw_variable_for_yw_in_port(80,emphasis,'?!',7,provided_emphasis,variable,10,emphasis,3,emphasize_greeting).
+nw_variable_for_yw_in_port(81,count,'3',8,emphasis_count,variable,11,count,3,emphasize_greeting).
+nw_variable_for_yw_in_port(24,greeting,'Hello World',6,provided_greeting,variable,9,greeting,3,emphasize_greeting).
+nw_variable_for_yw_in_port(25,emphasis,!,7,provided_emphasis,variable,10,emphasis,3,emphasize_greeting).
+nw_variable_for_yw_in_port(26,count,'1',8,emphasis_count,variable,11,count,3,emphasize_greeting).
+nw_variable_for_yw_in_port(103,greeting,'Back again?!?!?!',9,emphasized_greeting,variable,13,greeting,4,print_greeting).
+nw_variable_for_yw_in_port(42,greeting,'Hello World!',9,emphasized_greeting,variable,13,greeting,4,print_greeting).
+nw_variable_for_yw_in_port(51,greeting,'Goodbye World',6,provided_greeting,variable,9,greeting,3,emphasize_greeting).
+nw_variable_for_yw_in_port(52,emphasis,?,7,provided_emphasis,variable,10,emphasis,3,emphasize_greeting).
+nw_variable_for_yw_in_port(53,count,'2',8,emphasis_count,variable,11,count,3,emphasize_greeting).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName).
+%...................................................................................................
+nw_variable_for_yw_out_port(71,greeting,'Goodbye World??',3,displayed_greeting,3,displayed_greeting,1,greetings_from_file).
+nw_variable_for_yw_out_port(71,greeting,'Goodbye World??',10,displayed_greeting,14,greeting,4,print_greeting).
+nw_variable_for_yw_out_port(71,greeting,'Goodbye World??',9,emphasized_greeting,12,greeting,3,emphasize_greeting).
+nw_variable_for_yw_out_port(79,greeting,'Back again',6,provided_greeting,6,greeting,2,read_greeting_definitions).
+nw_variable_for_yw_out_port(80,emphasis,'?!',7,provided_emphasis,7,emphasis,2,read_greeting_definitions).
+nw_variable_for_yw_out_port(81,count,'3',8,emphasis_count,8,count,2,read_greeting_definitions).
+nw_variable_for_yw_out_port(24,greeting,'Hello World',6,provided_greeting,6,greeting,2,read_greeting_definitions).
+nw_variable_for_yw_out_port(25,emphasis,!,7,provided_emphasis,7,emphasis,2,read_greeting_definitions).
+nw_variable_for_yw_out_port(26,count,'1',8,emphasis_count,8,count,2,read_greeting_definitions).
+nw_variable_for_yw_out_port(103,greeting,'Back again?!?!?!',3,displayed_greeting,3,displayed_greeting,1,greetings_from_file).
+nw_variable_for_yw_out_port(103,greeting,'Back again?!?!?!',10,displayed_greeting,14,greeting,4,print_greeting).
+nw_variable_for_yw_out_port(103,greeting,'Back again?!?!?!',9,emphasized_greeting,12,greeting,3,emphasize_greeting).
+nw_variable_for_yw_out_port(42,greeting,'Hello World!',3,displayed_greeting,3,displayed_greeting,1,greetings_from_file).
+nw_variable_for_yw_out_port(42,greeting,'Hello World!',10,displayed_greeting,14,greeting,4,print_greeting).
+nw_variable_for_yw_out_port(42,greeting,'Hello World!',9,emphasized_greeting,12,greeting,3,emphasize_greeting).
+nw_variable_for_yw_out_port(51,greeting,'Goodbye World',6,provided_greeting,6,greeting,2,read_greeting_definitions).
+nw_variable_for_yw_out_port(52,emphasis,?,7,provided_emphasis,7,emphasis,2,read_greeting_definitions).
+nw_variable_for_yw_out_port(53,count,'2',8,emphasis_count,8,count,2,read_greeting_definitions).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_for_yw_data(VariableId, VariableName, VariableValue, DataId, DataName).
+%...................................................................................................
+nw_variable_for_yw_data(7,input_file_path,'input.csv',4,input_file_path).
+nw_variable_for_yw_data(7,input_file_path,'input.csv',1,input_file_path).
+nw_variable_for_yw_data(71,greeting,'Goodbye World??',10,displayed_greeting).
+nw_variable_for_yw_data(71,greeting,'Goodbye World??',3,displayed_greeting).
+nw_variable_for_yw_data(71,greeting,'Goodbye World??',9,emphasized_greeting).
+nw_variable_for_yw_data(11,input_file,'<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>',5,input_file).
+nw_variable_for_yw_data(79,greeting,'Back again',6,provided_greeting).
+nw_variable_for_yw_data(80,emphasis,'?!',7,provided_emphasis).
+nw_variable_for_yw_data(81,count,'3',8,emphasis_count).
+nw_variable_for_yw_data(24,greeting,'Hello World',6,provided_greeting).
+nw_variable_for_yw_data(25,emphasis,!,7,provided_emphasis).
+nw_variable_for_yw_data(26,count,'1',8,emphasis_count).
+nw_variable_for_yw_data(103,greeting,'Back again?!?!?!',10,displayed_greeting).
+nw_variable_for_yw_data(103,greeting,'Back again?!?!?!',3,displayed_greeting).
+nw_variable_for_yw_data(103,greeting,'Back again?!?!?!',9,emphasized_greeting).
+nw_variable_for_yw_data(42,greeting,'Hello World!',10,displayed_greeting).
+nw_variable_for_yw_data(42,greeting,'Hello World!',3,displayed_greeting).
+nw_variable_for_yw_data(42,greeting,'Hello World!',9,emphasized_greeting).
+nw_variable_for_yw_data(51,greeting,'Goodbye World',6,provided_greeting).
+nw_variable_for_yw_data(52,emphasis,?,7,provided_emphasis).
+nw_variable_for_yw_data(53,count,'2',8,emphasis_count).

@@ -1,0 +1,49 @@
+
+digraph yw_data_view {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label="greetings_from_file"
+subgraph cluster_workflow { label=""; color=black; penwidth=2
+subgraph cluster_workflow_inner { label=""; color=white
+node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+read_greeting_definitions
+emphasize_greeting
+print_greeting
+node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+input_file
+provided_greeting
+provided_emphasis
+emphasis_count
+emphasized_greeting
+displayed_greeting
+node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
+input_file_path
+}}
+subgraph cluster_inflows { label=""; color=white; penwidth=2
+subgraph cluster_inflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+input_file_inflow [label=""]
+input_file_path_inflow [label=""]
+}}
+subgraph cluster_outflows { label=""; color=white; penwidth=2
+subgraph cluster_outflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+displayed_greeting_outflow [label=""]
+}}
+input_file_path -> read_greeting_definitions
+input_file -> read_greeting_definitions
+provided_greeting -> emphasize_greeting
+provided_emphasis -> emphasize_greeting
+emphasis_count -> emphasize_greeting
+emphasized_greeting -> print_greeting
+read_greeting_definitions -> provided_greeting
+read_greeting_definitions -> provided_emphasis
+read_greeting_definitions -> emphasis_count
+emphasize_greeting -> emphasized_greeting
+print_greeting -> displayed_greeting
+input_file_inflow -> input_file
+input_file_path_inflow -> input_file_path
+displayed_greeting -> displayed_greeting_outflow
+}
+

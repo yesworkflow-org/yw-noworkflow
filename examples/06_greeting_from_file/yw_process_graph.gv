@@ -1,0 +1,31 @@
+
+digraph yw_data_view {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label="greetings_from_file"
+subgraph cluster_workflow { label=""; color=black; penwidth=2
+subgraph cluster_workflow_inner { label=""; color=white
+node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+read_greeting_definitions
+emphasize_greeting
+print_greeting
+node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+}}
+subgraph cluster_inflows { label=""; color=white; penwidth=2
+subgraph cluster_inflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+input_file_inflow [label=""]
+input_file_path_inflow [label=""]
+}}
+subgraph cluster_outflows { label=""; color=white; penwidth=2
+subgraph cluster_outflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+displayed_greeting_outflow [label=""]
+}}
+read_greeting_definitions -> emphasize_greeting
+emphasize_greeting -> print_greeting
+input_file_path_inflow -> read_greeting_definitions
+input_file_inflow -> read_greeting_definitions
+print_greeting -> displayed_greeting_outflow
+}
+

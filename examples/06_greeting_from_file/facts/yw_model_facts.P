@@ -1,0 +1,116 @@
+
+% FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
+program(1, 'greetings_from_file', 'greetings_from_file', 1, 37).
+program(2, 'read_greeting_definitions', 'greetings_from_file.read_greeting_definitions', 7, 17).
+program(3, 'emphasize_greeting', 'greetings_from_file.emphasize_greeting', 18, 28).
+program(4, 'print_greeting', 'greetings_from_file.print_greeting', 29, 36).
+
+% FACT: workflow(program_id).
+workflow(1).
+
+% FACT: function(program_id).
+
+% FACT: has_subprogram(program_id, subprogram_id).
+has_subprogram(1, 2).
+has_subprogram(1, 3).
+has_subprogram(1, 4).
+
+% FACT: port(port_id, port_type, port_name, qualified_port_name, port_annotation_id, data_id).
+port(1, 'param', 'input_file_path', 'greetings_from_file<-input_file_path', 3, 1).
+port(2, 'param', 'input_file', 'greetings_from_file<-input_file', 4, 2).
+port(3, 'out', 'displayed_greeting', 'greetings_from_file->displayed_greeting', 5, 3).
+port(4, 'param', 'input_file_path', 'greetings_from_file.read_greeting_definitions<-input_file_path', 9, 4).
+port(5, 'in', 'input_file', 'greetings_from_file.read_greeting_definitions<-input_file', 10, 5).
+port(6, 'out', 'greeting', 'greetings_from_file.read_greeting_definitions->greeting', 11, 6).
+port(7, 'out', 'emphasis', 'greetings_from_file.read_greeting_definitions->emphasis', 13, 7).
+port(8, 'out', 'count', 'greetings_from_file.read_greeting_definitions->count', 15, 8).
+port(9, 'in', 'greeting', 'greetings_from_file.emphasize_greeting<-greeting', 20, 6).
+port(10, 'in', 'emphasis', 'greetings_from_file.emphasize_greeting<-emphasis', 22, 7).
+port(11, 'param', 'count', 'greetings_from_file.emphasize_greeting<-count', 24, 8).
+port(12, 'out', 'greeting', 'greetings_from_file.emphasize_greeting->greeting', 26, 9).
+port(13, 'in', 'greeting', 'greetings_from_file.print_greeting<-greeting', 31, 9).
+port(14, 'out', 'greeting', 'greetings_from_file.print_greeting->greeting', 33, 10).
+
+% FACT: port_alias(port_id, alias).
+port_alias(6, 'provided_greeting').
+port_alias(7, 'provided_emphasis').
+port_alias(8, 'emphasis_count').
+port_alias(9, 'provided_greeting').
+port_alias(10, 'provided_emphasis').
+port_alias(11, 'emphasis_count').
+port_alias(12, 'emphasized_greeting').
+port_alias(13, 'emphasized_greeting').
+port_alias(14, 'displayed_greeting').
+
+% FACT: port_uri_template(port_id, uri).
+port_uri_template(14, 'stream:stdout').
+
+% FACT: has_in_port(block_id, port_id).
+has_in_port(1, 1).
+has_in_port(1, 2).
+has_in_port(2, 4).
+has_in_port(2, 5).
+has_in_port(3, 9).
+has_in_port(3, 10).
+has_in_port(3, 11).
+has_in_port(4, 13).
+
+% FACT: has_out_port(block_id, port_id).
+has_out_port(1, 3).
+has_out_port(2, 6).
+has_out_port(2, 7).
+has_out_port(2, 8).
+has_out_port(3, 12).
+has_out_port(4, 14).
+
+% FACT: data(data_id, data_name, qualified_data_name).
+data(1, 'input_file_path', '[input_file_path]').
+data(2, 'input_file', '[input_file]').
+data(3, 'displayed_greeting', '[displayed_greeting]').
+data(4, 'input_file_path', 'greetings_from_file[input_file_path]').
+data(5, 'input_file', 'greetings_from_file[input_file]').
+data(6, 'provided_greeting', 'greetings_from_file[provided_greeting]').
+data(7, 'provided_emphasis', 'greetings_from_file[provided_emphasis]').
+data(8, 'emphasis_count', 'greetings_from_file[emphasis_count]').
+data(9, 'emphasized_greeting', 'greetings_from_file[emphasized_greeting]').
+data(10, 'displayed_greeting', 'greetings_from_file[displayed_greeting]').
+
+% FACT: channel(channel_id, data_id).
+channel(1, 3).
+channel(2, 4).
+channel(3, 5).
+channel(4, 6).
+channel(5, 7).
+channel(6, 8).
+channel(7, 9).
+channel(8, 1).
+channel(9, 2).
+channel(10, 10).
+
+% FACT: port_connects_to_channel(port_id, channel_id).
+port_connects_to_channel(14, 1).
+port_connects_to_channel(4, 2).
+port_connects_to_channel(5, 3).
+port_connects_to_channel(6, 4).
+port_connects_to_channel(9, 4).
+port_connects_to_channel(7, 5).
+port_connects_to_channel(10, 5).
+port_connects_to_channel(8, 6).
+port_connects_to_channel(11, 6).
+port_connects_to_channel(12, 7).
+port_connects_to_channel(13, 7).
+port_connects_to_channel(4, 8).
+port_connects_to_channel(5, 9).
+port_connects_to_channel(14, 10).
+
+% FACT: inflow_connects_to_channel(port_id, channel_id).
+inflow_connects_to_channel(1, 2).
+inflow_connects_to_channel(2, 3).
+inflow_connects_to_channel(1, 8).
+inflow_connects_to_channel(2, 9).
+
+% FACT: outflow_connects_to_channel(port_id, channel_id).
+outflow_connects_to_channel(3, 1).
+outflow_connects_to_channel(3, 10).
+
+% FACT: uri_variable(uri_variable_id, variable_name, port_id).
