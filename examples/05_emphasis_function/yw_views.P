@@ -55,13 +55,13 @@ yw_data(9,displayed_greeting,1,'EmphasizedHelloWorld').
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
-yw_step_input(1,'EmphasizedHelloWorld',in,1,provided_greeting,1,provided_greeting).
-yw_step_input(1,'EmphasizedHelloWorld',in,2,provided_emphasis,2,provided_emphasis).
-yw_step_input(2,emphasize_greeting,in,5,greeting,5,provided_greeting).
-yw_step_input(2,emphasize_greeting,in,6,emphasis,6,provided_emphasis).
 yw_step_input(3,print_greeting,in,9,greeting,8,emphasized_greeting).
-yw_step_input(1,'EmphasizedHelloWorld',param,3,emphasis_count,3,emphasis_count).
 yw_step_input(2,emphasize_greeting,param,7,count,7,emphasis_count).
+yw_step_input(2,emphasize_greeting,in,6,emphasis,6,provided_emphasis).
+yw_step_input(2,emphasize_greeting,in,5,greeting,5,provided_greeting).
+yw_step_input(1,'EmphasizedHelloWorld',param,3,emphasis_count,3,emphasis_count).
+yw_step_input(1,'EmphasizedHelloWorld',in,2,provided_emphasis,2,provided_emphasis).
+yw_step_input(1,'EmphasizedHelloWorld',in,1,provided_greeting,1,provided_greeting).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -75,9 +75,9 @@ yw_step_output(3,print_greeting,out,10,greeting,9,displayed_greeting).
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName).
 %...................................................................................................
-yw_inflow(1,'EmphasizedHelloWorld',5,provided_greeting,2,emphasize_greeting).
-yw_inflow(1,'EmphasizedHelloWorld',6,provided_emphasis,2,emphasize_greeting).
 yw_inflow(1,'EmphasizedHelloWorld',7,emphasis_count,2,emphasize_greeting).
+yw_inflow(1,'EmphasizedHelloWorld',6,provided_emphasis,2,emphasize_greeting).
+yw_inflow(1,'EmphasizedHelloWorld',5,provided_greeting,2,emphasize_greeting).
 
 
 %---------------------------------------------------------------------------------------------------

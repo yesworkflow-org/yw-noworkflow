@@ -30,8 +30,8 @@ yw_outflow_name_for_data_name(OutflowName, DataName) :-
     concat_atom([DataName,'_outflow'], OutflowName).
 
 gv_nodes__atomic_steps__upstream_of_data(WorkflowId, DataId) :-
-    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
     yw_data_downstream_of_step(StepId, DataId),
+    yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
     gv_labeled_node(StepName),
     fail
     ;
@@ -73,9 +73,9 @@ gv_nodes__data__upstream_of_data(WorkflowId, DownstreamDataId) :-
     ;
     true.
 
-gv_nodes__data_values__upstream_of_data_product(WorkflowId, ProductDataId, ProductDataName, ProductVarValue) :-
-    nw_variable_for_yw_data(ProductVarId, ProductVarName, _, ProductDataId, ProductDataName),
-    data_values_upstream_of_data_product(WorkflowId, DataId, DataName, VarId, VarName, VarValue, ProductVarId, ProductVarName, ProductVarValue),
+gv_nodes__data_values__upstream_of_data_product(WorkflowId, ProductDataId, ProductVarValue) :-
+    nw_variable_for_yw_data(ProductVarId, ProductVarName, _, ProductDataId, _),
+    data_values_upstream_of_data_product(ProductDataId, DataId, DataName, VarId, VarName, VarValue, ProductVarId, ProductVarName, ProductVarValue),
     concat_atom(['[data', DataId, '] ', DataName], Top),
     concat_atom(['[var', VarId, '] ', VarName, ' = ', VarValue], Bottom),
     gv_record_node(DataName, Top, Bottom),
@@ -183,11 +183,16 @@ gv_edges__data_to_step(WorkflowId) :-
     ;
     true.
 
-gv_edges__data_to_step__upstream_of_data(WorkflowId, DownstreamDataId) :-
+:- table yw_data_to_step_connection_upstream_of_data/4.
+yw_data_to_step_connection_upstream_of_data(WorkflowId, DownstreamDataId, DataName, StepName) :-
     yw_data(DataId, DataName, WorkflowId, _),
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
     yw_step_input(StepId, _, _, _, _, DataId, _),
-    yw_data_downstream_of_step(StepId, DownstreamDataId),
+    yw_data_downstream_of_step(StepId, DownstreamDataId).
+
+
+gv_edges__data_to_step__upstream_of_data(WorkflowId, DownstreamDataId) :-
+    yw_data_to_step_connection_upstream_of_data(WorkflowId, DownstreamDataId, DataName, StepName),
     gv_unlabeled_edge(DataName, StepName),
     fail
     ;

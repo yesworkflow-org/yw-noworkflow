@@ -6,14 +6,8 @@ nw_direct_dependency(UpstreamActId, UpstreamVarId, UpstreamVarName, UpstreamVarV
     variable(_, _, DownstreamVarId, DownstreamVarName, _, DownstreamVarValue, _).
 
 :- table nw_dependency/8.
-nw_dependency(UpstreamActId, UpstreamVarId, UpstreamVarName, UpstreamVarValue, DownstreamActId, DownstreamVarId , DownstreamVarName, DownstreamVarValue) :-
-    variable(_, UpstreamActId, UpstreamVarId, UpstreamVarName, _, UpstreamVarValue, _),
-    DownstreamActId = UpstreamActId,
-    DownstreamVarId = UpstreamVarId,
-    DownstreamVarName = UpstreamVarName,
-    DownstreamVarValue = UpstreamVarValue.
-nw_dependency(UpstreamActId, UpstreamVarId, UpstreamVarName, UpstreamVarValue, DownstreamActId, DownstreamVarId, DownstreamVarName, DownstreamVarValue) :-
-    nw_direct_dependency(UpstreamActId, UpstreamVarId, UpstreamVarName, UpstreamVarValue, DownstreamActId, DownstreamVarId, DownstreamVarName, DownstreamVarValue).
+nw_dependency(ActId, VarId, VarName, VarValue, ActId, VarId, VarName, VarValue) :-
+    variable(_, ActId, VarId, VarName, _, VarValue, _).
 nw_dependency(UpstreamActId, UpstreamVarId, UpstreamVarName, UpstreamVarValue, DownstreamActId, DownstreamVarId, DownstreamVarName, DownstreamVarValue) :-
     nw_direct_dependency(UpstreamActId, UpstreamVarId, UpstreamVarName, UpstreamVarValue, _, VarId, _, _),
     nw_dependency(_, VarId, _, _, DownstreamActId, DownstreamVarId, DownstreamVarName, DownstreamVarValue).

@@ -38,6 +38,7 @@ yw_program_has_port(BlockId, PortId) :-
 yw_program_has_port(BlockId, PortId) :-
     has_out_port(BlockId, PortId).
 
+:- table yw_step_input/7.
 yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName) :-
     _yw_input_port(PortId, PortType, PortName, DataId),
     has_in_port(ProgramId, PortId),

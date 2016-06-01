@@ -6,6 +6,3 @@ label="hello_world"
 subgraph cluster_workflow { label=""; color=black; penwidth=2
 subgraph cluster_workflow_inner { label=""; color=white
 node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
-print_greeting
-node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
-node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]

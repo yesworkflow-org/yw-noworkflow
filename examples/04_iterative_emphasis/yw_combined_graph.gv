@@ -20,9 +20,9 @@ emphasis_count
 subgraph cluster_inflows { label=""; color=white; penwidth=2
 subgraph cluster_inflows_inner { label=""; color=white
 node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
-emphasis_count_inflow [label=""]
-provided_emphasis_inflow [label=""]
 provided_greeting_inflow [label=""]
+provided_emphasis_inflow [label=""]
+emphasis_count_inflow [label=""]
 }}
 subgraph cluster_outflows { label=""; color=white; penwidth=2
 subgraph cluster_outflows_inner { label=""; color=white
@@ -35,9 +35,9 @@ emphasis_count -> emphasize_greeting
 emphasized_greeting -> print_greeting
 emphasize_greeting -> emphasized_greeting
 print_greeting -> displayed_greeting
-emphasis_count_inflow -> emphasis_count
-provided_emphasis_inflow -> provided_emphasis
 provided_greeting_inflow -> provided_greeting
+provided_emphasis_inflow -> provided_emphasis
+emphasis_count_inflow -> emphasis_count
 displayed_greeting -> displayed_greeting_outflow
 }
 

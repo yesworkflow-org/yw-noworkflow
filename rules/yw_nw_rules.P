@@ -9,10 +9,11 @@ line_outside_range(Line, _, RangeEnd) :-
     Line > RangeEnd.
 
 :- table data_values_upstream_of_data_product/9.
-data_values_upstream_of_data_product(WorkflowId, DataId, DataName, VarId, VarName, VarValue, ProductVarId, ProductVarName, ProductVarValue) :-
+data_values_upstream_of_data_product(DownstreamDataId, DataId, DataName, VarId, VarName, VarValue, ProductVarId, ProductVarName, ProductVarValue) :-
     nw_dependency(_, VarId, VarName, VarValue, _, ProductVarId, ProductVarName, ProductVarValue),
     nw_variable_for_yw_data(VarId, _, _, DataId, DataName),
-    yw_data(DataId, _, WorkflowId, _).
+    yw_data_downstream(DataId, DownstreamDataId).
+%    yw_data(DataId, _, WorkflowId, _).
 
 data_values_upstream_of_data_product_9 :-
     printall(data_values_upstream_of_data_product(_,_,_,_,_,_,_,_,_)).
@@ -86,14 +87,21 @@ nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, Data
 
 % Variables assigned as arguments in function calls into the step from outside the step.
 :- table nw_argument_for_yw_in_port/9.
-nw_argument_for_yw_in_port(VariableId, VariableName, VariableValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
+nw_argument_for_yw_in_port(VarId, VarName, VarValue, DataId, DataName, PortId, PortName, StepId, StepName) :-
     yw_step_input(StepId, StepName, _, PortId, PortName, DataId, DataName),
     yw_program(StepId, _, _, _, StepBeginLine, StepEndLine),
-    VariableName = PortName,
-    nw_function_argument(ActivationId, _, VariableId, VariableName, VariableValue, _, _, _),
-    not nw_variable_for_yw_in_port(VariableId, _, _, _, _, PortId, _, _, _),
-    nw_function_activation(ActivationId, _, _, CallLine, _),
+    VarName = PortName,
+    nw_function_argument(ActId, _, VarId, _, _, _, _, _),
+
+    nw_variable_assignment(ActId, VarId, VarName, AssignmentLine, VarValue),
+    line_inside_range(AssignmentLine, StepBeginLine, StepEndLine),
+
+    not nw_variable_for_yw_in_port(VarId, _, _, _, _, PortId, _, _, _),
+    nw_function_activation(ActId, _, _, CallLine, _),
     line_outside_range(CallLine, StepBeginLine, StepEndLine).
+
+nw_argument_for_yw_in_port_9 :-
+    printall(nw_argument_for_yw_in_port(_,_,_,_,_,_,_,_,_)).
 
 % Inflow variables corresponding to inflows on containing workflow.
 :- table nw_variable_for_yw_inflow/9.

@@ -72,9 +72,6 @@ YW_NW_Q1 : What Python variables carries values of emphasized_greeting into the 
 
 yw_nw_q1(VariableId, VariableName, VariableValue)
 ...................................................................................................
-yw_nw_q1(56,greeting,'Back again').
 yw_nw_q1(48,greeting,'Goodbye World??').
-yw_nw_q1(29,greeting,'Goodbye World').
 yw_nw_q1(21,greeting,'Hello World!').
 yw_nw_q1(78,greeting,'Back again?!?!?!').
-yw_nw_q1(5,greeting,'Hello World').

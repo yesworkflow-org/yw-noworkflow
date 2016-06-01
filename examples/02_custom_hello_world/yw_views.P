@@ -51,9 +51,9 @@ yw_data(1,provided_greeting,nil,nil).
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
-yw_step_input(1,custom_hello_world,in,1,provided_greeting,1,provided_greeting).
-yw_step_input(2,accept_greeting,in,3,greeting,3,provided_greeting).
 yw_step_input(3,greet_user,in,5,greeting,4,custom_greeting).
+yw_step_input(2,accept_greeting,in,3,greeting,3,provided_greeting).
+yw_step_input(1,custom_hello_world,in,1,provided_greeting,1,provided_greeting).
 
 
 %---------------------------------------------------------------------------------------------------

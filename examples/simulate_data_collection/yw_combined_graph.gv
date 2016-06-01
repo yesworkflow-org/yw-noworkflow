@@ -35,18 +35,18 @@ total_intensity
 pixel_count
 collection_log
 node[shape=box style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica]
-data_redundancy
 sample_score_cutoff
+data_redundancy
 cassette_id
 }}
 subgraph cluster_inflows { label=""; color=white; penwidth=2
 subgraph cluster_inflows_inner { label=""; color=white
 node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
-data_redundancy_inflow [label=""]
-sample_score_cutoff_inflow [label=""]
-cassette_id_inflow [label=""]
-calibration_image_inflow [label=""]
 sample_spreadsheet_inflow [label=""]
+calibration_image_inflow [label=""]
+sample_score_cutoff_inflow [label=""]
+data_redundancy_inflow [label=""]
+cassette_id_inflow [label=""]
 }}
 subgraph cluster_outflows { label=""; color=white; penwidth=2
 subgraph cluster_outflows_inner { label=""; color=white
@@ -96,11 +96,11 @@ transform_images -> corrected_image_path
 transform_images -> total_intensity
 transform_images -> pixel_count
 log_average_image_intensity -> collection_log
-data_redundancy_inflow -> data_redundancy
-sample_score_cutoff_inflow -> sample_score_cutoff
-cassette_id_inflow -> cassette_id
-calibration_image_inflow -> calibration_image
 sample_spreadsheet_inflow -> sample_spreadsheet
+calibration_image_inflow -> calibration_image
+sample_score_cutoff_inflow -> sample_score_cutoff
+data_redundancy_inflow -> data_redundancy
+cassette_id_inflow -> cassette_id
 rejection_log -> rejection_log_outflow
 collection_log -> collection_log_outflow
 run_log -> run_log_outflow

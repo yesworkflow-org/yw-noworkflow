@@ -25,8 +25,8 @@ subgraph cluster_outflows_inner { label=""; color=white
 node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
 displayed_greeting_outflow [label=""]
 }}
-modified_greeting -> print_greeting
 provided_greeting -> emphasize_greeting
+modified_greeting -> print_greeting
 emphasize_greeting -> modified_greeting
 print_greeting -> displayed_greeting
 provided_greeting_inflow -> provided_greeting
