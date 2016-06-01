@@ -5,7 +5,7 @@ DataValue=$2
 
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
-%set_prolog_flag(unknown, fail).
+set_prolog_flag(unknown, fail).
 
 ['./facts/nw_facts'].
 [yw_views].
