@@ -100,14 +100,14 @@ def simulate_data_collection(cassette_id, sample_score_cutoff, data_redundancy):
             @out sample_id      @desc The crystal that the diffraction image was collected from.
             @out energy         @desc Energy (in eV) at which the diffraction image was collected.
             @out frame_number   @desc Index of diffraction image within data set.
-            @out raw_image_path @desc Path of file storing the raw diffraction image.
+            @out raw_image_file @desc Path of file storing the raw diffraction image.
                                 @uri file:run/raw/{cassette_id}/{sample_id}/e{energy}/image_{frame_number}.raw
                                 @as raw_image
             """
             run_log.write("Collecting data set for sample {0}".format(accepted_sample))
             sample_id = accepted_sample
-            for energy, frame_number, intensity, raw_image_path in collect_next_image(cassette_id, sample_id, num_images, energies, 'run/raw/{cassette_id}/{sample_id}/e{energy}/image_{frame_number:03d}.raw'):
-                run_log.write("Collecting image {0}".format(raw_image_path))
+            for energy, frame_number, intensity, raw_image_file in collect_next_image(cassette_id, sample_id, num_images, energies, 'run/raw/{cassette_id}/{sample_id}/e{energy}/image_{frame_number:03d}.raw'):
+                run_log.write("Collecting image {0}".format(raw_image_file))
                 """
                 @end collect_data_set
                 """
@@ -118,16 +118,15 @@ def simulate_data_collection(cassette_id, sample_score_cutoff, data_redundancy):
                 @param sample_id
                 @param energy
                 @param frame_number
-                @in raw_image_path @as raw_image
-                @in calibration_image @uri file:calibration.img
-                @out corrected_image @uri file:run/data/{sample_id}/{sample_id}_{energy}eV_{frame_number}.img
-                @out corrected_image_path
+                @in raw_image_file @as raw_image
+                @in calibration_image_path @as calibration_image @uri file:calibration.img
+                @out corrected_image_file @as corrected_image @uri file:run/data/{sample_id}/{sample_id}_{energy}eV_{frame_number}.img
                 @out total_intensity
                 @out pixel_count
                 """
-                corrected_image_path = 'run/data/{0}/{0}_{1}eV_{2:03d}.img'.format(sample_id, energy, frame_number)
-                (total_intensity, pixel_count) = transform_image(raw_image_path, corrected_image_path, 'calibration.img')
-                run_log.write("Wrote transformed image {0}".format(corrected_image_path))
+                calibration_image_path = 'calibration.img'
+                (total_intensity, pixel_count, corrected_image_file) = transform_image(raw_image_file, 'run/data/{0}/{0}_{1}eV_{2:03d}.img'.format(sample_id, energy, frame_number), calibration_image_path)
+                run_log.write("Wrote transformed image {0}".format(corrected_image_file))
                 """
                 @end transform_images
                 """
@@ -137,15 +136,15 @@ def simulate_data_collection(cassette_id, sample_score_cutoff, data_redundancy):
                 @param cassette_id
                 @param sample_id
                 @param frame_number
-                @param corrected_image_path
                 @param total_intensity
                 @param pixel_count
+                @in corrected_image_file @as corrected_image
                 @out collection_log @uri file:run/collected_images.csv
                 """
                 average_intensity = total_intensity / pixel_count
                 with open('run/collected_images.csv', 'at') as collection_log_file:
                     collection_log = csv.writer(collection_log_file, lineterminator=os.linesep)
-                    collection_log.writerow([cassette_id, sample_id, energy, average_intensity, corrected_image_path ])
+                    collection_log.writerow([cassette_id, sample_id, energy, average_intensity, corrected_image_file])
                 """
                 @end log_average_image_intensity
                 """
@@ -195,7 +194,7 @@ def transform_image(raw_image_path, corrected_image_path, calibration_image_path
             total_intensity += corrected_value
             pixel_count += 1
 
-    return total_intensity, pixel_count
+    return total_intensity, pixel_count, corrected_image_path
 
 
 def spreadsheet_rows(spreadsheet_file_name):

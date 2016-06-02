@@ -30,7 +30,6 @@ frame_number
 raw_image
 calibration_image
 corrected_image
-corrected_image_path
 total_intensity
 pixel_count
 collection_log
@@ -76,7 +75,7 @@ frame_number -> transform_images
 frame_number -> log_average_image_intensity
 raw_image -> transform_images
 calibration_image -> transform_images
-corrected_image_path -> log_average_image_intensity
+corrected_image -> log_average_image_intensity
 total_intensity -> log_average_image_intensity
 pixel_count -> log_average_image_intensity
 initialize_run -> run_log
@@ -92,7 +91,6 @@ collect_data_set -> energy
 collect_data_set -> frame_number
 collect_data_set -> raw_image
 transform_images -> corrected_image
-transform_images -> corrected_image_path
 transform_images -> total_intensity
 transform_images -> pixel_count
 log_average_image_intensity -> collection_log

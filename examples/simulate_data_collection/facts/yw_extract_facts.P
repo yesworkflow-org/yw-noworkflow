@@ -70,7 +70,7 @@ annotation(64, 1, 101, 'out', '@out', 'energy').
 annotation(65, 1, 101, 'desc', '@desc', 'Energy (in eV) at which the diffraction image was collected.').
 annotation(66, 1, 102, 'out', '@out', 'frame_number').
 annotation(67, 1, 102, 'desc', '@desc', 'Index of diffraction image within data set.').
-annotation(68, 1, 103, 'out', '@out', 'raw_image_path').
+annotation(68, 1, 103, 'out', '@out', 'raw_image_file').
 annotation(69, 1, 103, 'desc', '@desc', 'Path of file storing the raw diffraction image.').
 annotation(70, 1, 104, 'uri', '@uri', 'file:run/raw/{cassette_id}/{sample_id}/e{energy}/image_{frame_number}.raw').
 annotation(71, 1, 105, 'as', '@as', 'raw_image').
@@ -81,28 +81,30 @@ annotation(75, 1, 117, 'call', '@call', 'transform_image').
 annotation(76, 1, 118, 'param', '@param', 'sample_id').
 annotation(77, 1, 119, 'param', '@param', 'energy').
 annotation(78, 1, 120, 'param', '@param', 'frame_number').
-annotation(79, 1, 121, 'in', '@in', 'raw_image_path').
+annotation(79, 1, 121, 'in', '@in', 'raw_image_file').
 annotation(80, 1, 121, 'as', '@as', 'raw_image').
-annotation(81, 1, 122, 'in', '@in', 'calibration_image').
-annotation(82, 1, 122, 'uri', '@uri', 'file:calibration.img').
-annotation(83, 1, 123, 'out', '@out', 'corrected_image').
-annotation(84, 1, 123, 'uri', '@uri', 'file:run/data/{sample_id}/{sample_id}_{energy}eV_{frame_number}.img').
-annotation(85, 1, 124, 'out', '@out', 'corrected_image_path').
-annotation(86, 1, 125, 'out', '@out', 'total_intensity').
-annotation(87, 1, 126, 'out', '@out', 'pixel_count').
-annotation(88, 1, 132, 'end', '@end', 'transform_images').
-annotation(89, 1, 136, 'begin', '@begin', 'log_average_image_intensity').
-annotation(90, 1, 136, 'desc', '@desc', 'Record statistics about each diffraction image.').
-annotation(91, 1, 137, 'param', '@param', 'cassette_id').
-annotation(92, 1, 138, 'param', '@param', 'sample_id').
-annotation(93, 1, 139, 'param', '@param', 'frame_number').
-annotation(94, 1, 140, 'param', '@param', 'corrected_image_path').
-annotation(95, 1, 141, 'param', '@param', 'total_intensity').
-annotation(96, 1, 142, 'param', '@param', 'pixel_count').
-annotation(97, 1, 143, 'out', '@out', 'collection_log').
-annotation(98, 1, 143, 'uri', '@uri', 'file:run/collected_images.csv').
-annotation(99, 1, 150, 'end', '@end', 'log_average_image_intensity').
-annotation(100, 1, 154, 'end', '@end', 'simulate_data_collection').
+annotation(81, 1, 122, 'in', '@in', 'calibration_image_path').
+annotation(82, 1, 122, 'as', '@as', 'calibration_image').
+annotation(83, 1, 122, 'uri', '@uri', 'file:calibration.img').
+annotation(84, 1, 123, 'out', '@out', 'corrected_image_file').
+annotation(85, 1, 123, 'as', '@as', 'corrected_image').
+annotation(86, 1, 123, 'uri', '@uri', 'file:run/data/{sample_id}/{sample_id}_{energy}eV_{frame_number}.img').
+annotation(87, 1, 124, 'out', '@out', 'total_intensity').
+annotation(88, 1, 125, 'out', '@out', 'pixel_count').
+annotation(89, 1, 131, 'end', '@end', 'transform_images').
+annotation(90, 1, 135, 'begin', '@begin', 'log_average_image_intensity').
+annotation(91, 1, 135, 'desc', '@desc', 'Record statistics about each diffraction image.').
+annotation(92, 1, 136, 'param', '@param', 'cassette_id').
+annotation(93, 1, 137, 'param', '@param', 'sample_id').
+annotation(94, 1, 138, 'param', '@param', 'frame_number').
+annotation(95, 1, 139, 'param', '@param', 'total_intensity').
+annotation(96, 1, 140, 'param', '@param', 'pixel_count').
+annotation(97, 1, 141, 'in', '@in', 'corrected_image_file').
+annotation(98, 1, 141, 'as', '@as', 'corrected_image').
+annotation(99, 1, 142, 'out', '@out', 'collection_log').
+annotation(100, 1, 142, 'uri', '@uri', 'file:run/collected_images.csv').
+annotation(101, 1, 149, 'end', '@end', 'log_average_image_intensity').
+annotation(102, 1, 153, 'end', '@end', 'simulate_data_collection').
 
 % FACT: annotation_qualifies(qualifying_annotation_id, primary_annotation_id).
 annotation_qualifies(2, 1).
@@ -135,6 +137,9 @@ annotation_qualifies(71, 68).
 annotation_qualifies(74, 73).
 annotation_qualifies(80, 79).
 annotation_qualifies(82, 81).
-annotation_qualifies(84, 83).
-annotation_qualifies(90, 89).
+annotation_qualifies(83, 81).
+annotation_qualifies(85, 84).
+annotation_qualifies(86, 84).
+annotation_qualifies(91, 90).
 annotation_qualifies(98, 97).
+annotation_qualifies(100, 99).

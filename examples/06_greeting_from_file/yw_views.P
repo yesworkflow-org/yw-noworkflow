@@ -46,13 +46,12 @@ yw_workflow_step(4,print_greeting,1,1,35,39).
 yw_data(1,input_file_path,nil,nil).
 yw_data(2,input_file,nil,nil).
 yw_data(3,displayed_greeting,nil,nil).
-yw_data(4,input_file_path,1,greetings_from_file).
-yw_data(5,input_file,1,greetings_from_file).
-yw_data(6,provided_greeting,1,greetings_from_file).
-yw_data(7,provided_emphasis,1,greetings_from_file).
-yw_data(8,emphasis_count,1,greetings_from_file).
-yw_data(9,emphasized_greeting,1,greetings_from_file).
-yw_data(10,displayed_greeting,1,greetings_from_file).
+yw_data(4,input_file,1,greetings_from_file).
+yw_data(5,provided_greeting,1,greetings_from_file).
+yw_data(6,provided_emphasis,1,greetings_from_file).
+yw_data(7,emphasis_count,1,greetings_from_file).
+yw_data(8,emphasized_greeting,1,greetings_from_file).
+yw_data(9,displayed_greeting,1,greetings_from_file).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -60,45 +59,43 @@ yw_data(10,displayed_greeting,1,greetings_from_file).
 %...................................................................................................
 yw_step_input(1,greetings_from_file,param,2,input_file,2,input_file).
 yw_step_input(1,greetings_from_file,param,1,input_file_path,1,input_file_path).
-yw_step_input(4,print_greeting,in,13,greeting,9,emphasized_greeting).
-yw_step_input(3,emphasize_greeting,param,11,count,8,emphasis_count).
-yw_step_input(3,emphasize_greeting,in,10,emphasis,7,provided_emphasis).
-yw_step_input(3,emphasize_greeting,in,9,greeting,6,provided_greeting).
-yw_step_input(2,read_greeting_definitions,param,4,input_file_path,4,input_file_path).
-yw_step_input(2,read_greeting_definitions,in,5,input_file,5,input_file).
+yw_step_input(4,print_greeting,in,12,greeting,8,emphasized_greeting).
+yw_step_input(3,emphasize_greeting,param,10,count,7,emphasis_count).
+yw_step_input(3,emphasize_greeting,in,9,emphasis,6,provided_emphasis).
+yw_step_input(3,emphasize_greeting,in,8,greeting,5,provided_greeting).
+yw_step_input(2,read_greeting_definitions,in,4,input_file_path,4,input_file).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_step_output(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
 yw_step_output(1,greetings_from_file,out,3,displayed_greeting,3,displayed_greeting).
-yw_step_output(2,read_greeting_definitions,out,6,greeting,6,provided_greeting).
-yw_step_output(2,read_greeting_definitions,out,7,emphasis,7,provided_emphasis).
-yw_step_output(2,read_greeting_definitions,out,8,count,8,emphasis_count).
-yw_step_output(3,emphasize_greeting,out,12,greeting,9,emphasized_greeting).
-yw_step_output(4,print_greeting,out,14,greeting,10,displayed_greeting).
+yw_step_output(2,read_greeting_definitions,out,5,greeting,5,provided_greeting).
+yw_step_output(2,read_greeting_definitions,out,6,emphasis,6,provided_emphasis).
+yw_step_output(2,read_greeting_definitions,out,7,count,7,emphasis_count).
+yw_step_output(3,emphasize_greeting,out,11,greeting,8,emphasized_greeting).
+yw_step_output(4,print_greeting,out,13,greeting,9,displayed_greeting).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName).
 %...................................................................................................
-yw_inflow(1,greetings_from_file,4,input_file_path,2,read_greeting_definitions).
-yw_inflow(1,greetings_from_file,5,input_file,2,read_greeting_definitions).
+yw_inflow(1,greetings_from_file,4,input_file,2,read_greeting_definitions).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_flow(SourceProgramId, SourceProgramName, SourcePortId, SourcePortName, DataId, DataName, SinkPortId, SinkPortName, SinkProgramId, SinkProgramName).
 %...................................................................................................
-yw_flow(2,read_greeting_definitions,6,greeting,6,provided_greeting,9,greeting,3,emphasize_greeting).
-yw_flow(2,read_greeting_definitions,7,emphasis,7,provided_emphasis,10,emphasis,3,emphasize_greeting).
-yw_flow(2,read_greeting_definitions,8,count,8,emphasis_count,11,count,3,emphasize_greeting).
-yw_flow(3,emphasize_greeting,12,greeting,9,emphasized_greeting,13,greeting,4,print_greeting).
+yw_flow(2,read_greeting_definitions,5,greeting,5,provided_greeting,8,greeting,3,emphasize_greeting).
+yw_flow(2,read_greeting_definitions,6,emphasis,6,provided_emphasis,9,emphasis,3,emphasize_greeting).
+yw_flow(2,read_greeting_definitions,7,count,7,emphasis_count,10,count,3,emphasize_greeting).
+yw_flow(3,emphasize_greeting,11,greeting,8,emphasized_greeting,12,greeting,4,print_greeting).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_outflow(StepId, StepName, StepOutDataId, StepOutDataName, WorkflowId, WorkflowName, WorkflowOutDataId, WorkflowOutDataName).
 %...................................................................................................
-yw_outflow(4,print_greeting,10,displayed_greeting,1,greetings_from_file,3,displayed_greeting).
+yw_outflow(4,print_greeting,9,displayed_greeting,1,greetings_from_file,3,displayed_greeting).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -112,26 +109,24 @@ yw_qualified_name(port,1,'greetings_from_file<-input_file_path').
 yw_qualified_name(port,2,'greetings_from_file<-input_file').
 yw_qualified_name(port,3,'greetings_from_file->displayed_greeting').
 yw_qualified_name(port,4,'greetings_from_file.read_greeting_definitions<-input_file_path').
-yw_qualified_name(port,5,'greetings_from_file.read_greeting_definitions<-input_file').
-yw_qualified_name(port,6,'greetings_from_file.read_greeting_definitions->greeting').
-yw_qualified_name(port,7,'greetings_from_file.read_greeting_definitions->emphasis').
-yw_qualified_name(port,8,'greetings_from_file.read_greeting_definitions->count').
-yw_qualified_name(port,9,'greetings_from_file.emphasize_greeting<-greeting').
-yw_qualified_name(port,10,'greetings_from_file.emphasize_greeting<-emphasis').
-yw_qualified_name(port,11,'greetings_from_file.emphasize_greeting<-count').
-yw_qualified_name(port,12,'greetings_from_file.emphasize_greeting->greeting').
-yw_qualified_name(port,13,'greetings_from_file.print_greeting<-greeting').
-yw_qualified_name(port,14,'greetings_from_file.print_greeting->greeting').
+yw_qualified_name(port,5,'greetings_from_file.read_greeting_definitions->greeting').
+yw_qualified_name(port,6,'greetings_from_file.read_greeting_definitions->emphasis').
+yw_qualified_name(port,7,'greetings_from_file.read_greeting_definitions->count').
+yw_qualified_name(port,8,'greetings_from_file.emphasize_greeting<-greeting').
+yw_qualified_name(port,9,'greetings_from_file.emphasize_greeting<-emphasis').
+yw_qualified_name(port,10,'greetings_from_file.emphasize_greeting<-count').
+yw_qualified_name(port,11,'greetings_from_file.emphasize_greeting->greeting').
+yw_qualified_name(port,12,'greetings_from_file.print_greeting<-greeting').
+yw_qualified_name(port,13,'greetings_from_file.print_greeting->greeting').
 yw_qualified_name(data,1,'[input_file_path]').
 yw_qualified_name(data,2,'[input_file]').
 yw_qualified_name(data,3,'[displayed_greeting]').
-yw_qualified_name(data,4,'greetings_from_file[input_file_path]').
-yw_qualified_name(data,5,'greetings_from_file[input_file]').
-yw_qualified_name(data,6,'greetings_from_file[provided_greeting]').
-yw_qualified_name(data,7,'greetings_from_file[provided_emphasis]').
-yw_qualified_name(data,8,'greetings_from_file[emphasis_count]').
-yw_qualified_name(data,9,'greetings_from_file[emphasized_greeting]').
-yw_qualified_name(data,10,'greetings_from_file[displayed_greeting]').
+yw_qualified_name(data,4,'greetings_from_file[input_file]').
+yw_qualified_name(data,5,'greetings_from_file[provided_greeting]').
+yw_qualified_name(data,6,'greetings_from_file[provided_emphasis]').
+yw_qualified_name(data,7,'greetings_from_file[emphasis_count]').
+yw_qualified_name(data,8,'greetings_from_file[emphasized_greeting]').
+yw_qualified_name(data,9,'greetings_from_file[displayed_greeting]').
 
 
 %---------------------------------------------------------------------------------------------------

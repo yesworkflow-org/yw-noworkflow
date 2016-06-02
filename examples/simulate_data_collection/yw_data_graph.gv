@@ -21,7 +21,6 @@ frame_number
 raw_image
 calibration_image
 corrected_image
-corrected_image_path
 total_intensity
 pixel_count
 collection_log
@@ -90,11 +89,6 @@ energy -> corrected_image
 frame_number -> corrected_image
 raw_image -> corrected_image
 calibration_image -> corrected_image
-sample_id -> corrected_image_path
-energy -> corrected_image_path
-frame_number -> corrected_image_path
-raw_image -> corrected_image_path
-calibration_image -> corrected_image_path
 sample_id -> total_intensity
 energy -> total_intensity
 frame_number -> total_intensity
@@ -108,7 +102,7 @@ calibration_image -> pixel_count
 cassette_id -> collection_log
 sample_id -> collection_log
 frame_number -> collection_log
-corrected_image_path -> collection_log
+corrected_image -> collection_log
 total_intensity -> collection_log
 pixel_count -> collection_log
 sample_spreadsheet_inflow -> sample_spreadsheet

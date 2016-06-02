@@ -15,20 +15,20 @@ yw_workflow_script(1,simulate_data_collection,1,'simulate_data_collection.py').
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_program(WorkflowId, ProgramName, WorkflowId, SourceId, BeginLine, EndLine).
 %...................................................................................................
-yw_program(1,simulate_data_collection,nil,1,12,154).
+yw_program(1,simulate_data_collection,nil,1,12,153).
 yw_program(2,initialize_run,1,1,32,45).
 yw_program(3,load_screening_results,1,1,49,59).
 yw_program(4,calculate_strategy,1,1,63,75).
 yw_program(5,log_rejected_sample,1,1,79,90).
 yw_program(6,collect_data_set,1,1,94,112).
-yw_program(7,transform_images,1,1,116,132).
-yw_program(8,log_average_image_intensity,1,1,136,150).
+yw_program(7,transform_images,1,1,116,131).
+yw_program(8,log_average_image_intensity,1,1,135,149).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).
 %...................................................................................................
-yw_workflow(1,simulate_data_collection,nil,1,12,154).
+yw_workflow(1,simulate_data_collection,nil,1,12,153).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -39,8 +39,8 @@ yw_workflow_step(3,load_screening_results,1,1,49,59).
 yw_workflow_step(4,calculate_strategy,1,1,63,75).
 yw_workflow_step(5,log_rejected_sample,1,1,79,90).
 yw_workflow_step(6,collect_data_set,1,1,94,112).
-yw_workflow_step(7,transform_images,1,1,116,132).
-yw_workflow_step(8,log_average_image_intensity,1,1,136,150).
+yw_workflow_step(7,transform_images,1,1,116,131).
+yw_workflow_step(8,log_average_image_intensity,1,1,135,149).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -78,21 +78,14 @@ yw_data(24,frame_number,1,simulate_data_collection).
 yw_data(25,raw_image,1,simulate_data_collection).
 yw_data(26,calibration_image,1,simulate_data_collection).
 yw_data(27,corrected_image,1,simulate_data_collection).
-yw_data(28,corrected_image_path,1,simulate_data_collection).
-yw_data(29,total_intensity,1,simulate_data_collection).
-yw_data(30,pixel_count,1,simulate_data_collection).
-yw_data(31,collection_log,1,simulate_data_collection).
+yw_data(28,total_intensity,1,simulate_data_collection).
+yw_data(29,pixel_count,1,simulate_data_collection).
+yw_data(30,collection_log,1,simulate_data_collection).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_step_input(ProgramId, ProgramName, PortType, PortId, PortName, DataId, DataName).
 %...................................................................................................
-yw_step_input(8,log_average_image_intensity,param,48,pixel_count,30,pixel_count).
-yw_step_input(8,log_average_image_intensity,param,47,total_intensity,29,total_intensity).
-yw_step_input(8,log_average_image_intensity,param,46,corrected_image_path,28,corrected_image_path).
-yw_step_input(8,log_average_image_intensity,param,45,frame_number,24,frame_number).
-yw_step_input(8,log_average_image_intensity,param,44,sample_id,22,sample_id).
-yw_step_input(8,log_average_image_intensity,param,43,cassette_id,11,cassette_id).
 yw_step_input(6,collect_data_set,param,29,energies,20,energies).
 yw_step_input(6,collect_data_set,param,28,accepted_sample,17,accepted_sample).
 yw_step_input(6,collect_data_set,param,27,num_images,19,num_images).
@@ -103,11 +96,17 @@ yw_step_input(4,calculate_strategy,param,18,sample_quality,14,sample_quality).
 yw_step_input(4,calculate_strategy,param,17,sample_name,13,sample_name).
 yw_step_input(4,calculate_strategy,param,16,data_redundancy,16,data_redundancy).
 yw_step_input(4,calculate_strategy,param,15,sample_score_cutoff,15,sample_score_cutoff).
+yw_step_input(8,log_average_image_intensity,param,46,pixel_count,29,pixel_count).
+yw_step_input(8,log_average_image_intensity,param,45,total_intensity,28,total_intensity).
+yw_step_input(8,log_average_image_intensity,param,44,frame_number,24,frame_number).
+yw_step_input(8,log_average_image_intensity,param,43,sample_id,22,sample_id).
+yw_step_input(8,log_average_image_intensity,param,42,cassette_id,11,cassette_id).
+yw_step_input(8,log_average_image_intensity,in,47,corrected_image_file,27,corrected_image).
 yw_step_input(7,transform_images,param,36,frame_number,24,frame_number).
 yw_step_input(7,transform_images,param,35,energy,23,energy).
 yw_step_input(7,transform_images,param,34,sample_id,22,sample_id).
-yw_step_input(7,transform_images,in,38,calibration_image,26,calibration_image).
-yw_step_input(7,transform_images,in,37,raw_image_path,25,raw_image).
+yw_step_input(7,transform_images,in,38,calibration_image_path,26,calibration_image).
+yw_step_input(7,transform_images,in,37,raw_image_file,25,raw_image).
 yw_step_input(3,load_screening_results,param,11,cassette_id,11,cassette_id).
 yw_step_input(3,load_screening_results,in,12,sample_spreadsheet,12,sample_spreadsheet).
 yw_step_input(1,simulate_data_collection,param,3,data_redundancy,3,data_redundancy).
@@ -135,22 +134,21 @@ yw_step_output(5,log_rejected_sample,out,25,rejection_log,21,rejection_log).
 yw_step_output(6,collect_data_set,out,30,sample_id,22,sample_id).
 yw_step_output(6,collect_data_set,out,31,energy,23,energy).
 yw_step_output(6,collect_data_set,out,32,frame_number,24,frame_number).
-yw_step_output(6,collect_data_set,out,33,raw_image_path,25,raw_image).
-yw_step_output(7,transform_images,out,39,corrected_image,27,corrected_image).
-yw_step_output(7,transform_images,out,40,corrected_image_path,28,corrected_image_path).
-yw_step_output(7,transform_images,out,41,total_intensity,29,total_intensity).
-yw_step_output(7,transform_images,out,42,pixel_count,30,pixel_count).
-yw_step_output(8,log_average_image_intensity,out,49,collection_log,31,collection_log).
+yw_step_output(6,collect_data_set,out,33,raw_image_file,25,raw_image).
+yw_step_output(7,transform_images,out,39,corrected_image_file,27,corrected_image).
+yw_step_output(7,transform_images,out,40,total_intensity,28,total_intensity).
+yw_step_output(7,transform_images,out,41,pixel_count,29,pixel_count).
+yw_step_output(8,log_average_image_intensity,out,48,collection_log,30,collection_log).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_inflow(WorkflowId, WorkflowName, DataId, DataName, ProgramId, ProgramName).
 %...................................................................................................
-yw_inflow(1,simulate_data_collection,11,cassette_id,8,log_average_image_intensity).
 yw_inflow(1,simulate_data_collection,11,cassette_id,6,collect_data_set).
 yw_inflow(1,simulate_data_collection,11,cassette_id,5,log_rejected_sample).
 yw_inflow(1,simulate_data_collection,16,data_redundancy,4,calculate_strategy).
 yw_inflow(1,simulate_data_collection,15,sample_score_cutoff,4,calculate_strategy).
+yw_inflow(1,simulate_data_collection,11,cassette_id,8,log_average_image_intensity).
 yw_inflow(1,simulate_data_collection,26,calibration_image,7,transform_images).
 yw_inflow(1,simulate_data_collection,11,cassette_id,3,load_screening_results).
 yw_inflow(1,simulate_data_collection,12,sample_spreadsheet,3,load_screening_results).
@@ -165,15 +163,15 @@ yw_flow(4,calculate_strategy,19,accepted_sample,17,accepted_sample,28,accepted_s
 yw_flow(4,calculate_strategy,20,rejected_sample,18,rejected_sample,24,rejected_sample,5,log_rejected_sample).
 yw_flow(4,calculate_strategy,21,num_images,19,num_images,27,num_images,6,collect_data_set).
 yw_flow(4,calculate_strategy,22,energies,20,energies,29,energies,6,collect_data_set).
-yw_flow(6,collect_data_set,30,sample_id,22,sample_id,44,sample_id,8,log_average_image_intensity).
+yw_flow(6,collect_data_set,30,sample_id,22,sample_id,43,sample_id,8,log_average_image_intensity).
 yw_flow(6,collect_data_set,30,sample_id,22,sample_id,34,sample_id,7,transform_images).
 yw_flow(6,collect_data_set,31,energy,23,energy,35,energy,7,transform_images).
-yw_flow(6,collect_data_set,32,frame_number,24,frame_number,45,frame_number,8,log_average_image_intensity).
+yw_flow(6,collect_data_set,32,frame_number,24,frame_number,44,frame_number,8,log_average_image_intensity).
 yw_flow(6,collect_data_set,32,frame_number,24,frame_number,36,frame_number,7,transform_images).
-yw_flow(6,collect_data_set,33,raw_image_path,25,raw_image,37,raw_image_path,7,transform_images).
-yw_flow(7,transform_images,40,corrected_image_path,28,corrected_image_path,46,corrected_image_path,8,log_average_image_intensity).
-yw_flow(7,transform_images,41,total_intensity,29,total_intensity,47,total_intensity,8,log_average_image_intensity).
-yw_flow(7,transform_images,42,pixel_count,30,pixel_count,48,pixel_count,8,log_average_image_intensity).
+yw_flow(6,collect_data_set,33,raw_image_file,25,raw_image,37,raw_image_file,7,transform_images).
+yw_flow(7,transform_images,39,corrected_image_file,27,corrected_image,47,corrected_image_file,8,log_average_image_intensity).
+yw_flow(7,transform_images,40,total_intensity,28,total_intensity,45,total_intensity,8,log_average_image_intensity).
+yw_flow(7,transform_images,41,pixel_count,29,pixel_count,46,pixel_count,8,log_average_image_intensity).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -181,7 +179,7 @@ yw_flow(7,transform_images,42,pixel_count,30,pixel_count,48,pixel_count,8,log_av
 %...................................................................................................
 yw_outflow(7,transform_images,27,corrected_image,1,simulate_data_collection,6,corrected_image).
 yw_outflow(2,initialize_run,10,run_log,1,simulate_data_collection,7,run_log).
-yw_outflow(8,log_average_image_intensity,31,collection_log,1,simulate_data_collection,8,collection_log).
+yw_outflow(8,log_average_image_intensity,30,collection_log,1,simulate_data_collection,8,collection_log).
 yw_outflow(5,log_rejected_sample,21,rejection_log,1,simulate_data_collection,9,rejection_log).
 
 
@@ -228,23 +226,22 @@ yw_qualified_name(port,29,'simulate_data_collection.collect_data_set<-energies')
 yw_qualified_name(port,30,'simulate_data_collection.collect_data_set->sample_id').
 yw_qualified_name(port,31,'simulate_data_collection.collect_data_set->energy').
 yw_qualified_name(port,32,'simulate_data_collection.collect_data_set->frame_number').
-yw_qualified_name(port,33,'simulate_data_collection.collect_data_set->raw_image_path').
+yw_qualified_name(port,33,'simulate_data_collection.collect_data_set->raw_image_file').
 yw_qualified_name(port,34,'simulate_data_collection.transform_images<-sample_id').
 yw_qualified_name(port,35,'simulate_data_collection.transform_images<-energy').
 yw_qualified_name(port,36,'simulate_data_collection.transform_images<-frame_number').
-yw_qualified_name(port,37,'simulate_data_collection.transform_images<-raw_image_path').
-yw_qualified_name(port,38,'simulate_data_collection.transform_images<-calibration_image').
-yw_qualified_name(port,39,'simulate_data_collection.transform_images->corrected_image').
-yw_qualified_name(port,40,'simulate_data_collection.transform_images->corrected_image_path').
-yw_qualified_name(port,41,'simulate_data_collection.transform_images->total_intensity').
-yw_qualified_name(port,42,'simulate_data_collection.transform_images->pixel_count').
-yw_qualified_name(port,43,'simulate_data_collection.log_average_image_intensity<-cassette_id').
-yw_qualified_name(port,44,'simulate_data_collection.log_average_image_intensity<-sample_id').
-yw_qualified_name(port,45,'simulate_data_collection.log_average_image_intensity<-frame_number').
-yw_qualified_name(port,46,'simulate_data_collection.log_average_image_intensity<-corrected_image_path').
-yw_qualified_name(port,47,'simulate_data_collection.log_average_image_intensity<-total_intensity').
-yw_qualified_name(port,48,'simulate_data_collection.log_average_image_intensity<-pixel_count').
-yw_qualified_name(port,49,'simulate_data_collection.log_average_image_intensity->collection_log').
+yw_qualified_name(port,37,'simulate_data_collection.transform_images<-raw_image_file').
+yw_qualified_name(port,38,'simulate_data_collection.transform_images<-calibration_image_path').
+yw_qualified_name(port,39,'simulate_data_collection.transform_images->corrected_image_file').
+yw_qualified_name(port,40,'simulate_data_collection.transform_images->total_intensity').
+yw_qualified_name(port,41,'simulate_data_collection.transform_images->pixel_count').
+yw_qualified_name(port,42,'simulate_data_collection.log_average_image_intensity<-cassette_id').
+yw_qualified_name(port,43,'simulate_data_collection.log_average_image_intensity<-sample_id').
+yw_qualified_name(port,44,'simulate_data_collection.log_average_image_intensity<-frame_number').
+yw_qualified_name(port,45,'simulate_data_collection.log_average_image_intensity<-total_intensity').
+yw_qualified_name(port,46,'simulate_data_collection.log_average_image_intensity<-pixel_count').
+yw_qualified_name(port,47,'simulate_data_collection.log_average_image_intensity<-corrected_image_file').
+yw_qualified_name(port,48,'simulate_data_collection.log_average_image_intensity->collection_log').
 yw_qualified_name(data,1,'[cassette_id]').
 yw_qualified_name(data,2,'[sample_score_cutoff]').
 yw_qualified_name(data,3,'[data_redundancy]').
@@ -272,10 +269,9 @@ yw_qualified_name(data,24,'simulate_data_collection[frame_number]').
 yw_qualified_name(data,25,'simulate_data_collection[raw_image]').
 yw_qualified_name(data,26,'simulate_data_collection[calibration_image]').
 yw_qualified_name(data,27,'simulate_data_collection[corrected_image]').
-yw_qualified_name(data,28,'simulate_data_collection[corrected_image_path]').
-yw_qualified_name(data,29,'simulate_data_collection[total_intensity]').
-yw_qualified_name(data,30,'simulate_data_collection[pixel_count]').
-yw_qualified_name(data,31,'simulate_data_collection[collection_log]').
+yw_qualified_name(data,28,'simulate_data_collection[total_intensity]').
+yw_qualified_name(data,29,'simulate_data_collection[pixel_count]').
+yw_qualified_name(data,30,'simulate_data_collection[collection_log]').
 
 
 %---------------------------------------------------------------------------------------------------
@@ -299,4 +295,4 @@ yw_description(port,6,corrected_image,'The corrected diffraction images collecte
 yw_description(port,30,sample_id,'The crystal that the diffraction image was collected from.').
 yw_description(port,31,energy,'Energy (in eV) at which the diffraction image was collected.').
 yw_description(port,32,frame_number,'Index of diffraction image within data set.').
-yw_description(port,33,raw_image_path,'Path of file storing the raw diffraction image.').
+yw_description(port,33,raw_image_file,'Path of file storing the raw diffraction image.').

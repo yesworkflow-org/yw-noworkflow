@@ -1,13 +1,13 @@
 
 % FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
-program(1, 'simulate_data_collection', 'simulate_data_collection', 1, 100).
+program(1, 'simulate_data_collection', 'simulate_data_collection', 1, 102).
 program(2, 'initialize_run', 'simulate_data_collection.initialize_run', 24, 28).
 program(3, 'load_screening_results', 'simulate_data_collection.load_screening_results', 29, 36).
 program(4, 'calculate_strategy', 'simulate_data_collection.calculate_strategy', 37, 47).
 program(5, 'log_rejected_sample', 'simulate_data_collection.log_rejected_sample', 48, 54).
 program(6, 'collect_data_set', 'simulate_data_collection.collect_data_set', 55, 72).
-program(7, 'transform_images', 'simulate_data_collection.transform_images', 73, 88).
-program(8, 'log_average_image_intensity', 'simulate_data_collection.log_average_image_intensity', 89, 99).
+program(7, 'transform_images', 'simulate_data_collection.transform_images', 73, 89).
+program(8, 'log_average_image_intensity', 'simulate_data_collection.log_average_image_intensity', 90, 101).
 
 % FACT: workflow(program_id).
 workflow(1).
@@ -56,27 +56,29 @@ port(29, 'param', 'energies', 'simulate_data_collection.collect_data_set<-energi
 port(30, 'out', 'sample_id', 'simulate_data_collection.collect_data_set->sample_id', 62, 22).
 port(31, 'out', 'energy', 'simulate_data_collection.collect_data_set->energy', 64, 23).
 port(32, 'out', 'frame_number', 'simulate_data_collection.collect_data_set->frame_number', 66, 24).
-port(33, 'out', 'raw_image_path', 'simulate_data_collection.collect_data_set->raw_image_path', 68, 25).
+port(33, 'out', 'raw_image_file', 'simulate_data_collection.collect_data_set->raw_image_file', 68, 25).
 port(34, 'param', 'sample_id', 'simulate_data_collection.transform_images<-sample_id', 76, 22).
 port(35, 'param', 'energy', 'simulate_data_collection.transform_images<-energy', 77, 23).
 port(36, 'param', 'frame_number', 'simulate_data_collection.transform_images<-frame_number', 78, 24).
-port(37, 'in', 'raw_image_path', 'simulate_data_collection.transform_images<-raw_image_path', 79, 25).
-port(38, 'in', 'calibration_image', 'simulate_data_collection.transform_images<-calibration_image', 81, 26).
-port(39, 'out', 'corrected_image', 'simulate_data_collection.transform_images->corrected_image', 83, 27).
-port(40, 'out', 'corrected_image_path', 'simulate_data_collection.transform_images->corrected_image_path', 85, 28).
-port(41, 'out', 'total_intensity', 'simulate_data_collection.transform_images->total_intensity', 86, 29).
-port(42, 'out', 'pixel_count', 'simulate_data_collection.transform_images->pixel_count', 87, 30).
-port(43, 'param', 'cassette_id', 'simulate_data_collection.log_average_image_intensity<-cassette_id', 91, 11).
-port(44, 'param', 'sample_id', 'simulate_data_collection.log_average_image_intensity<-sample_id', 92, 22).
-port(45, 'param', 'frame_number', 'simulate_data_collection.log_average_image_intensity<-frame_number', 93, 24).
-port(46, 'param', 'corrected_image_path', 'simulate_data_collection.log_average_image_intensity<-corrected_image_path', 94, 28).
-port(47, 'param', 'total_intensity', 'simulate_data_collection.log_average_image_intensity<-total_intensity', 95, 29).
-port(48, 'param', 'pixel_count', 'simulate_data_collection.log_average_image_intensity<-pixel_count', 96, 30).
-port(49, 'out', 'collection_log', 'simulate_data_collection.log_average_image_intensity->collection_log', 97, 31).
+port(37, 'in', 'raw_image_file', 'simulate_data_collection.transform_images<-raw_image_file', 79, 25).
+port(38, 'in', 'calibration_image_path', 'simulate_data_collection.transform_images<-calibration_image_path', 81, 26).
+port(39, 'out', 'corrected_image_file', 'simulate_data_collection.transform_images->corrected_image_file', 84, 27).
+port(40, 'out', 'total_intensity', 'simulate_data_collection.transform_images->total_intensity', 87, 28).
+port(41, 'out', 'pixel_count', 'simulate_data_collection.transform_images->pixel_count', 88, 29).
+port(42, 'param', 'cassette_id', 'simulate_data_collection.log_average_image_intensity<-cassette_id', 92, 11).
+port(43, 'param', 'sample_id', 'simulate_data_collection.log_average_image_intensity<-sample_id', 93, 22).
+port(44, 'param', 'frame_number', 'simulate_data_collection.log_average_image_intensity<-frame_number', 94, 24).
+port(45, 'param', 'total_intensity', 'simulate_data_collection.log_average_image_intensity<-total_intensity', 95, 28).
+port(46, 'param', 'pixel_count', 'simulate_data_collection.log_average_image_intensity<-pixel_count', 96, 29).
+port(47, 'in', 'corrected_image_file', 'simulate_data_collection.log_average_image_intensity<-corrected_image_file', 97, 27).
+port(48, 'out', 'collection_log', 'simulate_data_collection.log_average_image_intensity->collection_log', 99, 30).
 
 % FACT: port_alias(port_id, alias).
 port_alias(33, 'raw_image').
 port_alias(37, 'raw_image').
+port_alias(38, 'calibration_image').
+port_alias(39, 'corrected_image').
+port_alias(47, 'corrected_image').
 
 % FACT: port_uri_template(port_id, uri).
 port_uri_template(4, 'file:cassette_{cassette_id}_spreadsheet.csv').
@@ -91,7 +93,7 @@ port_uri_template(25, 'file:run/rejected_samples.txt').
 port_uri_template(33, 'file:run/raw/{cassette_id}/{sample_id}/e{energy}/image_{frame_number}.raw').
 port_uri_template(38, 'file:calibration.img').
 port_uri_template(39, 'file:run/data/{sample_id}/{sample_id}_{energy}eV_{frame_number}.img').
-port_uri_template(49, 'file:run/collected_images.csv').
+port_uri_template(48, 'file:run/collected_images.csv').
 
 % FACT: has_in_port(block_id, port_id).
 has_in_port(1, 1).
@@ -116,12 +118,12 @@ has_in_port(7, 35).
 has_in_port(7, 36).
 has_in_port(7, 37).
 has_in_port(7, 38).
+has_in_port(8, 42).
 has_in_port(8, 43).
 has_in_port(8, 44).
 has_in_port(8, 45).
 has_in_port(8, 46).
 has_in_port(8, 47).
-has_in_port(8, 48).
 
 % FACT: has_out_port(block_id, port_id).
 has_out_port(1, 6).
@@ -143,8 +145,7 @@ has_out_port(6, 33).
 has_out_port(7, 39).
 has_out_port(7, 40).
 has_out_port(7, 41).
-has_out_port(7, 42).
-has_out_port(8, 49).
+has_out_port(8, 48).
 
 % FACT: data(data_id, data_name, qualified_data_name).
 data(1, 'cassette_id', '[cassette_id]').
@@ -174,39 +175,38 @@ data(24, 'frame_number', 'simulate_data_collection[frame_number]').
 data(25, 'raw_image', 'simulate_data_collection[raw_image]').
 data(26, 'calibration_image', 'simulate_data_collection[calibration_image]').
 data(27, 'corrected_image', 'simulate_data_collection[corrected_image]').
-data(28, 'corrected_image_path', 'simulate_data_collection[corrected_image_path]').
-data(29, 'total_intensity', 'simulate_data_collection[total_intensity]').
-data(30, 'pixel_count', 'simulate_data_collection[pixel_count]').
-data(31, 'collection_log', 'simulate_data_collection[collection_log]').
+data(28, 'total_intensity', 'simulate_data_collection[total_intensity]').
+data(29, 'pixel_count', 'simulate_data_collection[pixel_count]').
+data(30, 'collection_log', 'simulate_data_collection[collection_log]').
 
 % FACT: channel(channel_id, data_id).
 channel(1, 6).
-channel(2, 7).
-channel(3, 8).
-channel(4, 9).
-channel(5, 11).
+channel(2, 27).
+channel(3, 7).
+channel(4, 8).
+channel(5, 9).
 channel(6, 11).
 channel(7, 11).
 channel(8, 11).
-channel(9, 12).
-channel(10, 15).
-channel(11, 16).
-channel(12, 13).
-channel(13, 14).
-channel(14, 18).
-channel(15, 19).
-channel(16, 17).
-channel(17, 20).
-channel(18, 22).
+channel(9, 11).
+channel(10, 12).
+channel(11, 15).
+channel(12, 16).
+channel(13, 13).
+channel(14, 14).
+channel(15, 18).
+channel(16, 19).
+channel(17, 17).
+channel(18, 20).
 channel(19, 22).
-channel(20, 23).
-channel(21, 24).
+channel(20, 22).
+channel(21, 23).
 channel(22, 24).
-channel(23, 25).
-channel(24, 26).
-channel(25, 28).
-channel(26, 29).
-channel(27, 30).
+channel(23, 24).
+channel(24, 25).
+channel(25, 26).
+channel(26, 28).
+channel(27, 29).
 channel(28, 1).
 channel(29, 1).
 channel(30, 1).
@@ -217,74 +217,74 @@ channel(34, 4).
 channel(35, 5).
 channel(36, 27).
 channel(37, 10).
-channel(38, 31).
+channel(38, 30).
 channel(39, 21).
 
 % FACT: port_connects_to_channel(port_id, channel_id).
 port_connects_to_channel(39, 1).
-port_connects_to_channel(10, 2).
-port_connects_to_channel(49, 3).
-port_connects_to_channel(25, 4).
-port_connects_to_channel(11, 5).
-port_connects_to_channel(23, 6).
-port_connects_to_channel(26, 7).
-port_connects_to_channel(43, 8).
-port_connects_to_channel(12, 9).
-port_connects_to_channel(15, 10).
-port_connects_to_channel(16, 11).
-port_connects_to_channel(13, 12).
-port_connects_to_channel(17, 12).
-port_connects_to_channel(14, 13).
-port_connects_to_channel(18, 13).
-port_connects_to_channel(20, 14).
-port_connects_to_channel(24, 14).
-port_connects_to_channel(21, 15).
-port_connects_to_channel(27, 15).
-port_connects_to_channel(19, 16).
-port_connects_to_channel(28, 16).
-port_connects_to_channel(22, 17).
-port_connects_to_channel(29, 17).
-port_connects_to_channel(30, 18).
-port_connects_to_channel(34, 18).
+port_connects_to_channel(39, 2).
+port_connects_to_channel(47, 2).
+port_connects_to_channel(10, 3).
+port_connects_to_channel(48, 4).
+port_connects_to_channel(25, 5).
+port_connects_to_channel(11, 6).
+port_connects_to_channel(23, 7).
+port_connects_to_channel(26, 8).
+port_connects_to_channel(42, 9).
+port_connects_to_channel(12, 10).
+port_connects_to_channel(15, 11).
+port_connects_to_channel(16, 12).
+port_connects_to_channel(13, 13).
+port_connects_to_channel(17, 13).
+port_connects_to_channel(14, 14).
+port_connects_to_channel(18, 14).
+port_connects_to_channel(20, 15).
+port_connects_to_channel(24, 15).
+port_connects_to_channel(21, 16).
+port_connects_to_channel(27, 16).
+port_connects_to_channel(19, 17).
+port_connects_to_channel(28, 17).
+port_connects_to_channel(22, 18).
+port_connects_to_channel(29, 18).
 port_connects_to_channel(30, 19).
-port_connects_to_channel(44, 19).
-port_connects_to_channel(31, 20).
-port_connects_to_channel(35, 20).
-port_connects_to_channel(32, 21).
-port_connects_to_channel(36, 21).
+port_connects_to_channel(34, 19).
+port_connects_to_channel(30, 20).
+port_connects_to_channel(43, 20).
+port_connects_to_channel(31, 21).
+port_connects_to_channel(35, 21).
 port_connects_to_channel(32, 22).
-port_connects_to_channel(45, 22).
-port_connects_to_channel(33, 23).
-port_connects_to_channel(37, 23).
-port_connects_to_channel(38, 24).
-port_connects_to_channel(40, 25).
-port_connects_to_channel(46, 25).
-port_connects_to_channel(41, 26).
-port_connects_to_channel(47, 26).
-port_connects_to_channel(42, 27).
-port_connects_to_channel(48, 27).
+port_connects_to_channel(36, 22).
+port_connects_to_channel(32, 23).
+port_connects_to_channel(44, 23).
+port_connects_to_channel(33, 24).
+port_connects_to_channel(37, 24).
+port_connects_to_channel(38, 25).
+port_connects_to_channel(40, 26).
+port_connects_to_channel(45, 26).
+port_connects_to_channel(41, 27).
+port_connects_to_channel(46, 27).
 port_connects_to_channel(11, 28).
 port_connects_to_channel(23, 29).
 port_connects_to_channel(26, 30).
-port_connects_to_channel(43, 31).
+port_connects_to_channel(42, 31).
 port_connects_to_channel(15, 32).
 port_connects_to_channel(16, 33).
 port_connects_to_channel(12, 34).
 port_connects_to_channel(38, 35).
 port_connects_to_channel(39, 36).
 port_connects_to_channel(10, 37).
-port_connects_to_channel(49, 38).
+port_connects_to_channel(48, 38).
 port_connects_to_channel(25, 39).
 
 % FACT: inflow_connects_to_channel(port_id, channel_id).
-inflow_connects_to_channel(1, 5).
 inflow_connects_to_channel(1, 6).
 inflow_connects_to_channel(1, 7).
 inflow_connects_to_channel(1, 8).
-inflow_connects_to_channel(4, 9).
-inflow_connects_to_channel(2, 10).
-inflow_connects_to_channel(3, 11).
-inflow_connects_to_channel(5, 24).
+inflow_connects_to_channel(1, 9).
+inflow_connects_to_channel(4, 10).
+inflow_connects_to_channel(2, 11).
+inflow_connects_to_channel(3, 12).
+inflow_connects_to_channel(5, 25).
 inflow_connects_to_channel(1, 28).
 inflow_connects_to_channel(1, 29).
 inflow_connects_to_channel(1, 30).
@@ -296,9 +296,9 @@ inflow_connects_to_channel(5, 35).
 
 % FACT: outflow_connects_to_channel(port_id, channel_id).
 outflow_connects_to_channel(6, 1).
-outflow_connects_to_channel(7, 2).
-outflow_connects_to_channel(8, 3).
-outflow_connects_to_channel(9, 4).
+outflow_connects_to_channel(7, 3).
+outflow_connects_to_channel(8, 4).
+outflow_connects_to_channel(9, 5).
 outflow_connects_to_channel(6, 36).
 outflow_connects_to_channel(7, 37).
 outflow_connects_to_channel(8, 38).

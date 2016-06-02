@@ -38,11 +38,11 @@ calculate_strategy -> collect_data_set
 collect_data_set -> transform_images
 collect_data_set -> log_average_image_intensity
 transform_images -> log_average_image_intensity
-cassette_id_inflow -> log_average_image_intensity
 cassette_id_inflow -> collect_data_set
 cassette_id_inflow -> log_rejected_sample
 data_redundancy_inflow -> calculate_strategy
 sample_score_cutoff_inflow -> calculate_strategy
+cassette_id_inflow -> log_average_image_intensity
 calibration_image_inflow -> transform_images
 cassette_id_inflow -> load_screening_results
 sample_spreadsheet_inflow -> load_screening_results

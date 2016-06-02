@@ -11,14 +11,14 @@ annotation(5, 1, 6, 'out', '@out', 'displayed_greeting').
 annotation(6, 1, 6, 'desc', '@desc', 'Greeting displayed to user.').
 annotation(7, 1, 10, 'begin', '@begin', 'read_greeting_definitions').
 annotation(8, 1, 10, 'desc', '@desc', 'Read the greeting definitions from the file').
-annotation(9, 1, 11, 'param', '@param', 'input_file_path').
-annotation(10, 1, 12, 'in', '@in', 'input_file').
-annotation(11, 1, 13, 'out', '@out', 'greeting').
-annotation(12, 1, 13, 'as', '@as', 'provided_greeting').
-annotation(13, 1, 14, 'out', '@out', 'emphasis').
-annotation(14, 1, 14, 'as', '@as', 'provided_emphasis').
-annotation(15, 1, 15, 'out', '@out', 'count').
-annotation(16, 1, 15, 'as', '@as', 'emphasis_count').
+annotation(9, 1, 11, 'in', '@in', 'input_file_path').
+annotation(10, 1, 11, 'as', '@as', 'input_file').
+annotation(11, 1, 12, 'out', '@out', 'greeting').
+annotation(12, 1, 12, 'as', '@as', 'provided_greeting').
+annotation(13, 1, 13, 'out', '@out', 'emphasis').
+annotation(14, 1, 13, 'as', '@as', 'provided_emphasis').
+annotation(15, 1, 14, 'out', '@out', 'count').
+annotation(16, 1, 14, 'as', '@as', 'emphasis_count').
 annotation(17, 1, 25, 'end', '@end', 'read_greeting_definitions').
 annotation(18, 1, 27, 'begin', '@begin', 'emphasize_greeting').
 annotation(19, 1, 27, 'desc', '@desc', 'Add emphasis to the provided greeting').
@@ -45,6 +45,7 @@ annotation(37, 1, 41, 'end', '@end', 'greetings_from_file').
 annotation_qualifies(2, 1).
 annotation_qualifies(6, 5).
 annotation_qualifies(8, 7).
+annotation_qualifies(10, 9).
 annotation_qualifies(12, 11).
 annotation_qualifies(14, 13).
 annotation_qualifies(16, 15).

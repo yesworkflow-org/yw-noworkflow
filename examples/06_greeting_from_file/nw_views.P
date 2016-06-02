@@ -21,7 +21,7 @@ nw_function_activation(7,2,add_suffix,32,2).
 nw_function_activation(10,2,add_suffix,32,2).
 nw_function_activation(13,2,add_suffix,32,2).
 nw_function_activation(1,nil,'/Users/tmcphill/GitRepos/yw-noworkflow/examples/06_greeting_from_file/greeting_from_file.py',61,nil).
-nw_function_activation(3,nil,open,16,2).
+nw_function_activation(3,nil,open,15,2).
 nw_function_activation(4,nil,'__init__',17,2).
 nw_function_activation(5,nil,'__iter__',19,2).
 nw_function_activation(6,nil,'__next__',19,2).
@@ -51,12 +51,12 @@ nw_function_argument(2,greet_user,7,input_file_path,'input.csv',literal,nil,nil)
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_assignment(ActId, VarId, VarName, Line, Value).
 %...................................................................................................
-nw_variable_assignment(1,4,greet_user,8,'<function greet_user at 0x1069b56a8>').
-nw_variable_assignment(1,5,add_suffix,43,'<function add_suffix at 0x1069d6ae8>').
+nw_variable_assignment(1,4,greet_user,8,'<function greet_user at 0x105e70598>').
+nw_variable_assignment(1,5,add_suffix,43,'<function add_suffix at 0x106bbcea0>').
 nw_variable_assignment(2,7,input_file_path,8,'input.csv').
-nw_variable_assignment(2,11,input_file,16,'<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>').
-nw_variable_assignment(2,16,greeting_definitions,17,'<csv.DictReader object at 0x10693c278>').
-nw_variable_assignment(2,23,greeting_def,19,'{''text'': ''Hello World'', ''count'': ''1'', ''emphasis'': ''!''}').
+nw_variable_assignment(2,12,fd,15,'<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>').
+nw_variable_assignment(2,16,greeting_definitions,17,'<csv.DictReader object at 0x106897080>').
+nw_variable_assignment(2,23,greeting_def,19,'{''count'': ''1'', ''text'': ''Hello World'', ''emphasis'': ''!''}').
 nw_variable_assignment(2,24,greeting,21,'Hello World').
 nw_variable_assignment(2,25,emphasis,22,!).
 nw_variable_assignment(2,26,count,23,'1').
@@ -67,7 +67,7 @@ nw_variable_assignment(7,34,string,44,'Hello World').
 nw_variable_assignment(7,38,i,46,'0').
 nw_variable_assignment(7,39,string,47,'Hello World!').
 nw_variable_assignment(2,42,greeting,32,'Hello World!').
-nw_variable_assignment(2,50,greeting_def,19,'{''text'': ''Goodbye World'', ''count'': ''2'', ''emphasis'': ''?''}').
+nw_variable_assignment(2,50,greeting_def,19,'{''count'': ''2'', ''text'': ''Goodbye World'', ''emphasis'': ''?''}').
 nw_variable_assignment(2,51,greeting,21,'Goodbye World').
 nw_variable_assignment(2,52,emphasis,22,?).
 nw_variable_assignment(2,53,count,23,'2').
@@ -80,7 +80,7 @@ nw_variable_assignment(10,64,string,47,'Goodbye World?').
 nw_variable_assignment(10,67,i,46,'1').
 nw_variable_assignment(10,68,string,47,'Goodbye World??').
 nw_variable_assignment(2,71,greeting,32,'Goodbye World??').
-nw_variable_assignment(2,78,greeting_def,19,'{''text'': ''Back again'', ''count'': ''3'', ''emphasis'': ''?!''}').
+nw_variable_assignment(2,78,greeting_def,19,'{''count'': ''3'', ''text'': ''Back again'', ''emphasis'': ''?!''}').
 nw_variable_assignment(2,79,greeting,21,'Back again').
 nw_variable_assignment(2,80,emphasis,22,'?!').
 nw_variable_assignment(2,81,count,23,'3').
@@ -100,12 +100,12 @@ nw_variable_assignment(2,103,greeting,32,'Back again?!?!?!').
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_usage(UsageId, ActId, VariableId, VarName, VarValue, Line).
 %...................................................................................................
-nw_variable_usage(1,2,7,input_file_path,'input.csv',16).
-nw_variable_usage(2,2,11,input_file,'<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>',17).
-nw_variable_usage(3,2,16,greeting_definitions,'<csv.DictReader object at 0x10693c278>',19).
-nw_variable_usage(4,2,23,greeting_def,'{''text'': ''Hello World'', ''count'': ''1'', ''emphasis'': ''!''}',21).
-nw_variable_usage(5,2,23,greeting_def,'{''text'': ''Hello World'', ''count'': ''1'', ''emphasis'': ''!''}',22).
-nw_variable_usage(6,2,23,greeting_def,'{''text'': ''Hello World'', ''count'': ''1'', ''emphasis'': ''!''}',23).
+nw_variable_usage(1,2,7,input_file_path,'input.csv',15).
+nw_variable_usage(2,2,12,fd,'<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>',17).
+nw_variable_usage(3,2,16,greeting_definitions,'<csv.DictReader object at 0x106897080>',19).
+nw_variable_usage(4,2,23,greeting_def,'{''count'': ''1'', ''text'': ''Hello World'', ''emphasis'': ''!''}',21).
+nw_variable_usage(5,2,23,greeting_def,'{''count'': ''1'', ''text'': ''Hello World'', ''emphasis'': ''!''}',22).
+nw_variable_usage(6,2,23,greeting_def,'{''count'': ''1'', ''text'': ''Hello World'', ''emphasis'': ''!''}',23).
 nw_variable_usage(7,7,30,prefix,'Hello World',44).
 nw_variable_usage(8,7,32,count,'1',45).
 nw_variable_usage(9,7,32,count,'1',46).
@@ -116,10 +116,10 @@ nw_variable_usage(13,2,24,greeting,'Hello World',32).
 nw_variable_usage(14,2,25,emphasis,!,32).
 nw_variable_usage(15,2,26,count,'1',32).
 nw_variable_usage(16,2,42,greeting,'Hello World!',38).
-nw_variable_usage(17,2,16,greeting_definitions,'<csv.DictReader object at 0x10693c278>',19).
-nw_variable_usage(18,2,50,greeting_def,'{''text'': ''Goodbye World'', ''count'': ''2'', ''emphasis'': ''?''}',21).
-nw_variable_usage(19,2,50,greeting_def,'{''text'': ''Goodbye World'', ''count'': ''2'', ''emphasis'': ''?''}',22).
-nw_variable_usage(20,2,50,greeting_def,'{''text'': ''Goodbye World'', ''count'': ''2'', ''emphasis'': ''?''}',23).
+nw_variable_usage(17,2,16,greeting_definitions,'<csv.DictReader object at 0x106897080>',19).
+nw_variable_usage(18,2,50,greeting_def,'{''count'': ''2'', ''text'': ''Goodbye World'', ''emphasis'': ''?''}',21).
+nw_variable_usage(19,2,50,greeting_def,'{''count'': ''2'', ''text'': ''Goodbye World'', ''emphasis'': ''?''}',22).
+nw_variable_usage(20,2,50,greeting_def,'{''count'': ''2'', ''text'': ''Goodbye World'', ''emphasis'': ''?''}',23).
 nw_variable_usage(21,10,56,prefix,'Goodbye World',44).
 nw_variable_usage(22,10,58,count,'2',45).
 nw_variable_usage(23,10,58,count,'2',46).
@@ -133,10 +133,10 @@ nw_variable_usage(30,2,51,greeting,'Goodbye World',32).
 nw_variable_usage(31,2,52,emphasis,?,32).
 nw_variable_usage(32,2,53,count,'2',32).
 nw_variable_usage(33,2,71,greeting,'Goodbye World??',38).
-nw_variable_usage(34,2,16,greeting_definitions,'<csv.DictReader object at 0x10693c278>',19).
-nw_variable_usage(35,2,78,greeting_def,'{''text'': ''Back again'', ''count'': ''3'', ''emphasis'': ''?!''}',21).
-nw_variable_usage(36,2,78,greeting_def,'{''text'': ''Back again'', ''count'': ''3'', ''emphasis'': ''?!''}',22).
-nw_variable_usage(37,2,78,greeting_def,'{''text'': ''Back again'', ''count'': ''3'', ''emphasis'': ''?!''}',23).
+nw_variable_usage(34,2,16,greeting_definitions,'<csv.DictReader object at 0x106897080>',19).
+nw_variable_usage(35,2,78,greeting_def,'{''count'': ''3'', ''text'': ''Back again'', ''emphasis'': ''?!''}',21).
+nw_variable_usage(36,2,78,greeting_def,'{''count'': ''3'', ''text'': ''Back again'', ''emphasis'': ''?!''}',22).
+nw_variable_usage(37,2,78,greeting_def,'{''count'': ''3'', ''text'': ''Back again'', ''emphasis'': ''?!''}',23).
 nw_variable_usage(38,13,84,prefix,'Back again',44).
 nw_variable_usage(39,13,86,count,'3',45).
 nw_variable_usage(40,13,86,count,'3',46).
@@ -153,7 +153,7 @@ nw_variable_usage(50,2,79,greeting,'Back again',32).
 nw_variable_usage(51,2,80,emphasis,'?!',32).
 nw_variable_usage(52,2,81,count,'3',32).
 nw_variable_usage(53,2,103,greeting,'Back again?!?!?!',38).
-nw_variable_usage(54,2,16,greeting_definitions,'<csv.DictReader object at 0x10693c278>',19).
+nw_variable_usage(54,2,16,greeting_definitions,'<csv.DictReader object at 0x106897080>',19).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -162,48 +162,48 @@ nw_variable_usage(54,2,16,greeting_definitions,'<csv.DictReader object at 0x1069
 nw_variable_dependency(return,13,add_suffix,32,103,greeting,100,string).
 nw_variable_dependency(return,10,add_suffix,32,71,greeting,68,string).
 nw_variable_dependency(return,7,add_suffix,32,42,greeting,39,string).
-nw_variable_dependency(argument,7,add_suffix,43,31,suffix,25,emphasis).
-nw_variable_dependency(argument,7,add_suffix,43,32,count,26,count).
-nw_variable_dependency(argument,7,add_suffix,43,30,prefix,24,greeting).
-nw_variable_dependency(argument,13,add_suffix,43,84,prefix,79,greeting).
 nw_variable_dependency(argument,13,add_suffix,43,85,suffix,80,emphasis).
 nw_variable_dependency(argument,13,add_suffix,43,86,count,81,count).
+nw_variable_dependency(argument,13,add_suffix,43,84,prefix,79,greeting).
 nw_variable_dependency(argument,10,add_suffix,43,58,count,53,count).
 nw_variable_dependency(argument,10,add_suffix,43,57,suffix,52,emphasis).
 nw_variable_dependency(argument,10,add_suffix,43,56,prefix,51,greeting).
-nw_variable_dependency(assignment,13,add_suffix,46,95,i,86,count).
-nw_variable_dependency(assignment,13,add_suffix,46,91,i,86,count).
-nw_variable_dependency(assignment,13,add_suffix,46,99,i,86,count).
+nw_variable_dependency(argument,7,add_suffix,43,31,suffix,25,emphasis).
+nw_variable_dependency(argument,7,add_suffix,43,32,count,26,count).
+nw_variable_dependency(argument,7,add_suffix,43,30,prefix,24,greeting).
 nw_variable_dependency(assignment,13,add_suffix,44,88,string,84,prefix).
+nw_variable_dependency(assignment,13,add_suffix,46,95,i,86,count).
+nw_variable_dependency(assignment,13,add_suffix,46,99,i,86,count).
+nw_variable_dependency(assignment,13,add_suffix,46,91,i,86,count).
+nw_variable_dependency(assignment,13,add_suffix,47,100,string,85,suffix).
+nw_variable_dependency(assignment,13,add_suffix,47,100,string,86,count).
+nw_variable_dependency(assignment,13,add_suffix,47,100,string,96,string).
+nw_variable_dependency(assignment,13,add_suffix,47,92,string,88,string).
+nw_variable_dependency(assignment,13,add_suffix,47,92,string,85,suffix).
+nw_variable_dependency(assignment,13,add_suffix,47,92,string,86,count).
 nw_variable_dependency(assignment,13,add_suffix,47,96,string,85,suffix).
 nw_variable_dependency(assignment,13,add_suffix,47,96,string,86,count).
 nw_variable_dependency(assignment,13,add_suffix,47,96,string,92,string).
-nw_variable_dependency(assignment,13,add_suffix,47,100,string,85,suffix).
-nw_variable_dependency(assignment,13,add_suffix,47,100,string,96,string).
-nw_variable_dependency(assignment,13,add_suffix,47,100,string,86,count).
-nw_variable_dependency(assignment,13,add_suffix,47,92,string,86,count).
-nw_variable_dependency(assignment,13,add_suffix,47,92,string,88,string).
-nw_variable_dependency(assignment,13,add_suffix,47,92,string,85,suffix).
-nw_variable_dependency(assignment,2,greet_user,22,25,emphasis,23,greeting_def).
-nw_variable_dependency(assignment,2,greet_user,22,52,emphasis,50,greeting_def).
-nw_variable_dependency(assignment,2,greet_user,22,80,emphasis,78,greeting_def).
-nw_variable_dependency(assignment,2,greet_user,19,23,greeting_def,16,greeting_definitions).
-nw_variable_dependency(assignment,2,greet_user,19,50,greeting_def,16,greeting_definitions).
-nw_variable_dependency(assignment,2,greet_user,19,78,greeting_def,16,greeting_definitions).
-nw_variable_dependency(assignment,2,greet_user,21,24,greeting,23,greeting_def).
-nw_variable_dependency(assignment,2,greet_user,21,51,greeting,50,greeting_def).
-nw_variable_dependency(assignment,2,greet_user,21,79,greeting,78,greeting_def).
 nw_variable_dependency(assignment,10,add_suffix,46,67,i,58,count).
 nw_variable_dependency(assignment,10,add_suffix,46,63,i,58,count).
 nw_variable_dependency(assignment,10,add_suffix,44,60,string,56,prefix).
 nw_variable_dependency(assignment,10,add_suffix,47,64,string,57,suffix).
-nw_variable_dependency(assignment,10,add_suffix,47,64,string,58,count).
 nw_variable_dependency(assignment,10,add_suffix,47,64,string,60,string).
+nw_variable_dependency(assignment,10,add_suffix,47,64,string,58,count).
 nw_variable_dependency(assignment,10,add_suffix,47,68,string,58,count).
-nw_variable_dependency(assignment,10,add_suffix,47,68,string,57,suffix).
 nw_variable_dependency(assignment,10,add_suffix,47,68,string,64,string).
-nw_variable_dependency(assignment,7,add_suffix,44,34,string,30,prefix).
+nw_variable_dependency(assignment,10,add_suffix,47,68,string,57,suffix).
+nw_variable_dependency(assignment,2,greet_user,22,80,emphasis,78,greeting_def).
+nw_variable_dependency(assignment,2,greet_user,22,52,emphasis,50,greeting_def).
+nw_variable_dependency(assignment,2,greet_user,22,25,emphasis,23,greeting_def).
+nw_variable_dependency(assignment,2,greet_user,21,51,greeting,50,greeting_def).
+nw_variable_dependency(assignment,2,greet_user,21,24,greeting,23,greeting_def).
+nw_variable_dependency(assignment,2,greet_user,21,79,greeting,78,greeting_def).
+nw_variable_dependency(assignment,2,greet_user,19,23,greeting_def,16,greeting_definitions).
+nw_variable_dependency(assignment,2,greet_user,19,78,greeting_def,16,greeting_definitions).
+nw_variable_dependency(assignment,2,greet_user,19,50,greeting_def,16,greeting_definitions).
 nw_variable_dependency(assignment,7,add_suffix,46,38,i,32,count).
+nw_variable_dependency(assignment,7,add_suffix,44,34,string,30,prefix).
 nw_variable_dependency(assignment,7,add_suffix,47,39,string,32,count).
-nw_variable_dependency(assignment,7,add_suffix,47,39,string,34,string).
 nw_variable_dependency(assignment,7,add_suffix,47,39,string,31,suffix).
+nw_variable_dependency(assignment,7,add_suffix,47,39,string,34,string).
