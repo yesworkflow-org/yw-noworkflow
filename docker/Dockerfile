@@ -8,13 +8,13 @@ RUN echo '***** Install packages REQUIRED for creating this image *****' \
     && apt-get -y install apt-utils curl makepasswd gcc make
 
 RUN echo '***** Install packages required by YesWorkflow and noWorkflow *****' \
-    && apt-get -y install graphviz python3 python3-pip expect
+    && apt-get -y install graphviz python3 python3-pip swi-prolog expect
 
 RUN echo '***** Install packages NOT required to run yesworkflow *****' \
     && apt-get -y install sudo man less file tree vim emacs
 
 RUN echo '***** Install noWorkflow *****' \
-   && pip3 install noworkflow
+   && pip3 install noworkflow[all]
 
 RUN echo '***** Create the yw user *****' \
     && useradd yw --gid sudo \
