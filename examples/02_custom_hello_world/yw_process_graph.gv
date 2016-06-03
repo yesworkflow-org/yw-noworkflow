@@ -1,6 +1,6 @@
 
 digraph yw_data_view {
-rankdir=TB
+rankdir=LR
 fontname=Courier; fontsize=18; labelloc=t
 label="custom_hello_world"
 subgraph cluster_workflow { label=""; color=black; penwidth=2

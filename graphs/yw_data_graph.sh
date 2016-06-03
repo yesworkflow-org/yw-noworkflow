@@ -16,7 +16,7 @@ graph :-
 
     yw_workflow_script(W, WorkflowName, _, _),
 
-    gv_graph('yw_data_view', WorkflowName, 'TB'),
+    gv_graph('yw_data_view', WorkflowName, 'LR'),
 
         gv_cluster('workflow', 'black'),
             gv_node_style__data,

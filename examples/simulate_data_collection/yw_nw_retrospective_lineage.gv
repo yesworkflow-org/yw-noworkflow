@@ -12,20 +12,21 @@ load_screening_results
 transform_images
 node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
-cassette_id [shape=record rankdir=LR label="{<f0> [data11] cassette_id |<f1> [var77] cassette_id = q55}"]
-sample_spreadsheet [shape=record rankdir=LR label="{<f0> [data12] sample_spreadsheet |<f1> [var193] sample_spreadsheet = cassette_q55_spreadsheet.csv}"]
-sample_name [shape=record rankdir=LR label="{<f0> [data13] sample_name |<f1> [var356] sample_name = DRT240}"]
-sample_quality [shape=record rankdir=LR label="{<f0> [data14] sample_quality |<f1> [var357] sample_quality = 45}"]
-sample_score_cutoff [shape=record rankdir=LR label="{<f0> [data15] sample_score_cutoff |<f1> [var78] sample_score_cutoff = 12.0}"]
-data_redundancy [shape=record rankdir=LR label="{<f0> [data16] data_redundancy |<f1> [var79] data_redundancy = 0.0}"]
-accepted_sample [shape=record rankdir=LR label="{<f0> [data17] accepted_sample |<f1> [var375] accepted_sample = DRT240}"]
-num_images [shape=record rankdir=LR label="{<f0> [data19] num_images |<f1> [var377] num_images = 2}"]
-energies [shape=record rankdir=LR label="{<f0> [data20] energies |<f1> [var376] energies = [10000, 11000, 12000]}"]
-sample_id [shape=record rankdir=LR label="{<f0> [data22] sample_id |<f1> [var412] sample_id = DRT240}"]
-energy [shape=record rankdir=LR label="{<f0> [data23] energy |<f1> [var2836] energy = 11000}"]
-frame_number [shape=record rankdir=LR label="{<f0> [data24] frame_number |<f1> [var2837] frame_number = 2}"]
-raw_image [shape=record rankdir=LR label="{<f0> [data25] raw_image |<f1> [var2839] raw_image_file = run/raw/q55/DRT240/e11000/image_002.raw}"]
-corrected_image [shape=record rankdir=LR label="{<f0> [data27] corrected_image |<f1> [var3223] corrected_image_file = run/data/DRT240/DRT240_11000eV_002.img}"]
+cassette_id [shape=record rankdir=LR label="{<f0> [data11] cassette_id |<f1> [var80] cassette_id = q55}"]
+sample_spreadsheet [shape=record rankdir=LR label="{<f0> [data12] sample_spreadsheet |<f1> [var198] sample_spreadsheet_file = cassette_q55_spreadsheet.csv}"]
+sample_name [shape=record rankdir=LR label="{<f0> [data13] sample_name |<f1> [var361] sample_name = DRT240}"]
+sample_quality [shape=record rankdir=LR label="{<f0> [data14] sample_quality |<f1> [var362] sample_quality = 45}"]
+sample_score_cutoff [shape=record rankdir=LR label="{<f0> [data15] sample_score_cutoff |<f1> [var81] sample_score_cutoff = 12.0}"]
+data_redundancy [shape=record rankdir=LR label="{<f0> [data16] data_redundancy |<f1> [var82] data_redundancy = 0.0}"]
+accepted_sample [shape=record rankdir=LR label="{<f0> [data17] accepted_sample |<f1> [var381] accepted_sample = DRT240}"]
+num_images [shape=record rankdir=LR label="{<f0> [data19] num_images |<f1> [var379] num_images = 2}"]
+energies [shape=record rankdir=LR label="{<f0> [data20] energies |<f1> [var382] energies = [10000, 11000, 12000]}"]
+sample_id [shape=record rankdir=LR label="{<f0> [data22] sample_id |<f1> [var417] sample_id = DRT240}"]
+energy [shape=record rankdir=LR label="{<f0> [data23] energy |<f1> [var2838] energy = 11000}"]
+frame_number [shape=record rankdir=LR label="{<f0> [data24] frame_number |<f1> [var2839] frame_number = 2}"]
+raw_image [shape=record rankdir=LR label="{<f0> [data25] raw_image |<f1> [var2841] raw_image_file = run/raw/q55/DRT240/e11000/image_002.raw}"]
+calibration_image [shape=record rankdir=LR label="{<f0> [data26] calibration_image |<f1> [var83] calibration_image_file = calibration.img}"]
+corrected_image [shape=record rankdir=LR label="{<f0> [data27] corrected_image |<f1> [var3224] corrected_image_file = run/data/DRT240/DRT240_11000eV_002.img}"]
 }}
 subgraph cluster_inflows { label=""; color=white; penwidth=2
 subgraph cluster_inflows_inner { label=""; color=white
@@ -41,21 +42,21 @@ subgraph cluster_outflows_inner { label=""; color=white
 node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
 corrected_image_outflow [label=""]
 }}
-raw_image -> transform_images
-num_images -> collect_data_set
-sample_name -> calculate_strategy
 frame_number -> transform_images
 energy -> transform_images
 energies -> collect_data_set
 sample_quality -> calculate_strategy
-sample_spreadsheet -> load_screening_results
-calibration_image -> transform_images
 sample_score_cutoff -> calculate_strategy
-data_redundancy -> calculate_strategy
 cassette_id -> collect_data_set
 cassette_id -> load_screening_results
+data_redundancy -> calculate_strategy
+calibration_image -> transform_images
 sample_id -> transform_images
+num_images -> collect_data_set
+sample_spreadsheet -> load_screening_results
+sample_name -> calculate_strategy
 accepted_sample -> collect_data_set
+raw_image -> transform_images
 load_screening_results -> sample_name
 load_screening_results -> sample_quality
 calculate_strategy -> accepted_sample

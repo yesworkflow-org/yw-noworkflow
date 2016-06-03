@@ -15,32 +15,32 @@ yw_workflow_script(1,simulate_data_collection,1,'simulate_data_collection.py').
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_program(WorkflowId, ProgramName, WorkflowId, SourceId, BeginLine, EndLine).
 %...................................................................................................
-yw_program(1,simulate_data_collection,nil,1,12,153).
-yw_program(2,initialize_run,1,1,32,45).
-yw_program(3,load_screening_results,1,1,49,59).
-yw_program(4,calculate_strategy,1,1,63,75).
-yw_program(5,log_rejected_sample,1,1,79,90).
-yw_program(6,collect_data_set,1,1,94,112).
-yw_program(7,transform_images,1,1,116,131).
-yw_program(8,log_average_image_intensity,1,1,135,149).
+yw_program(1,simulate_data_collection,nil,1,12,127).
+yw_program(2,initialize_run,1,1,27,40).
+yw_program(3,load_screening_results,1,1,44,53).
+yw_program(4,calculate_strategy,1,1,57,63).
+yw_program(5,log_rejected_sample,1,1,67,77).
+yw_program(6,collect_data_set,1,1,81,95).
+yw_program(7,transform_images,1,1,99,109).
+yw_program(8,log_average_image_intensity,1,1,113,123).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow(WorkflowId, WorkflowName, ParentWorkflowId, SourceId, BeginLine, EndLine).
 %...................................................................................................
-yw_workflow(1,simulate_data_collection,nil,1,12,153).
+yw_workflow(1,simulate_data_collection,nil,1,12,127).
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow_step(StepId, StepName, WorkflowId, SourceId, BeginLine, EndLine).
 %...................................................................................................
-yw_workflow_step(2,initialize_run,1,1,32,45).
-yw_workflow_step(3,load_screening_results,1,1,49,59).
-yw_workflow_step(4,calculate_strategy,1,1,63,75).
-yw_workflow_step(5,log_rejected_sample,1,1,79,90).
-yw_workflow_step(6,collect_data_set,1,1,94,112).
-yw_workflow_step(7,transform_images,1,1,116,131).
-yw_workflow_step(8,log_average_image_intensity,1,1,135,149).
+yw_workflow_step(2,initialize_run,1,1,27,40).
+yw_workflow_step(3,load_screening_results,1,1,44,53).
+yw_workflow_step(4,calculate_strategy,1,1,57,63).
+yw_workflow_step(5,log_rejected_sample,1,1,67,77).
+yw_workflow_step(6,collect_data_set,1,1,81,95).
+yw_workflow_step(7,transform_images,1,1,99,109).
+yw_workflow_step(8,log_average_image_intensity,1,1,113,123).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -105,10 +105,10 @@ yw_step_input(8,log_average_image_intensity,in,47,corrected_image_file,27,correc
 yw_step_input(7,transform_images,param,36,frame_number,24,frame_number).
 yw_step_input(7,transform_images,param,35,energy,23,energy).
 yw_step_input(7,transform_images,param,34,sample_id,22,sample_id).
-yw_step_input(7,transform_images,in,38,calibration_image_path,26,calibration_image).
+yw_step_input(7,transform_images,in,38,calibration_image_file,26,calibration_image).
 yw_step_input(7,transform_images,in,37,raw_image_file,25,raw_image).
 yw_step_input(3,load_screening_results,param,11,cassette_id,11,cassette_id).
-yw_step_input(3,load_screening_results,in,12,sample_spreadsheet,12,sample_spreadsheet).
+yw_step_input(3,load_screening_results,in,12,sample_spreadsheet_file,12,sample_spreadsheet).
 yw_step_input(1,simulate_data_collection,param,3,data_redundancy,3,data_redundancy).
 yw_step_input(1,simulate_data_collection,param,2,sample_score_cutoff,2,sample_score_cutoff).
 yw_step_input(1,simulate_data_collection,param,1,cassette_id,1,cassette_id).
@@ -205,7 +205,7 @@ yw_qualified_name(port,8,'simulate_data_collection->collection_log').
 yw_qualified_name(port,9,'simulate_data_collection->rejection_log').
 yw_qualified_name(port,10,'simulate_data_collection.initialize_run->run_log').
 yw_qualified_name(port,11,'simulate_data_collection.load_screening_results<-cassette_id').
-yw_qualified_name(port,12,'simulate_data_collection.load_screening_results<-sample_spreadsheet').
+yw_qualified_name(port,12,'simulate_data_collection.load_screening_results<-sample_spreadsheet_file').
 yw_qualified_name(port,13,'simulate_data_collection.load_screening_results->sample_name').
 yw_qualified_name(port,14,'simulate_data_collection.load_screening_results->sample_quality').
 yw_qualified_name(port,15,'simulate_data_collection.calculate_strategy<-sample_score_cutoff').
@@ -231,7 +231,7 @@ yw_qualified_name(port,34,'simulate_data_collection.transform_images<-sample_id'
 yw_qualified_name(port,35,'simulate_data_collection.transform_images<-energy').
 yw_qualified_name(port,36,'simulate_data_collection.transform_images<-frame_number').
 yw_qualified_name(port,37,'simulate_data_collection.transform_images<-raw_image_file').
-yw_qualified_name(port,38,'simulate_data_collection.transform_images<-calibration_image_path').
+yw_qualified_name(port,38,'simulate_data_collection.transform_images<-calibration_image_file').
 yw_qualified_name(port,39,'simulate_data_collection.transform_images->corrected_image_file').
 yw_qualified_name(port,40,'simulate_data_collection.transform_images->total_intensity').
 yw_qualified_name(port,41,'simulate_data_collection.transform_images->pixel_count').
