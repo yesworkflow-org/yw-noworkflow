@@ -41,7 +41,7 @@ GRAPHS = $(YW_GRAPHS) $(YW_NW_GRAPHS)
 PNGS = $(GRAPHS:.gv=.png)
 PDFS = $(GRAPHS:.gv=.pdf)
 
-all: $(QUERY_OUTPUTS) $(GRAPHS) $(PNGS) $(PDFS)
+all: $(QUERY_OUTPUTS) $(GRAPHS) $(PDFS)
 run: $(RUN_OUTPUTS)
 yw: $(YW_FACTS) $(YW_VIEWS) $(YW_GRAPHS)
 nw: $(NW_FACTS) $(NW_VIEWS) $(NW_GRAPHS)
