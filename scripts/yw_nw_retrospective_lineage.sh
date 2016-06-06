@@ -14,8 +14,8 @@ set_prolog_flag(unknown, fail).
 ['../../rules/yw_rules'].
 ['../../rules/nw_rules'].
 ['../../rules/yw_nw_rules'].
-['../../graphs/graph_rules'].
-['../../graphs/yw_graph_rules'].
+['../../rules/graph_rules'].
+['../../rules/yw_graph_rules'].
 
 [user].
 

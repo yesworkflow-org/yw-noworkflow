@@ -8,8 +8,8 @@ set_prolog_flag(unknown, fail).
 
 [yw_views].
 ['../../rules/yw_rules'].
-['../../graphs/graph_rules'].
-['../../graphs/yw_graph_rules'].
+['../../rules/graph_rules'].
+['../../rules/yw_graph_rules'].
 
 [user].
 graph :-
