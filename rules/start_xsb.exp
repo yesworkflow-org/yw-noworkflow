@@ -20,7 +20,7 @@ send {['../../rules/nw_rules'].}
 send \n
 send {['../../rules/yw_nw_rules'].}
 send \n
-send {['../../graphs/graph_rules'].}
+send {['../../graphs/gv_rules'].}
 send \n
 send {['../../graphs/yw_graph_rules'].}
 send \n
