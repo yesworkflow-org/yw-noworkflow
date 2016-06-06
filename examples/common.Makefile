@@ -11,14 +11,19 @@ YW_MODEL_OPTIONS = -c extract.language=python \
                    -c model.factsfile=$(YW_MODEL_FACTS) \
                    -c query.engine=xsb
 
+NW_TRACER_DEPTH = 3
 NW_FACTS = facts/nw_facts.P
 NW_VIEWS = nw_views.P
 
 YW_NW_VIEWS = yw_nw_views.P
 
-RUN_SCRIPT = run.sh
 RUN_STDOUT = run_outputs.txt
 RUN_OUTPUTS = $(RUN_STDOUT)
+
+ifndef SCRIPT_RUN_CMD
+SCRIPT_RUN_CMD = $(WORKFLOW_SCRIPT)
+endif
+
 
 RULES = $(RULES_DIR)/nw_views.P $(RULES_DIR)/yw_views.P $(RULES_DIR)/yw_nw_views.P
 QUERY_SCRIPT = query.sh
@@ -83,8 +88,9 @@ endif
 $(YW_VIEWS): $(YW_FACTS)
 	bash $(SCRIPTS_DIR)/materialize_yw_views.sh > $(YW_VIEWS)
 
-$(RUN_OUTPUTS): $(RUN_SCRIPT) $(WORKFLOW_SCRIPT)
-	bash $(RUN_SCRIPT) > $(RUN_STDOUT)
+$(RUN_OUTPUTS): $(WORKFLOW_SCRIPT)
+	now run -d $(NW_TRACER_DEPTH) -e Tracer $(SCRIPT_RUN_CMD) > $(RUN_STDOUT)
+	${POST_RUN_CMD}
 
 $(NW_FACTS): $(RUN_OUTPUTS)
 	mkdir -p facts

@@ -3,7 +3,7 @@
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_script_activation(Script, Command, ScriptAct, Docstring).
 %...................................................................................................
-nw_script_activation('custom_hello_world.py','run -e Tracer custom_hello_world.py',1,nil).
+nw_script_activation('custom_hello_world.py','run -d 3 -e Tracer custom_hello_world.py',1,nil).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -55,5 +55,5 @@ nw_variable_usage(7,6,20,greeting,'Back again!',14).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_dependency(Why, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................
-nw_variable_dependency(argument,4,print_greeting,8,13,greeting,12,second_greeting).
 nw_variable_dependency(argument,2,print_greeting,8,4,greeting,3,first_greeting).
+nw_variable_dependency(argument,4,print_greeting,8,13,greeting,12,second_greeting).

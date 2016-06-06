@@ -12,7 +12,7 @@
 %
 
 :- dynamic(trial/10).
-trial(1, nil, nil, 'hello_world.py', 'fdf46f8f820d73f5aec85eeb270b008d1a002165', 'run -e Tracer hello_world.py', nil, nil, 1, nil).
+trial(1, nil, nil, 'hello_world.py', 'fdf46f8f820d73f5aec85eeb270b008d1a002165', 'run -d 3 -e Tracer hello_world.py', nil, nil, 1, nil).
 
 %
 % FACT DEFINITION: tag(TrialId, Type, Name, Timestamp).
@@ -144,6 +144,6 @@ variable(1, 1, 4, 'print', 0, '<built-in function print>', nil).
 %
 
 :- dynamic(dependency/6).
-dependency(1, 1, 1, 3, 2, 1).
-dependency(1, 2, 2, 1, 0, 2).
+dependency(1, 1, 2, 1, 0, 2).
+dependency(1, 2, 1, 3, 2, 1).
 dependency(1, 3, 1, 3, 1, 4).
