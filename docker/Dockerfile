@@ -1,6 +1,8 @@
 
 FROM  java:8
 
+ENV VERSION 0.2.0.4
+
 RUN echo '***** Update packages *****' \
     && apt-get -y update
 

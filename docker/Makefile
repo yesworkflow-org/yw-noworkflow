@@ -1,6 +1,6 @@
 
 
-VERSION = 0.2.0.2
+VERSION = 0.2.0.4
 
 ORG = yesworkflow
 REPO = yw-noworkflow
