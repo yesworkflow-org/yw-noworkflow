@@ -1,19 +1,38 @@
 :- import concat_atom/2 from string.
 
-gv_nodestyle__atomic_step() :-
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% graphviz styles for YW prospective provenance graphs
+
+gv_nodestyle__atomic_step :-
     writeln('node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]').
 
-gv_nodestyle__subworkflow() :-
-    gv_nodestyle__atomic_step().
+gv_nodestyle__subworkflow :-
+    gv_nodestyle__atomic_step.
 
-gv_node_style__data() :-
+gv_node_style__data :-
     gv_nodestyle(box, 'rounded,filled', '#FFFFCC', 1, 'Helvetica').
 
-gv_node_style__param() :-
+gv_node_style__param :-
     gv_nodestyle(box, 'rounded,filled', '#FFFFFF', 1, 'Helvetica').
 
-gv_node_style__workflow_port() :-
+gv_node_style__workflow_port :-
     gv_nodestyle(circle, '#FFFFFF', 1, '0.2').
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% graphviz styles for YW-NW retrospective provenance graphs
+
+gv_nodestyle__atomic_step_invocation :-
+    writeln('node[shape=box style=filled fillcolor="#66883F" peripheries=1 fontname="Courier-Bold" fontcolor=white]').
+
+gv_nodestyle__data_value :-
+    writeln('node[shape=box style="rounded,filled" fillcolor="#D18E2C" peripheries=1 fontname="Helvetica-Bold"]').
+
+gv_nodestyle__param_value :-
+    writeln('node[shape=box style="rounded,filled" fillcolor="#222222" peripheries=1 fontname="Helvetica-Bold"]').
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 gv_nodes__atomic_steps(WorkflowId) :-
     yw_workflow_step(StepId, StepName, WorkflowId, _, _, _),
@@ -73,9 +92,21 @@ gv_nodes__data__upstream_of_data(WorkflowId, DownstreamDataId) :-
     ;
     true.
 
-gv_nodes__data_values__upstream_of_data_product(WorkflowId, ProductDataId, ProductVarValue) :-
-    nw_variable_for_yw_data(ProductVarId, ProductVarName, _, ProductDataId, _),
+gv_nodes__data_values__upstream_of_data_product(ProductDataId, ProductVarValue) :-
     data_values_upstream_of_data_product(ProductDataId, DataId, DataName, VarId, VarName, VarValue, ProductVarId, ProductVarName, ProductVarValue),
+    nw_variable_for_yw_data(ProductVarId, ProductVarName, _, ProductDataId, _),
+    not yw_data_only_used_as_param(DataId),
+    concat_atom(['[data', DataId, '] ', DataName], Top),
+    concat_atom(['[var', VarId, '] ', VarName, ' = ', VarValue], Bottom),
+    gv_record_node(DataName, Top, Bottom),
+    fail
+    ;
+    true.
+
+gv_nodes__param_values__upstream_of_data_product(ProductDataId, ProductVarValue) :-
+    data_values_upstream_of_data_product(ProductDataId, DataId, DataName, VarId, VarName, VarValue, ProductVarId, ProductVarName, ProductVarValue),
+    nw_variable_for_yw_data(ProductVarId, ProductVarName, _, ProductDataId, _),
+    yw_data_only_used_as_param(DataId),
     concat_atom(['[data', DataId, '] ', DataName], Top),
     concat_atom(['[var', VarId, '] ', VarName, ' = ', VarValue], Bottom),
     gv_record_node(DataName, Top, Bottom),

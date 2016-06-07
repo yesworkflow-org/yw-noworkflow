@@ -13,7 +13,6 @@ data_values_upstream_of_data_product(DownstreamDataId, DataId, DataName, VarId, 
     nw_dependency(_, VarId, VarName, VarValue, _, ProductVarId, ProductVarName, ProductVarValue),
     nw_variable_for_yw_data(VarId, _, _, DataId, DataName),
     yw_data_downstream(DataId, DownstreamDataId).
-%    yw_data(DataId, _, WorkflowId, _).
 
 data_values_upstream_of_data_product_9 :-
     printall(data_values_upstream_of_data_product(_,_,_,_,_,_,_,_,_)).

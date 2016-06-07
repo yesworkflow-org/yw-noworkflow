@@ -3,7 +3,7 @@
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_script_activation(Script, Command, ScriptAct, Docstring).
 %...................................................................................................
-nw_script_activation('custom_hello_world.py','run -d 3 -e Tracer custom_hello_world.py',1,nil).
+nw_script_activation('custom_hello_world.py','run -e Tracer -d 3 custom_hello_world.py',1,nil).
 
 
 %---------------------------------------------------------------------------------------------------

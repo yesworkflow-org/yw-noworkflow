@@ -89,7 +89,7 @@ $(YW_VIEWS): $(YW_FACTS)
 	bash $(SCRIPTS_DIR)/materialize_yw_views.sh > $(YW_VIEWS)
 
 $(RUN_OUTPUTS): $(WORKFLOW_SCRIPT)
-	now run -d $(NW_TRACER_DEPTH) -e Tracer $(SCRIPT_RUN_CMD) > $(RUN_STDOUT)
+	now run -e Tracer -d $(NW_TRACER_DEPTH) $(SCRIPT_RUN_CMD) > $(RUN_STDOUT)
 	${POST_RUN_CMD}
 
 $(NW_FACTS): $(RUN_OUTPUTS)
@@ -115,6 +115,11 @@ $(YW_PROSPECTIVE_LINEAGE_GRAPH).gv: $(YW_VIEWS)
 	bash $(SCRIPTS_DIR)/$(YW_PROSPECTIVE_LINEAGE_GRAPH).sh \
 		$(PROSPECTIVE_LINEAGE_DATA) \
 		> $(YW_PROSPECTIVE_LINEAGE_GRAPH).gv
+
+#nw_lineage:
+#	now helper df_style.py
+#	now dataflow -v 55 -f $(RETROSPECTIVE_LINEAGE_VALUE) -m simulation | python df_style.py -d BT -e | dot -Tpng -o nw-filtered-lineage.dot
+#	rm df_style.py
 
 $(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).gv : $(YW_NW_VIEWS)
 	bash $(SCRIPTS_DIR)/$(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).sh \
