@@ -33,16 +33,20 @@ YW_DATA_GRAPH = yw_data_graph
 YW_PROCESS_GRAPH = yw_process_graph
 YW_COMBINED_GRAPH = yw_combined_graph
 YW_PROSPECTIVE_LINEAGE_GRAPH = yw_prospective_lineage
-YW_NW_RETROSPECTIVE_LINEAGE_GRAPH = yw_nw_retrospective_lineage
-
 YW_GRAPHS = $(YW_DATA_GRAPH).gv \
             $(YW_PROCESS_GRAPH).gv \
 	        $(YW_COMBINED_GRAPH).gv \
 	        $(YW_PROSPECTIVE_LINEAGE_GRAPH).gv
 
+ifdef NW_FILTERED_LINEAGE
+NW_FILTERED_LINEAGE_GRAPH = nw_filtered_lineage_graph
+NW_GRAPHS = $(NW_FILTERED_LINEAGE_GRAPH).gv
+endif
+
+YW_NW_RETROSPECTIVE_LINEAGE_GRAPH = yw_nw_retrospective_lineage
 YW_NW_GRAPHS = $(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).gv
 
-GRAPHS = $(YW_GRAPHS) $(YW_NW_GRAPHS)
+GRAPHS = $(YW_GRAPHS) $(NW_GRAPHS) $(YW_NW_GRAPHS)
 PNGS = $(GRAPHS:.gv=.png)
 PDFS = $(GRAPHS:.gv=.pdf)
 
@@ -74,7 +78,8 @@ endif
 
 ifdef VALUE
 RETROSPECTIVE_LINEAGE_VALUE= "$(VALUE)"
-.PHONY: $(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).gv
+.PHONY: $(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).gv \
+		$(NW_FILTERED_LINEAGE_GRAPH).gv
 endif
 
 $(YW_FACTS): $(WORKFLOW_SCRIPT)
@@ -116,10 +121,9 @@ $(YW_PROSPECTIVE_LINEAGE_GRAPH).gv: $(YW_VIEWS)
 		$(PROSPECTIVE_LINEAGE_DATA) \
 		> $(YW_PROSPECTIVE_LINEAGE_GRAPH).gv
 
-#nw_lineage:
-#	now helper df_style.py
-#	now dataflow -v 55 -f $(RETROSPECTIVE_LINEAGE_VALUE) -m simulation | python df_style.py -d BT -e | dot -Tpng -o nw-filtered-lineage.dot
-#	rm df_style.py
+$(NW_FILTERED_LINEAGE_GRAPH).gv: $(NW_FACTS)
+	now helper df_style.py
+	now dataflow -v 55 -f $(RETROSPECTIVE_LINEAGE_VALUE) -m simulation | python df_style.py -d BT -e > nw_filtered_lineage_graph.gv
 
 $(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).gv : $(YW_NW_VIEWS)
 	bash $(SCRIPTS_DIR)/$(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).sh \
@@ -130,7 +134,7 @@ $(QUERY_OUTPUTS): $(QUERY_SCRIPT) $(YW_VIEWS) $(NW_VIEWS) $(YW_NW_VIEWS) $(RULES
 	bash $(QUERY_SCRIPT) > $(QUERY_OUTPUTS)
 
 clean:
-	rm -rf facts .noworkflow *.xwam *.gv *.png *.pdf *.P *.txt $(RULES_DIR)/*.xwam
+	rm -rf facts .noworkflow *.xwam *.gv *.png *.pdf *.P *.txt  df_style.py $(RULES_DIR)/*.xwam
 
 repl: $(YW_NW_VIEWS)
 	expect $(RULES_DIR)/start_xsb.exp

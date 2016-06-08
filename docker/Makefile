@@ -22,4 +22,4 @@ pull:
 
 run:
 	echo Interactively run the specified version of the image: ${VERSION}
-	docker run -it ${IMAGE}:${VERSION}
+	docker run -it -v $(HOME):$(HOME) ${IMAGE}:${VERSION}
