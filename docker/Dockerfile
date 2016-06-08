@@ -22,7 +22,8 @@ RUN echo '***** Create the yw user *****' \
     && useradd yw --gid sudo \
                  --shell /bin/bash \
                  --create-home \
-                 --password `echo yw | makepasswd --crypt-md5 --clearfrom - | cut -b11-`
+    && echo "yw ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/yw \
+    && chmod 0440 /etc/sudoers.d/yw
 
 # perform remaining commands as the user and within the user's home directory
 ENV HOME /home/yw
