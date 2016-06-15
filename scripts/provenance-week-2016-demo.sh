@@ -4,11 +4,7 @@
 # Rather this is for copy-pasting, one command at a time,
 # while explaining what's going on. 
 
-# Get the docker image (note: use "sudo" on Linux)
-
-docker run -it -v $HOME:$HOME yesworkflow/yw-noworkflow:latest
-
-# ... or might need to use explicit version id: 
+# Get the docker image (note: use "sudo" on Linux), using an explicit version id: 
 docker run -it -v $HOME:$HOME yesworkflow/yw-noworkflow:0.2.0.6
 
 # change into demo directory 
