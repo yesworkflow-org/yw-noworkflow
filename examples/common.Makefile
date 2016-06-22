@@ -123,7 +123,7 @@ $(YW_PROSPECTIVE_LINEAGE_GRAPH).gv: $(YW_VIEWS)
 
 $(NW_FILTERED_LINEAGE_GRAPH).gv: $(NW_FACTS)
 	now helper df_style.py
-	now dataflow -v 55 -f $(RETROSPECTIVE_LINEAGE_VALUE) -m simulation | python df_style.py -d BT -e > nw_filtered_lineage_graph.gv
+	now dataflow -v 55 -f $(RETROSPECTIVE_LINEAGE_VALUE) -m simulation | python df_style.py -d BT -e > $(NW_FILTERED_LINEAGE_GRAPH).gv
 
 $(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).gv : $(YW_NW_VIEWS)
 	bash $(SCRIPTS_DIR)/$(YW_NW_RETROSPECTIVE_LINEAGE_GRAPH).sh \

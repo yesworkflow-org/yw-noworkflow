@@ -1,6 +1,6 @@
 
 
-VERSION = 0.2.0.5
+VERSION = 0.2.0.6
 
 ORG = yesworkflow
 REPO = yw-noworkflow
@@ -15,6 +15,7 @@ build:
 push:
 	echo Push to Docker Hub the specified version of the image: ${VERSION}
 	docker push ${IMAGE}:${VERSION}
+	docker push ${IMAGE}:latest
 
 pull:
 	echo Pull from Docker Hub the specified version of the image: ${VERSION}
