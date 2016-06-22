@@ -1,28 +1,28 @@
-2016-06-22 14:36:43 Processing samples in cassette q55
-2016-06-22 14:36:43 Sample quality cutoff: 12.0
-2016-06-22 14:36:43 Sample DRT110 had score of 10
-2016-06-22 14:36:43 Rejected sample DRT110
-2016-06-22 14:36:43 Sample DRT240 had score of 45
-2016-06-22 14:36:43 Collecting data set for sample DRT240
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT240/e10000/image_001.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT240/DRT240_10000eV_001.img
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT240/e10000/image_002.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT240/DRT240_10000eV_002.img
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT240/e11000/image_001.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT240/DRT240_11000eV_001.img
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT240/e11000/image_002.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT240/DRT240_11000eV_002.img
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT240/e12000/image_001.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT240/DRT240_12000eV_001.img
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT240/e12000/image_002.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT240/DRT240_12000eV_002.img
-2016-06-22 14:36:43 Sample DRT322 had score of 28
-2016-06-22 14:36:43 Collecting data set for sample DRT322
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT322/e10000/image_001.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT322/DRT322_10000eV_001.img
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT322/e10000/image_002.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT322/DRT322_10000eV_002.img
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT322/e11000/image_001.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT322/DRT322_11000eV_001.img
-2016-06-22 14:36:43 Collecting image run/raw/q55/DRT322/e11000/image_002.raw
-2016-06-22 14:36:43 Wrote transformed image run/data/DRT322/DRT322_11000eV_002.img
+2016-06-22 22:13:28 Processing samples in cassette q55
+2016-06-22 22:13:28 Sample quality cutoff: 12.0
+2016-06-22 22:13:28 Sample DRT110 had score of 10
+2016-06-22 22:13:28 Rejected sample DRT110
+2016-06-22 22:13:28 Sample DRT240 had score of 45
+2016-06-22 22:13:28 Collecting data set for sample DRT240
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT240/e10000/image_001.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT240/DRT240_10000eV_001.img
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT240/e10000/image_002.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT240/DRT240_10000eV_002.img
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT240/e11000/image_001.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT240/DRT240_11000eV_001.img
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT240/e11000/image_002.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT240/DRT240_11000eV_002.img
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT240/e12000/image_001.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT240/DRT240_12000eV_001.img
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT240/e12000/image_002.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT240/DRT240_12000eV_002.img
+2016-06-22 22:13:28 Sample DRT322 had score of 28
+2016-06-22 22:13:28 Collecting data set for sample DRT322
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT322/e10000/image_001.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT322/DRT322_10000eV_001.img
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT322/e10000/image_002.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT322/DRT322_10000eV_002.img
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT322/e11000/image_001.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT322/DRT322_11000eV_001.img
+2016-06-22 22:13:28 Collecting image run/raw/q55/DRT322/e11000/image_002.raw
+2016-06-22 22:13:28 Wrote transformed image run/data/DRT322/DRT322_11000eV_002.img

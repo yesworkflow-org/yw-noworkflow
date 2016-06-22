@@ -12,12 +12,12 @@ all:
 	for dir in $(SUBDIRS); do \
 		echo; \
 		echo "---------- Building $$dir --------------------" ;	\
-		make -C $$dir all; \
+		$(MAKE) -C $$dir all; \
 	done
 
 clean:
 	for dir in $(SUBDIRS); do \
 		echo; \
 		echo "---------- Cleaning $$dir --------------------" ; \
-		make -C $$dir clean; \
+		$(MAKE) -C $$dir clean; \
 	done
