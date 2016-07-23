@@ -1,355 +1,85 @@
 digraph dependency {
     rankdir=BT;
     node[fontsize=20]
+    subgraph cluster_2  {
+        color="#3A85B9";
+        fontsize=30;
+        label = "run_logger";
+    }
     subgraph cluster_3  {
         color="#3A85B9";
         fontsize=30;
-        label = "module.__build_class__";
-        subgraph cluster_4  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "run_logger";
-        }
+        label = "new_image_file";
     }
-    subgraph cluster_5  {
-        color="#3A85B9";
-        fontsize=30;
-        label = "module.__build_class__";
-        subgraph cluster_6  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "new_image_file";
-        }
-    }
-    v_1_56 [label="230 parser = <optparse.OptionParser object at 0x7f4bd35ae0b8>" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-    v_1_72 [label="251 parse_args = (<Values at 0x7f4bd3a4ca9 ... ibration.img'}>, ['q55'])" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
-    v_1_73 [label="251 args = ['q55']" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-    v_1_74 [label="251 options = <Values at 0x7f4bd3a4ca90 ... ile': 'calibration.img'}>" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-    subgraph cluster_14  {
+    v_1_49 [label="230 parser = <optparse.OptionParser instance at 0x10a7ab128>" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    v_1_66 [label="251 parse_args = (<Values at 0x10a7bd3b0:  ... ibration.img'}>, ['q55'])" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    v_1_67 [label="251 args = ['q55']" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    v_1_68 [label="251 options = <Values at 0x10a7bd3b0: { ... ile': 'calibration.img'}>" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    subgraph cluster_11  {
         color="#3A85B9";
         fontsize=30;
         label = "simulate_data_collection";
-        v_14_80 [label="24 cassette_id = 'q55'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_81 [label="24 sample_score_cutoff = 12.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_82 [label="24 data_redundancy = 0.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_80 [label="24 cassette_id = 'q55'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_81 [label="24 sample_score_cutoff = 12.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_82 [label="24 data_redundancy = 0.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        subgraph cluster_22  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "__init__";
-        }
-        subgraph cluster_25  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_32  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        v_14_197 [label="49 str.format" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
-        v_14_198 [label="49 sample_spreadsheet_file = 'cassette_q55_spreadsheet.csv'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_219 [label="50 spreadsheet_rows(sample_spreadsheet_file)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
-        subgraph cluster_46  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_53  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "calculate_strategy";
-        }
-        subgraph cluster_55  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_68  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        v_14_361 [label="50 sample_name = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_362 [label="50 sample_quality = 45" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        subgraph cluster_75  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "calculate_strategy";
-            v_75_377 [label="143 return = ('DRT240', None, 2, [10000, 11000, 12000])" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_363 [label="131 sample_name = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_364 [label="131 sample_quality = 45" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_365 [label="131 sample_score_cutoff = 12.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_366 [label="131 data_redundancy = 0.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_363 [label="131 sample_name = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_364 [label="131 sample_quality = 45" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_365 [label="131 sample_score_cutoff = 12.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_366 [label="131 data_redundancy = 0.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_368 [label="133 accepted_sample = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_369 [label="134 rejected_sample = None" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_370 [label="135 num_images = 2" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_371 [label="135 int(sample_quality * data_redundancy)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
-            v_75_373 [label="136 num_energies = 4" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_374 [label="136 int(sample_quality/sample_score_cutoff)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
-            v_75_376 [label="137 energies = [10000, 11000, 12000]" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_75_377 [label="143 return = ('DRT240', None, 2, [10000, 11000, 12000])" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        }
-        v_14_379 [label="61 num_images = 2" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_381 [label="61 energies = [10000, 11000, 12000]" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_382 [label="61 accepted_sample = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        subgraph cluster_77  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        v_14_417 [label="91 sample_id = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_453 [label="92 collect_next_image(casset ... _{frame_number:03d}.raw')" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
-        subgraph cluster_94  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_102  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_131  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_151  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_159  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_188  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_208  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_216  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_245  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_265  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        v_14_1511 [label="92 energy = 11000" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_1512 [label="92 frame_number = 2" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        v_14_1517 [label="106 str.format" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
-        subgraph cluster_273  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-            v_273_1519 [label="156 corrected_image_path = 'run/data/DRT240/DRT240_11000eV_002.img'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-            v_273_1519 [label="156 corrected_image_path = 'run/data/DRT240/DRT240_11000eV_002.img'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
-        }
-        subgraph cluster_302  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_322  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_330  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_359  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_379  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_387  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_416  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_426  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "collect_next_image";
-        }
-        subgraph cluster_430  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_437  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "calculate_strategy";
-        }
-        subgraph cluster_439  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_456  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_464  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_493  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_513  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_521  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_550  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_570  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_578  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_607  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_627  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_635  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "transform_image";
-        }
-        subgraph cluster_664  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "write";
-        }
-        subgraph cluster_674  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "collect_next_image";
-        }
-        subgraph cluster_675  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "spreadsheet_rows";
-        }
-        subgraph cluster_677  {
-            color="#3A85B9";
-            fontsize=30;
-            label = "__exit__";
-        }
+        v_11_74 [label="24 cassette_id = 'q55'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_75 [label="24 sample_score_cutoff = 12.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_76 [label="24 data_redundancy = 0.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_77 [label="24 calibration_image_file = 'calibration.img'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_74 [label="24 cassette_id = 'q55'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_75 [label="24 sample_score_cutoff = 12.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_76 [label="24 data_redundancy = 0.0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_77 [label="24 calibration_image_file = 'calibration.img'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_191 [label="49 str.format" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+        v_11_192 [label="49 sample_spreadsheet_file = 'cassette_q55_spreadsheet.csv'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_214 [label="50 spreadsheet_rows(sample_spreadsheet_file)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+        v_11_357 [label="50 sample_name = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_358 [label="50 sample_quality = 45" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_374 [label="61 calculate_strategy = ('DRT240', None, 2, [10000, 11000, 12000])" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+        v_11_376 [label="61 energies = [10000, 11000, 12000]" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_377 [label="61 num_images = 2" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_378 [label="61 accepted_sample = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_413 [label="91 sample_id = 'DRT240'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_451 [label="92 collect_next_image(casset ... _{frame_number:03d}.raw')" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+        v_11_1495 [label="92 energy = 11000" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_1496 [label="92 frame_number = 2" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_1498 [label="92 raw_image_file = 'run/raw/q55/DRT240/e11000/image_002.raw'" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+        v_11_1501 [label="106 str.format" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+        v_11_1707 [label="106 transform_image = (980, 10, 'run/data/DRT240/DRT240_11000eV_002.img')" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
     }
+    a_7 [label="calibration.img" fillcolor="white" fontcolor="black" shape="box" style="rounded,filled"];
     a_23 [label="run/data/DRT240/DRT240_11000eV_002.img" fillcolor="white" fontcolor="black" shape="box" style="rounded,filled"];
-    v_75_377 -> v_75_376 [style=""];
-    v_75_366 -> v_14_82 [style=""];
-    v_75_364 -> v_14_362 [style=""];
-    v_75_377 -> v_75_369 [style=""];
-    v_75_368 -> v_75_365 [style=""];
-    v_14_198 -> v_14_197 [style=""];
-    v_75_374 -> v_75_365 [style="dashed"];
-    v_75_370 -> v_75_365 [style=""];
-    v_14_81 -> v_1_74 [style=""];
-    v_14_82 -> v_1_74 [style=""];
-    v_75_363 -> v_14_361 [style=""];
-    v_75_377 -> v_75_368 [style=""];
-    v_14_1517 -> v_14_1511 [style="dashed"];
-    v_14_219 -> v_14_198 [style="dashed"];
-    v_75_370 -> v_75_364 [style=""];
-    v_75_374 -> v_75_364 [style="dashed"];
-    v_75_373 -> v_75_374 [style=""];
-    v_273_1519 -> v_14_1517 [style=""];
-    v_75_369 -> v_75_365 [style=""];
-    v_14_80 -> v_1_73 [style=""];
-    v_14_381 -> v_75_377 [style=""];
-    v_75_365 -> v_14_81 [style=""];
-    v_1_72 -> v_1_56 [style="dashed"];
-    v_1_73 -> v_1_72 [style=""];
-    v_14_453 -> v_14_80 [style="dashed"];
-    v_14_362 -> v_14_219 [style=""];
-    v_14_382 -> v_75_377 [style=""];
-    v_1_74 -> v_1_72 [style=""];
-    v_75_369 -> v_75_364 [style=""];
-    a_23 -> v_273_1519 [style="dashed"];
-    v_14_197 -> v_14_80 [style="dashed"];
-    v_75_371 -> v_75_366 [style="dashed"];
-    v_75_377 -> v_75_370 [style=""];
-    v_75_371 -> v_75_364 [style="dashed"];
-    v_75_376 -> v_75_364 [style=""];
-    v_75_376 -> v_75_365 [style=""];
-    v_14_1517 -> v_14_1512 [style="dashed"];
-    v_14_361 -> v_14_219 [style=""];
-    v_75_368 -> v_75_363 [style=""];
-    v_75_370 -> v_75_371 [style=""];
-    v_14_453 -> v_14_417 [style="dashed"];
-    v_75_373 -> v_75_365 [style=""];
-    v_75_373 -> v_75_364 [style=""];
-    v_14_1517 -> v_14_417 [style="dashed"];
-    v_14_417 -> v_14_382 [style=""];
-    v_14_453 -> v_14_379 [style="dashed"];
-    v_14_1511 -> v_14_453 [style=""];
-    v_14_453 -> v_14_381 [style="dashed"];
-    v_14_379 -> v_75_377 [style=""];
-    v_75_376 -> v_75_373 [style=""];
-    v_75_368 -> v_75_364 [style=""];
-    v_14_1512 -> v_14_453 [style=""];
+    v_11_378 -> v_11_374 [style=""];
+    v_11_77 -> v_1_68 [style=""];
+    v_11_75 -> v_1_68 [style=""];
+    v_11_451 -> v_11_74 [style="dashed"];
+    v_11_451 -> v_11_413 [style="dashed"];
+    v_11_1707 -> v_11_77 [style="dashed"];
+    v_11_451 -> v_11_376 [style="dashed"];
+    v_11_1501 -> v_11_413 [style="dashed"];
+    v_11_357 -> v_11_214 [style=""];
+    a_23 -> v_11_1707 [style="dashed"];
+    v_11_214 -> v_11_192 [style="dashed"];
+    v_11_1498 -> v_11_451 [style=""];
+    v_11_74 -> v_1_67 [style=""];
+    v_1_68 -> v_1_66 [style=""];
+    v_11_1501 -> v_11_1495 [style="dashed"];
+    v_11_76 -> v_1_68 [style=""];
+    v_1_67 -> v_1_66 [style=""];
+    v_11_377 -> v_11_374 [style=""];
+    v_11_1495 -> v_11_451 [style=""];
+    v_11_1707 -> a_7 [style="dashed"];
+    v_11_374 -> v_11_76 [style="dashed"];
+    v_11_1707 -> v_11_1498 [style="dashed"];
+    v_11_1707 -> v_11_1501 [style="dashed"];
+    v_1_66 -> v_1_49 [style="dashed"];
+    v_11_451 -> v_11_377 [style="dashed"];
+    v_11_192 -> v_11_191 [style=""];
+    v_11_413 -> v_11_378 [style=""];
+    v_11_358 -> v_11_214 [style=""];
+    v_11_1496 -> v_11_451 [style=""];
+    v_11_374 -> v_11_358 [style="dashed"];
+    v_11_1501 -> v_11_1496 [style="dashed"];
+    v_11_376 -> v_11_374 [style=""];
+    v_11_191 -> v_11_74 [style="dashed"];
+    v_11_374 -> v_11_357 [style="dashed"];
+    v_11_374 -> v_11_75 [style="dashed"];
 }
 

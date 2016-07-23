@@ -1,0 +1,19 @@
+EQ1:  What source files SF were YW annotations extracted from?
+./simulate_data_collection.py
+
+EQ2:  What are the names N of all program blocks?
+simulate_data_collection
+initialize_run
+load_screening_results
+calculate_strategy
+log_rejected_sample
+collect_data_set
+transform_images
+log_average_image_intensity
+
+EQ3:  What out ports are qualified with URIs?
+run_log
+rejection_log
+raw_image_file
+corrected_image_file
+collection_log

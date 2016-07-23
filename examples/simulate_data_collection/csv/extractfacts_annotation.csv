@@ -1,0 +1,96 @@
+annotation_id,source_id,line_number,tag,keyword,value
+1,1,12,begin,@begin,simulate_data_collection
+2,1,12,desc,@desc,Workflow for collecting diffraction data from high quality crystals in a cassette.
+3,1,13,param,@param,cassette_id
+4,1,13,desc,@desc,The unique ID of the cassette containing the crystals.
+5,1,14,param,@param,sample_score_cutoff
+6,1,14,desc,@desc,The minimum quality score required of crystals.
+7,1,15,param,@param,data_redundancy
+8,1,15,desc,@desc,The desired redundancy of the data sets collected.
+9,1,16,in,@in,sample_spreadsheet
+10,1,16,desc,@desc,CSV file giving quality score for each crystal.
+11,1,17,in,@in,calibration_image
+12,1,17,desc,@desc,File used to correct raw diffraction images.
+13,1,18,out,@out,corrected_image
+14,1,18,desc,@desc,The corrected diffraction images collected on all crystals.
+15,1,19,out,@out,run_log
+16,1,20,out,@out,collection_log
+17,1,21,out,@out,rejection_log
+18,1,27,begin,@begin,initialize_run
+19,1,27,desc,@desc,Create run directory and initialize log files.
+20,1,28,out,@out,run_log
+21,1,28,uri,@uri,file:run/run_log.txt
+22,1,40,end,@end,initialize_run
+23,1,44,begin,@begin,load_screening_results
+24,1,44,desc,@desc,Load sample information from spreadsheet.
+25,1,45,param,@param,cassette_id
+26,1,46,in,@in,sample_spreadsheet_file
+27,1,46,as,@as,sample_spreadsheet
+28,1,46,uri,@uri,file:cassette_{cassette_id}_spreadsheet.csv
+29,1,47,out,@out,sample_name
+30,1,47,out,@out,sample_quality
+31,1,53,end,@end,load_screening_results
+32,1,57,begin,@begin,calculate_strategy
+33,1,57,desc,@desc,Reject unsuitable crystals and compute \n best data sets to collect for accepted crystals.
+34,1,58,param,@param,sample_score_cutoff
+35,1,58,param,@param,data_redundancy
+36,1,58,param,@param,sample_name
+37,1,58,param,@param,sample_quality
+38,1,59,out,@out,accepted_sample
+39,1,59,out,@out,rejected_sample
+40,1,59,out,@out,num_images
+41,1,59,out,@out,energies
+42,1,63,end,@end,calculate_strategy
+43,1,67,begin,@begin,log_rejected_sample
+44,1,67,desc,@desc,Record which samples were rejected.
+45,1,68,param,@param,cassette_id
+46,1,68,param,@param,rejected_sample
+47,1,69,out,@out,rejection_log
+48,1,69,uri,@uri,file:run/rejected_samples.txt
+49,1,77,end,@end,log_rejected_sample
+50,1,81,begin,@begin,collect_data_set
+51,1,81,desc,@desc,Collect data set using the given data collection parameters.
+52,1,82,param,@param,cassette_id
+53,1,82,param,@param,num_images
+54,1,82,param,@param,accepted_sample
+55,1,82,param,@param,energies
+56,1,83,out,@out,sample_id
+57,1,83,desc,@desc,The crystal that the diffraction image was collected from.
+58,1,84,out,@out,energy
+59,1,84,desc,@desc,Energy (in eV) at which the diffraction image was collected.
+60,1,85,out,@out,frame_number
+61,1,85,desc,@desc,Index of diffraction image within data set.
+62,1,86,out,@out,raw_image_file
+63,1,86,as,@AS,raw_image
+64,1,86,desc,@desc,Path of file storing the raw diffraction image.
+65,1,87,uri,@uri,file:run/raw/{cassette_id}/{sample_id}/e{energy}/image_{frame_number}.raw
+66,1,95,end,@end,collect_data_set
+67,1,99,begin,@begin,transform_images
+68,1,99,desc,@desc,Correct raw image using the detector calibration image.
+69,1,100,param,@param,sample_id
+70,1,100,param,@param,energy
+71,1,100,param,@param,frame_number
+72,1,101,in,@in,raw_image_file
+73,1,101,as,@AS,raw_image
+74,1,102,in,@in,calibration_image_file
+75,1,102,as,@AS,calibration_image
+76,1,102,uri,@uri,file:calibration.img
+77,1,103,out,@out,corrected_image_file
+78,1,103,as,@AS,corrected_image
+79,1,103,uri,@uri,file:run/data/{sample_id}/{sample_id}_{energy}eV_{frame_number}.img
+80,1,104,out,@out,total_intensity
+81,1,104,out,@out,pixel_count
+82,1,109,end,@end,transform_images
+83,1,113,begin,@begin,log_average_image_intensity
+84,1,113,desc,@desc,Record statistics about each diffraction image.
+85,1,114,param,@param,cassette_id
+86,1,114,param,@param,sample_id
+87,1,114,param,@param,frame_number
+88,1,114,param,@param,total_intensity
+89,1,114,param,@param,pixel_count
+90,1,115,in,@in,corrected_image_file
+91,1,115,as,@AS,corrected_image
+92,1,116,out,@out,collection_log
+93,1,116,uri,@uri,file:run/collected_images.csv
+94,1,123,end,@end,log_average_image_intensity
+95,1,127,end,@end,simulate_data_collection

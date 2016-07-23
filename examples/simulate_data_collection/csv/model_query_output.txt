@@ -1,0 +1,96 @@
+
+MQ1:  Where is the definition of block simulate_data_collection.collect_data_set ?
+Source file: ./simulate_data_collection.py. Start Line: 81, End Line: 95 
+
+MQ2:  What is the name and description of the top-level workflow?
+WorkflowName: simulate_data_collection. Description: Workflow for collecting diffraction data from high quality crystals in a cassette.
+
+MQ3:  What are the names of any top-level functions?
+
+MQ4:  What are the names of the programs comprising the top-level workflow?
+SubProgram Name: initialize_run
+SubProgram Name: load_screening_results
+SubProgram Name: calculate_strategy
+SubProgram Name: log_rejected_sample
+SubProgram Name: collect_data_set
+SubProgram Name: transform_images
+SubProgram Name: log_average_image_intensity
+
+MQ5:  What are the names and descriptions of the inputs to the top-level workflow?
+InputPortName: cassette_id. Description: The unique ID of the cassette containing the crystals.
+InputPortName: sample_score_cutoff. Description: The minimum quality score required of crystals.
+InputPortName: data_redundancy. Description: The desired redundancy of the data sets collected.
+InputPortName: sample_spreadsheet. Description: CSV file giving quality score for each crystal.
+InputPortName: calibration_image. Description: File used to correct raw diffraction images.
+
+MQ6:  What data is output by program block simulate_data_collection.collect_data_set ?
+Data Name: sample_id. Description: The crystal that the diffraction image was collected from.
+Data Name: energy. Description: Energy (in eV) at which the diffraction image was collected.
+Data Name: frame_number. Description: Index of diffraction image within data set.
+Data Name: raw_image. Description: Path of file storing the raw diffraction image.
+
+MQ7: What program blocks provide input directly to simulate_data_collection.collect_data_set ?
+simulate_data_collection.calculate_strategy
+
+MQ8: What programs have input ports that receive data simulate_data_collection[raw_image] ?
+simulate_data_collection.transform_images
+
+MQ9: How many ports read data simulate_data_collection[raw_image] ?
+1 ports read data simulate_data_collection[raw_image]
+
+MQ10: How many data are read by more than 1 port in workflow?
+3 data are read by more than port in workflow
+
+MQ11: What program blocks are immediately downstream of simulate_data_collection.collect_data_set ?
+transform_images
+log_average_image_intensity
+
+MQ12: What program blocks are immediately upstream of simulate_data_collection.collect_data_set ?
+calculate_strategy
+
+MQ13: What program blocks are upstream of simulate_data_collection.collect_data_set ?
+load_screening_results
+calculate_strategy
+
+MQ14: What program blocks are downstream of simulate_data_collection.collect_data_set ?
+transform_images
+log_average_image_intensity
+
+MQ15: What data is immediately downstream of simulate_data_collection[raw_image] ?
+corrected_image
+total_intensity
+pixel_count
+
+MQ16: What data is immediately upstream of simulate_data_collection[raw_image] ?
+cassette_id
+accepted_sample
+num_images
+energies
+
+MQ17: What data is downstream of simulate_data_collection[raw_image] ?
+corrected_image
+total_intensity
+pixel_count
+collection_log
+
+MQ18: What data is uptream of simulate_data_collection[raw_image] ?
+cassette_id
+sample_spreadsheet
+sample_name
+sample_quality
+sample_score_cutoff
+data_redundancy
+accepted_sample
+num_images
+energies
+
+MQ19: What URI variables are associated with writes of data simulate_data_collection[raw_image] ?
+cassette_id
+energy
+frame_number
+sample_id
+
+MQ20: What URI variables do data written to  simulate_data_collection[raw_image] and simulate_data_collection[corrected_image]  have in common?
+sample_id
+energy
+frame_number
