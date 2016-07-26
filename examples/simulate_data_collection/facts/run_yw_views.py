@@ -83,8 +83,8 @@ def yw_workflow_step():
         not function(StepId),
         WorkflowId \== 'nil'.
         """
-    view = """DROP TABLE IF EXISTS yw_workflow_script;
-        CREATE TABLE yw_workflow_script AS
+    view = """DROP TABLE IF EXISTS yw_workflow_step;
+        CREATE TABLE yw_workflow_step AS
         SELECT p.* FROM yw_program p
         WHERE NOT EXISTS (SELECT * FROM yw.modelfacts_function)
         AND p.workflow_id IS NOT NULL;
@@ -216,10 +216,10 @@ def yw_flow():
         """
     view = """DROP TABLE IF EXISTS yw_flow;
         CREATE TABLE yw_flow AS
-        SELECT input.program_id source_program_id, input.program_name source_program_name, 
-        input.port_id source_port_id, input.port_name source_port_name, 
-        input.data_id, input.data_name, output.port_id sink_port_id, output.port_name sink_port_name, 
-        output.program_id sink_program_id, output.program_name sink_program_name
+        SELECT output.program_id source_program_id, output.program_name source_program_name,
+        output.port_id source_port_id, output.port_name source_port_name,
+        output.data_id, output.data_name, input.port_id sink_port_id, input.port_name sink_port_name,
+        input.program_id sink_program_id, input.program_name sink_program_name
         FROM yw_step_input input JOIN yw_step_output output ON input.data_id = output.data_id;
         """
     cursor.executescript(view)
@@ -301,7 +301,7 @@ def yw_description():
     cursor.executescript(view)
 
 
-def run_rules():
+def run_views():
     yw_source_file()
     yw_parent_workflow()
     yw_program()
@@ -326,7 +326,7 @@ if __name__ == '__main__':
     cursor = connection.cursor()
     cursor.execute("ATTACH '../csv/facts.db' as yw")
     
-    run_rules()
+    run_views()
     
     cursor.execute("DETACH database yw")
     cursor.close()

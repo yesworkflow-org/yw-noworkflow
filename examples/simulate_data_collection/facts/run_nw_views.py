@@ -145,7 +145,7 @@ def nw_variable_assignment():
     """
     view = """DROP TABLE IF EXISTS nw_variable_assignment;
             CREATE TABLE nw_variable_assignment AS
-            SELECT v.activation_id act_id, v.id variable_id, v.name, v.line, v.value 
+            SELECT v.activation_id act_id, v.id variable_id, v.name variable_name, v.line, v.value variable_value
             FROM nw.variable v WHERE v.line != 0 AND v.name != 'return' 
             AND v.value != 'now(n/a)' AND NOT EXISTS 
             (SELECT * FROM nw_variable_is_function is_f WHERE is_f.variable_id = v.id);
@@ -221,7 +221,7 @@ def nw_variable_dependency():
         CREATE TABLE nw_variable_dependency AS
         SELECT DISTINCT "assignment" AS "Why", d.source_activation_id act_id,
         a.func_name func_name, ass.line assignment_line, ass.variable_id downstream_var_id,
-        ass.name downstream_var_name, u.variable_id upstream_var_id, u.variable_name upstream_var_name 
+        ass.variable_name downstream_var_name, u.variable_id upstream_var_id, u.variable_name upstream_var_name
         FROM nw.variable_dependency d JOIN nw_variable_assignment ass 
         ON d.source_activation_id = d.target_activation_id 
         AND d.source_activation_id = ass.act_id AND d.source_id = ass.variable_id 
@@ -231,14 +231,14 @@ def nw_variable_dependency():
         UNION
         SELECT DISTINCT "argument" AS "WHY", d.source_activation_id act_id, 
         a.func_name func_name, ass.line assignment_line, ass.variable_id downstream_var_id, 
-        ass.name downstream_var_name, u.variable_id upstream_var_id, u.variable_name upstream_var_name 
+        ass.variable_name downstream_var_name, u.variable_id upstream_var_id, u.variable_name upstream_var_name
         FROM nw.variable_dependency d JOIN nw_variable_assignment ass 
         ON d.source_activation_id = ass.act_id AND d.source_id = ass.variable_id 
         JOIN nw_variable_usage u ON d.target_id = u.variable_id 
         JOIN nw_function_activation a ON a.act_id = ass.act_id AND a.caller_id = d.target_activation_id
         UNION
         SELECT DISTINCT "return" AS "Why", v1.activation_id act_id, a.func_name, 
-        ass.line, ass.variable_id downstream_var_id, ass.name downstream_var_name, 
+        ass.line, ass.variable_id downstream_var_id, ass.variable_name downstream_var_name,
         v1.id upstream_var_id, v1.name upstream_var_name 
         FROM nw.variable v1, nw.variable v2, nw.variable v3, nw.variable v4, 
         nw.variable_dependency d1, nw.variable_dependency d2, nw.variable_dependency d3, 
@@ -249,13 +249,13 @@ def nw_variable_dependency():
         AND v2.id = d2.target_id AND v3.id = d2.source_id AND v3.id = d3.target_id 
         AND v3.activation_id = d2.source_activation_id AND v3.activation_id = v4.activation_id 
         AND v3.activation_id = d3.source_activation_id AND v3.activation_id = d3.target_activation_id 
-        AND v4.id = d3.source_id AND v4.id = ass.variable_id AND v4.name = ass.name 
+        AND v4.id = d3.source_id AND v4.id = ass.variable_id AND v4.name = ass.variable_name
         AND v2.name = 'return' AND v3.value = 'now(n/a)';
         """
     cursor.executescript(view)
 
 
-def run_rules():
+def run_views():
     nw_script_activation()
     nw_function_definition()
     nw_function_activation()
@@ -274,7 +274,7 @@ if __name__ == '__main__':
     cursor = connection.cursor()
     cursor.execute("ATTACH 'nw_facts.db' as nw")
     
-    run_rules()
+    run_views()
     
     cursor.execute("DETACH database nw")
     cursor.close()
