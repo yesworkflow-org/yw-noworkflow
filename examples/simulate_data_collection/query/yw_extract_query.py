@@ -38,7 +38,7 @@ def EQ3():
 
 if __name__ == '__main__':
 
-    connection = sqlite3.connect('facts.db')
+    connection = sqlite3.connect('../facts/yw_facts.db')
     cursor = connection.cursor()
 
     print "EQ1:  What source files SF were YW annotations extracted from?"

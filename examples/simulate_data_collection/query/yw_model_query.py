@@ -719,7 +719,7 @@ if __name__ == '__main__':
     BlockName1 = "simulate_data_collection.collect_data_set"
     uriData1 = DataName1
     uriData2 = "simulate_data_collection[corrected_image]"
-    connection = sqlite3.connect('facts.db')
+    connection = sqlite3.connect('../facts/yw_facts.db')
     cursor = connection.cursor()
     run_rules()
     print "\nMQ1:  Where is the definition of block", BlockName1,"?"
