@@ -8,7 +8,7 @@ def YW_NW_q1(DataName, BlockName):
         yw_flow(_, _, _, _, _, 'emphasized_greeting', PortId, _, _, 'print_greeting'),
         nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, _, PortId, _, _, _)..'''
     query = """SELECT variable_id,variable_name,variable_value
-        FROM yw.yw_flow yf,yn.nw_variable_for_yw_in_port_10 vip
+        FROM yw.yw_flow yf, nw_variable_for_yw_in_port_10 vip
         WHERE yf.data_name = :DataName AND yf.sink_program_name = :BlockName 
         AND yf.sink_port_id = vip.port_id;"""
     cursor.execute(query, {"DataName": DataName, "BlockName": BlockName})
@@ -38,11 +38,10 @@ if __name__ == '__main__':
     BlockName1 = "calculate_strategy"
     DataName2 = "corrected_image"
     BlockName2 = "transform_images"
-    connection = sqlite3.connect('query.db')
+    connection = sqlite3.connect('facts/yw_nw_views.db')
     cursor = connection.cursor()
-    cursor.execute("ATTACH 'nw_views.db' as nw")
-    cursor.execute("ATTACH 'yw_views.db' as yw")
-    cursor.execute("ATTACH 'yw_nw_views.db' as yn")
+    cursor.execute("ATTACH 'facts/nw_views.db' as nw")
+    cursor.execute("ATTACH 'facts/yw_views.db' as yw")
 
     print "\nYW_NW_q1: What Python variables carries values of ",DataName1, " into the ",BlockName1, " step?"
     YW_NW_q1(DataName1, BlockName1)
@@ -52,7 +51,6 @@ if __name__ == '__main__':
     
     cursor.execute("DETACH database nw")
     cursor.execute("DETACH database yw")
-    cursor.execute("DETACH database yn")
 
     cursor.close()
     connection.close()
