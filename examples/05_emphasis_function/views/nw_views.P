@@ -1,0 +1,190 @@
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_script_activation(Script, Command, ScriptAct, Docstring).
+%...................................................................................................
+nw_script_activation('iterative_emphasis.py','run -e Tracer -d 3 iterative_emphasis.py',1,nil).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_function_definition(FuncId, Name, FirstLine, LastLine, Docstring).
+%...................................................................................................
+nw_function_definition(1,greet_user,7,20,nil).
+nw_function_definition(2,add_suffix,25,30,nil).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_function_activation(ActId, FuncId, FuncName, Line, CallerActId).
+%...................................................................................................
+nw_function_activation(2,1,greet_user,34,1).
+nw_function_activation(3,2,add_suffix,14,2).
+nw_function_activation(5,1,greet_user,36,1).
+nw_function_activation(6,2,add_suffix,14,5).
+nw_function_activation(8,1,greet_user,38,1).
+nw_function_activation(9,2,add_suffix,14,8).
+nw_function_activation(1,nil,'/Users/wangqiwen/Documents/SPIN2016/yw-noworkflow/examples/05_emphasis_function/iterative_emphasis.py',61,nil).
+nw_function_activation(4,nil,'module.print',20,2).
+nw_function_activation(7,nil,'module.print',20,5).
+nw_function_activation(10,nil,'module.print',20,8).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_function_argument(ActId, FuncName, LocalVarId, LocalVarName, Value, Type, CallerVarName, CallerVarId)
+%...................................................................................................
+nw_function_argument(2,greet_user,5,greeting,'Hello World',variable,first_greeting,4).
+nw_function_argument(3,add_suffix,9,prefix,'Hello World',variable,greeting,5).
+nw_function_argument(3,add_suffix,10,suffix,!,variable,emphasis,6).
+nw_function_argument(3,add_suffix,11,count,'1',variable,count,7).
+nw_function_argument(5,greet_user,29,greeting,'Goodbye World',variable,second_greeting,28).
+nw_function_argument(6,add_suffix,33,prefix,'Goodbye World',variable,greeting,29).
+nw_function_argument(6,add_suffix,34,suffix,?,variable,emphasis,30).
+nw_function_argument(6,add_suffix,35,count,'2',variable,count,31).
+nw_function_argument(8,greet_user,55,count,'3',variable,third_emph_count,54).
+nw_function_argument(9,add_suffix,59,prefix,'Back again',variable,greeting,56).
+nw_function_argument(9,add_suffix,60,suffix,'?!',variable,emphasis,57).
+nw_function_argument(9,add_suffix,61,count,'3',variable,count,55).
+nw_function_argument(2,greet_user,6,emphasis,!,literal,nil,nil).
+nw_function_argument(2,greet_user,7,count,'1',literal,nil,nil).
+nw_function_argument(5,greet_user,30,emphasis,?,literal,nil,nil).
+nw_function_argument(5,greet_user,31,count,'2',literal,nil,nil).
+nw_function_argument(8,greet_user,56,greeting,'Back again',literal,nil,nil).
+nw_function_argument(8,greet_user,57,emphasis,'?!',literal,nil,nil).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_assignment(ActId, VarId, VarName, Line, Value).
+%...................................................................................................
+nw_variable_assignment(1,2,add_suffix,25,'<function add_suffix at 0x10b387488>').
+nw_variable_assignment(1,4,first_greeting,33,'Hello World').
+nw_variable_assignment(2,5,greeting,7,'Hello World').
+nw_variable_assignment(2,6,emphasis,7,!).
+nw_variable_assignment(2,7,count,7,'1').
+nw_variable_assignment(3,9,prefix,25,'Hello World').
+nw_variable_assignment(3,10,suffix,25,!).
+nw_variable_assignment(3,11,count,25,'1').
+nw_variable_assignment(3,13,string,26,'Hello World').
+nw_variable_assignment(3,17,i,28,'0').
+nw_variable_assignment(3,18,string,29,'Hello World!').
+nw_variable_assignment(2,21,greeting,14,'Hello World!').
+nw_variable_assignment(1,28,second_greeting,35,'Goodbye World').
+nw_variable_assignment(5,29,greeting,7,'Goodbye World').
+nw_variable_assignment(5,30,emphasis,7,?).
+nw_variable_assignment(5,31,count,7,'2').
+nw_variable_assignment(6,33,prefix,25,'Goodbye World').
+nw_variable_assignment(6,34,suffix,25,?).
+nw_variable_assignment(6,35,count,25,'2').
+nw_variable_assignment(6,37,string,26,'Goodbye World').
+nw_variable_assignment(6,40,i,28,'0').
+nw_variable_assignment(6,41,string,29,'Goodbye World?').
+nw_variable_assignment(6,44,i,28,'1').
+nw_variable_assignment(6,45,string,29,'Goodbye World??').
+nw_variable_assignment(5,48,greeting,14,'Goodbye World??').
+nw_variable_assignment(1,54,third_emph_count,37,'3').
+nw_variable_assignment(8,55,count,7,'3').
+nw_variable_assignment(8,56,greeting,7,'Back again').
+nw_variable_assignment(8,57,emphasis,7,'?!').
+nw_variable_assignment(9,59,prefix,25,'Back again').
+nw_variable_assignment(9,60,suffix,25,'?!').
+nw_variable_assignment(9,61,count,25,'3').
+nw_variable_assignment(9,63,string,26,'Back again').
+nw_variable_assignment(9,66,i,28,'0').
+nw_variable_assignment(9,67,string,29,'Back again?!').
+nw_variable_assignment(9,70,i,28,'1').
+nw_variable_assignment(9,71,string,29,'Back again?!?!').
+nw_variable_assignment(9,74,i,28,'2').
+nw_variable_assignment(9,75,string,29,'Back again?!?!?!').
+nw_variable_assignment(8,78,greeting,14,'Back again?!?!?!').
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_usage(UsageId, ActId, VariableId, VarName, VarValue, Line).
+%...................................................................................................
+nw_variable_usage(1,3,9,prefix,'Hello World',26).
+nw_variable_usage(2,3,11,count,'1',27).
+nw_variable_usage(3,3,11,count,'1',28).
+nw_variable_usage(4,3,13,string,'Hello World',29).
+nw_variable_usage(5,3,10,suffix,!,29).
+nw_variable_usage(6,3,18,string,'Hello World!',30).
+nw_variable_usage(7,2,5,greeting,'Hello World',14).
+nw_variable_usage(8,2,6,emphasis,!,14).
+nw_variable_usage(9,2,7,count,'1',14).
+nw_variable_usage(10,2,21,greeting,'Hello World!',20).
+nw_variable_usage(12,1,4,first_greeting,'Hello World',34).
+nw_variable_usage(13,6,33,prefix,'Goodbye World',26).
+nw_variable_usage(14,6,35,count,'2',27).
+nw_variable_usage(15,6,35,count,'2',28).
+nw_variable_usage(16,6,37,string,'Goodbye World',29).
+nw_variable_usage(17,6,34,suffix,?,29).
+nw_variable_usage(18,6,35,count,'2',28).
+nw_variable_usage(19,6,41,string,'Goodbye World?',29).
+nw_variable_usage(20,6,34,suffix,?,29).
+nw_variable_usage(21,6,45,string,'Goodbye World??',30).
+nw_variable_usage(22,5,29,greeting,'Goodbye World',14).
+nw_variable_usage(23,5,30,emphasis,?,14).
+nw_variable_usage(24,5,31,count,'2',14).
+nw_variable_usage(25,5,48,greeting,'Goodbye World??',20).
+nw_variable_usage(27,1,28,second_greeting,'Goodbye World',36).
+nw_variable_usage(28,9,59,prefix,'Back again',26).
+nw_variable_usage(29,9,61,count,'3',27).
+nw_variable_usage(30,9,61,count,'3',28).
+nw_variable_usage(31,9,63,string,'Back again',29).
+nw_variable_usage(32,9,60,suffix,'?!',29).
+nw_variable_usage(33,9,61,count,'3',28).
+nw_variable_usage(34,9,67,string,'Back again?!',29).
+nw_variable_usage(35,9,60,suffix,'?!',29).
+nw_variable_usage(36,9,61,count,'3',28).
+nw_variable_usage(37,9,71,string,'Back again?!?!',29).
+nw_variable_usage(38,9,60,suffix,'?!',29).
+nw_variable_usage(39,9,75,string,'Back again?!?!?!',30).
+nw_variable_usage(40,8,56,greeting,'Back again',14).
+nw_variable_usage(41,8,57,emphasis,'?!',14).
+nw_variable_usage(42,8,55,count,'3',14).
+nw_variable_usage(43,8,78,greeting,'Back again?!?!?!',20).
+nw_variable_usage(45,1,54,third_emph_count,'3',38).
+
+
+%---------------------------------------------------------------------------------------------------
+% FACT: nw_variable_dependency(Why, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
+%...................................................................................................
+nw_variable_dependency(return,9,add_suffix,14,78,greeting,75,string).
+nw_variable_dependency(return,6,add_suffix,14,48,greeting,45,string).
+nw_variable_dependency(return,3,add_suffix,14,21,greeting,18,string).
+nw_variable_dependency(argument,5,greet_user,7,29,greeting,28,second_greeting).
+nw_variable_dependency(argument,6,add_suffix,25,35,count,31,count).
+nw_variable_dependency(argument,6,add_suffix,25,33,prefix,29,greeting).
+nw_variable_dependency(argument,6,add_suffix,25,34,suffix,30,emphasis).
+nw_variable_dependency(argument,8,greet_user,7,55,count,54,third_emph_count).
+nw_variable_dependency(argument,3,add_suffix,25,11,count,7,count).
+nw_variable_dependency(argument,3,add_suffix,25,10,suffix,6,emphasis).
+nw_variable_dependency(argument,3,add_suffix,25,9,prefix,5,greeting).
+nw_variable_dependency(argument,2,greet_user,7,5,greeting,4,first_greeting).
+nw_variable_dependency(argument,9,add_suffix,25,60,suffix,57,emphasis).
+nw_variable_dependency(argument,9,add_suffix,25,59,prefix,56,greeting).
+nw_variable_dependency(argument,9,add_suffix,25,61,count,55,count).
+nw_variable_dependency(assignment,9,add_suffix,26,63,string,59,prefix).
+nw_variable_dependency(assignment,9,add_suffix,28,70,i,61,count).
+nw_variable_dependency(assignment,9,add_suffix,28,66,i,61,count).
+nw_variable_dependency(assignment,9,add_suffix,28,74,i,61,count).
+nw_variable_dependency(assignment,9,add_suffix,29,75,string,60,suffix).
+nw_variable_dependency(assignment,9,add_suffix,29,75,string,71,string).
+nw_variable_dependency(assignment,9,add_suffix,29,75,string,61,count).
+nw_variable_dependency(assignment,9,add_suffix,29,67,string,61,count).
+nw_variable_dependency(assignment,9,add_suffix,29,67,string,63,string).
+nw_variable_dependency(assignment,9,add_suffix,29,67,string,60,suffix).
+nw_variable_dependency(assignment,9,add_suffix,29,71,string,61,count).
+nw_variable_dependency(assignment,9,add_suffix,29,71,string,67,string).
+nw_variable_dependency(assignment,9,add_suffix,29,71,string,60,suffix).
+nw_variable_dependency(assignment,6,add_suffix,26,37,string,33,prefix).
+nw_variable_dependency(assignment,6,add_suffix,28,44,i,35,count).
+nw_variable_dependency(assignment,6,add_suffix,28,40,i,35,count).
+nw_variable_dependency(assignment,6,add_suffix,29,41,string,35,count).
+nw_variable_dependency(assignment,6,add_suffix,29,41,string,37,string).
+nw_variable_dependency(assignment,6,add_suffix,29,41,string,34,suffix).
+nw_variable_dependency(assignment,6,add_suffix,29,45,string,41,string).
+nw_variable_dependency(assignment,6,add_suffix,29,45,string,35,count).
+nw_variable_dependency(assignment,6,add_suffix,29,45,string,34,suffix).
+nw_variable_dependency(assignment,3,add_suffix,26,13,string,9,prefix).
+nw_variable_dependency(assignment,3,add_suffix,28,17,i,11,count).
+nw_variable_dependency(assignment,3,add_suffix,29,18,string,10,suffix).
+nw_variable_dependency(assignment,3,add_suffix,29,18,string,11,count).
+nw_variable_dependency(assignment,3,add_suffix,29,18,string,13,string).

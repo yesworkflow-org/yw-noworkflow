@@ -33,206 +33,204 @@ tag(1, 'AUTO', '1.1.1', nil).
 %
 
 :- dynamic(module/6).
-module(1, 1, 'enum', nil, '/usr/lib/python3.4/enum.py', '23900fd392e7cfdd63f525767858b43623d3b27f').
-module(1, 2, 'calendar', nil, '/usr/lib/python3.4/calendar.py', 'cb76c426d699888d652462a8b1296feb5dc92c62').
-module(1, 3, 'gc', '3.4.2', nil, nil).
-module(1, 4, 'tty', nil, '/usr/lib/python3.4/tty.py', 'a21d94fb697044620c6b8803f388fecfd4b7cc6b').
-module(1, 5, 'grp', '3.4.2', nil, nil).
-module(1, 6, '_stat', '3.4.2', nil, nil).
-module(1, 7, '_collections', '3.4.2', nil, nil).
-module(1, 8, 'csv', '1.0', '/usr/lib/python3.4/csv.py', '8f2c43a857c060a87f341269b44a4f9f64959cd0').
-module(1, 9, 'weakref', nil, '/usr/lib/python3.4/weakref.py', 'd24c43040274ae6be5b2c5c1c20e1bd6760ddfd8').
-module(1, 10, 'unittest.loader', nil, '/usr/lib/python3.4/unittest/loader.py', '827b464396ec686b6d9a463a38a5f16f2c3c65b8').
-module(1, 11, 'types', nil, '/usr/lib/python3.4/types.py', '08787169902c3afa2baa9b09d194fa65d142f29c').
-module(1, 12, 'distutils', '3.4.2', '/usr/lib/python3.4/distutils/__init__.py', '3ac084f5f0e5d0a5b24d74be47ead1a55b79d0fe').
-module(1, 13, 'stat', nil, '/usr/lib/python3.4/stat.py', 'd0d0e4b0ec7dd7b2bd45198fe44e883e95314030').
-module(1, 14, 'genericpath', nil, '/usr/lib/python3.4/genericpath.py', '568c6e8e2eb5832765adb121db3260b454b66343').
-module(1, 15, 'dis', nil, '/usr/lib/python3.4/dis.py', '6ff1dee02453a388b778ca957db7998417e2906c').
-module(1, 16, 'getopt', nil, '/usr/lib/python3.4/getopt.py', '602a466cfb0fcc3c87164e0f4db13038e584a39a').
-module(1, 17, '_opcode', nil, '/usr/lib/python3.4/lib-dynload/_opcode.cpython-34m-x86_64-linux-gnu.so', '6f907cbfe0c1214da7dcad00d5a1935753f0bdb1').
-module(1, 18, 'email.headerregistry', nil, '/usr/lib/python3.4/email/headerregistry.py', '9e0d0eabdcecb9f0604e44e6fdbb51d84b0c1358').
-module(1, 19, 'distutils.errors', nil, '/usr/lib/python3.4/distutils/errors.py', '5d7da9e6f97603574aab1262cfe0ae5bcc293327').
-module(1, 20, 'base64', nil, '/usr/lib/python3.4/base64.py', '3923374df7dcb88a754aa6326c2b11bd798167bb').
-module(1, 21, 'urllib', nil, '/usr/lib/python3.4/urllib/__init__.py', 'da39a3ee5e6b4b0d3255bfef95601890afd80709').
-module(1, 22, 'plistlib', nil, '/usr/lib/python3.4/plistlib.py', 'b236fefe47790564081261313488741ebf602adb').
-module(1, 23, 'doctest', nil, '/usr/lib/python3.4/doctest.py', '45ac387b5e6a563d5a75b91e91c9e2ba5fa12d0f').
-module(1, 24, 'copy', nil, '/usr/lib/python3.4/copy.py', 'e0213a83691635ac06441825a2b299cdd1dfe384').
-module(1, 25, 'posix', '3.4.2', nil, nil).
-module(1, 26, 'copyreg', nil, '/usr/lib/python3.4/copyreg.py', '3426efaa67b8d63d60d3580c4ac98d1bc641aa8f').
-module(1, 27, 'binascii', '3.4.2', nil, nil).
-module(1, 28, 'xml', nil, '/usr/lib/python3.4/xml/__init__.py', '941aa0eb07269e9287382b90353314e73dc198c0').
-module(1, 29, 'distutils.log', nil, '/usr/lib/python3.4/distutils/log.py', '4bb1654cb4a7e0c8122de33d30c36609624232df').
-module(1, 30, 'unittest.runner', nil, '/usr/lib/python3.4/unittest/runner.py', 'd88a2da0685bc147eb398d11bd9433c68f744549').
-module(1, 31, 'optparse', '1.5.3', '/usr/lib/python3.4/optparse.py', '8d37296985f1e18e27694f437a3523c83b925ba5').
-module(1, 32, 'zipimport', '3.4.2', nil, nil).
-module(1, 33, 'random', nil, '/usr/lib/python3.4/random.py', 'fef4f9e2c8e7d8569f4451ceef8bb5966f7b528b').
-module(1, 34, 'traceback', nil, '/usr/lib/python3.4/traceback.py', 'a113d1446f30fe45a2eb1071462b1b429b834813').
-module(1, 35, 'bdb', nil, '/usr/lib/python3.4/bdb.py', '65ed099e3080d340beda5e2a7ae3faa3cee234b9').
-module(1, 36, '_md5', '3.4.2', nil, nil).
-module(1, 37, '_strptime', nil, '/usr/lib/python3.4/_strptime.py', '6d607772ff6c6616a8a2534bb6f0fd08cc41a997').
-module(1, 38, 'distutils.text_file', nil, '/usr/lib/python3.4/distutils/text_file.py', '7db2e2fd253fbb6db1e4cf9c11b824d0c7f9b56b').
-module(1, 39, 'ntpath', nil, '/usr/lib/python3.4/ntpath.py', 'e8b7791ac549d88a512c573a1ef94f06eb004e56').
-module(1, 40, 'pydoc_data', nil, '/usr/lib/python3.4/pydoc_data/__init__.py', 'da39a3ee5e6b4b0d3255bfef95601890afd80709').
-module(1, 41, 'imp', nil, '/usr/lib/python3.4/imp.py', '9186d66b550a6abcc0b5bad47956f9c7b5f9419d').
-module(1, 42, 'email.contentmanager', nil, '/usr/lib/python3.4/email/contentmanager.py', '867d34b30046f01d86b95a68bd40ee6001b44978').
-module(1, 43, 'linecache', nil, '/usr/lib/python3.4/linecache.py', '0a011a0f6743788e180f969d2695aff39b000dd1').
-module(1, 44, 'lzma', nil, '/usr/lib/python3.4/lzma.py', 'ef858d77a635a3006b0cc3960fc7b7d4340d4ef1').
-module(1, 45, 'uu', nil, '/usr/lib/python3.4/uu.py', 'aadba5ca26f0b5d6db6aafc135387c709c2f9f6f').
-module(1, 46, 'importlib', nil, '/usr/lib/python3.4/importlib/__init__.py', 'f4fe68bc681abf7aa6e0163c02669f0dd96e6e34').
-module(1, 47, '_locale', '3.4.2', nil, nil).
-module(1, 48, 'tarfile', '0.9.0', '/usr/lib/python3.4/tarfile.py', 'cffdbda72771d71829fd65335f0cc07f675ba158').
-module(1, 49, 'html', nil, '/usr/lib/python3.4/html/__init__.py', '7ecc46ecbf89bd81ae178ce85b74859246698f19').
-module(1, 50, 'operator', nil, '/usr/lib/python3.4/operator.py', 'fe02b7f0bc2ed22d11be83316c47a72b57bc268f').
-module(1, 51, 'pdb', nil, '/usr/lib/python3.4/pdb.py', '00a3ba9a9d9be6a92ba82b56dc6cb9e3ac42540f').
-module(1, 52, '_threading_local', nil, '/usr/lib/python3.4/_threading_local.py', '8e2fdc9fd369326a19d6f7e4670dfb6ba6873d66').
-module(1, 53, 'email.feedparser', nil, '/usr/lib/python3.4/email/feedparser.py', '06e488f133d5fcae955a4c89091165d2b149afe1').
-module(1, 54, '_functools', '3.4.2', nil, nil).
-module(1, 55, 'struct', nil, '/usr/lib/python3.4/struct.py', 'dd29986d2204dbac1767dcf35002ea42ed224002').
-module(1, 56, 'webbrowser', nil, '/usr/lib/python3.4/webbrowser.py', '71c4643596ae84d0509915a0da72981a79e68e17').
-module(1, 57, 'token', nil, '/usr/lib/python3.4/token.py', 'f40404c4be4269eabf4154f4711bb2f1e81e103e').
-module(1, 58, 'html.entities', nil, '/usr/lib/python3.4/html/entities.py', '794fdb129dd4e1def96596f3251f242e10ec7b3f').
-module(1, 59, 'distutils.sysconfig', nil, '/usr/lib/python3.4/distutils/sysconfig.py', '0b72f80cd9861d8d500e798b021a17264842afe0').
-module(1, 60, 'collections', nil, '/usr/lib/python3.4/collections/__init__.py', 'ee907fb3812f3f5015217b2e6b8c0c7f19b68477').
-module(1, 61, 'codecs', nil, '/usr/lib/python3.4/codecs.py', '040ac2af26f04f2b89224a6115a77f1f9e0a0555').
-module(1, 62, '_sha512', '3.4.2', nil, nil).
-module(1, 63, 'pprint', nil, '/usr/lib/python3.4/pprint.py', '6dd97de77aa43ee776a2a65ffe03e4aef53a56fe').
-module(1, 64, 'sys', '3.4.2', nil, nil).
-module(1, 65, 'email.iterators', nil, '/usr/lib/python3.4/email/iterators.py', 'a28ee2576ba28f4bdc49d94bf7cdf0caa0b1edbf').
-module(1, 66, 'urllib.parse', nil, '/usr/lib/python3.4/urllib/parse.py', '79977008dbb4d1a5c9d06f41b1d72da17927493b').
-module(1, 67, 'ssl', nil, '/usr/lib/python3.4/ssl.py', '398674f6aca96e9fb6649dcf6bfb5e1bb4919736').
-module(1, 68, 'unittest.suite', nil, '/usr/lib/python3.4/unittest/suite.py', 'b207236c1a6e3850b271f4ef632e6f60aee6de94').
-module(1, 69, 'email.header', nil, '/usr/lib/python3.4/email/header.py', '8932288f865d501b7992ada5d074644ad0d81aa1').
-module(1, 70, 'platform', '1.0.7', '/usr/lib/python3.4/platform.py', '3d32587ad58f9fd583b3c1dc7d0709762cbbb53b').
-module(1, 71, 'cmd', nil, '/usr/lib/python3.4/cmd.py', '297f9a44fcd892c32e8c0bc4fed65f2230c48511').
-module(1, 72, 'quopri', nil, '/usr/lib/python3.4/quopri.py', '3e25cb4f635bd9d6310cca8e5e82608dc0760d7f').
-module(1, 73, 'email.message', nil, '/usr/lib/python3.4/email/message.py', 'f18ef740fa712c300465f452b8dd75e832343feb').
-module(1, 74, 'importlib.util', nil, '/usr/lib/python3.4/importlib/util.py', 'c44b47d3ddeba1ebd59b0509be0d249f968626fe').
-module(1, 75, 'gettext', nil, '/usr/lib/python3.4/gettext.py', 'c2a1ccac0f24f8dcef897169f3ce4ce8f833ee4f').
-module(1, 76, 'email._encoded_words', nil, '/usr/lib/python3.4/email/_encoded_words.py', '129593c5562b0a857c1d303ce68e89ae79b1cd4e').
-module(1, 77, 'http', nil, '/usr/lib/python3.4/http/__init__.py', 'b8308251f83b242bd06776af11050e0e771f75c7').
-module(1, 78, 'bz2', nil, '/usr/lib/python3.4/bz2.py', 'c046a6501867fc7ef61ae7eedf3ae000dcbb4dc6').
-module(1, 79, 're', '2.2.1', '/usr/lib/python3.4/re.py', '7ee88ca2a7e361f9bfa3b8d4cec60204179842db').
-module(1, 80, 'unittest.case', nil, '/usr/lib/python3.4/unittest/case.py', '1f63cbcc82728114419c6909e466cfd5d0fdc353').
-module(1, 81, '_ssl', nil, '/usr/lib/python3.4/lib-dynload/_ssl.cpython-34m-x86_64-linux-gnu.so', '5646f57f74f76d0374d46495c475c5f8fb7386f4').
-module(1, 82, 'email.policy', nil, '/usr/lib/python3.4/email/policy.py', '5df09b609e7e5614d755933dcf59487927b92138').
-module(1, 83, '__future__', nil, '/usr/lib/python3.4/__future__.py', '69d1760740ab81bafb415f81c2c5b29611a58987').
-module(1, 84, 'email', '5.1.0', '/usr/lib/python3.4/email/__init__.py', 'f8995129fa18fe66d9908d8f0bae5f3dd4971697').
-module(1, 85, 'gzip', nil, '/usr/lib/python3.4/gzip.py', '3a4a794a8ff9a58083ff63de8c983227632ba697').
-module(1, 86, '_sre', '3.4.2', nil, nil).
-module(1, 87, 'pkgutil', nil, '/usr/lib/python3.4/pkgutil.py', '88b5993ec6bbbf0d674e61a790f89d62b0667517').
-module(1, 88, 'sre_compile', nil, '/usr/lib/python3.4/sre_compile.py', '32eb1f859be011060f05c2c1bc147bd7a5de8096').
-module(1, 89, 'builtins', '3.4.2', nil, nil).
-module(1, 90, 'unittest.signals', nil, '/usr/lib/python3.4/unittest/signals.py', '4c2fafbc69267cae656412f0c1946a00f58d9708').
-module(1, 91, '_csv', '1.0', '/usr/lib/python3.4/lib-dynload/_csv.cpython-34m-x86_64-linux-gnu.so', '2e3a5f41a89b877b6ca2cb2a6b61d45e1c40ab6a').
-module(1, 92, 'select', '3.4.2', nil, nil).
-module(1, 93, '_datetime', '3.4.2', nil, nil).
-module(1, 94, 'py_compile', nil, '/usr/lib/python3.4/py_compile.py', '116bb1d87774ce98a472e5e31e6d1373a8524c1a').
-module(1, 95, 'encodings', nil, '/usr/lib/python3.4/encodings/__init__.py', 'a95591c102a2cf8133736183e5c6fd84f164ed55').
-module(1, 96, '_codecs', '3.4.2', nil, nil).
-module(1, 97, 'glob', nil, '/usr/lib/python3.4/glob.py', 'ef5781d25448cc3ff5e4914ad8de14e04dbc1877').
-module(1, 98, 'threading', nil, '/usr/lib/python3.4/threading.py', 'b689630ea30557ed8681a4f124b73cc33890a198').
-module(1, 99, '_posixsubprocess', '3.4.2', nil, nil).
-module(1, 100, 'mimetypes', nil, '/usr/lib/python3.4/mimetypes.py', 'af6413b62684e81f9e8fe39b8b4797c26713cbfd').
-module(1, 101, 'email.base64mime', nil, '/usr/lib/python3.4/email/base64mime.py', '7663bd4a8619225d944afd1a2ea5f5959e9db64d').
-module(1, 102, 'tokenize', nil, '/usr/lib/python3.4/tokenize.py', 'c8bb3fea54d035d7117a5849f80d414254cf40c6').
-module(1, 103, 'math', '3.4.2', nil, nil).
-module(1, 104, 'socket', nil, '/usr/lib/python3.4/socket.py', '755a43d341471d195d9694f94ae14475d73df4d1').
-module(1, 105, 'zipfile', nil, '/usr/lib/python3.4/zipfile.py', 'b3b90f13e026bf684ff3dbfe530f0fa00bd559f7').
-module(1, 106, 'encodings.aliases', nil, '/usr/lib/python3.4/encodings/aliases.py', '07987d2dc710abce353f4d737d1a58f4c622f010').
-module(1, 107, 'socketserver', '0.4', '/usr/lib/python3.4/socketserver.py', 'e104ec12c82ad5184ec67762d7cdf30f6b098531').
-module(1, 108, 'os', nil, '/usr/lib/python3.4/os.py', 'df150d460d90c4658e21ffcdd4026ee48c4e3149').
-module(1, 109, 'unittest.main', nil, '/usr/lib/python3.4/unittest/main.py', '9c87cf1a009096a224d6e1fa75868e24723d1f77').
-module(1, 110, '_hashlib', nil, '/usr/lib/python3.4/lib-dynload/_hashlib.cpython-34m-x86_64-linux-gnu.so', '00054282b76b79aaa1c805168e951bf6c2cb0680').
-module(1, 111, 'unittest.result', nil, '/usr/lib/python3.4/unittest/result.py', '67a7bc2a7449e419850c18d347d3770192a98856').
-module(1, 112, 'code', nil, '/usr/lib/python3.4/code.py', '9401c09c4a31d749cf68c89f851624b01a202ab3').
-module(1, 113, 'email.errors', nil, '/usr/lib/python3.4/email/errors.py', '762b2e4a5716c9d42f566e0cecf1134342104933').
-module(1, 114, 'importlib.machinery', nil, '/usr/lib/python3.4/importlib/machinery.py', '635382e476e6f61b96c25874493b6fcba4c90232').
-module(1, 115, 'sre_parse', nil, '/usr/lib/python3.4/sre_parse.py', 'c890271f653b20a8f7afb28300f1708484162b57').
-module(1, 116, 'opcode', nil, '/usr/lib/python3.4/opcode.py', '4e9adbd767163e7fcfb1d9be203cfa40b76dceba').
-module(1, 117, '_struct', '3.4.2', nil, nil).
-module(1, 118, '_imp', '3.4.2', nil, nil).
-module(1, 119, '_string', '3.4.2', nil, nil).
-module(1, 120, 'hashlib', nil, '/usr/lib/python3.4/hashlib.py', 'a806c5e1815478fe6e547b839c49e3ef6ab001da').
-module(1, 121, 'sre_constants', nil, '/usr/lib/python3.4/sre_constants.py', '4803ca029881bf7405615cf04a36a8c1669a41f0').
-module(1, 122, 'time', '3.4.2', nil, nil).
-module(1, 123, 'abc', nil, '/usr/lib/python3.4/abc.py', '54a3869e5bdffc2d02ad1f2222f2ee567ec322f8').
-module(1, 124, 'textwrap', nil, '/usr/lib/python3.4/textwrap.py', '83ee0a0287dff8e9a6836d8fb502654efbe50a2a').
-module(1, 125, 'ast', nil, '/usr/lib/python3.4/ast.py', '2fb451e4e5ac9d4fa1d7b2ffcc1cd9741241ed02').
-module(1, 126, '_weakrefset', nil, '/usr/lib/python3.4/_weakrefset.py', '5bcb0bd12a222ac068ca6a39005ca6496d51ca93').
-module(1, 127, '_random', '3.4.2', nil, nil).
-module(1, 128, '_sysconfigdata_m', nil, '/usr/lib/python3.4/plat-x86_64-linux-gnu/_sysconfigdata_m.py', 'c3113fadd59e11cb97731f5179c28af657ad0aec').
-module(1, 129, 'difflib', nil, '/usr/lib/python3.4/difflib.py', 'bf36b323bcbaa49ae1dba7dbb601d6fc33ce1430').
-module(1, 130, '_collections_abc', nil, '/usr/lib/python3.4/_collections_abc.py', 'abf28758378f743b543fb5324602711de55e253c').
-module(1, 131, '_socket', '3.4.2', nil, nil).
-module(1, 132, '_io', '3.4.2', nil, nil).
-module(1, 133, '_operator', '3.4.2', nil, nil).
-module(1, 134, 'email.charset', nil, '/usr/lib/python3.4/email/charset.py', '24722fd4d3b76f82f27e5aca8f1daf5f210281a7').
-module(1, 135, 'datetime', nil, '/usr/lib/python3.4/datetime.py', '60dd9c664ce4ea5b393fd002d800a550040a9fff').
-module(1, 136, '_warnings', '3.4.2', nil, nil).
-module(1, 137, '_lzma', nil, '/usr/lib/python3.4/lib-dynload/_lzma.cpython-34m-x86_64-linux-gnu.so', '033e16bf54117bb212f001edda5c0c759b1b39d7').
-module(1, 138, 'xml.parsers', nil, '/usr/lib/python3.4/xml/parsers/__init__.py', '6312e21b03edbd272c1c507456e76316c2be010c').
-module(1, 139, 'inspect', nil, '/usr/lib/python3.4/inspect.py', 'f3321f461605d3c923783f4614cf8ba9e59cea25').
-module(1, 140, 'warnings', nil, '/usr/lib/python3.4/warnings.py', '5e4f60eb6aeee8a706f6942400a86f1ead46c407').
-module(1, 141, 'contextlib', nil, '/usr/lib/python3.4/contextlib.py', 'f46841fc914a24700f975cfabcb75af0c3cdb354').
-module(1, 142, 'keyword', nil, '/usr/lib/python3.4/keyword.py', '5a6da3e8189358e11a1661c2d75c756060a847ee').
-module(1, 143, 'io', nil, '/usr/lib/python3.4/io.py', 'c2d49c56e3a4078a58977cad491e5fee0e8824e6').
-module(1, 144, 'email.utils', nil, '/usr/lib/python3.4/email/utils.py', '3c84c5fc06493ae333eab589d423590bc9460b72').
-module(1, 145, 'email.parser', nil, '/usr/lib/python3.4/email/parser.py', '7d20dd02d33a75683d20a2eda7638bab40e45175').
-module(1, 146, 'importlib._bootstrap', nil, '/usr/lib/python3.4/importlib/_bootstrap.py', '2e27d2632d89290dda796956a23b7caaf50cd428').
-module(1, 147, '_ast', '3.4.2', nil, nil).
-module(1, 148, 'selectors', nil, '/usr/lib/python3.4/selectors.py', '5443d8eb4c942a1471259bac968e4a86d44d89f5').
-module(1, 149, 'xml.parsers.expat', nil, '/usr/lib/python3.4/xml/parsers/expat.py', '0b1d98a36824019872f6370cfd36bab1d523ba93').
-module(1, 150, 'email.generator', nil, '/usr/lib/python3.4/email/generator.py', 'd89091f71b666d0d2db035582468ec76d5560dc6').
-module(1, 151, 'atexit', '3.4.2', nil, nil).
-module(1, 152, 'shutil', nil, '/usr/lib/python3.4/shutil.py', '3f45479907bae88bd46efd704cc353fbf49fa34d').
-module(1, 153, 'array', '3.4.2', nil, nil).
-module(1, 154, 'tempfile', nil, '/usr/lib/python3.4/tempfile.py', '47a4a4bb5b6a78cb5c0c87af135f91803599d8ed').
-module(1, 155, '_osx_support', nil, '/usr/lib/python3.4/_osx_support.py', '66dadd08aa3bc527bdf8871708955aac92da41c3').
-module(1, 156, 'email.quoprimime', nil, '/usr/lib/python3.4/email/quoprimime.py', 'b2df663b3ab751510155776902a9de6c876f2db8').
-module(1, 157, 'posixpath', nil, '/usr/lib/python3.4/posixpath.py', '8ae4585be5ce850bd80d7921db23c5b940829e97').
-module(1, 158, 'http.server', '0.6', '/usr/lib/python3.4/http/server.py', '4860aac5f0da9fb0ba32a90d3809463af388d65c').
-module(1, 159, 'logging', '0.5.1.2', '/usr/lib/python3.4/logging/__init__.py', '35ce9e32a6f30cf46ca8d85bd445ac2ee16f1004').
-module(1, 160, 'email._parseaddr', nil, '/usr/lib/python3.4/email/_parseaddr.py', 'db1538307ff6c9ec7058b0a3eb30a941e4aea463').
-module(1, 161, 'http.client', nil, '/usr/lib/python3.4/http/client.py', 'a0f2a481fc2ca9a19fc73a706b3b98c5f025c141').
-module(1, 162, '_dummy_thread', nil, '/usr/lib/python3.4/_dummy_thread.py', '022314b75176b166a4df240a9c372d74896fa706').
-module(1, 163, '_heapq', '3.4.2', nil, nil).
-module(1, 164, '_weakref', '3.4.2', nil, nil).
-module(1, 165, 'locale', nil, '/usr/lib/python3.4/locale.py', '8088cd302eec41dfe6ce69bd18311ac75bb9e992').
-module(1, 166, 'pwd', '3.4.2', nil, nil).
-module(1, 167, 'email._policybase', nil, '/usr/lib/python3.4/email/_policybase.py', '694ae264d6e033131500705e6492233b26365072').
-module(1, 168, 'reprlib', nil, '/usr/lib/python3.4/reprlib.py', '969d130cf744d32e4b497042736e919a555a065f').
-module(1, 169, 'argparse', '1.1', '/usr/lib/python3.4/argparse.py', 'd677fbeee60f135f682ce1155a298ce69f60034f').
-module(1, 170, 'distutils.spawn', nil, '/usr/lib/python3.4/distutils/spawn.py', '16e269287ae8e300c23f5e10fdfde8c2eb93fd2e').
-module(1, 171, 'errno', '3.4.2', nil, nil).
-module(1, 172, '_bz2', nil, '/usr/lib/python3.4/lib-dynload/_bz2.cpython-34m-x86_64-linux-gnu.so', '4454ec1fd34fa7d93032d8f2bcbf93e05382da65').
-module(1, 173, 'distutils.debug', nil, '/usr/lib/python3.4/distutils/debug.py', '366246d9ab8f12833b1b2765fade51bb635d49ca').
-module(1, 174, 'functools', nil, '/usr/lib/python3.4/functools.py', 'bbb30404f4b819d890a38d830aa44253aad45306').
-module(1, 175, 'email.encoders', nil, '/usr/lib/python3.4/email/encoders.py', '3d270bb58e7d3c5253d76786ebb23f139cdbad55').
-module(1, 176, 'pydoc', nil, '/usr/lib/python3.4/pydoc.py', 'f79e3b9890af51cef86a9c8d72fd9757c1ccbd12').
-module(1, 177, 'termios', nil, '/usr/lib/python3.4/lib-dynload/termios.cpython-34m-x86_64-linux-gnu.so', '90ee4d9a2ed91534febd8c986d3f107d3b18cba1').
-module(1, 178, 'codeop', nil, '/usr/lib/python3.4/codeop.py', 'c362272a48bb005d576669dfc4ffddb09b744c17').
-module(1, 179, 'dummy_threading', nil, '/usr/lib/python3.4/dummy_threading.py', '8949fd296bd19cf6ef5422563ed6ade4f6665a90').
-module(1, 180, 'zlib', '3.4.2', nil, nil).
-module(1, 181, 'unittest', nil, '/usr/lib/python3.4/unittest/__init__.py', 'c30ad1779fc70178bf8ad744589032fbe0646f7b').
-module(1, 182, 'heapq', nil, '/usr/lib/python3.4/heapq.py', '306330f1e30e5d8dac2d839064a1bb78a025f02d').
-module(1, 183, 'email._header_value_parser', nil, '/usr/lib/python3.4/email/_header_value_parser.py', 'e81559f75ecd7061317508824a1b3dc5dea9113e').
-module(1, 184, 'subprocess', nil, '/usr/lib/python3.4/subprocess.py', '8f9342b0f47962112183ce7a78776f40334e0807').
-module(1, 185, 'marshal', '3.4.2', nil, nil).
-module(1, 186, '_sysconfigdata', nil, '/usr/lib/python3.4/_sysconfigdata.py', '39268ef722212bb3172aacbf14a72040dce6e7fc').
-module(1, 187, 'signal', '3.4.2', nil, nil).
-module(1, 188, 'shlex', nil, '/usr/lib/python3.4/shlex.py', '21a5085ce55bc94e066698dbbb4297dba04f380a').
-module(1, 189, 'unittest.util', nil, '/usr/lib/python3.4/unittest/util.py', '4e47b83478fcd5ac731e12577732fb67deda1aa5').
-module(1, 190, '_sha256', '3.4.2', nil, nil).
-module(1, 191, 'string', nil, '/usr/lib/python3.4/string.py', '03dac8ddfb1124787f1393a958b2a9c1f2feb135').
-module(1, 192, 'pyexpat', '3.4.2', nil, nil).
-module(1, 193, '_thread', '3.4.2', nil, nil).
-module(1, 194, 'itertools', '3.4.2', nil, nil).
-module(1, 195, 'pydoc_data.topics', nil, '/usr/lib/python3.4/pydoc_data/topics.py', '4c0bea4925844ab7a6c6066141731f442591fe75').
-module(1, 196, 'readline', nil, '/usr/lib/python3.4/lib-dynload/readline.cpython-34m-x86_64-linux-gnu.so', '5027a6a8a92e06d1d7c000b4ba3560688b0f08f7').
-module(1, 197, '_bootlocale', nil, '/usr/lib/python3.4/_bootlocale.py', '34c1e1c6328285d6edf5cac80ce5b78379f96d80').
-module(1, 198, '_sha1', '3.4.2', nil, nil).
-module(1, 199, 'fnmatch', nil, '/usr/lib/python3.4/fnmatch.py', 'a0b92a73674bc6601aaeec296df712e275ce95ae').
-module(1, 200, 'sysconfig', nil, '/usr/lib/python3.4/sysconfig.py', '1f582eecf170f9812ca2c6c7d92b216912242309').
+module(1, 1, '_locale', '3.5.1', nil, nil).
+module(1, 2, 'unittest.util', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/util.py', '1259ba09bbafa1d4ac4fc5d8c682338698d2c7f2').
+module(1, 3, 'encodings', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/encodings/__init__.py', 'a95591c102a2cf8133736183e5c6fd84f164ed55').
+module(1, 4, 'sre_compile', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/sre_compile.py', '73eb20dfac3f7492658f055169e2f4acd6db1389').
+module(1, 5, '_ssl', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_ssl.cpython-35m-darwin.so', 'ccef19e6d10e13d4880a9c621c26dbb298d1317b').
+module(1, 6, 'tempfile', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tempfile.py', '6624f8a264faf10614d66f7cbb5541cb91147784').
+module(1, 7, 'dummy_threading', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/dummy_threading.py', '8949fd296bd19cf6ef5422563ed6ade4f6665a90').
+module(1, 8, '__future__', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/__future__.py', 'e48b6ea52838ee1cf8c333ee80d9acefce21f839').
+module(1, 9, 'dis', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/dis.py', 'f51c7ac4d6bf26f3fa00a8a99ea17bb3e746dc5e').
+module(1, 10, 'codeop', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/codeop.py', 'c362272a48bb005d576669dfc4ffddb09b744c17').
+module(1, 11, 'email.message', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/message.py', '583c5d571dcc084e94d2758ebdcfae56c1b8c4db').
+module(1, 12, 'unittest.loader', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/loader.py', '1adfe57af5fd7fd3736c56395b437646847c2ed0').
+module(1, 13, 'marshal', '3.5.1', nil, nil).
+module(1, 14, 'heapq', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/heapq.py', '6f0c253d16102e6794967d5992c15bcd14ec2550').
+module(1, 15, 'ctypes', '1.1.0', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ctypes/__init__.py', '9a16767e067e68b2461e3a668b21887464f5b503').
+module(1, 16, 'unittest.result', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/result.py', '6088becb82722173a53ff0e4ef6c506ecca939b3').
+module(1, 17, 'email.encoders', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/encoders.py', '3d270bb58e7d3c5253d76786ebb23f139cdbad55').
+module(1, 18, '_opcode', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_opcode.cpython-35m-darwin.so', 'be5f61775d55649df2c26a21b0f4c26bdb14e6e2').
+module(1, 19, 'bdb', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/bdb.py', '65ed099e3080d340beda5e2a7ae3faa3cee234b9').
+module(1, 20, 'genericpath', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/genericpath.py', 'a512ade58f2fb5e00563ec06426ff5e22770d427').
+module(1, 21, '_struct', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_struct.cpython-35m-darwin.so', '82a79fbd3f5470666198c383dd237ac169b1b77c').
+module(1, 22, 'pkgutil', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/pkgutil.py', '857e9b63f9fab1ee70708ebb586024fd45530c00').
+module(1, 23, 'fnmatch', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/fnmatch.py', 'a0b92a73674bc6601aaeec296df712e275ce95ae').
+module(1, 24, 'importlib.machinery', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/importlib/machinery.py', '1582a1c17db32dab72a59bf53fcf05ba4b866e81').
+module(1, 25, 'sre_constants', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/sre_constants.py', 'f12465b9baa2a237f2dee972264845b3f0f99ce4').
+module(1, 26, 'termios', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/termios.cpython-35m-darwin.so', 'f561d485f95ba9a3798c1b8e97dabde39eb585a0').
+module(1, 27, '_thread', '3.5.1', nil, nil).
+module(1, 28, 'gettext', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/gettext.py', 'f74b93f08d740c23e3f1c00c0a3fa723e543f933').
+module(1, 29, 'html.entities', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/html/entities.py', 'ec4d627742c4ffb359ce3a3b1eb388444d285d47').
+module(1, 30, 'warnings', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/warnings.py', 'e60d8554268f64c2123d02243e60585acb809f03').
+module(1, 31, 'pprint', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/pprint.py', 'a0b2a81dead65c04697148a670a9951517499021').
+module(1, 32, 'math', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/math.cpython-35m-darwin.so', 'bca5c1487172258ee21df84b735b24bef3e55141').
+module(1, 33, '_random', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_random.cpython-35m-darwin.so', 'c0da086ec4bc28d7a7c0a6589c8ba70fe2f38dc8').
+module(1, 34, 'unittest.signals', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/signals.py', '4c2fafbc69267cae656412f0c1946a00f58d9708').
+module(1, 35, 'token', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/token.py', 'cddcd19be95137befd4217db7323a2c6eabeef88').
+module(1, 36, 'keyword', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/keyword.py', '0cffec67e241727841c0652307df851be2b71b27').
+module(1, 37, 'pwd', '3.5.1', nil, nil).
+module(1, 38, '_strptime', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/_strptime.py', 'ea63194daadcfb5bbfb1f0f4a9ff166b101a5038').
+module(1, 39, '_sha1', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_sha1.cpython-35m-darwin.so', '752101e70d8929cc28acf4f434750f33dc62a4f8').
+module(1, 40, 'zipimport', '3.5.1', nil, nil).
+module(1, 41, 'contextlib', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/contextlib.py', '8b02028bc8ab5719219303a1655d028bf2dd6ee0').
+module(1, 42, '_sha256', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_sha256.cpython-35m-darwin.so', '787fbcfdf54543b1d9aaeac171c22d17954d6036').
+module(1, 43, 'operator', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/operator.py', 'e7d4bae4e7e60dfaf8709f602e473f3e5f7a2bba').
+module(1, 44, 'ssl', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ssl.py', 'eda0ac2ec30a2c62b30435e668faa206ac4d4e79').
+module(1, 45, '_string', '3.5.1', nil, nil).
+module(1, 46, 'textwrap', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py', 'ca5ae48db01b568343d5d09a089a89264eb05ff2').
+module(1, 47, 'abc', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/abc.py', '1b27500972990a4715bbb687c1228524fd3f3744').
+module(1, 48, 'email.iterators', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/iterators.py', 'a28ee2576ba28f4bdc49d94bf7cdf0caa0b1edbf').
+module(1, 49, 'pydoc', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/pydoc.py', '0e3067f8f5ce09e19b5b28e548b5be6c750901cb').
+module(1, 50, 'quopri', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/quopri.py', '942cb83a35c843aadfd7f6421b35c396321b265b').
+module(1, 51, '_datetime', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_datetime.cpython-35m-darwin.so', 'ff326464e9aad18496bf928f625d0366a8eb9078').
+module(1, 52, 'sre_parse', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/sre_parse.py', 'ade937ed03f736b4470eb2fbdce941a33804e949').
+module(1, 53, 'calendar', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/calendar.py', '812a8c6d3499dff8138c957a8765335fe8a3425c').
+module(1, 54, 'http.client', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/client.py', '0e492d984ceee12bd9445bafd9c48135f68e3e63').
+module(1, 55, 'signal', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/signal.py', '0e93b985a1b84de6ff5ba7a0ec73f3ca2237ec91').
+module(1, 56, '_warnings', '3.5.1', nil, nil).
+module(1, 57, '_bootlocale', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/_bootlocale.py', '34c1e1c6328285d6edf5cac80ce5b78379f96d80').
+module(1, 58, 'unittest.suite', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/suite.py', 'd8126fd1a543022936f73f2981afd486b6e99cbd').
+module(1, 59, '_dummy_thread', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/_dummy_thread.py', 'd394114a2464e4c816ba6921b2fc203fa3cc3461').
+module(1, 60, 'importlib', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/importlib/__init__.py', 'd12dc252ccf0c7f78901a576c919743810ed091b').
+module(1, 61, 'email.parser', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/parser.py', '7d20dd02d33a75683d20a2eda7638bab40e45175').
+module(1, 62, '_ctypes', '1.1.0', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_ctypes.cpython-35m-darwin.so', 'ddd2f41f12e55cef4bbca089f4c923dbcce52a1d').
+module(1, 63, 'glob', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/glob.py', '38256c2ee6d0120ec6ef53e44973ec4840a75e52').
+module(1, 64, '_collections_abc', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/_collections_abc.py', '0f5c74120c331aaaa4cbe1241fa7819d837990a9').
+module(1, 65, '_md5', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_md5.cpython-35m-darwin.so', '0049a65702942a0804b6012e1101f7e52c851387').
+module(1, 66, '_functools', '3.5.1', nil, nil).
+module(1, 67, 'collections.abc', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/collections/abc.py', 'bc2359bd2ed649aae7f19dca4cb5b260be151899').
+module(1, 68, '_ast', '3.5.1', nil, nil).
+module(1, 69, 'weakref', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/weakref.py', 'c7f4b8f07cb95f139ff1ce763eaf27bc74373e20').
+module(1, 70, 'mimetypes', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mimetypes.py', '34314e32e6846ac030b80d923b3857cc08e54b4a').
+module(1, 71, '_heapq', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_heapq.cpython-35m-darwin.so', 'e3ff5b37aadd14d12db35f5e9db124c11f98a3c4').
+module(1, 72, 'email.base64mime', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/base64mime.py', '7663bd4a8619225d944afd1a2ea5f5959e9db64d').
+module(1, 73, 'code', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/code.py', 'c5e2c95d74dec362fef174b5ecd9d63113999863').
+module(1, 74, 'tokenize', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tokenize.py', 'd499acea4428977a3605c104bf9a3c21d664dcc7').
+module(1, 75, 'ctypes._endian', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ctypes/_endian.py', 'de3c5f0affca22d1b795a7c18e9fcd7c9f34ad9f').
+module(1, 76, 'builtins', '3.5.1', nil, nil).
+module(1, 77, 'opcode', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/opcode.py', '1590960bbeaa2a1f2fb5f11f0033fdbe83554876').
+module(1, 78, 'select', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/select.cpython-35m-darwin.so', '01e52b863d050ed5fe9daaa4bcc09d8783b5f017').
+module(1, 79, '_operator', '3.5.1', nil, nil).
+module(1, 80, 'inspect', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/inspect.py', '9f392e45e12ad58ae351922657b46c53b8ae08cc').
+module(1, 81, 'argparse', '1.1', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/argparse.py', 'cefabc29fc760ac1539f0fb1ac142230a757c9f8').
+module(1, 82, 'importlib._bootstrap_external', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/importlib/_bootstrap_external.py', 'edab124510bfc9498ff573a2bc246451d1987399').
+module(1, 83, 'xml', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/xml/__init__.py', '941aa0eb07269e9287382b90353314e73dc198c0').
+module(1, 84, 'copy', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/copy.py', '740d396c3e8d0985098fbd9f96636f861543cdba').
+module(1, 85, 'xml.parsers.expat', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/xml/parsers/expat.py', '0b1d98a36824019872f6370cfd36bab1d523ba93').
+module(1, 86, 'sys', '3.5.1', nil, nil).
+module(1, 87, 'unittest.runner', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/runner.py', 'e471ee5777882f878b8c05ad6352d841ff07ef0c').
+module(1, 88, 'xml.parsers', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/xml/parsers/__init__.py', '6312e21b03edbd272c1c507456e76316c2be010c').
+module(1, 89, '_socket', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_socket.cpython-35m-darwin.so', '4cd9c1db60d9693ecb8be7d1210e65a33e8cd8c7').
+module(1, 90, 'doctest', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/doctest.py', '4c546421c899890a2b1d3aa0f396fc410803be9a').
+module(1, 91, 'email.charset', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/charset.py', 'bd9008b1ec846ea203ddef3df93a2ba33b6dc9ff').
+module(1, 92, 'struct', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/struct.py', 'dd29986d2204dbac1767dcf35002ea42ed224002').
+module(1, 93, 'html', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/html/__init__.py', '7ecc46ecbf89bd81ae178ce85b74859246698f19').
+module(1, 94, 're', '2.2.1', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/re.py', '24038e5bb2389142e3bb08fe9d990851cb3bf1f4').
+module(1, 95, 'base64', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/base64.py', '584125191a4805ab87d23fed597b12d4379d297f').
+module(1, 96, '_io', '3.5.1', nil, nil).
+module(1, 97, 'pydoc_data', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/pydoc_data/__init__.py', 'da39a3ee5e6b4b0d3255bfef95601890afd80709').
+module(1, 98, 'threading', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/threading.py', '2db2344af2e8e2de220c24524f4433b567891dd5').
+module(1, 99, 'string', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/string.py', 'fa289f04c5e592b8f0f2209042c800bc2f6af8bf').
+module(1, 100, '_sre', '3.5.1', nil, nil).
+module(1, 101, 'zipfile', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/zipfile.py', '5c17e958bec4812276c0c376ecad027612de68b7').
+module(1, 102, 'email._header_value_parser', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/_header_value_parser.py', 'a59673b16a8cb29d140df41638b5582bdb3ac6ae').
+module(1, 103, 'importlib._bootstrap', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/importlib/_bootstrap.py', 'c86868e9aa87af61e2180688ce12c9bd0a618c60').
+module(1, 104, '_bz2', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_bz2.cpython-35m-darwin.so', '7d01f7a7fcccebc5bdf4f3ca6c2197d0fb712f6f').
+module(1, 105, 'email._parseaddr', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/_parseaddr.py', 'db1538307ff6c9ec7058b0a3eb30a941e4aea463').
+module(1, 106, 'stat', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/stat.py', 'a3c27575f4be57f7e63432b749d6ebe30dcb6d41').
+module(1, 107, 'getopt', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/getopt.py', 'e3188e7259e0a0bb600bbf9b10907aad6445bc67').
+module(1, 108, 'unittest', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/__init__.py', '18cadc32845d007f35e2c6ebf11ba30074784b67').
+module(1, 109, 'socket', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socket.py', 'b5b8c78c656d1550bd6e9e1e7ec296b5070b7201').
+module(1, 110, 'gc', '3.5.1', nil, nil).
+module(1, 111, 'grp', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/grp.cpython-35m-darwin.so', '5045da66764a769f05e27e1b721fed7624bcb97a').
+module(1, 112, 'readline', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/readline.cpython-35m-darwin.so', '2aecbc8e5074029315bd9db35995731872ae6972').
+module(1, 113, 'email._policybase', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/_policybase.py', '2ed31673dc5dd3d5043c2d054bd82f0815d1a773').
+module(1, 114, '_sha512', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_sha512.cpython-35m-darwin.so', '2852d12fc54efb3aca8ee2da7dfe54b4c0a2b04b').
+module(1, 115, 'email.generator', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/generator.py', '06738a0c31ca64448d63dc14de5c925c959f2667').
+module(1, 116, 'traceback', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/traceback.py', '3b4e7be7c0fc799f80426e6f5aa12adf35e1d00b').
+module(1, 117, 'codecs', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/codecs.py', '7f121cb19f206da053d41d3850ebb2a884fd60ff').
+module(1, 118, 'email.contentmanager', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/contentmanager.py', '867d34b30046f01d86b95a68bd40ee6001b44978').
+module(1, 119, 'collections', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/collections/__init__.py', '48b6ebeaacc52a9d06dccba0d4053ab70e7c9fed').
+module(1, 120, 'tarfile', '0.9.0', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tarfile.py', 'e02a421a15113a4aa6568caa13fd5be2bb389878').
+module(1, 121, 'importlib.abc', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/importlib/abc.py', 'c2cb7a2fad5ac453870790cb73a44c5c9956fe3f').
+module(1, 122, 'ast', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ast.py', '1c95f7f56585a02d2a81934f6b5d512829be8ac3').
+module(1, 123, 'tty', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tty.py', 'a21d94fb697044620c6b8803f388fecfd4b7cc6b').
+module(1, 124, 'lzma', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lzma.py', 'fa7012bd00d14ecb887cdd86c054222418b8264e').
+module(1, 125, 'pydoc_data.topics', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/pydoc_data/topics.py', 'c2021c3c8fa31f80f7394da49bfc52b7d21110b4').
+module(1, 126, 'email.errors', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/errors.py', '762b2e4a5716c9d42f566e0cecf1134342104933').
+module(1, 127, 'http', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/__init__.py', '0dae37f195d11f8b0fb75ba5ccc0812515085b5d').
+module(1, 128, 'itertools', '3.5.1', nil, nil).
+module(1, 129, '_imp', '3.5.1', nil, nil).
+module(1, 130, 'io', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/io.py', 'e90682655a1e550609198329de940d6f42a26f34').
+module(1, 131, '_csv', '1.0', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_csv.cpython-35m-darwin.so', 'a07da649c000165a6ddb06f09e1e4182c4a5d2e3').
+module(1, 132, 'ipaddress', '1.0', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ipaddress.py', '7627ad3198aa304ce2a9b2b5c63e2f1af976e7d6').
+module(1, 133, '_posixsubprocess', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_posixsubprocess.cpython-35m-darwin.so', 'b69dc2f169d7c349548bd35b6c3eb232fb827b64').
+module(1, 134, '_signal', '3.5.1', nil, nil).
+module(1, 135, 'datetime', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/datetime.py', '19a15346aef50895e910c76e959bbe6b354bede1').
+module(1, 136, 'reprlib', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/reprlib.py', 'b063b6ae2aa2cc0b5acc7c500894294c9b344339').
+module(1, 137, '_threading_local', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/_threading_local.py', '8e2fdc9fd369326a19d6f7e4670dfb6ba6873d66').
+module(1, 138, 'csv', '1.0', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/csv.py', '02bc9be9b3d88f5afcd546c97743f88debbb0f38').
+module(1, 139, 'hashlib', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/hashlib.py', '0478cb629670e67691d2e1c78c993dd933cff6ea').
+module(1, 140, 'email.utils', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/utils.py', '5cd3572be4b74cd5b35b1afdf2ba774690fbec51').
+module(1, 141, 'email.feedparser', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/feedparser.py', '37435290fb6f6b3bb29dc1d4b0013d9ea8f7316c').
+module(1, 142, '_weakrefset', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/_weakrefset.py', '5bcb0bd12a222ac068ca6a39005ca6496d51ca93').
+module(1, 143, 'pyexpat', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/pyexpat.cpython-35m-darwin.so', '2b45817fce69078599d4956d6e1a41042a6b4ac2').
+module(1, 144, 'difflib', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/difflib.py', '57f4b00a1a465061c36370947deb55455252aa39').
+module(1, 145, '_lzma', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_lzma.cpython-35m-darwin.so', 'b4b8013cff5e31aeac84af38477b7039b413f3e5').
+module(1, 146, 'unittest.main', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/main.py', '2a3d1591a3501474e3dd1aca331b3bb66a3cdb17').
+module(1, 147, '_hashlib', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/_hashlib.cpython-35m-darwin.so', 'bed4d48c4812f945d41c34c043f070c7986bba7d').
+module(1, 148, 'urllib', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/__init__.py', 'da39a3ee5e6b4b0d3255bfef95601890afd80709').
+module(1, 149, 'plistlib', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/plistlib.py', 'b236fefe47790564081261313488741ebf602adb').
+module(1, 150, 'enum', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/enum.py', 'fc1eefa15dae11e9c1f85ef028820b3378292d92').
+module(1, 151, 'shutil', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/shutil.py', '34f90d398f8fef7f1a796bcc61356b464c4597e1').
+module(1, 152, 'platform', '1.0.7', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/platform.py', '2d526ef2f921b9b84fdbf6eb8fd6f4712fde74f2').
+module(1, 153, 'imp', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/imp.py', 'f0128b7452ca924e9c32675d0e13d3f5ac6cf69a').
+module(1, 154, 'socketserver', '0.4', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socketserver.py', '902e041906a72abebe1a9691f42abdaa4f7d0680').
+module(1, 155, 'time', '3.5.1', nil, nil).
+module(1, 156, 'atexit', '3.5.1', nil, nil).
+module(1, 157, 'types', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/types.py', 'c5d52a32bf24a5057f5225b9b45afdf154663432').
+module(1, 158, 'ctypes.wintypes', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ctypes/wintypes.py', '95fded51cbfa76a7ebf4b59ed79c6c2aac5c00c9').
+module(1, 159, 'webbrowser', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/webbrowser.py', 'ce1a1cede32928346c01a93cf28ea55264f0ab3a').
+module(1, 160, 'unittest.case', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/case.py', '238fce8f7b7c6ff92693c8f72d94dd5a93b4c2e8').
+module(1, 161, '_compression', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/_compression.py', '30f25b27c4a6aff6daa84d71ccf07a58b4078c6c').
+module(1, 162, 'linecache', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/linecache.py', '5cfa2fcc5f0b41b8f69a4e8bc0673dc27d0081a0').
+module(1, 163, 'pdb', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/pdb.py', '4985534ba6d88911e2191e32d7e527a684da2dee').
+module(1, 164, 'os', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/os.py', 'efe30810e024792254b772554afc1ba6face844d').
+module(1, 165, 'copyreg', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/copyreg.py', '3426efaa67b8d63d60d3580c4ac98d1bc641aa8f').
+module(1, 166, 'optparse', '1.5.3', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/optparse.py', '8d37296985f1e18e27694f437a3523c83b925ba5').
+module(1, 167, 'posix', '3.5.1', nil, nil).
+module(1, 168, 'uu', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/uu.py', '0402034c34f5c31e1c6245bdea51aac786a09a48').
+module(1, 169, 'zlib', '1.0', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/zlib.cpython-35m-darwin.so', '7514a39e709c7d3d8a55573182a710128c7ae2a7').
+module(1, 170, 'email.headerregistry', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/headerregistry.py', '53897cd1b6b2bc68b49245e0f879ac7d44753fa0').
+module(1, 171, 'importlib.util', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/importlib/util.py', 'c06e551884863d9966894f23303a9b8ddfabe355').
+module(1, 172, 'email.header', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/header.py', '149ee8aed1d0e4522df23dd2b159277bf4017c13').
+module(1, 173, '_stat', '3.5.1', nil, nil).
+module(1, 174, '_codecs', '3.5.1', nil, nil).
+module(1, 175, 'py_compile', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/py_compile.py', 'e4434727aecd7ecb10511146dffd093aba70332b').
+module(1, 176, 'posixpath', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/posixpath.py', 'eeb0d18f8165e0ff2203ad968fa39368127b412c').
+module(1, 177, 'bz2', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/bz2.py', '17dbc0c836ac9970e0b4de0eaebff4a812769dbf').
+module(1, 178, 'urllib.parse', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/parse.py', 'ec6ed40ba7343f4a349cdaeb21c5c1915345e190').
+module(1, 179, 'gzip', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/gzip.py', 'e30822ba2b51656671fdebb2267a55e782e0a255').
+module(1, 180, 'locale', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/locale.py', '4ba2a06e498db500b34dc2b42b8876879404d9c4').
+module(1, 181, 'functools', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/functools.py', '82a6d9c8c199229ff3bcbab30837184f400ccb8d').
+module(1, 182, 'email', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/__init__.py', 'a0b4979fca2e65b48a1edf25d0127242478074a6').
+module(1, 183, '_collections', '3.5.1', nil, nil).
+module(1, 184, 'logging', '0.5.1.2', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/logging/__init__.py', '3115e969d44bb057aa2ec80d45ae1e309af5dd82').
+module(1, 185, 'shlex', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/shlex.py', '4ab5ea6567090179f25479efc64ef8250368166c').
+module(1, 186, 'email._encoded_words', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/_encoded_words.py', '779ee62b76f18bc48931424b6af6b6a73171022f').
+module(1, 187, 'email.quoprimime', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/quoprimime.py', 'b2df663b3ab751510155776902a9de6c876f2db8').
+module(1, 188, 'cmd', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/cmd.py', '297f9a44fcd892c32e8c0bc4fed65f2230c48511').
+module(1, 189, 'selectors', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/selectors.py', 'e51d0f8fc546bbf29789bf2da69134dca811ea6b').
+module(1, 190, 'email.policy', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/email/policy.py', '1c3e8c6d6658d753e9c372872a6afa2440b52710').
+module(1, 191, 'errno', '3.5.1', nil, nil).
+module(1, 192, 'binascii', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/lib-dynload/binascii.cpython-35m-darwin.so', '1da46fec244e2e5f885b1df9062cc534e7978dcd').
+module(1, 193, 'encodings.aliases', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/encodings/aliases.py', '45e49cf6c313d1fdb310187ec05b477eeb8a8564').
+module(1, 194, '_weakref', '3.5.1', nil, nil).
+module(1, 195, 'subprocess', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py', 'e973e2df76705ff51e9a004c745f8b31733cdc00').
+module(1, 196, 'random', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/random.py', '357e4f42a89d1fb2b5df014e2070c65ff44c797c').
+module(1, 197, 'ntpath', nil, '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ntpath.py', '19086a538c1345a1f953bb7e9a4fe59908a8299c').
+module(1, 198, 'http.server', '0.6', '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/server.py', '7379c1139bfd232e4e2c8189ae1ef7553fd49d1f').
 
 %
 % DESCRIPTION: informs that a environment attribute (*name*)
@@ -283,7 +281,7 @@ object(1, -1, 7, 'greet_user', 'FUNCTION_CALL').
 %
 
 :- dynamic(activation/7).
-activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/06_greeting_from_file/greeting_from_file.py', 61, nil, nil, nil).
+activation(1, 1, '/Users/wangqiwen/Documents/SPIN2016/yw-noworkflow/examples/06_greeting_from_file/greeting_from_file.py', 61, nil, nil, nil).
 activation(1, 2, 'greet_user', 51, nil, nil, 1).
 activation(1, 3, 'open', 15, nil, nil, 2).
 activation(1, 4, '__init__', 17, nil, nil, 2).
@@ -312,27 +310,27 @@ activation(1, 15, '__next__', 19, nil, nil, 2).
 object_value(1, 2, 1, 'input_file_path', 'input.csv', 'ARGUMENT').
 object_value(1, 3, 2, 'name', 'input.csv', 'ARGUMENT').
 object_value(1, 3, 3, 'args', '(''rt'',)', 'ARGUMENT').
-object_value(1, 4, 4, 'self', '<csv.DictReader object at 0x7f38df30b0f0>', 'ARGUMENT').
+object_value(1, 4, 4, 'self', '<csv.DictReader object at 0x103f45c88>', 'ARGUMENT').
 object_value(1, 4, 5, 'f', '<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>', 'ARGUMENT').
 object_value(1, 4, 6, 'fieldnames', 'None', 'ARGUMENT').
 object_value(1, 4, 7, 'restkey', 'None', 'ARGUMENT').
 object_value(1, 4, 8, 'restval', 'None', 'ARGUMENT').
 object_value(1, 4, 9, 'dialect', 'excel', 'ARGUMENT').
 object_value(1, 4, 10, 'args', '()', 'ARGUMENT').
-object_value(1, 5, 11, 'self', '<csv.DictReader object at 0x7f38df30b0f0>', 'ARGUMENT').
-object_value(1, 6, 12, 'self', '<csv.DictReader object at 0x7f38df30b0f0>', 'ARGUMENT').
+object_value(1, 5, 11, 'self', '<csv.DictReader object at 0x103f45c88>', 'ARGUMENT').
+object_value(1, 6, 12, 'self', '<csv.DictReader object at 0x103f45c88>', 'ARGUMENT').
 object_value(1, 7, 13, 'prefix', 'Hello World', 'ARGUMENT').
 object_value(1, 7, 14, 'suffix', '!', 'ARGUMENT').
 object_value(1, 7, 15, 'count', '1', 'ARGUMENT').
-object_value(1, 9, 16, 'self', '<csv.DictReader object at 0x7f38df30b0f0>', 'ARGUMENT').
+object_value(1, 9, 16, 'self', '<csv.DictReader object at 0x103f45c88>', 'ARGUMENT').
 object_value(1, 10, 17, 'prefix', 'Goodbye World', 'ARGUMENT').
 object_value(1, 10, 18, 'suffix', '?', 'ARGUMENT').
 object_value(1, 10, 19, 'count', '2', 'ARGUMENT').
-object_value(1, 12, 20, 'self', '<csv.DictReader object at 0x7f38df30b0f0>', 'ARGUMENT').
+object_value(1, 12, 20, 'self', '<csv.DictReader object at 0x103f45c88>', 'ARGUMENT').
 object_value(1, 13, 21, 'prefix', 'Back again', 'ARGUMENT').
 object_value(1, 13, 22, 'suffix', '?!', 'ARGUMENT').
 object_value(1, 13, 23, 'count', '3', 'ARGUMENT').
-object_value(1, 15, 24, 'self', '<csv.DictReader object at 0x7f38df30b0f0>', 'ARGUMENT').
+object_value(1, 15, 24, 'self', '<csv.DictReader object at 0x103f45c88>', 'ARGUMENT').
 
 %
 % FACT DEFINITION: access(TrialId, Id, Name, Mode, ContentHashBefore, ContentHashAfter, Timestamp, ActivationId).
@@ -361,31 +359,31 @@ access(1, f2, 'input.csv', 'rt', 'f9a76883984b5f761a8b0d06fd570db8553d1730', 'f9
 %
 
 :- dynamic(variable/7).
-variable(1, 1, 1, 'csv', 1, '<module ''csv'' from ''/usr/lib/python3.4/csv.py''>', nil).
+variable(1, 1, 1, 'csv', 1, '<module ''csv'' from ''/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/csv.py''>', nil).
 variable(1, 1, 2, 'import csv', 1, 'now(n/a)', nil).
 variable(1, 0, 3, '--blackbox--', 1, 'now(n/a)', nil).
-variable(1, 1, 4, 'greet_user', 8, '<function greet_user at 0x7f38dedd79d8>', nil).
-variable(1, 1, 5, 'add_suffix', 43, '<function add_suffix at 0x7f38ded56d08>', nil).
+variable(1, 1, 4, 'greet_user', 8, '<function greet_user at 0x105687b70>', nil).
+variable(1, 1, 5, 'add_suffix', 43, '<function add_suffix at 0x10575cc80>', nil).
 variable(1, 2, 7, 'input_file_path', 8, 'input.csv', nil).
 variable(1, 3, 8, 'return', 127, '<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>', nil).
 variable(1, 0, 9, '--graybox--', 0, 'now(n/a)', nil).
 variable(1, 2, 10, 'open', 15, 'now(n/a)', nil).
-variable(1, 1, 11, 'open', 0, '<function Profiler.new_open.<locals>.open at 0x7f38dedd7268>', nil).
+variable(1, 1, 11, 'open', 0, '<function Profiler.new_open.<locals>.open at 0x1050afe18>', nil).
 variable(1, 2, 12, 'fd', 15, '<_io.TextIOWrapper name=''input.csv'' mode=''rt'' encoding=''UTF-8''>', nil).
 variable(1, 4, 13, 'return', 87, 'None', nil).
 variable(1, 0, 14, '--blackbox--', 2, 'now(n/a)', nil).
-variable(1, 2, 16, 'greeting_definitions', 17, '<csv.DictReader object at 0x7f38df30b0f0>', nil).
-variable(1, 5, 17, 'return', 90, '<csv.DictReader object at 0x7f38df30b0f0>', nil).
+variable(1, 2, 16, 'greeting_definitions', 17, '<csv.DictReader object at 0x103f45c88>', nil).
+variable(1, 5, 17, 'return', 90, '<csv.DictReader object at 0x103f45c88>', nil).
 variable(1, 0, 18, '--blackbox--', 3, 'now(n/a)', nil).
-variable(1, 6, 20, 'return', 126, '{''text'': ''Hello World'', ''count'': ''1'', ''emphasis'': ''!''}', nil).
+variable(1, 6, 20, 'return', 126, '{''count'': ''1'', ''text'': ''Hello World'', ''emphasis'': ''!''}', nil).
 variable(1, 0, 21, '--blackbox--', 4, 'now(n/a)', nil).
-variable(1, 2, 23, 'greeting_def', 19, '{''text'': ''Hello World'', ''count'': ''1'', ''emphasis'': ''!''}', nil).
+variable(1, 2, 23, 'greeting_def', 19, '{''count'': ''1'', ''text'': ''Hello World'', ''emphasis'': ''!''}', nil).
 variable(1, 2, 24, 'greeting', 21, 'Hello World', nil).
 variable(1, 2, 25, 'emphasis', 22, '!', nil).
-variable(1, 2, 26, 'int(greeting_def[''count''])', 23, 'now(n/a)', nil).
-variable(1, 0, 27, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 1, 28, 'int', 0, '<class ''int''>', nil).
-variable(1, 2, 29, 'count', 23, '1', nil).
+variable(1, 2, 26, 'count', 23, '1', nil).
+variable(1, 2, 27, 'int(greeting_def[''count''])', 23, 'now(n/a)', nil).
+variable(1, 0, 28, '--graybox--', 0, 'now(n/a)', nil).
+variable(1, 1, 29, 'int', 0, '<class ''int''>', nil).
 variable(1, 7, 30, 'prefix', 43, 'Hello World', nil).
 variable(1, 7, 31, 'suffix', 43, '!', nil).
 variable(1, 7, 32, 'count', 43, '1', nil).
@@ -403,14 +401,14 @@ variable(1, 8, 43, 'return', 38, nil, nil).
 variable(1, 0, 44, '--graybox--', 0, 'now(n/a)', nil).
 variable(1, 2, 45, 'module.print', 38, 'now(n/a)', nil).
 variable(1, 1, 46, 'print', 0, '<built-in function print>', nil).
-variable(1, 9, 47, 'return', 126, '{''text'': ''Goodbye World'', ''count'': ''2'', ''emphasis'': ''?''}', nil).
+variable(1, 9, 47, 'return', 126, '{''count'': ''2'', ''text'': ''Goodbye World'', ''emphasis'': ''?''}', nil).
 variable(1, 0, 48, '--blackbox--', 5, 'now(n/a)', nil).
-variable(1, 2, 50, 'greeting_def', 19, '{''text'': ''Goodbye World'', ''count'': ''2'', ''emphasis'': ''?''}', nil).
+variable(1, 2, 50, 'greeting_def', 19, '{''count'': ''2'', ''text'': ''Goodbye World'', ''emphasis'': ''?''}', nil).
 variable(1, 2, 51, 'greeting', 21, 'Goodbye World', nil).
 variable(1, 2, 52, 'emphasis', 22, '?', nil).
-variable(1, 2, 53, 'int(greeting_def[''count''])', 23, 'now(n/a)', nil).
-variable(1, 0, 54, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 2, 55, 'count', 23, '2', nil).
+variable(1, 2, 53, 'count', 23, '2', nil).
+variable(1, 2, 54, 'int(greeting_def[''count''])', 23, 'now(n/a)', nil).
+variable(1, 0, 55, '--graybox--', 0, 'now(n/a)', nil).
 variable(1, 10, 56, 'prefix', 43, 'Goodbye World', nil).
 variable(1, 10, 57, 'suffix', 43, '?', nil).
 variable(1, 10, 58, 'count', 43, '2', nil).
@@ -430,14 +428,14 @@ variable(1, 2, 71, 'greeting', 32, 'Goodbye World??', nil).
 variable(1, 11, 72, 'return', 38, nil, nil).
 variable(1, 0, 73, '--graybox--', 0, 'now(n/a)', nil).
 variable(1, 2, 74, 'module.print', 38, 'now(n/a)', nil).
-variable(1, 12, 75, 'return', 126, '{''text'': ''Back again'', ''count'': ''3'', ''emphasis'': ''?!''}', nil).
+variable(1, 12, 75, 'return', 126, '{''count'': ''3'', ''text'': ''Back again'', ''emphasis'': ''?!''}', nil).
 variable(1, 0, 76, '--blackbox--', 6, 'now(n/a)', nil).
-variable(1, 2, 78, 'greeting_def', 19, '{''text'': ''Back again'', ''count'': ''3'', ''emphasis'': ''?!''}', nil).
+variable(1, 2, 78, 'greeting_def', 19, '{''count'': ''3'', ''text'': ''Back again'', ''emphasis'': ''?!''}', nil).
 variable(1, 2, 79, 'greeting', 21, 'Back again', nil).
 variable(1, 2, 80, 'emphasis', 22, '?!', nil).
-variable(1, 2, 81, 'int(greeting_def[''count''])', 23, 'now(n/a)', nil).
-variable(1, 0, 82, '--graybox--', 0, 'now(n/a)', nil).
-variable(1, 2, 83, 'count', 23, '3', nil).
+variable(1, 2, 81, 'count', 23, '3', nil).
+variable(1, 2, 82, 'int(greeting_def[''count''])', 23, 'now(n/a)', nil).
+variable(1, 0, 83, '--graybox--', 0, 'now(n/a)', nil).
 variable(1, 13, 84, 'prefix', 43, 'Back again', nil).
 variable(1, 13, 85, 'suffix', 43, '?!', nil).
 variable(1, 13, 86, 'count', 43, '3', nil).
@@ -489,7 +487,7 @@ usage(1, 7, 31, 11, 'suffix', 47).
 usage(1, 7, 39, 12, 'string', 48).
 usage(1, 2, 24, 13, 'greeting', 32).
 usage(1, 2, 25, 14, 'emphasis', 32).
-usage(1, 2, 29, 15, 'count', 32).
+usage(1, 2, 26, 15, 'count', 32).
 usage(1, 2, 42, 16, 'greeting', 38).
 usage(1, 2, 16, 17, 'greeting_definitions', 19).
 usage(1, 2, 50, 18, 'greeting_def', 21).
@@ -506,7 +504,7 @@ usage(1, 10, 57, 28, 'suffix', 47).
 usage(1, 10, 68, 29, 'string', 48).
 usage(1, 2, 51, 30, 'greeting', 32).
 usage(1, 2, 52, 31, 'emphasis', 32).
-usage(1, 2, 55, 32, 'count', 32).
+usage(1, 2, 53, 32, 'count', 32).
 usage(1, 2, 71, 33, 'greeting', 38).
 usage(1, 2, 16, 34, 'greeting_definitions', 19).
 usage(1, 2, 78, 35, 'greeting_def', 21).
@@ -526,7 +524,7 @@ usage(1, 13, 85, 48, 'suffix', 47).
 usage(1, 13, 100, 49, 'string', 48).
 usage(1, 2, 79, 50, 'greeting', 32).
 usage(1, 2, 80, 51, 'emphasis', 32).
-usage(1, 2, 83, 52, 'count', 32).
+usage(1, 2, 81, 52, 'count', 32).
 usage(1, 2, 103, 53, 'greeting', 38).
 usage(1, 2, 16, 54, 'greeting_definitions', 19).
 usage(1, 1, 4, 55, 'greet_user', 51).
@@ -545,142 +543,142 @@ usage(1, 1, 4, 55, 'greet_user', 51).
 %
 
 :- dynamic(dependency/6).
-dependency(1, 1, 2, 103, 2, 102).
-dependency(1, 2, 0, 87, 2, 83).
-dependency(1, 3, 0, 94, 13, 86).
-dependency(1, 4, 1, 111, 1, 4).
-dependency(1, 5, 0, 14, 1, 1).
-dependency(1, 6, 13, 92, 13, 91).
-dependency(1, 7, 0, 33, 2, 25).
-dependency(1, 8, 2, 50, 2, 16).
-dependency(1, 9, 3, 8, 0, 9).
-dependency(1, 10, 14, 104, 0, 105).
-dependency(1, 11, 13, 100, 13, 99).
-dependency(1, 12, 0, 98, 13, 86).
-dependency(1, 13, 2, 41, 1, 5).
-dependency(1, 14, 0, 14, 2, 12).
-dependency(1, 15, 10, 64, 10, 60).
-dependency(1, 16, 10, 68, 10, 57).
-dependency(1, 17, 15, 107, 0, 108).
-dependency(1, 18, 10, 64, 10, 63).
-dependency(1, 19, 0, 33, 2, 29).
-dependency(1, 20, 13, 84, 2, 79).
-dependency(1, 21, 0, 59, 2, 51).
-dependency(1, 22, 0, 90, 13, 86).
-dependency(1, 23, 2, 45, 8, 43).
-dependency(1, 24, 2, 16, 1, 1).
-dependency(1, 25, 2, 55, 2, 53).
-dependency(1, 26, 2, 106, 14, 104).
-dependency(1, 27, 2, 74, 11, 72).
-dependency(1, 28, 13, 92, 13, 86).
-dependency(1, 29, 0, 54, 2, 50).
-dependency(1, 30, 10, 60, 10, 56).
-dependency(1, 31, 2, 78, 2, 16).
-dependency(1, 32, 13, 96, 13, 85).
-dependency(1, 33, 0, 44, 2, 42).
-dependency(1, 34, 2, 12, 2, 10).
-dependency(1, 35, 0, 66, 10, 58).
-dependency(1, 36, 1, 1, 1, 2).
-dependency(1, 37, 13, 96, 13, 95).
-dependency(1, 38, 13, 99, 13, 89).
-dependency(1, 39, 2, 51, 2, 50).
-dependency(1, 40, 2, 52, 2, 50).
-dependency(1, 41, 13, 95, 13, 86).
-dependency(1, 42, 13, 100, 13, 85).
-dependency(1, 43, 9, 47, 0, 48).
-dependency(1, 44, 0, 82, 2, 78).
-dependency(1, 45, 1, 2, 0, 3).
-dependency(1, 46, 13, 92, 13, 88).
-dependency(1, 47, 13, 97, 0, 98).
-dependency(1, 48, 10, 68, 10, 64).
-dependency(1, 49, 2, 53, 1, 28).
-dependency(1, 50, 7, 39, 7, 32).
-dependency(1, 51, 2, 10, 3, 8).
-dependency(1, 52, 2, 26, 1, 28).
-dependency(1, 53, 0, 36, 7, 32).
-dependency(1, 54, 10, 64, 10, 57).
-dependency(1, 55, 7, 39, 7, 34).
-dependency(1, 56, 2, 102, 13, 101).
-dependency(1, 57, 13, 92, 13, 85).
-dependency(1, 58, 10, 63, 10, 61).
-dependency(1, 59, 2, 81, 0, 82).
-dependency(1, 60, 10, 65, 1, 37).
+dependency(1, 1, 5, 17, 0, 18).
+dependency(1, 2, 0, 14, 1, 1).
+dependency(1, 3, 0, 44, 2, 42).
+dependency(1, 4, 2, 82, 1, 29).
+dependency(1, 5, 2, 70, 10, 69).
+dependency(1, 6, 7, 38, 7, 35).
+dependency(1, 7, 2, 74, 11, 72).
+dependency(1, 8, 12, 75, 0, 76).
+dependency(1, 9, 2, 27, 0, 28).
+dependency(1, 10, 2, 42, 2, 41).
+dependency(1, 11, 0, 28, 2, 23).
+dependency(1, 12, 2, 82, 0, 83).
+dependency(1, 13, 0, 36, 7, 32).
+dependency(1, 14, 0, 98, 13, 86).
+dependency(1, 15, 1, 2, 0, 3).
+dependency(1, 16, 0, 59, 2, 51).
+dependency(1, 17, 13, 96, 13, 85).
+dependency(1, 18, 13, 97, 1, 37).
+dependency(1, 19, 15, 107, 0, 108).
+dependency(1, 20, 13, 100, 13, 99).
+dependency(1, 21, 0, 83, 2, 78).
+dependency(1, 22, 2, 103, 2, 102).
+dependency(1, 23, 0, 66, 10, 58).
+dependency(1, 24, 13, 97, 0, 98).
+dependency(1, 25, 0, 33, 2, 24).
+dependency(1, 26, 10, 60, 10, 56).
+dependency(1, 27, 0, 62, 10, 58).
+dependency(1, 28, 0, 55, 2, 50).
+dependency(1, 29, 13, 93, 0, 94).
+dependency(1, 30, 10, 57, 2, 52).
+dependency(1, 31, 2, 12, 2, 10).
+dependency(1, 32, 2, 27, 1, 29).
+dependency(1, 33, 13, 100, 13, 96).
+dependency(1, 34, 10, 65, 0, 66).
+dependency(1, 35, 13, 84, 2, 79).
+dependency(1, 36, 10, 64, 10, 63).
+dependency(1, 37, 2, 54, 1, 29).
+dependency(1, 38, 7, 38, 7, 32).
+dependency(1, 39, 10, 61, 1, 37).
+dependency(1, 40, 7, 34, 7, 30).
+dependency(1, 41, 10, 61, 0, 62).
+dependency(1, 42, 10, 56, 2, 51).
+dependency(1, 43, 11, 72, 0, 73).
+dependency(1, 44, 2, 70, 1, 5).
+dependency(1, 45, 1, 111, 1, 4).
+dependency(1, 46, 13, 86, 2, 81).
+dependency(1, 47, 7, 39, 7, 32).
+dependency(1, 48, 10, 58, 2, 53).
+dependency(1, 49, 2, 23, 2, 16).
+dependency(1, 50, 0, 90, 13, 86).
+dependency(1, 51, 13, 100, 13, 85).
+dependency(1, 52, 2, 51, 2, 50).
+dependency(1, 53, 2, 45, 1, 46).
+dependency(1, 54, 2, 79, 2, 78).
+dependency(1, 55, 4, 13, 0, 14).
+dependency(1, 56, 10, 65, 1, 37).
+dependency(1, 57, 13, 101, 13, 100).
+dependency(1, 58, 2, 53, 2, 54).
+dependency(1, 59, 10, 64, 10, 57).
+dependency(1, 60, 6, 20, 0, 21).
 dependency(1, 61, 0, 105, 2, 103).
-dependency(1, 62, 2, 24, 2, 23).
-dependency(1, 63, 7, 39, 7, 38).
-dependency(1, 64, 10, 61, 0, 62).
-dependency(1, 65, 0, 73, 2, 71).
-dependency(1, 66, 1, 111, 2, 110).
-dependency(1, 67, 7, 38, 7, 32).
-dependency(1, 68, 0, 59, 2, 55).
-dependency(1, 69, 10, 64, 10, 58).
-dependency(1, 70, 13, 91, 13, 89).
-dependency(1, 71, 10, 68, 10, 67).
-dependency(1, 72, 7, 30, 2, 24).
-dependency(1, 73, 7, 38, 7, 35).
-dependency(1, 74, 5, 17, 0, 18).
-dependency(1, 75, 2, 74, 1, 46).
-dependency(1, 76, 10, 57, 2, 52).
-dependency(1, 77, 13, 89, 1, 37).
-dependency(1, 78, 13, 89, 0, 90).
-dependency(1, 79, 13, 99, 13, 86).
-dependency(1, 80, 11, 72, 0, 73).
-dependency(1, 81, 2, 106, 1, 46).
-dependency(1, 82, 13, 88, 13, 84).
-dependency(1, 83, 13, 85, 2, 80).
-dependency(1, 84, 7, 40, 7, 39).
-dependency(1, 85, 10, 65, 0, 66).
-dependency(1, 86, 2, 53, 0, 54).
-dependency(1, 87, 10, 61, 1, 37).
-dependency(1, 88, 7, 34, 7, 30).
-dependency(1, 89, 10, 56, 2, 51).
-dependency(1, 90, 8, 43, 0, 44).
-dependency(1, 91, 2, 25, 2, 23).
-dependency(1, 92, 0, 9, 2, 7).
-dependency(1, 93, 2, 10, 1, 11).
-dependency(1, 94, 6, 20, 0, 21).
-dependency(1, 95, 2, 70, 1, 5).
-dependency(1, 96, 0, 62, 10, 58).
-dependency(1, 97, 2, 81, 1, 28).
-dependency(1, 98, 12, 75, 0, 76).
-dependency(1, 99, 2, 45, 1, 46).
-dependency(1, 100, 2, 29, 2, 26).
-dependency(1, 101, 0, 27, 2, 23).
-dependency(1, 102, 13, 93, 0, 94).
-dependency(1, 103, 10, 63, 10, 58).
-dependency(1, 104, 13, 86, 2, 83).
-dependency(1, 105, 10, 68, 10, 58).
-dependency(1, 106, 7, 32, 2, 29).
-dependency(1, 107, 2, 102, 1, 5).
-dependency(1, 108, 0, 33, 2, 24).
-dependency(1, 109, 13, 100, 13, 96).
-dependency(1, 110, 2, 79, 2, 78).
-dependency(1, 111, 13, 91, 13, 86).
-dependency(1, 112, 7, 39, 7, 31).
-dependency(1, 113, 2, 80, 2, 78).
-dependency(1, 114, 13, 96, 13, 92).
-dependency(1, 115, 2, 41, 7, 40).
-dependency(1, 116, 2, 42, 2, 41).
-dependency(1, 117, 2, 71, 2, 70).
-dependency(1, 118, 13, 97, 1, 37).
-dependency(1, 119, 13, 100, 13, 86).
-dependency(1, 120, 10, 58, 2, 55).
-dependency(1, 121, 2, 83, 2, 81).
-dependency(1, 122, 10, 67, 10, 61).
-dependency(1, 123, 0, 87, 2, 79).
-dependency(1, 124, 7, 35, 1, 37).
-dependency(1, 125, 13, 96, 13, 86).
-dependency(1, 126, 10, 67, 10, 58).
-dependency(1, 127, 13, 93, 1, 37).
+dependency(1, 62, 13, 92, 13, 85).
+dependency(1, 63, 7, 39, 7, 31).
+dependency(1, 64, 0, 59, 2, 53).
+dependency(1, 65, 2, 102, 13, 101).
+dependency(1, 66, 13, 96, 13, 86).
+dependency(1, 67, 10, 68, 10, 58).
+dependency(1, 68, 2, 81, 2, 82).
+dependency(1, 69, 2, 10, 1, 11).
+dependency(1, 70, 2, 41, 7, 40).
+dependency(1, 71, 13, 91, 13, 86).
+dependency(1, 72, 2, 50, 2, 16).
+dependency(1, 73, 2, 106, 14, 104).
+dependency(1, 74, 0, 14, 2, 12).
+dependency(1, 75, 13, 88, 13, 84).
+dependency(1, 76, 0, 94, 13, 86).
+dependency(1, 77, 0, 87, 2, 80).
+dependency(1, 78, 2, 54, 0, 55).
+dependency(1, 79, 0, 33, 2, 26).
+dependency(1, 80, 7, 30, 2, 24).
+dependency(1, 81, 3, 8, 0, 9).
+dependency(1, 82, 13, 89, 0, 90).
+dependency(1, 83, 1, 111, 2, 110).
+dependency(1, 84, 9, 47, 0, 48).
+dependency(1, 85, 13, 93, 1, 37).
+dependency(1, 86, 10, 69, 10, 68).
+dependency(1, 87, 7, 32, 2, 26).
+dependency(1, 88, 0, 9, 2, 7).
+dependency(1, 89, 2, 106, 1, 46).
+dependency(1, 90, 13, 99, 13, 86).
+dependency(1, 91, 13, 100, 13, 86).
+dependency(1, 92, 13, 92, 13, 88).
+dependency(1, 93, 7, 40, 7, 39).
+dependency(1, 94, 13, 95, 13, 89).
+dependency(1, 95, 13, 92, 13, 86).
+dependency(1, 96, 2, 26, 2, 27).
+dependency(1, 97, 10, 63, 10, 58).
+dependency(1, 98, 8, 43, 0, 44).
+dependency(1, 99, 0, 73, 2, 71).
+dependency(1, 100, 10, 68, 10, 67).
+dependency(1, 101, 7, 35, 1, 37).
+dependency(1, 102, 2, 45, 8, 43).
+dependency(1, 103, 7, 39, 7, 34).
+dependency(1, 104, 2, 10, 3, 8).
+dependency(1, 105, 10, 64, 10, 60).
+dependency(1, 106, 0, 87, 2, 79).
+dependency(1, 107, 2, 74, 1, 46).
+dependency(1, 108, 2, 78, 2, 16).
+dependency(1, 109, 10, 67, 10, 58).
+dependency(1, 110, 13, 92, 13, 91).
+dependency(1, 111, 0, 33, 2, 25).
+dependency(1, 112, 2, 16, 4, 13).
+dependency(1, 113, 2, 25, 2, 23).
+dependency(1, 114, 13, 95, 13, 86).
+dependency(1, 115, 2, 80, 2, 78).
+dependency(1, 116, 2, 52, 2, 50).
+dependency(1, 117, 7, 39, 7, 38).
+dependency(1, 118, 0, 87, 2, 81).
+dependency(1, 119, 13, 96, 13, 95).
+dependency(1, 120, 10, 64, 10, 58).
+dependency(1, 121, 13, 99, 13, 89).
+dependency(1, 122, 1, 1, 1, 2).
+dependency(1, 123, 2, 102, 1, 5).
+dependency(1, 124, 2, 24, 2, 23).
+dependency(1, 125, 2, 16, 1, 1).
+dependency(1, 126, 10, 67, 10, 61).
+dependency(1, 127, 10, 68, 10, 64).
 dependency(1, 128, 0, 59, 2, 52).
 dependency(1, 129, 7, 31, 2, 25).
-dependency(1, 130, 13, 101, 13, 100).
-dependency(1, 131, 7, 35, 0, 36).
-dependency(1, 132, 2, 70, 10, 69).
-dependency(1, 133, 2, 26, 0, 27).
-dependency(1, 134, 2, 16, 4, 13).
-dependency(1, 135, 4, 13, 0, 14).
-dependency(1, 136, 0, 87, 2, 80).
-dependency(1, 137, 2, 23, 2, 16).
-dependency(1, 138, 10, 69, 10, 68).
-dependency(1, 139, 13, 95, 13, 89).
+dependency(1, 130, 2, 71, 2, 70).
+dependency(1, 131, 10, 68, 10, 57).
+dependency(1, 132, 13, 96, 13, 92).
+dependency(1, 133, 14, 104, 0, 105).
+dependency(1, 134, 2, 41, 1, 5).
+dependency(1, 135, 7, 35, 0, 36).
+dependency(1, 136, 13, 91, 13, 89).
+dependency(1, 137, 10, 63, 10, 61).
+dependency(1, 138, 13, 85, 2, 80).
+dependency(1, 139, 13, 89, 1, 37).

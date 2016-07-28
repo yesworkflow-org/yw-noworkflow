@@ -1,5 +1,5 @@
-ATTACH 'facts/yw_views.db' as yw;
-ATTACH 'facts/nw_views.db' as nw;
+ATTACH ‘views/yw_views.db' as yw;
+ATTACH ‘views/nw_views.db' as nw;
 
 DROP TABLE IF EXISTS nw_activation_from_yw_step;
 CREATE TABLE nw_activation_from_yw_step AS

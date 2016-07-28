@@ -1,4 +1,4 @@
-ATTACH 'facts/nw_facts.db' as nw;
+ATTACH ‘facts/nw_facts.db' as nw;
 
 DROP TABLE IF EXISTS nw_script_activation;
 CREATE TABLE nw_script_activation AS

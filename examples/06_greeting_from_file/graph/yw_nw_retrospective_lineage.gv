@@ -1,0 +1,45 @@
+
+digraph yw_data_view {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label="greetings_from_file"
+subgraph cluster_workflow { label=""; color=black; penwidth=2
+subgraph cluster_workflow_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#66883F" peripheries=1 fontname="Courier-Bold" fontcolor=white]
+emphasize_greeting
+read_greeting_definitions
+print_greeting
+node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+node[shape=box style="rounded,filled" fillcolor="#D18E2C" peripheries=1 fontname="Helvetica-Bold"]
+emphasized_greeting [shape=record rankdir=LR label="{<f0> [data8] emphasized_greeting |<f1> [var103] greeting = Back again?!?!?!}"]
+displayed_greeting [shape=record rankdir=LR label="{<f0> [data9] displayed_greeting |<f1> [var103] greeting = Back again?!?!?!}"]
+provided_emphasis [shape=record rankdir=LR label="{<f0> [data6] provided_emphasis |<f1> [var80] emphasis = ?!}"]
+provided_greeting [shape=record rankdir=LR label="{<f0> [data5] provided_greeting |<f1> [var79] greeting = Back again}"]
+input_file [shape=record rankdir=LR label="{<f0> [data4] input_file |<f1> [var7] input_file_path = input.csv}"]
+node[shape=box style="rounded,filled" fillcolor="#222222" peripheries=1 fontname="Helvetica-Bold"]
+emphasis_count [shape=record rankdir=LR label="{<f0> [data7] emphasis_count |<f1> [var81] count = 3}"]
+}}
+subgraph cluster_inflows { label=""; color=white; penwidth=2
+subgraph cluster_inflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+input_file_inflow [label=""]
+}}
+subgraph cluster_outflows { label=""; color=white; penwidth=2
+subgraph cluster_outflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+displayed_greeting_outflow [label=""]
+}}
+emphasized_greeting -> print_greeting
+emphasis_count -> emphasize_greeting
+provided_emphasis -> emphasize_greeting
+provided_greeting -> emphasize_greeting
+input_file -> read_greeting_definitions
+read_greeting_definitions -> provided_greeting
+read_greeting_definitions -> provided_emphasis
+read_greeting_definitions -> emphasis_count
+emphasize_greeting -> emphasized_greeting
+print_greeting -> displayed_greeting
+input_file_inflow -> input_file
+displayed_greeting -> displayed_greeting_outflow
+}
+

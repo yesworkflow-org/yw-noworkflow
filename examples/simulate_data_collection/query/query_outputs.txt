@@ -50,13 +50,13 @@ NW_Q1 : What functions are called from the top level of the script?
 
 nw_q1(FunctionName)
 ...................................................................................................
-nw_q1(len).
+nw_q1('module.len').
 nw_q1(parse_args).
 nw_q1(set_usage).
 nw_q1(add_option).
 nw_q1('__init__').
-nw_q1(new_image_file).
-nw_q1(run_logger).
+nw_q1('module.__build_class__').
+nw_q1('_handle_fromlist').
 nw_q1(simulate_data_collection).
 
 
