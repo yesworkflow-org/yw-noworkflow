@@ -18,7 +18,7 @@ nw_function_definition(1,greet_user,5,16,nil).
 nw_function_activation(2,1,greet_user,23,1).
 nw_function_activation(4,1,greet_user,25,1).
 nw_function_activation(6,1,greet_user,26,1).
-nw_function_activation(1,nil,'/Users/tmcphill/GitRepos/yw-noworkflow/examples/03_emphasized_hello_world/emphasized_hello_world.py',61,nil).
+nw_function_activation(1,nil,'/Users/wangqiwen/Documents/SPIN2016/yw-noworkflow/examples/03_emphasized_hello_world/emphasized_hello_world.py',61,nil).
 nw_function_activation(3,nil,'module.print',16,2).
 nw_function_activation(5,nil,'module.print',16,4).
 nw_function_activation(7,nil,'module.print',16,6).
@@ -61,8 +61,8 @@ nw_variable_usage(10,6,23,greeting,'Back again!!',16).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_dependency(Why, ActId, FuncName, AssignmentLine, DownstreamVarId, DownstreamVarName, UpstreamVarId, UpstreamVarName)
 %...................................................................................................
-nw_variable_dependency(argument,4,greet_user,5,14,provided_greeting,13,second_greeting).
 nw_variable_dependency(argument,2,greet_user,5,4,provided_greeting,3,first_greeting).
-nw_variable_dependency(assignment,4,greet_user,10,16,greeting,14,provided_greeting).
+nw_variable_dependency(argument,4,greet_user,5,14,provided_greeting,13,second_greeting).
 nw_variable_dependency(assignment,6,greet_user,10,23,greeting,22,provided_greeting).
+nw_variable_dependency(assignment,4,greet_user,10,16,greeting,14,provided_greeting).
 nw_variable_dependency(assignment,2,greet_user,10,6,greeting,4,provided_greeting).

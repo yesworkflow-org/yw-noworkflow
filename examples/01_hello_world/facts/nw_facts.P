@@ -75,7 +75,7 @@ object(1, -1, 1, 'print', 'FUNCTION_CALL').
 %
 
 :- dynamic(activation/7).
-activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world.py', 61, nil, nil, nil).
+activation(1, 1, '/Users/wangqiwen/Documents/SPIN2016/yw-noworkflow/examples/01_hello_world/hello_world.py', 61, nil, nil, nil).
 activation(1, 2, 'module.print', 6, nil, nil, 1).
 
 %
