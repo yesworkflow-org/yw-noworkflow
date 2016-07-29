@@ -95,19 +95,19 @@ rm -rf facts graph query/*query_outputs.txt .noworkflow *.txt df_style.py
 
 The image below was produced by YesWorkflow using the YW comments added to simulate_data_collection python script ([simulate_data_collection.py](https://github.com/yesworkflow-org/yw-noworkflow/blob/master/examples/simulate_data_collection/simulate_data_collection.py)):
 
-<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" height="250">
+<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" height="500"></center>
 
 The green blocks represent stages in the computation performed by the script, the yellow blocks represent the input, intermediate, and final data products of the script, and the white blocks are parameters used for the script.
 
 ### Example NoWorkflow output
 
-<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png" height="250">
+<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png" height="500"></center>
 
 The white blocks are input and output data, the dark blue blocks represents computational stages, and blue-green blocks represent parameter names and their values.
 
 ### Example Yw-Noworkflow output
 
-<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png" height="250">
+<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png" height="500"></center>
 
 ## Generate visualizations and query results with Prolog
 
@@ -262,3 +262,33 @@ Render the pdf/png format file through Graphviz:
     dot -Tpng yw_process_graph.gv -o yw_process_graph.png
     dot -Tpng yw_combined_graph.gv -o yw_combined_graph.png
     
+You can checkout the resulting images here:
+
+yw_data_graph.png:
+
+<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_data_graph.png" height="250"></center>
+
+yw_process_graph.png: 
+
+<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_process_graph.png" height="250"></center>
+
+yw_combined_graph.png: 
+
+<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" height="500"></center>
+
+YesWorkflow can also generate workflow from prospective provenance.
+
+For example, if we're interested in which steps and data products result in the "corrected image", we can use the following command:
+
+    ```
+    bash ../../scripts/yw_prospective_lineage.sh \
+    corrected_image \
+    > graph/yw_prospective_lineage.gv
+    dot -Tpng graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.png
+    dot -Tpdf graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.pdf
+    ```
+<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png" height="500"></center>
+
+
+
+
