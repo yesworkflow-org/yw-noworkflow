@@ -6,7 +6,7 @@ def YW_NW_q1(DataName, BlockName):
         :- table yw_nw_q1/3.
         yw_nw_q1(VariableId, VariableName, VariableValue) :-
         yw_flow(_, _, _, _, _, 'emphasized_greeting', PortId, _, _, 'print_greeting'),
-        nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, _, PortId, _, _, _)..'''
+        nw_variable_for_yw_in_port(VariableId, VariableName, VariableValue, _, _, _, PortId, _, _, _).'''
     query = """SELECT variable_id,variable_name,variable_value
         FROM yw.yw_flow yf, nw_variable_for_yw_in_port_10 vip
         WHERE yf.data_name = :DataName AND yf.sink_program_name = :BlockName 
@@ -18,10 +18,10 @@ def YW_NW_q1(DataName, BlockName):
 
 def YW_NW_q2(DataName, BlockName):
     '''
-        What values are emitted by the displayed_greeting output of the print_greeting step?
+        What values are emitted by the DataName output of the BlockName step?
         :- table yw_nw_q1/3.
         yw_nw_q2(VariableValue) :-
-            yw_step_output(_, 'print_greeting', _, PortId, _, _, 'displayed_greeting'),
+            yw_step_output(_, 'transform_images', _, PortId, _, _, 'corrected_image'),
             nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, _, _, PortId, _, _, _).
     '''
     query = """SELECT variable_id, variable_name,variable_value 

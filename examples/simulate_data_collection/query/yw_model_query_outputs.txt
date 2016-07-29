@@ -69,17 +69,17 @@ energies
 
 MQ17: What data is downstream of simulate_data_collection[raw_image] ?
 corrected_image
+collection_log
 total_intensity
 pixel_count
-collection_log
 
 MQ18: What data is uptream of simulate_data_collection[raw_image] ?
 cassette_id
+sample_score_cutoff
+data_redundancy
 sample_spreadsheet
 sample_name
 sample_quality
-sample_score_cutoff
-data_redundancy
 accepted_sample
 num_images
 energies
