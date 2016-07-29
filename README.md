@@ -95,19 +95,19 @@ rm -rf facts graph query/*query_outputs.txt .noworkflow *.txt df_style.py
 
 The image below was produced by YesWorkflow using the YW comments added to simulate_data_collection python script ([simulate_data_collection.py](https://github.com/yesworkflow-org/yw-noworkflow/blob/master/examples/simulate_data_collection/simulate_data_collection.py)):
 
-![yw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png)
+![yw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png =250x)
 
 The green blocks represent stages in the computation performed by the script, the yellow blocks represent the input, intermediate, and final data products of the script, and the white blocks are parameters used for the script.
 
 ### Example NoWorkflow output
 
-![nw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png)
+![nw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png =250x)
 
 The white blocks are input and output data, the dark blue blocks represents computational stages, and blue-green blocks represent parameter names and their values.
 
 ### Example Yw-Noworkflow output
 
-![nw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png)
+![nw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png =250x)
 
 ## Generate visualizations and query results with Prolog
 
@@ -139,13 +139,12 @@ The white blocks are input and output data, the dark blue blocks represents comp
 
 1. Then generate [yw_views](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_views.P) from  the facts:
 
-    `yw_views` are views derived from facts. It organizes the yw facts in such a way that can be reused by our YesWorkflow-NoWorkflow Bridge later, and can be easily queried.
+`yw_views` are views derived from facts. It organizes the yw facts in such a way that can be reused by our YesWorkflow-NoWorkflow Bridge later, and can be easily queried.
 
         ```
-        #We will organize all views in the views folder
-            mkdir views
+        mkdir views
 
-            bash ../../scripts/materialize_yw_views.sh > views/yw_views.P
+        bash ../../scripts/materialize_yw_views.sh > views/yw_views.P
         ```
 
 ### Create facts and views from NoWorkflow
@@ -173,7 +172,7 @@ The white blocks are input and output data, the dark blue blocks represents comp
 
 ### Create views for YW-NW
 
-    YW-NW is created by combining blocks and parameters defined by YesWorkflow and corresponding parameters, value, and functions captured by NoWorkflow. Run the command to generate [yw_nw_views](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_nw_views.P):
+YW-NW is created by combining blocks and parameters defined by YesWorkflow and corresponding parameters, value, and functions captured by NoWorkflow. Run the command to generate [yw_nw_views](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_nw_views.P):
 
     ```
     bash ../../scripts/materialize_yw_nw_views.sh > views/yw_nw_views.P
@@ -188,9 +187,9 @@ Run the queries in query/query.sh and confirm that the answers make sense.
     
     ```
 
-- Sample YesWorkflow query:
+  - Sample YesWorkflow query:
 
-  - What workflow steps comprise the top-level workflow?
+    - What workflow steps comprise the top-level workflow?
 
     ```
     yw_q2(StepName, Description)
@@ -204,9 +203,9 @@ Run the queries in query/query.sh and confirm that the answers make sense.
     yw_q2(initialize_run,'Create run directory and initialize log files.').
     ```
 
-- Sample NoWorkflow query:
+  - Sample NoWorkflow query:
 
-  - What variable values are passed to transform_image(...) from the top of the script?
+    - What variable values are passed to transform_image(...) from the top of the script?
 
     ```
     nw_q2(Variable, Value)
@@ -224,9 +223,9 @@ Run the queries in query/query.sh and confirm that the answers make sense.
     nw_q2(raw_image_file,'run/raw/q55/DRT240/e11000/image_001.raw').
     ```
 
-- Sample Yes-No Workflow query:
+  - Sample Yes-No Workflow query:
 
-  - What Python variables carries values of sample_name into the calculate_strategy workflow step?
+    - What Python variables carries values of sample_name into the calculate_strategy workflow step?
 
     ```
     yw_nw_q1(VariableId, VariableName, VariableValue)
@@ -236,3 +235,30 @@ Run the queries in query/query.sh and confirm that the answers make sense.
     yw_nw_q1(2511,sample_name,'DRT322').
     ```
 ### Generate YW, NW, YW-NW visualizations
+
+YesWorkflow can render three types of different views of the workflow structure from the model we built before:  a process view, a data view, and a combined (data + process) view.
+
+We can render these views through the following commands:
+
+We first create a new folder to contain all the visualization rendered by YW, NW, and YW-NW.
+    
+    mkdir graph
+    
+Then generate graphs as gv files, the file format used by Graphviz:
+
+    bash ../../scripts/yw_data_graph.sh > graph/yw_data_graph.gv
+    bash ../../scripts/yw_process_graph.sh > graph/yw_process_graph.gv
+    bash ../../scripts/yw_combined_graph.sh > graph/yw_combined_graph.gv
+
+Render the pdf/png format file through Graphviz:
+
+    # pdf files
+    dot -Tpdf yw_data_graph.gv -o yw_data_graph.pdf
+    dot -Tpdf yw_process_graph.gv -o yw_process_graph.pdf
+    dot -Tpdf yw_combined_graph.gv -o yw_combined_graph.pdf
+    
+    #png files
+    dot -Tpng yw_data_graph.gv -o yw_data_graph.png
+    dot -Tpng yw_process_graph.gv -o yw_process_graph.png
+    dot -Tpng yw_combined_graph.gv -o yw_combined_graph.png
+    
