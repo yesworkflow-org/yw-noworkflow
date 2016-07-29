@@ -95,19 +95,19 @@ rm -rf facts graph query/*query_outputs.txt .noworkflow *.txt df_style.py
 
 The image below was produced by YesWorkflow using the YW comments added to simulate_data_collection python script ([simulate_data_collection.py](https://github.com/yesworkflow-org/yw-noworkflow/blob/master/examples/simulate_data_collection/simulate_data_collection.py)):
 
-![yw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png =250x)
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" height="250">
 
 The green blocks represent stages in the computation performed by the script, the yellow blocks represent the input, intermediate, and final data products of the script, and the white blocks are parameters used for the script.
 
 ### Example NoWorkflow output
 
-![nw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png =250x)
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png" height="250">
 
 The white blocks are input and output data, the dark blue blocks represents computational stages, and blue-green blocks represent parameter names and their values.
 
 ### Example Yw-Noworkflow output
 
-![nw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png =250x)
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png" height="250">
 
 ## Generate visualizations and query results with Prolog
 
