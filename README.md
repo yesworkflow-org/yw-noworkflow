@@ -113,46 +113,52 @@ The white blocks are input and output data, the dark blue blocks represents comp
 
 ### Create facts and views from YesWorkflow
 
-- First, create a new folder that will store YesWorkflow facts (and NoWorkflow facts later):
+1. First, create a new folder that will store YesWorkflow facts (and NoWorkflow facts later):
+    ```
+    mkdir facts
+    ```
 
-        mkdir facts
+1. Then run YesWorkflow for the python script `simulate_data_collection.py` marked with YW annotation through command:
 
+    ```
+    java -jar ~/bin/yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar model simulate_data_collection.py \
+        -c extract.language=python -c extract.factsfile=facts/yw_extract_facts.P \
+        -c model.factsfile=facts/yw_model_facts.P -c query.engine=xsb
+    ```
 
-- Then run YesWorkflow for the python script `simulate_data_collection.py` marked with YW annotation through command:
+  If you've defined the alias for YesWorkflow, you can simply run:
 
-    
-        java -jar ~/bin/yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar model simulate_data_collection.py -c extract.language=python -c extract.factsfile=facts/yw_extract_facts.P -c model.factsfile=facts/yw_model_facts.P -c query.engine=xsb
+    ```
+    yw model simulate_data_collection.py -c extract.language=python -c extract.factsfile=facts/ \
+        yw_extract_facts.P -c model.factsfile=facts/yw_model_facts.P -c query.engine=xsb
+    ```
 
+  In this command, `model` means building the workflow model from YW comments in the source script. `extract.language=python` specifies the language used in the source file. `extract.factsfile` and `model.factsfile` specifies the locations to save the facts for the source script and the model. `query.engine=xsb` represents the output query language to be XSB. 
 
-<p style="text-indent: 2em">If you've defined the alias for YesWorkflow, you can simply run:</p>
+  We now get the facts from the YW markup in the source script, and the corresponding models, such as annotations, ports, channels, uri template, etc. You can check these facts in `yw_extract_facts.P` and `yw_model_facts.P` file in `facts` folder.
 
-
-        yw model simulate_data_collection.py -c extract.language=python -c extract.factsfile=facts/yw_extract_facts.P -c model.factsfile=facts/yw_model_facts.P -c query.engine=xsb
-
-
-<p style="text-indent: 2em">In this command, `model` means building the workflow model from YW comments in the source script. `extract.language=python` specifies the language used in the source file. `extract.factsfile` and `model.factsfile` specifies the locations to save the facts for the source script and the model. `query.engine=xsb` represents the output query language to be XSB. </p>
-
-<p style="text-indent: 2em">We now get the facts from the YW markup in the source script, and the corresponding models, such as annotations, ports, channels, uri template, etc. You can check these facts in `yw_extract_facts.P` and `yw_model_facts.P` file in `facts` folder.</p>
-
-- Then generate `yw_views` from  the facts:
+1. Then generate `yw_views` from  the facts:
 
     `yw_views` are views derived from facts. It organizes the yw facts in such a way that can be reused by our YesWorkflow-NoWorkflow Bridge later, and can be easily queried.
 
+        ```
+        #We will organize all views in the views folder
+            mkdir views
 
-    # We will organize all views in the views folder
-        mkdir views
-
-        bash ../../scripts/materialize_yw_views.sh > views/yw_views.P
+            bash ../../scripts/materialize_yw_views.sh > views/yw_views.P
+        ```
 
 ### Create facts and views from NoWorkflow
 
-- First, run python source script through NoWorkflow:
+1. First, run python source script through NoWorkflow:
 
+    ```
     now run -e Tracer -d 3 simulate_data_collection.py q55 --cutoff 12 --redundancy 0 > run_outputs.txt
+    ```
 
-<p style="text-indent: 2em">`now run` specifies the source script to run and collects its provenance. `-e Tracer` tag means NoWorkflow captures variables, dependencies, function calls, parameters, file accesses, and globals. `-d 3` tag represents the depth for capturing function activations is 3, for the sake of the running time. `simulate_data_collection.py q55 --cutoff 12 --redundancy 0` is the source script name and its corresponding input arguments. The output of the script is written to the `run_outputs.txt` file.</p>
+  `now run` specifies the source script to run and collects its provenance. `-e Tracer` tag means NoWorkflow captures variables, dependencies, function calls, parameters, file accesses, and globals. `-d 3` tag represents the depth for capturing function activations is 3, for the sake of the running time. `simulate_data_collection.py q55 --cutoff 12 --redundancy 0` is the source script name and its corresponding input arguments. The output of the script is written to the `run_outputs.txt` file.
 
-    By running NoWorkflow, it automatically creates a SQLite database under .noworkflow folder. We want to extract Prolog facts through NW command `export`:
+  By running NoWorkflow, it automatically creates a SQLite database under .noworkflow folder. We want to extract Prolog facts through NW command `export`:
     
     ```
     now export -t -m dependency | grep -v 'environment(' > facts/nw_facts.P
