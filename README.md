@@ -17,7 +17,7 @@ Note that this demonstratiion requires **YesWorkflow 0.2.1**.The latest version 
 ```
     https://opensource.ncsa.illinois.edu/bamboo/browse/KURATOR-YSF/latestSuccessful
 ```
-Click the Artifacts tab, then download the executable jar. The file will be named yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar.
+Click the Artifacts tab, then download the executable jar. The file will be named yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar. You can also find the executatble jar in the [releases page](https://github.com/idaks/yw-noworkflow/releases).
 
 You may also want to define an alias to simplify running YesWorkflow at the command line.
 
@@ -32,7 +32,7 @@ doskey yw=java -jar %USERPROFILE%\bin\yesworkflow-0.2.1-SNAPSHOT-jar-with-depend
 ```
 
 ### NoWorkflow
-NoWorkflow collects provenance for Python scripts in SQLite database. It could show provenance of a trial, compare the collected provenance of different trials, visualize the dataflow, and perform Prolog and SQL queries.
+NoWorkflow collects provenance for Python scripts into SQLite database. It could show provenance of a trial, compare the collected provenance of different trials, visualize the dataflow, and perform Prolog and SQL queries.
 
 NoWorkflow installation details and instructions can be found in [noWorkflow repository](https://github.com/gems-uff/noworkflow).
 
@@ -73,6 +73,17 @@ Directory                                  | Description
 
 We will use simulate_data_collection as an example to show how to use YesWorkflow-NoWorkflow Bridge.
 
+Go to simulate_data_collection example folder:
+```
+cd yw-noworkflow/examples/simulate_data_collection/
+```
+
+If you would like to reproduce the results through this demo, you can remove all derived files:
+
+```
+rm -rf facts graph query/*query_outputs.txt .noworkflow *.txt df_style.py
+```
+
 ### Example YesWorkflow output
 
 The image below was produced by YesWorkflow using the YW comments added to simulate_data_collection python script ([simulate_data_collection.py](https://github.com/yesworkflow-org/yw-noworkflow/blob/master/examples/simulate_data_collection/simulate_data_collection.py)):
@@ -91,3 +102,28 @@ The white blocks are input and output data, the dark blue blocks represents comp
 
 ![nw-example](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png)
 
+1. Generate visualizations and query results with Prolog
+⋅⋅- Create facts and views from YesWorkflow
+⋅⋅⋅⋅- First, create a new folder that will store YesWorkflow facts (and NoWorkflow facts later)
+```
+mkdir facts
+```
+⋅⋅⋅⋅- Then run YesWorkflow for the python script `simulate_data_collection.py` marked with YW annotation through command:
+```
+java -jar ~/bin/yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar model simulate_data_collection.py -c extract.language=python -c extract.factsfile=facts/yw_extract_facts.P -c model.factsfile=facts/yw_model_facts.P -c query.engine=xsb
+
+```
+⋅⋅⋅⋅If you've defined the alias for YesWorkflow, you can simply run:
+```
+yw model simulate_data_collection.py -c extract.language=python -c extract.factsfile=facts/yw_extract_facts.P -c model.factsfile=facts/yw_model_facts.P -c query.engine=xsb
+```
+
+⋅⋅⋅⋅In this command, `model` means building the workflow model from YW comments in the source script. `extract.language=python` specifies the language used in the source file. `extract.factsfile` and `model.factsfile` specifies the locations to save the facts for the source script and the model. `query.engine=xsb` represents the output query language to be XSB. 
+
+⋅⋅⋅⋅We now get the facts from the YW markup in the source script, and the corresponding models, such as annotations, ports, channels, uri template, etc. You can check these facts in `yw_extract_facts.P` and `yw_model_facts.P` file in `facts` folder.
+
+⋅⋅⋅⋅- Generate `yw_views` from  the facts
+
+⋅⋅⋅⋅`yw_views` are views derived from facts. It organizes the yw facts in such a way that can be reused by our YesWorkflow-NoWorkflow Bridge later, and can be easily queried.
+
+-

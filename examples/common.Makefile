@@ -103,10 +103,11 @@ $(RUN_OUTPUTS): $(WORKFLOW_SCRIPT)
 	${POST_RUN_CMD}
 
 $(NW_FACTS): $(RUN_OUTPUTS)
-#	mkdir -p facts
+	mkdir -p facts
 	now export -t -m dependency | grep -v 'environment(' > $(NW_FACTS)
 
 $(NW_VIEWS): $(NW_FACTS)
+	mkdir -p views
 	bash $(SCRIPTS_DIR)/materialize_nw_views.sh > $(NW_VIEWS)
 
 $(YW_NW_VIEWS): $(YW_VIEWS) $(NW_VIEWS)
@@ -145,7 +146,7 @@ $(QUERY_OUTPUTS): $(QUERY_SCRIPT) $(YW_VIEWS) $(NW_VIEWS) $(YW_NW_VIEWS) $(RULES
 	bash $(QUERY_SCRIPT) > $(QUERY_OUTPUTS)
 
 clean:
-	rm -rf facts query/query_outputs.txt .noworkflow *.xwam *.gv *.png *.pdf *.P *.txt  df_style.py $(RULES_DIR)/*.xwam
+	rm -rf facts graph query/*query_outputs.txt .noworkflow *.txt df_style.py $(RULES_DIR)/*.xwam
 
 repl: $(YW_NW_VIEWS)
 	expect $(RULES_DIR)/start_xsb.exp
