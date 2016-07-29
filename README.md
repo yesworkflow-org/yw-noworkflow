@@ -1,3 +1,11 @@
+<style type="text/css">
+.centerImage
+{
+text-align:center;
+display:block;
+}
+</style>
+
 YesWorkflow-NoWorkflow Bridge
 =============================
 
@@ -95,19 +103,19 @@ rm -rf facts graph query/*query_outputs.txt .noworkflow *.txt df_style.py
 
 The image below was produced by YesWorkflow using the YW comments added to simulate_data_collection python script ([simulate_data_collection.py](https://github.com/yesworkflow-org/yw-noworkflow/blob/master/examples/simulate_data_collection/simulate_data_collection.py)):
 
-<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" height="500"></center>
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" class="centerImage" alt="what image shows" height="500">
 
 The green blocks represent stages in the computation performed by the script, the yellow blocks represent the input, intermediate, and final data products of the script, and the white blocks are parameters used for the script.
 
 ### Example NoWorkflow output
 
-<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png" height="500"></center>
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png" class="centerImage" alt="what image shows" height="500">
 
 The white blocks are input and output data, the dark blue blocks represents computational stages, and blue-green blocks represent parameter names and their values.
 
 ### Example Yw-Noworkflow output
 
-<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png" height="500"></center>
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png" class="centerImage" alt="what image shows" height="500">
 
 ## Generate visualizations and query results with Prolog
 
@@ -266,15 +274,15 @@ You can checkout the resulting images here:
 
 yw_data_graph.png:
 
-<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_data_graph.png" height="250"></center>
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_data_graph.png" class="centerImage" alt="what image shows" height="250">
 
 yw_process_graph.png: 
 
-<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_process_graph.png" height="250"></center>
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_process_graph.png" class="centerImage" alt="what image shows" height="250">
 
 yw_combined_graph.png: 
 
-<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" height="500"></center>
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" class="centerImage" alt="what image shows" height="500">
 
 YesWorkflow can also generate workflow from prospective provenance.
 
@@ -287,7 +295,7 @@ For example, if we're interested in which steps and data products result in the 
     dot -Tpng graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.png
     dot -Tpdf graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.pdf
     ```
-<center><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png" height="500"></center>
+<img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png" class="centerImage" alt="what image shows" height="500">
 
 
 
