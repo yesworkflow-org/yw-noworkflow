@@ -149,11 +149,11 @@ The white blocks are input and output data, the dark blue blocks represents comp
 
 `yw_views` are views derived from facts. It organizes the yw facts in such a way that can be reused by our YesWorkflow-NoWorkflow Bridge later, and can be easily queried.
 
-        ```
+        
         mkdir views
 
         bash ../../scripts/materialize_yw_views.sh > views/yw_views.P
-        ```
+        
 
 ### Create facts and views from NoWorkflow
 
@@ -169,22 +169,22 @@ The white blocks are input and output data, the dark blue blocks represents comp
 
 1. We want to extract Prolog facts through NW command `export`:
     
-    ```
+    
     now export -t -m dependency | grep -v 'environment(' > facts/nw_facts.P
-    ```
+    
 
 1. Then generate [nw_views](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/nw_views.P) from `nw_facts`, same as we did for YesWorkflow:
-    ```
+    
     bash ../../scripts/materialize_nw_views.sh > views/nw_views.P
-    ```
+    
 
 ### Create views for YW-NW
 
 YW-NW is created by combining blocks and parameters defined by YesWorkflow and corresponding parameters, value, and functions captured by NoWorkflow. Run the command to generate [yw_nw_views](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_nw_views.P):
 
-    ```
+    
     bash ../../scripts/materialize_yw_nw_views.sh > views/yw_nw_views.P
-    ```
+    
 
 ### Perform YW, NW, YW-NW queries
 
@@ -244,6 +244,7 @@ Run the queries in query/query.sh and confirm that the answers make sense.
     ```
 ### Generate YW, NW, YW-NW visualizations
 
+#### Graphics from YesWorkflow
 YesWorkflow can render three types of different views of the workflow structure from the model we built before:  a process view, a data view, and a combined (data + process) view.
 
 We can render these views through the following commands:
@@ -259,7 +260,7 @@ Then generate graphs as gv files, the file format used by Graphviz:
     bash ../../scripts/yw_combined_graph.sh > graph/yw_combined_graph.gv
 
 Render the pdf/png format file through Graphviz:
-
+```
     # pdf files
     dot -Tpdf yw_data_graph.gv -o yw_data_graph.pdf
     dot -Tpdf yw_process_graph.gv -o yw_process_graph.pdf
@@ -269,7 +270,7 @@ Render the pdf/png format file through Graphviz:
     dot -Tpng yw_data_graph.gv -o yw_data_graph.png
     dot -Tpng yw_process_graph.gv -o yw_process_graph.png
     dot -Tpng yw_combined_graph.gv -o yw_combined_graph.png
-    
+```    
 You can checkout the resulting images here:
 
 yw_data_graph.png:
@@ -288,15 +289,47 @@ YesWorkflow can also generate workflow from prospective provenance.
 
 For example, if we're interested in which steps and data products result in the "corrected image", we can use the following command:
 
-    ```
+```
     bash ../../scripts/yw_prospective_lineage.sh \
     corrected_image \
     > graph/yw_prospective_lineage.gv
+
+    # generate pdf and png files
     dot -Tpng graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.png
     dot -Tpdf graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.pdf
-    ```
+```
+
+<p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png" height="500"></p>
+
+You can also render the visualization for the lineage of a specific output data product. For example, we're interested in the workflow that produces the "corrected_image" in the simulate_data_collection:
+
+```
+    
+    bash ../../scripts/yw_prospective_lineage.sh \
+    corrected_image \
+    > yw_prospective_lineage.gv
+
+    # generate pdf and png files
+    dot -Tpdf graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.pdf
+    dot -Tpng graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.png
+```
 <p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png" height="500"></p>
 
 
+#### Graphics from NoWorkflow
+
+Just as YesWorkflow can query for the lineage for an output data product, NoWorkflow can also do the similar thing. NoWorkflow is able to filter the dataflow by a variable/file name, and create the lineage graph for that variable/file name.
+```
+    # create df_style helper that can be used to change noWorkflow graph style
+    now helper df_style.py
+
+    # export filtered noWorkflow simulation graph with depth 2
+    now dataflow -d 2 -v 55 -f 'run/data/DRT240/DRT240_11000eV_002.img' -m simulation | python df_style.py -d BT -e > graph/nw_filtered_lineage_graph.gv
+
+    # generate pdf and png files
+    dot -Tpng graph/nw_filtered_lineage_graph.gv -o graph/nw_filtered_lineage_graph.png
+    dot -Tpdf graph/nw_filtered_lineage_graph.gv -o graph/nw_filtered_lineage_graph.pdf
+```
+<p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png" height="500"></p>
 
 
