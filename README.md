@@ -162,9 +162,9 @@ The white blocks are input and output data, the dark blue blocks represents comp
     now run -e Tracer -d 3 simulate_data_collection.py q55 --cutoff 12 --redundancy 0 > run_outputs.txt
     ```
 
-`now run` specifies the source script to run and collects its provenance. `-e Tracer` tag means NoWorkflow captures variables, dependencies, function calls, parameters, file accesses, and globals. `-d 3` tag represents the depth for capturing function activations is 3, for the sake of the running time. `simulate_data_collection.py q55 --cutoff 12 --redundancy 0` is the source script name and its corresponding input arguments. The output of the script is written to the `run_outputs.txt` file.
+  `now run` specifies the source script to run and collects its provenance. `-e Tracer` tag means NoWorkflow captures variables, dependencies, function calls, parameters, file accesses, and globals. `-d 3` tag represents the depth for capturing function activations is 3, for the sake of the running time. `simulate_data_collection.py q55 --cutoff 12 --redundancy 0` is the source script name and its corresponding input arguments. The output of the script is written to the `run_outputs.txt` file.
 
-By running NoWorkflow, it automatically creates a SQLite database under `.noworkflow` folder. 
+  By running NoWorkflow, it automatically creates a SQLite database under `.noworkflow` folder. 
 
 1. We want to extract Prolog facts through NW command `export`:
     
@@ -405,12 +405,13 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
 
   - Run NoWorkflow, and copy the records to the [facts](https://github.com/idaks/yw-noworkflow/tree/master/examples/simulate_data_collection/facts) folder:
 
-    
+    ```
     # empty the noworkflow record
     rm -rf .noworkflow
     # run the script with noworkflow
     now run -e Tracer -d 3 simulate_data_collection.py q55 --cutoff 12 --redundancy 0 > run_outputs.txt
-    cp .noworkflow/db.sqlite facts/nw_facts.db    
+    cp .noworkflow/db.sqlite facts/nw_facts.db
+    ```
     
 
   - Create views for NoWorkflow:
