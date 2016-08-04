@@ -13,7 +13,7 @@ YesWorkflow-NoWorkflow Bridge requires the installation of both YesWorkflow and 
 
 ## YesWorkflow
 
-YesWorkflow is a scientific workflow management system that extracts YW commends that users add to scripts that reveal the computational modules and dataflows, render graphical output that reveals the stages of computation and the flow of data in the script, and store the prospective provenance of the data products of scripts. 
+YesWorkflow is a scientific workflow management system that extracts YW commends that users add to scripts that reveal the computational modules and the dataflow, render graphical output that reveals the stages of computation and the flow of data in the script, and store the prospective provenance of the data products of scripts. 
 
 YesWorkflow installation details and instructions can be found in [yw-prototype repository](https://github.com/yesworkflow-org/yw-prototypes).
 
@@ -46,6 +46,8 @@ NoWorkflow installation details and instructions can be found in [noWorkflow rep
 XSB is a Logic Programming system for Unix and Windows-based platforms. SQLite is a relational database management system contained in a C programming library, and is an embedded SQL database engine. YesWorkflow-NoWorkflow Bridge will use XSB and SQLite to define rules for YesWorkflow, NoWorkflow, and the bridge, and perform queries for them. 
 
 You can find instructions for installing XSB at [XSB Website](http://xsb.sourceforge.net/), or on [the Github page](https://github.com/flavioc/XSB).
+
+## SQLite
 
 Go to [SQLite download page](http://www.sqlite.org/download.html), and download precompiled binaries.
 
@@ -132,21 +134,20 @@ The white blocks are input and output data, the dark blue blocks represents comp
   If you've defined the alias for YesWorkflow, you can simply run:
 
     ```
-    yw model simulate_data_collection.py -c extract.language=python -c extract.factsfile=facts/ \
-        yw_extract_facts.P -c model.factsfile=facts/yw_model_facts.P -c query.engine=xsb
+    yw model simulate_data_collection.py -c extract.language=python -c extract.factsfile=facts/yw_extract_facts.P \
+    -c model.factsfile=facts/yw_model_facts.P -c query.engine=xsb
     ```
 
   In this command, `model` means building the workflow model from YW comments in the source script. `extract.language=python` specifies the language used in the source file. `extract.factsfile` and `model.factsfile` specifies the locations to save the facts for the source script and the model. `query.engine=xsb` represents the output query language to be XSB. 
 
-  We now get the facts from the YW markup in the source script, and the corresponding models, such as annotations, ports, channels, uri template, etc. You can check these facts in `yw_extract_facts.P` and `yw_model_facts.P` file in `facts` folder.
+  We now get the facts from the YW markup in the source script, and the corresponding models, such as annotations, ports, channels, uri template, etc. You can check these facts in [yw_extract_facts.P](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/facts/yw_extract_facts.P) and [yw_model_facts.P](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/facts/yw_model_facts.P) file in [facts](https://github.com/idaks/yw-noworkflow/tree/master/examples/simulate_data_collection/facts) folder.
 
-1. Then generate [yw_views](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_views.P) from  the facts:
+1. Then generate yw_views from  the facts:
 
-`yw_views` are views derived from facts. It organizes the yw facts in such a way that can be reused by our YesWorkflow-NoWorkflow Bridge later, and can be easily queried.
+  [yw_views](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_views.P) are views derived from facts. It organizes the yw facts in such a way that can be reused by our YesWorkflow-NoWorkflow Bridge later, and can be easily queried.
 
         
         mkdir views
-
         bash ../../scripts/materialize_yw_views.sh > views/yw_views.P
         
 
@@ -155,23 +156,27 @@ The white blocks are input and output data, the dark blue blocks represents comp
 1. First, run python source script through NoWorkflow:
 
     ```
+    # empty the noworkflow record
+    rm -rf .noworkflow
+    # run the script
     now run -e Tracer -d 3 simulate_data_collection.py q55 --cutoff 12 --redundancy 0 > run_outputs.txt
     ```
 
   `now run` specifies the source script to run and collects its provenance. `-e Tracer` tag means NoWorkflow captures variables, dependencies, function calls, parameters, file accesses, and globals. `-d 3` tag represents the depth for capturing function activations is 3, for the sake of the running time. `simulate_data_collection.py q55 --cutoff 12 --redundancy 0` is the source script name and its corresponding input arguments. The output of the script is written to the `run_outputs.txt` file.
 
-  By running NoWorkflow, it automatically creates a SQLite database under .noworkflow folder. 
+  By running NoWorkflow, it automatically creates a SQLite database under `.noworkflow` folder. 
 
 1. We want to extract Prolog facts through NW command `export`:
     
-    
+```    
     now export -t -m dependency | grep -v 'environment(' > facts/nw_facts.P
-    
+```    
 
 1. Then generate [nw_views](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/nw_views.P) from `nw_facts`, same as we did for YesWorkflow:
-    
+
+```    
     bash ../../scripts/materialize_nw_views.sh > views/nw_views.P
-    
+```    
 
 ### Create views for YW-NW
 
@@ -185,9 +190,9 @@ YW-NW is created by combining blocks and parameters defined by YesWorkflow and c
 
 Run the queries in query/query.sh and confirm that the answers make sense.
 
-    ```
+```
     bash query/query.sh > query/query_outputs.txt
-    ```
+```
 
   - Sample YesWorkflow query:
 
@@ -248,7 +253,7 @@ We first create a new folder to contain all the visualization rendered by YW, NW
     
     mkdir graph
     
-Then generate graphs as gv files, the file format used by Graphviz:
+Then generate graphs as `gv` files, the file format used by Graphviz:
 
     bash ../../scripts/yw_data_graph.sh > graph/yw_data_graph.gv
     bash ../../scripts/yw_process_graph.sh > graph/yw_process_graph.gv
@@ -287,8 +292,7 @@ For example, if we're interested in which steps and data products result in the 
 
 ```
     bash ../../scripts/yw_prospective_lineage.sh \
-    corrected_image \
-    > graph/yw_prospective_lineage.gv
+    corrected_image > graph/yw_prospective_lineage.gv
 
     # generate pdf and png files
     dot -Tpng graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.png
@@ -333,7 +337,7 @@ This lineage graph of a specific output data from YesWorkflow-NoWorkflow Bridge 
 
 ## Perform query with SQLite on YesWorkflow, NoWorkflow and YesWorkflow-NoWorkflow Bridge
 
-Similar to how we perfrom query with Prolog, we will run the script with YesWorkflow and NoWorkflow store **views** for YesWorkflow, NoWorkflow, and YesWorkflow-NoWorkflow Bridge on the database, and then perform SQLite queries on the database.
+Similar to how we perform query with Prolog, we will run the script with YesWorkflow and NoWorkflow store **views** for YesWorkflow, NoWorkflow, and YesWorkflow-NoWorkflow Bridge on the database, and then perform SQLite queries on the database.
 
 1. Generate facts and views from YesWorkflow
 
@@ -350,10 +354,50 @@ Similar to how we perfrom query with Prolog, we will run the script with YesWork
     sqlite3 facts/yw_facts.db < ../../scripts/yw_facts.sql
 ```
 
+  - Check the results in `yw_facts.db`, and then quit SQLite3 by typing `.exit` or ^D. :
+
+```
+$ sqlite3 facts/yw_facts.db
+
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+
+sqlite> .tables
+extractfacts_annotation                 modelfacts_log_template               
+extractfacts_annotation_qualifies       modelfacts_outflow_connects_to_channel
+extractfacts_extract_source             modelfacts_port                       
+modelfacts_channel                      modelfacts_port_alias                 
+modelfacts_data                         modelfacts_port_connects_to_channel   
+modelfacts_function                     modelfacts_port_uri_template          
+modelfacts_has_in_port                  modelfacts_program                    
+modelfacts_has_out_port                 modelfacts_uri_variable               
+modelfacts_has_subprogram               modelfacts_workflow                   
+modelfacts_inflow_connects_to_channel 
+
+```
+
+
   - Create views for YesWorkflow:
 
 ```
     sqlite3 views/yw_views.db < ../../scripts/yw_views.sql 
+```
+
+  - Check the results in `yw_views.db`:
+
+```
+sqlite3 views/yw_views.db
+
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+
+sqlite> .tables
+_yw_input_port       yw_outflow           yw_step_input      
+yw_data              yw_parent_workflow   yw_step_output     
+yw_description       yw_program           yw_workflow        
+yw_flow              yw_program_has_port  yw_workflow_script 
+yw_function          yw_qualified_name    yw_workflow_step   
+yw_inflow            yw_source_file     
 ```
 
 1. Generate facts and views from NoWorkflow
@@ -374,10 +418,47 @@ Similar to how we perfrom query with Prolog, we will run the script with YesWork
     sqlite3 views/nw_views.db < ../../scripts/nw_views.sql 
 ```
 
+  - Check the results in `nw_views.db`:
+
+```
+sqlite3 views/nw_views.db
+
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+
+sqlite> .tables
+nw_function_activation         nw_usage_is_function_call    
+nw_function_argument           nw_variable_assignment       
+nw_function_argument_literal   nw_variable_dependency       
+nw_function_argument_variable  nw_variable_is_function      
+nw_function_definition         nw_variable_usage            
+nw_script_activation           usage              
+```
+
 1. Generate views from YewWorkflow-NoWorkflow Bridge. This requires [yw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_views.P) and [nw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/nw_views.P)
+
 ```
     sqlite3 views/yw_nw_views.db < ../../scripts/yw_nw_views.sql 
 
+```
+  - Check the results in `yw_nw_views.db`:
+
+```
+$ sqlite3 views/yw_nw_views.db          
+
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+
+sqlite> .tables
+nw_activation_from_yw_step             nw_variable_for_yw_in_port_9         
+nw_activation_into_yw_program          nw_variable_for_yw_in_port_defined   
+nw_activation_into_yw_step             nw_variable_for_yw_inflow            
+nw_activation_into_yw_step_subprogram  nw_variable_for_yw_out_port          
+nw_argument_for_yw_in_port             nw_variable_for_yw_out_port_assigned 
+nw_variable_assigned_in_yw_step        nw_variable_for_yw_out_port_thru     
+nw_variable_assigned_outside_yw_step   nw_variable_for_yw_outflow           
+nw_variable_for_yw_data                nw_variable_used_in_yw_step          
+nw_variable_for_yw_in_port_10          nw_variable_used_outside_yw_step        
 ```
 
 1. Perform queries for YW, NW, and YW-NW
@@ -387,7 +468,7 @@ Similar to how we perfrom query with Prolog, we will run the script with YesWork
     python query/yw_model_query.py > query/yw_model_query_outputs.txt
     python query/yw_nw_query.py > query/yw_nw_query_outputs.txt
 ```
-
+  Check the output, see if the results in [yw_extract_query_outputs.txt](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/query/yw_extract_query_outputs.txt) and [yw_model_query_outputs.txt](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/query/yw_model_query_outputs.txt) make sense to you, and the results in [yw_nw_query_outputs.txt](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/query/yw_nw_query_outputs.txt) is same as the answers for `yw-nw` in [query_outputs.txt](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/query/query_outputs.txt).
 
 
 
