@@ -1,11 +1,3 @@
-<style type="text/css">
-.centerImage
-{
-text-align:center;
-display:block;
-}
-</style>
-
 YesWorkflow-NoWorkflow Bridge
 =============================
 
@@ -86,17 +78,20 @@ Directory                                  | Description
 
 # Usage
 
-We will use simulate_data_collection as an example to show how to use YesWorkflow-NoWorkflow Bridge. simulate_data_collection.py collects diffraction data from high quality crystals in a cassette. It takes two input files, [cassette_q55_spreadsheet.csv](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/cassette_q55_spreadsheet.csv) and [calibration.img](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/calibration.img). The output files are generated in [run](https://github.com/idaks/yw-noworkflow/tree/master/examples/simulate_data_collection/run) folder. 
+We will use simulate_data_collection as an example to show how to use YesWorkflow-NoWorkflow Bridge. simulate_data_collection.py simulates acquisition of diffraction images during macromolecular X-ray crystallography experiments involving multiple samples. The script reads previously measured data quality statistics for each sample from an input spreadsheet; rejects samples that do not meet a minimum quality criterion; and for each accepted sample produces raw and corrected diffraction images according to a data collection strategy that depends on properties of the samples. It takes two input files, [cassette_q55_spreadsheet.csv](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/cassette_q55_spreadsheet.csv) and [calibration.img](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/calibration.img). The output files are generated in [run](https://github.com/idaks/yw-noworkflow/tree/master/examples/simulate_data_collection/run) folder. 
+
+
+
 
 Go to simulate_data_collection example folder:
 ```
-cd yw-noworkflow/examples/simulate_data_collection/
+    cd yw-noworkflow/examples/simulate_data_collection/
 ```
 
 If you would like to reproduce the results through this demo, you can remove all derived files:
 
 ```
-rm -rf facts graph query/*query_outputs.txt .noworkflow *.txt df_style.py
+    rm -rf facts graph query/*query_outputs.txt .noworkflow *.txt df_style.py
 ```
 
 ### Example YesWorkflow output
@@ -119,7 +114,7 @@ The white blocks are input and output data, the dark blue blocks represents comp
 
 ## Generate visualizations and query results with Prolog
 
-### Create facts and views from YesWorkflow
+### Generate facts and views from YesWorkflow
 
 1. First, create a new folder that will store YesWorkflow facts (and NoWorkflow facts later):
     ```
@@ -192,7 +187,6 @@ Run the queries in query/query.sh and confirm that the answers make sense.
 
     ```
     bash query/query.sh > query/query_outputs.txt
-    
     ```
 
   - Sample YesWorkflow query:
@@ -242,6 +236,7 @@ Run the queries in query/query.sh and confirm that the answers make sense.
     yw_nw_q1(361,sample_name,'DRT240').
     yw_nw_q1(2511,sample_name,'DRT322').
     ```
+
 ### Generate YW, NW, YW-NW visualizations
 
 #### Graphics from YesWorkflow
@@ -262,14 +257,14 @@ Then generate graphs as gv files, the file format used by Graphviz:
 Render the pdf/png format file through Graphviz:
 ```
     # pdf files
-    dot -Tpdf yw_data_graph.gv -o yw_data_graph.pdf
-    dot -Tpdf yw_process_graph.gv -o yw_process_graph.pdf
-    dot -Tpdf yw_combined_graph.gv -o yw_combined_graph.pdf
+    dot -Tpdf graph/yw_data_graph.gv -o graph/yw_data_graph.pdf
+    dot -Tpdf graph/yw_process_graph.gv -o graph/yw_process_graph.pdf
+    dot -Tpdf graph/yw_combined_graph.gv -o graph/yw_combined_graph.pdf
     
     #png files
-    dot -Tpng yw_data_graph.gv -o yw_data_graph.png
-    dot -Tpng yw_process_graph.gv -o yw_process_graph.png
-    dot -Tpng yw_combined_graph.gv -o yw_combined_graph.png
+    dot -Tpng graph/yw_data_graph.gv -o graph/yw_data_graph.png
+    dot -Tpng graph/yw_process_graph.gv -o graph/yw_process_graph.png
+    dot -Tpng graph/yw_combined_graph.gv -o graph/yw_combined_graph.png
 ```    
 You can checkout the resulting images here:
 
@@ -285,9 +280,10 @@ yw_combined_graph.png:
 
 <p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png" height="500"></p>
 
-YesWorkflow can also generate workflow from prospective provenance.
+YesWorkflow can also generate workflow from prospective provenance. You can render the visualization for the lineage of a specific output data product.
 
-For example, if we're interested in which steps and data products result in the "corrected image", we can use the following command:
+
+For example, if we're interested in which steps and data products result in the "corrected image" in the simulate_data_collection, we can use the following command:
 
 ```
     bash ../../scripts/yw_prospective_lineage.sh \
@@ -301,20 +297,7 @@ For example, if we're interested in which steps and data products result in the 
 
 <p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png" height="500"></p>
 
-You can also render the visualization for the lineage of a specific output data product. For example, we're interested in the workflow that produces the "corrected_image" in the simulate_data_collection:
-
-```
-    
-    bash ../../scripts/yw_prospective_lineage.sh \
-    corrected_image \
-    > yw_prospective_lineage.gv
-
-    # generate pdf and png files
-    dot -Tpdf graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.pdf
-    dot -Tpng graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.png
-```
-<p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png" height="500"></p>
-
+Compare this graph with the [yw_combined_graph](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_combined_graph.png) above. The [yw_prospective_lineage graph](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png) is a "subset" of the yw_combined_graph. See if the dataflow makes sense to you.
 
 #### Graphics from NoWorkflow
 
@@ -331,5 +314,81 @@ Just as YesWorkflow can query for the lineage for an output data product, NoWork
     dot -Tpdf graph/nw_filtered_lineage_graph.gv -o graph/nw_filtered_lineage_graph.pdf
 ```
 <p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png" height="500"></p>
+
+#### Graphics from YesWorkflow-NoWorkflow Bridge
+
+This lineage graph of a specific output data from YesWorkflow-NoWorkflow Bridge is constructed as a subgraph of the original YW model, and has data values captured by NW retrospective provenance. So if we visualize the lineage graph of an actual output data with YW-NW graph, which corresponds to the same data defined with YW comment, the graph structure of this YW-NW graph should be same as the YW prospective lineage graph, but with actual data values that used to produce the output data in the YW-NW graph.
+
+```
+    bash ../../scripts/yw_nw_retrospective_lineage.sh \
+    corrected_image 'run/data/DRT240/DRT240_11000eV_002.img' \
+    > graph/yw_nw_retrospective_lineage.gv
+
+    # generate pdf and png files
+    dot -Tpdf graph/yw_nw_retrospective_lineage.gv -o graph/yw_nw_retrospective_lineage.pdf
+    dot -Tpng graph/yw_nw_retrospective_lineage.gv -o graph/yw_nw_retrospective_lineage.png
+```
+
+<p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_nw_retrospective_lineage.png" height="500"></p>
+
+## Perform query with SQLite on YesWorkflow, NoWorkflow and YesWorkflow-NoWorkflow Bridge
+
+Similar to how we perfrom query with Prolog, we will run the script with YesWorkflow and NoWorkflow store **views** for YesWorkflow, NoWorkflow, and YesWorkflow-NoWorkflow Bridge on the database, and then perform SQLite queries on the database.
+
+1. Generate facts and views from YesWorkflow
+
+  - Run YesWorkflow with query.engine set as "csv", and designate the location to save facts in csv format:
+```
+    yw model simulate_data_collection.py -c extract.language=python \
+    -c extract.factsfile=csv/extractfacts -c model.factsfile=csv/modelfacts \
+    -c query.engine=csv
+```
+
+  - Input all the csv facts into SQL database:
+
+```
+    sqlite3 facts/yw_facts.db < ../../scripts/yw_facts.sql
+```
+
+  - Create views for YesWorkflow:
+
+```
+    sqlite3 views/yw_views.db < ../../scripts/yw_views.sql 
+```
+
+1. Generate facts and views from NoWorkflow
+
+  - Run NoWorkflow, and copy the records to the [facts](https://github.com/idaks/yw-noworkflow/tree/master/examples/simulate_data_collection/facts) folder:
+
+```
+    # empty the noworkflow record
+    rm -rf .noworkflow
+    # run the script with noworkflow
+    now run -e Tracer -d 3 simulate_data_collection.py q55 --cutoff 12 --redundancy 0 > run_outputs.txt
+    cp .noworkflow/db.sqlite facts/nw_facts.db    
+```
+
+  - Create views for NoWorkflow:
+
+```
+    sqlite3 views/nw_views.db < ../../scripts/nw_views.sql 
+```
+
+1. Generate views from YewWorkflow-NoWorkflow Bridge. This requires [yw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_views.P) and [nw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/nw_views.P)
+```
+    sqlite3 views/yw_nw_views.db < ../../scripts/yw_nw_views.sql 
+
+```
+
+1. Perform queries for YW, NW, and YW-NW
+
+```
+    python query/yw_extract_query.py > query/yw_extract_query_outputs.txt
+    python query/yw_model_query.py > query/yw_model_query_outputs.txt
+    python query/yw_nw_query.py > query/yw_nw_query_outputs.txt
+```
+
+
+
 
 
