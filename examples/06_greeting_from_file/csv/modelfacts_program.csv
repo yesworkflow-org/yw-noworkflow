@@ -1,0 +1,5 @@
+program_id,program_name,qualified_program_name,begin_annotation_id,end_annotation_id
+1,greetings_from_file,greetings_from_file,1,37
+2,read_greeting_definitions,greetings_from_file.read_greeting_definitions,7,17
+3,emphasize_greeting,greetings_from_file.emphasize_greeting,18,28
+4,print_greeting,greetings_from_file.print_greeting,29,36

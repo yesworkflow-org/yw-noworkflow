@@ -75,3 +75,13 @@ yw_nw_q1(VariableId, VariableName, VariableValue)
 yw_nw_q1(53,greeting,'Back again?!?!?!').
 yw_nw_q1(31,greeting,'Goodbye World??').
 yw_nw_q1(12,greeting,'Hello World!').
+
+
+---------------------------------------------------------------------------------------------------
+YW_NW_Q2 : What values are emitted by the displayed_greeting output of the print_greeting step?
+
+yw_nw_q2(OutputValue)
+...................................................................................................
+yw_nw_q2(53,greeting,'Back again?!?!?!').
+yw_nw_q2(31,greeting,'Goodbye World??').
+yw_nw_q2(12,greeting,'Hello World!').

@@ -1,0 +1,3 @@
+port_id,port_type,port_name,qualified_port_name,port_annotation_id,data_id
+1,out,greeting,hello_world->greeting,3,1
+2,out,greeting,hello_world.print_greeting->greeting,7,2

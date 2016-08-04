@@ -3,7 +3,7 @@
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_script_activation(Script, Command, ScriptAct, Docstring).
 %...................................................................................................
-nw_script_activation('iterative_emphasis.py','run -e Tracer -d 3 iterative_emphasis.py',1,nil).
+nw_script_activation('emphasis_function.py','run -e Tracer -d 3 emphasis_function.py',1,nil).
 
 
 %---------------------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ nw_function_activation(5,1,greet_user,36,1).
 nw_function_activation(6,2,add_suffix,14,5).
 nw_function_activation(8,1,greet_user,38,1).
 nw_function_activation(9,2,add_suffix,14,8).
-nw_function_activation(1,nil,'/Users/wangqiwen/Documents/SPIN2016/yw-noworkflow/examples/05_emphasis_function/iterative_emphasis.py',61,nil).
+nw_function_activation(1,nil,'/Users/wangqiwen/Documents/SPIN2016/yw-noworkflow/examples/05_emphasis_function/emphasis_function.py',61,nil).
 nw_function_activation(4,nil,'module.print',20,2).
 nw_function_activation(7,nil,'module.print',20,5).
 nw_function_activation(10,nil,'module.print',20,8).
@@ -54,7 +54,7 @@ nw_function_argument(8,greet_user,57,emphasis,'?!',literal,nil,nil).
 %---------------------------------------------------------------------------------------------------
 % FACT: nw_variable_assignment(ActId, VarId, VarName, Line, Value).
 %...................................................................................................
-nw_variable_assignment(1,2,add_suffix,25,'<function add_suffix at 0x10b387488>').
+nw_variable_assignment(1,2,add_suffix,25,'<function add_suffix at 0x10781d488>').
 nw_variable_assignment(1,4,first_greeting,33,'Hello World').
 nw_variable_assignment(2,5,greeting,7,'Hello World').
 nw_variable_assignment(2,6,emphasis,7,!).
@@ -149,42 +149,42 @@ nw_variable_usage(45,1,54,third_emph_count,'3',38).
 nw_variable_dependency(return,9,add_suffix,14,78,greeting,75,string).
 nw_variable_dependency(return,6,add_suffix,14,48,greeting,45,string).
 nw_variable_dependency(return,3,add_suffix,14,21,greeting,18,string).
-nw_variable_dependency(argument,5,greet_user,7,29,greeting,28,second_greeting).
-nw_variable_dependency(argument,6,add_suffix,25,35,count,31,count).
-nw_variable_dependency(argument,6,add_suffix,25,33,prefix,29,greeting).
-nw_variable_dependency(argument,6,add_suffix,25,34,suffix,30,emphasis).
 nw_variable_dependency(argument,8,greet_user,7,55,count,54,third_emph_count).
-nw_variable_dependency(argument,3,add_suffix,25,11,count,7,count).
-nw_variable_dependency(argument,3,add_suffix,25,10,suffix,6,emphasis).
-nw_variable_dependency(argument,3,add_suffix,25,9,prefix,5,greeting).
 nw_variable_dependency(argument,2,greet_user,7,5,greeting,4,first_greeting).
+nw_variable_dependency(argument,5,greet_user,7,29,greeting,28,second_greeting).
+nw_variable_dependency(argument,9,add_suffix,25,61,count,55,count).
 nw_variable_dependency(argument,9,add_suffix,25,60,suffix,57,emphasis).
 nw_variable_dependency(argument,9,add_suffix,25,59,prefix,56,greeting).
-nw_variable_dependency(argument,9,add_suffix,25,61,count,55,count).
-nw_variable_dependency(assignment,9,add_suffix,26,63,string,59,prefix).
-nw_variable_dependency(assignment,9,add_suffix,28,70,i,61,count).
-nw_variable_dependency(assignment,9,add_suffix,28,66,i,61,count).
-nw_variable_dependency(assignment,9,add_suffix,28,74,i,61,count).
-nw_variable_dependency(assignment,9,add_suffix,29,75,string,60,suffix).
-nw_variable_dependency(assignment,9,add_suffix,29,75,string,71,string).
-nw_variable_dependency(assignment,9,add_suffix,29,75,string,61,count).
-nw_variable_dependency(assignment,9,add_suffix,29,67,string,61,count).
-nw_variable_dependency(assignment,9,add_suffix,29,67,string,63,string).
-nw_variable_dependency(assignment,9,add_suffix,29,67,string,60,suffix).
-nw_variable_dependency(assignment,9,add_suffix,29,71,string,61,count).
-nw_variable_dependency(assignment,9,add_suffix,29,71,string,67,string).
-nw_variable_dependency(assignment,9,add_suffix,29,71,string,60,suffix).
-nw_variable_dependency(assignment,6,add_suffix,26,37,string,33,prefix).
+nw_variable_dependency(argument,3,add_suffix,25,11,count,7,count).
+nw_variable_dependency(argument,3,add_suffix,25,9,prefix,5,greeting).
+nw_variable_dependency(argument,3,add_suffix,25,10,suffix,6,emphasis).
+nw_variable_dependency(argument,6,add_suffix,25,34,suffix,30,emphasis).
+nw_variable_dependency(argument,6,add_suffix,25,33,prefix,29,greeting).
+nw_variable_dependency(argument,6,add_suffix,25,35,count,31,count).
 nw_variable_dependency(assignment,6,add_suffix,28,44,i,35,count).
 nw_variable_dependency(assignment,6,add_suffix,28,40,i,35,count).
-nw_variable_dependency(assignment,6,add_suffix,29,41,string,35,count).
-nw_variable_dependency(assignment,6,add_suffix,29,41,string,37,string).
+nw_variable_dependency(assignment,6,add_suffix,26,37,string,33,prefix).
 nw_variable_dependency(assignment,6,add_suffix,29,41,string,34,suffix).
+nw_variable_dependency(assignment,6,add_suffix,29,41,string,37,string).
+nw_variable_dependency(assignment,6,add_suffix,29,41,string,35,count).
 nw_variable_dependency(assignment,6,add_suffix,29,45,string,41,string).
 nw_variable_dependency(assignment,6,add_suffix,29,45,string,35,count).
 nw_variable_dependency(assignment,6,add_suffix,29,45,string,34,suffix).
-nw_variable_dependency(assignment,3,add_suffix,26,13,string,9,prefix).
+nw_variable_dependency(assignment,9,add_suffix,28,74,i,61,count).
+nw_variable_dependency(assignment,9,add_suffix,28,66,i,61,count).
+nw_variable_dependency(assignment,9,add_suffix,28,70,i,61,count).
+nw_variable_dependency(assignment,9,add_suffix,26,63,string,59,prefix).
+nw_variable_dependency(assignment,9,add_suffix,29,67,string,60,suffix).
+nw_variable_dependency(assignment,9,add_suffix,29,67,string,63,string).
+nw_variable_dependency(assignment,9,add_suffix,29,67,string,61,count).
+nw_variable_dependency(assignment,9,add_suffix,29,75,string,61,count).
+nw_variable_dependency(assignment,9,add_suffix,29,75,string,60,suffix).
+nw_variable_dependency(assignment,9,add_suffix,29,75,string,71,string).
+nw_variable_dependency(assignment,9,add_suffix,29,71,string,60,suffix).
+nw_variable_dependency(assignment,9,add_suffix,29,71,string,67,string).
+nw_variable_dependency(assignment,9,add_suffix,29,71,string,61,count).
 nw_variable_dependency(assignment,3,add_suffix,28,17,i,11,count).
-nw_variable_dependency(assignment,3,add_suffix,29,18,string,10,suffix).
-nw_variable_dependency(assignment,3,add_suffix,29,18,string,11,count).
+nw_variable_dependency(assignment,3,add_suffix,26,13,string,9,prefix).
 nw_variable_dependency(assignment,3,add_suffix,29,18,string,13,string).
+nw_variable_dependency(assignment,3,add_suffix,29,18,string,11,count).
+nw_variable_dependency(assignment,3,add_suffix,29,18,string,10,suffix).

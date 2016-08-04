@@ -1,0 +1,5 @@
+
+YW_NW_q1: What Python variables carries values of  emphasized_greeting  into the  print_greeting  step?
+Variable ID: 21. Variable Name: greeting, Variable Value 'Hello World!' 
+Variable ID: 48. Variable Name: greeting, Variable Value 'Goodbye World??' 
+Variable ID: 78. Variable Name: greeting, Variable Value 'Back again?!?!?!' 

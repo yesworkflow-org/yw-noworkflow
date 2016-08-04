@@ -1,0 +1,10 @@
+data_id,data_name,qualified_data_name
+1,input_file_path,[input_file_path]
+2,input_file,[input_file]
+3,displayed_greeting,[displayed_greeting]
+4,input_file,greetings_from_file[input_file]
+5,provided_greeting,greetings_from_file[provided_greeting]
+6,provided_emphasis,greetings_from_file[provided_emphasis]
+7,emphasis_count,greetings_from_file[emphasis_count]
+8,emphasized_greeting,greetings_from_file[emphasized_greeting]
+9,displayed_greeting,greetings_from_file[displayed_greeting]

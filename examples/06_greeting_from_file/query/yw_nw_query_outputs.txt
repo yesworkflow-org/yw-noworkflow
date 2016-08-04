@@ -1,0 +1,10 @@
+
+YW_NW_q1: What Python variables carries values of  emphasis_count  into the  emphasize_greeting  step?
+Variable ID: 26. Variable Name: count, Variable Value 1 
+Variable ID: 53. Variable Name: count, Variable Value 2 
+Variable ID: 81. Variable Name: count, Variable Value 3 
+
+YW_NW_q2: What values are emitted by the  displayed_greeting  output of the  print_greeting  step?
+Variable ID: 42. Variable Name: greeting, Variable Value 'Hello World!' 
+Variable ID: 71. Variable Name: greeting, Variable Value 'Goodbye World??' 
+Variable ID: 103. Variable Name: greeting, Variable Value 'Back again?!?!?!' 

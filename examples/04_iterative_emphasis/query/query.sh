@@ -143,17 +143,17 @@ printall(yw_nw_q1(_,_,_)).
 
 
 %-------------------------------------------------------------------------------
-%banner( 'YW_NW_Q2',
-%        'What values are emitted by the displayed_greeting output of the print_greeting step?',
-%        'yw_nw_q2(OutputValue)').
-%[user].
-%:- table yw_nw_q1/3.
-%yw_nw_q1(VariableValue) :-
-%    yw_step_output(_, 'print_greeting', _, PortId, _, _, 'displayed_greeting'),
-%    nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, _, _, PortId, _, _, _).
-%
-%end_of_file.
-%printall(yw_nw_q1(_,_,_)).
+banner( 'YW_NW_Q2',
+        'What values are emitted by the displayed_greeting output of the print_greeting step?',
+        'yw_nw_q2(OutputValue)').
+[user].
+:- table yw_nw_q2/3.
+yw_nw_q2(VariableId, VariableName, VariableValue) :-
+    yw_step_output(_, 'print_greeting', _, PortId, _, _, 'displayed_greeting'),
+    nw_variable_for_yw_out_port(VariableId, VariableName, VariableValue, _, _, PortId, _, _, _).
+
+end_of_file.
+printall(yw_nw_q2(_,_,_)).
 %-------------------------------------------------------------------------------
 
 

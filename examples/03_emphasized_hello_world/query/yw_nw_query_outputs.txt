@@ -1,0 +1,5 @@
+
+YW_NW_q1: What Python variables carries values of  modified_greeting  into the  print_greeting  step?
+Variable ID: 6. Variable Name: greeting, Variable Value 'Hello World!!' 
+Variable ID: 16. Variable Name: greeting, Variable Value 'Goodbye World!!' 
+Variable ID: 23. Variable Name: greeting, Variable Value 'Back again!!' 

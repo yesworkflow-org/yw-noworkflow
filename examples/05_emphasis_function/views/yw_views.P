@@ -3,13 +3,13 @@
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_source_file(SourceId, SourceFile).
 %...................................................................................................
-yw_source_file(1,'iterative_emphasis.py').
+yw_source_file(1,'emphasis_function.py').
 
 
 %---------------------------------------------------------------------------------------------------
 % FACT: yw_workflow_script(WorkflowId, WorkflowName, SourceId, SourceFile).
 %...................................................................................................
-yw_workflow_script(1,'EmphasizedHelloWorld',1,'iterative_emphasis.py').
+yw_workflow_script(1,'EmphasizedHelloWorld',1,'emphasis_function.py').
 
 
 %---------------------------------------------------------------------------------------------------

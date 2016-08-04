@@ -1,0 +1,7 @@
+port_id,alias
+5,provided_greeting
+6,provided_emphasis
+7,emphasis_count
+8,emphasized_greeting
+9,emphasized_greeting
+10,displayed_greeting
