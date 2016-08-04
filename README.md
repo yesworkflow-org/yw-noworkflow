@@ -344,123 +344,124 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
 
   - Run YesWorkflow with query.engine set as "csv", and designate the location to save facts in csv format:
     
-    yw model simulate_data_collection.py -c extract.language=python \
-    -c extract.factsfile=csv/extractfacts -c model.factsfile=csv/modelfacts \
-    -c query.engine=csv
+        yw model simulate_data_collection.py -c extract.language=python \
+        -c extract.factsfile=csv/extractfacts -c model.factsfile=csv/modelfacts \
+        -c query.engine=csv
     
 
   - Input all the csv facts into SQL database:
 
     
-    sqlite3 facts/yw_facts.db < ../../scripts/yw_facts.sql
+        sqlite3 facts/yw_facts.db < ../../scripts/yw_facts.sql
     
 
   - Check the results in `yw_facts.db`, and then quit SQLite3 by typing `.exit` or ^D. :
 
-    
-    $ sqlite3 facts/yw_facts.db
+        ```    
+        $ sqlite3 facts/yw_facts.db
 
-    SQLite version 3.8.10.2 2015-05-20 18:17:19
-    Enter ".help" for usage hints.
+        SQLite version 3.8.10.2 2015-05-20 18:17:19
+        Enter ".help" for usage hints.
 
-    sqlite> .tables
-    extractfacts_annotation                 modelfacts_log_template               
-    extractfacts_annotation_qualifies       modelfacts_outflow_connects_to_channel
-    extractfacts_extract_source             modelfacts_port                       
-    modelfacts_channel                      modelfacts_port_alias                 
-    modelfacts_data                         modelfacts_port_connects_to_channel   
-    modelfacts_function                     modelfacts_port_uri_template          
-    modelfacts_has_in_port                  modelfacts_program                    
-    modelfacts_has_out_port                 modelfacts_uri_variable               
-    modelfacts_has_subprogram               modelfacts_workflow                   
-    modelfacts_inflow_connects_to_channel 
-
-    
-
+        sqlite> .tables
+        extractfacts_annotation                 modelfacts_log_template               
+        extractfacts_annotation_qualifies       modelfacts_outflow_connects_to_channel
+        extractfacts_extract_source             modelfacts_port                       
+        modelfacts_channel                      modelfacts_port_alias                 
+        modelfacts_data                         modelfacts_port_connects_to_channel   
+        modelfacts_function                     modelfacts_port_uri_template          
+        modelfacts_has_in_port                  modelfacts_program                    
+        modelfacts_has_out_port                 modelfacts_uri_variable               
+        modelfacts_has_subprogram               modelfacts_workflow                   
+        modelfacts_inflow_connects_to_channel 
+        ```
 
   - Create views for YesWorkflow:
 
     
-    sqlite3 views/yw_views.db < ../../scripts/yw_views.sql 
+        sqlite3 views/yw_views.db < ../../scripts/yw_views.sql 
     
 
   - Check the results in `yw_views.db`:
 
-    
-    sqlite3 views/yw_views.db
+        ```    
+        sqlite3 views/yw_views.db
 
-    SQLite version 3.8.10.2 2015-05-20 18:17:19
-    Enter ".help" for usage hints.
+        SQLite version 3.8.10.2 2015-05-20 18:17:19
+        Enter ".help" for usage hints.
 
-    sqlite> .tables
-    _yw_input_port       yw_outflow           yw_step_input      
-    yw_data              yw_parent_workflow   yw_step_output     
-    yw_description       yw_program           yw_workflow        
-    yw_flow              yw_program_has_port  yw_workflow_script 
-    yw_function          yw_qualified_name    yw_workflow_step   
-    yw_inflow            yw_source_file     
-    
+        sqlite> .tables
+        _yw_input_port       yw_outflow           yw_step_input      
+        yw_data              yw_parent_workflow   yw_step_output     
+        yw_description       yw_program           yw_workflow        
+        yw_flow              yw_program_has_port  yw_workflow_script 
+        yw_function          yw_qualified_name    yw_workflow_step   
+        yw_inflow            yw_source_file     
+        ```
 
 1. Generate facts and views from NoWorkflow
 
   - Run NoWorkflow, and copy the records to the [facts](https://github.com/idaks/yw-noworkflow/tree/master/examples/simulate_data_collection/facts) folder:
 
-    ```
-    # empty the noworkflow record
-    rm -rf .noworkflow
-    # run the script with noworkflow
-    now run -e Tracer -d 3 simulate_data_collection.py q55 --cutoff 12 --redundancy 0 > run_outputs.txt
-    cp .noworkflow/db.sqlite facts/nw_facts.db
-    ```
+        ```
+        # empty the noworkflow record
+        rm -rf .noworkflow
+        # run the script with noworkflow
+        now run -e Tracer -d 3 simulate_data_collection.py q55 --cutoff 12 --redundancy 0 > run_outputs.txt
+        cp .noworkflow/db.sqlite facts/nw_facts.db
+        ```
     
 
   - Create views for NoWorkflow:
 
     
-    sqlite3 views/nw_views.db < ../../scripts/nw_views.sql 
+        sqlite3 views/nw_views.db < ../../scripts/nw_views.sql 
     
 
   - Check the results in `nw_views.db`:
 
-    
-    sqlite3 views/nw_views.db
 
-    SQLite version 3.8.10.2 2015-05-20 18:17:19
-    Enter ".help" for usage hints.
+        ```
+        sqlite3 views/nw_views.db
 
-    sqlite> .tables
-    nw_function_activation         nw_usage_is_function_call    
-    nw_function_argument           nw_variable_assignment       
-    nw_function_argument_literal   nw_variable_dependency       
-    nw_function_argument_variable  nw_variable_is_function      
-    nw_function_definition         nw_variable_usage            
-    nw_script_activation           usage              
-    
+        SQLite version 3.8.10.2 2015-05-20 18:17:19
+        Enter ".help" for usage hints.
+
+        sqlite> .tables
+        nw_function_activation         nw_usage_is_function_call    
+        nw_function_argument           nw_variable_assignment       
+        nw_function_argument_literal   nw_variable_dependency       
+        nw_function_argument_variable  nw_variable_is_function      
+        nw_function_definition         nw_variable_usage            
+        nw_script_activation           usage              
+        ```    
 
 1. Generate views from YewWorkflow-NoWorkflow Bridge. This requires [yw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_views.P) and [nw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/nw_views.P)
 
     
-    sqlite3 views/yw_nw_views.db < ../../scripts/yw_nw_views.sql 
+        sqlite3 views/yw_nw_views.db < ../../scripts/yw_nw_views.sql 
 
     
   - Check the results in `yw_nw_views.db`:
 
-    
-    $ sqlite3 views/yw_nw_views.db          
 
-    SQLite version 3.8.10.2 2015-05-20 18:17:19
-    Enter ".help" for usage hints.
+        ```
+        $ sqlite3 views/yw_nw_views.db          
 
-    sqlite> .tables
-    nw_activation_from_yw_step             nw_variable_for_yw_in_port_9         
-    nw_activation_into_yw_program          nw_variable_for_yw_in_port_defined   
-    nw_activation_into_yw_step             nw_variable_for_yw_inflow            
-    nw_activation_into_yw_step_subprogram  nw_variable_for_yw_out_port          
-    nw_argument_for_yw_in_port             nw_variable_for_yw_out_port_assigned 
-    nw_variable_assigned_in_yw_step        nw_variable_for_yw_out_port_thru     
-    nw_variable_assigned_outside_yw_step   nw_variable_for_yw_outflow           
-    nw_variable_for_yw_data                nw_variable_used_in_yw_step          
-    nw_variable_for_yw_in_port_10          nw_variable_used_outside_yw_step        
+        SQLite version 3.8.10.2 2015-05-20 18:17:19
+        Enter ".help" for usage hints.
+
+        sqlite> .tables
+        nw_activation_from_yw_step             nw_variable_for_yw_in_port_9         
+        nw_activation_into_yw_program          nw_variable_for_yw_in_port_defined   
+        nw_activation_into_yw_step             nw_variable_for_yw_inflow            
+        nw_activation_into_yw_step_subprogram  nw_variable_for_yw_out_port          
+        nw_argument_for_yw_in_port             nw_variable_for_yw_out_port_assigned 
+        nw_variable_assigned_in_yw_step        nw_variable_for_yw_out_port_thru     
+        nw_variable_assigned_outside_yw_step   nw_variable_for_yw_outflow           
+        nw_variable_for_yw_data                nw_variable_used_in_yw_step          
+        nw_variable_for_yw_in_port_10          nw_variable_used_outside_yw_step
+        ```
     
 
 1. Perform queries for YW, NW, and YW-NW
