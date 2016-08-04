@@ -466,10 +466,11 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
 
 1. Perform queries for YW, NW, and YW-NW
 
-    
-    python query/yw_extract_query.py > query/yw_extract_query_outputs.txt
-    python query/yw_model_query.py > query/yw_model_query_outputs.txt
-    python query/yw_nw_query.py > query/yw_nw_query_outputs.txt
+        ```
+        python query/yw_extract_query.py > query/yw_extract_query_outputs.txt
+        python query/yw_model_query.py > query/yw_model_query_outputs.txt
+        python query/yw_nw_query.py > query/yw_nw_query_outputs.txt
+        ```
 
   Note that not all the questions have an answer, because some questions are not appliable to the script. For now, only simulate_data_collection example has an exhausted yw_extract_query and yw_model_query.
     
