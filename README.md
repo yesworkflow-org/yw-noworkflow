@@ -418,9 +418,7 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
 
   - Create views for NoWorkflow:
 
-        ```
             sqlite3 views/nw_views.db < ../../scripts/nw_views.sql 
-        ```
 
   - Check the results in `nw_views.db`:
 
