@@ -260,7 +260,8 @@ Then generate graphs as `gv` files, the file format used by Graphviz:
     bash ../../scripts/yw_combined_graph.sh > graph/yw_combined_graph.gv
 
 Render the pdf/png format file through Graphviz:
-    ```
+    
+```
     # pdf files
     dot -Tpdf graph/yw_data_graph.gv -o graph/yw_data_graph.pdf
     dot -Tpdf graph/yw_process_graph.gv -o graph/yw_process_graph.pdf
@@ -270,7 +271,8 @@ Render the pdf/png format file through Graphviz:
     dot -Tpng graph/yw_data_graph.gv -o graph/yw_data_graph.png
     dot -Tpng graph/yw_process_graph.gv -o graph/yw_process_graph.png
     dot -Tpng graph/yw_combined_graph.gv -o graph/yw_combined_graph.png
-    ```    
+```    
+
 You can checkout the resulting images here:
 
 yw_data_graph.png:
@@ -291,12 +293,12 @@ YesWorkflow can also generate workflow from prospective provenance. You can rend
 For example, if we're interested in which steps and data products result in the "corrected image" in the simulate_data_collection, we can use the following command:
 
 ```    
-bash ../../scripts/yw_prospective_lineage.sh \
-corrected_image > graph/yw_prospective_lineage.gv
+    bash ../../scripts/yw_prospective_lineage.sh \
+    corrected_image > graph/yw_prospective_lineage.gv
 
-# generate pdf and png files
-dot -Tpng graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.png
-dot -Tpdf graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.pdf
+    # generate pdf and png files
+    dot -Tpng graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.png
+    dot -Tpdf graph/yw_prospective_lineage.gv -o graph/yw_prospective_lineage.pdf
 ```    
 
 <p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/yw_prospective_lineage.png" height="500"></p>
@@ -308,15 +310,15 @@ Compare this graph with the [yw_combined_graph](https://github.com/idaks/yw-nowo
 Just as YesWorkflow can query for the lineage for an output data product, NoWorkflow can also do the similar thing. NoWorkflow is able to filter the dataflow by a variable/file name, and create the lineage graph for that variable/file name.
 
 ```
-# create df_style helper that can be used to change noWorkflow graph style
-now helper df_style.py
+    # create df_style helper that can be used to change noWorkflow graph style
+    now helper df_style.py
 
-# export filtered noWorkflow simulation graph with depth 2
-now dataflow -d 2 -v 55 -f 'run/data/DRT240/DRT240_11000eV_002.img' -m simulation | python df_style.py -d BT -e > graph/nw_filtered_lineage_graph.gv
+    # export filtered noWorkflow simulation graph with depth 2
+    now dataflow -d 2 -v 55 -f 'run/data/DRT240/DRT240_11000eV_002.img' -m simulation | python df_style.py -d BT -e > graph/nw_filtered_lineage_graph.gv
 
-# generate pdf and png files
-dot -Tpng graph/nw_filtered_lineage_graph.gv -o graph/nw_filtered_lineage_graph.png
-dot -Tpdf graph/nw_filtered_lineage_graph.gv -o graph/nw_filtered_lineage_graph.pdf
+    # generate pdf and png files
+    dot -Tpng graph/nw_filtered_lineage_graph.gv -o graph/nw_filtered_lineage_graph.png
+    dot -Tpdf graph/nw_filtered_lineage_graph.gv -o graph/nw_filtered_lineage_graph.pdf
 ```
 
 <p align="center"><img src="https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/graph/nw_filtered_lineage_graph.png" height="500"></p>
@@ -346,15 +348,15 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
   - Run YesWorkflow with query.engine set as "csv", and designate the location to save facts in csv format:
 
         ```
-        yw model simulate_data_collection.py -c extract.language=python \
-        -c extract.factsfile=csv/extractfacts -c model.factsfile=csv/modelfacts \
-        -c query.engine=csv
+            yw model simulate_data_collection.py -c extract.language=python \
+            -c extract.factsfile=csv/extractfacts -c model.factsfile=csv/modelfacts \
+            -c query.engine=csv
         ```
 
   - Input all the csv facts into SQL database:
 
         ```
-        sqlite3 facts/yw_facts.db < ../../scripts/yw_facts.sql
+            sqlite3 facts/yw_facts.db < ../../scripts/yw_facts.sql
         ```
 
   - Check the results in `yw_facts.db`, and then quit SQLite3 by typing `.exit` or ^D. :
@@ -381,7 +383,7 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
   - Create views for YesWorkflow:
 
         ```
-        sqlite3 views/yw_views.db < ../../scripts/yw_views.sql 
+            sqlite3 views/yw_views.db < ../../scripts/yw_views.sql 
         ```
 
   - Check the results in `yw_views.db`:
@@ -417,7 +419,7 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
   - Create views for NoWorkflow:
 
         ```
-        sqlite3 views/nw_views.db < ../../scripts/nw_views.sql 
+            sqlite3 views/nw_views.db < ../../scripts/nw_views.sql 
         ```
 
   - Check the results in `nw_views.db`:
@@ -441,7 +443,7 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
 1. Generate views from YewWorkflow-NoWorkflow Bridge. This requires [yw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_views.P) and [nw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/nw_views.P)
 
         ```
-        sqlite3 views/yw_nw_views.db < ../../scripts/yw_nw_views.sql 
+            sqlite3 views/yw_nw_views.db < ../../scripts/yw_nw_views.sql 
         ```
     
   - Check the results in `yw_nw_views.db`:
