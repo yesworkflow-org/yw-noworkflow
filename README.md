@@ -443,7 +443,7 @@ Similar to how we perform query with Prolog, we will run the script with YesWork
 1. Generate views from YewWorkflow-NoWorkflow Bridge. This requires [yw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/yw_views.P) and [nw_views.db](https://github.com/idaks/yw-noworkflow/blob/master/examples/simulate_data_collection/views/nw_views.P)
 
         ```
-            sqlite3 views/yw_nw_views.db < ../../scripts/yw_nw_views.sql 
+        sqlite3 views/yw_nw_views.db < ../../scripts/yw_nw_views.sql 
         ```
     
   - Check the results in `yw_nw_views.db`:
