@@ -41,6 +41,12 @@ NoWorkflow collects provenance for Python scripts into SQLite database. It could
 
 NoWorkflow installation details and instructions can be found in [noWorkflow repository](https://github.com/gems-uff/noworkflow).
 
+Easy installation:
+```
+pip3 install noworkflow
+```
+Note: use Python 3 instead of Python 2.
+
 ## XSB Prolog and SQLite
 
 XSB is a Logic Programming system for Unix and Windows-based platforms. SQLite is a relational database management system contained in a C programming library, and is an embedded SQL database engine. YesWorkflow-NoWorkflow Bridge will use XSB and SQLite to define rules for YesWorkflow, NoWorkflow, and the bridge, and perform queries for them. 
