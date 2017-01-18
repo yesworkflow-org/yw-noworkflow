@@ -1,0 +1,6 @@
+data_id,data_name,qualified_data_name
+1,provided_greeting,[provided_greeting]
+2,displayed_greeting,[displayed_greeting]
+3,provided_greeting,EmphasizedHelloWorld[provided_greeting]
+4,modified_greeting,EmphasizedHelloWorld[modified_greeting]
+5,displayed_greeting,EmphasizedHelloWorld[displayed_greeting]

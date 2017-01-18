@@ -1,0 +1,4 @@
+program_id,program_name,qualified_program_name,begin_annotation_id,end_annotation_id
+1,EmphasizedHelloWorld,EmphasizedHelloWorld,1,20
+2,emphasize_greeting,EmphasizedHelloWorld.emphasize_greeting,6,11
+3,print_greeting,EmphasizedHelloWorld.print_greeting,12,19

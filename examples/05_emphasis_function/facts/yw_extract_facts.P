@@ -1,6 +1,6 @@
 
 % FACT: extract_source(source_id, source_path).
-extract_source(1, 'iterative_emphasis.py').
+extract_source(1, 'emphasis_function.py').
 
 % FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value).
 annotation(1, 1, 1, 'begin', '@begin', 'EmphasizedHelloWorld').

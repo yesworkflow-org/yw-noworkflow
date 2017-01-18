@@ -1,0 +1,11 @@
+annotation_id,source_id,line_number,tag,keyword,value
+1,1,1,begin,@begin,hello_world
+2,1,1,desc,@desc,Exercise YW and NW with a classic program.
+3,1,2,out,@out,greeting
+4,1,2,desc,@desc,Greeting displayed to user.
+5,1,4,begin,@begin,print_greeting
+6,1,4,desc,@desc,Greet the program user.
+7,1,5,out,@out,greeting
+8,1,5,file,@file,stream:stdout
+9,1,7,end,@end,print_greeting
+10,1,9,end,@end,hello_world

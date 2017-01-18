@@ -1,0 +1,17 @@
+
+YW_NW_q1: What Python variables carries values of  sample_name  into the  calculate_strategy  step?
+Variable ID: 255. Variable Name: sample_name, Variable Value 'DRT110' 
+Variable ID: 361. Variable Name: sample_name, Variable Value 'DRT240' 
+Variable ID: 2511. Variable Name: sample_name, Variable Value 'DRT322' 
+
+YW_NW_q2: What values are emitted by the  corrected_image  output of the  transform_images  step?
+Variable ID: 709. Variable Name: corrected_image_file, Variable Value 'run/data/DRT240/DRT240_10000eV_001.img' 
+Variable ID: 1049. Variable Name: corrected_image_file, Variable Value 'run/data/DRT240/DRT240_10000eV_002.img' 
+Variable ID: 1391. Variable Name: corrected_image_file, Variable Value 'run/data/DRT240/DRT240_11000eV_001.img' 
+Variable ID: 1731. Variable Name: corrected_image_file, Variable Value 'run/data/DRT240/DRT240_11000eV_002.img' 
+Variable ID: 2073. Variable Name: corrected_image_file, Variable Value 'run/data/DRT240/DRT240_12000eV_001.img' 
+Variable ID: 2413. Variable Name: corrected_image_file, Variable Value 'run/data/DRT240/DRT240_12000eV_002.img' 
+Variable ID: 2858. Variable Name: corrected_image_file, Variable Value 'run/data/DRT322/DRT322_10000eV_001.img' 
+Variable ID: 3198. Variable Name: corrected_image_file, Variable Value 'run/data/DRT322/DRT322_10000eV_002.img' 
+Variable ID: 3540. Variable Name: corrected_image_file, Variable Value 'run/data/DRT322/DRT322_11000eV_001.img' 
+Variable ID: 3880. Variable Name: corrected_image_file, Variable Value 'run/data/DRT322/DRT322_11000eV_002.img' 

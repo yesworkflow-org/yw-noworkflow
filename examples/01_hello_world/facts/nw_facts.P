@@ -75,7 +75,7 @@ object(1, -1, 1, 'print', 'FUNCTION_CALL').
 %
 
 :- dynamic(activation/7).
-activation(1, 1, '/Users/tmcphill/GitRepos/yw-noworkflow/examples/01_hello_world/hello_world.py', 61, nil, nil, nil).
+activation(1, 1, '/Users/wangqiwen/Documents/SPIN2016/yw-noworkflow/examples/01_hello_world/hello_world.py', 61, nil, nil, nil).
 activation(1, 2, 'module.print', 6, nil, nil, 1).
 
 %
@@ -144,6 +144,6 @@ variable(1, 1, 4, 'print', 0, '<built-in function print>', nil).
 %
 
 :- dynamic(dependency/6).
-dependency(1, 1, 2, 1, 0, 2).
-dependency(1, 2, 1, 3, 2, 1).
-dependency(1, 3, 1, 3, 1, 4).
+dependency(1, 1, 1, 3, 1, 4).
+dependency(1, 2, 2, 1, 0, 2).
+dependency(1, 3, 1, 3, 2, 1).

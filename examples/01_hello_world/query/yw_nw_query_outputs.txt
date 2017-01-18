@@ -1,0 +1,3 @@
+
+YW_NW_q1: What functions are called from within the workflow step  print_greeting ?
+module.print

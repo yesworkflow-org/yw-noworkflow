@@ -1,0 +1,7 @@
+port_id,alias
+12,sample_spreadsheet
+33,raw_image
+37,raw_image
+38,calibration_image
+39,corrected_image
+47,corrected_image

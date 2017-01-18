@@ -1,0 +1,9 @@
+program_id,program_name,qualified_program_name,begin_annotation_id,end_annotation_id
+1,simulate_data_collection,simulate_data_collection,1,95
+2,initialize_run,simulate_data_collection.initialize_run,18,22
+3,load_screening_results,simulate_data_collection.load_screening_results,23,31
+4,calculate_strategy,simulate_data_collection.calculate_strategy,32,42
+5,log_rejected_sample,simulate_data_collection.log_rejected_sample,43,49
+6,collect_data_set,simulate_data_collection.collect_data_set,50,66
+7,transform_images,simulate_data_collection.transform_images,67,82
+8,log_average_image_intensity,simulate_data_collection.log_average_image_intensity,83,94
